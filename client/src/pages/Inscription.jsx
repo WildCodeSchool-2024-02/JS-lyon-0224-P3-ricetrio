@@ -1,6 +1,6 @@
 import "./inscription.scss";
 
-export default function App() {
+export default function Inscription() {
   return (
     <div>
       <div className="contactContainer">
