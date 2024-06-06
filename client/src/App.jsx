@@ -1,7 +1,7 @@
 import "./App.css";
 import NavBar from "./components/Navbar";
 import Forget from "./pages/Forget/Forget";
-import MainCarousel from "./components/Home/MainCarousel";
+import EmblaCarousel from "./components/Home/EmblaCarousel";
 
 function App() {
   return (
@@ -9,7 +9,7 @@ function App() {
       <header>
         <NavBar />
       </header>
-      <MainCarousel />
+      <EmblaCarousel />
       <Forget />
     </main>
   );
