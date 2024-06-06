@@ -7,7 +7,7 @@ class ItemRepository extends AbstractRepository {
     super({ table: "item" });
   }
 
-  // The C of CRUD - Create operation
+  // The C of CRUD - Create operationas 
 
   async create(item) {
     // Execute the SQL INSERT query to add a new item to the "item" table
