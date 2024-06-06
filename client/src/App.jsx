@@ -1,10 +1,10 @@
 import "./App.css";
-import Signin from "./pages/SignIn/Signin";
+import Forget from "./pages/Forget/Forget";
 
 function App() {
   return (
     <main className="container">
-      <Signin />
+      <Forget />
     </main>
   );
 }
