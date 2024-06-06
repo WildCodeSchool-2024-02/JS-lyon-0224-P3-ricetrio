@@ -1,14 +1,14 @@
-import React from "react";
 import { Carousel } from "react-responsive-carousel";
 import "react-responsive-carousel/lib/styles/carousel.min.css";
-import japan from "../assets/images/japan.png";
-import moutain from "../assets/images/mountain.png";
-import ricegirl from "../assets/images/ricegirl.png";
-import vietnam from "../assets/images/vietnam.png";
+import japan from "../../assets/images/japan.png";
+import moutain from "../../assets/images/mountain.png";
+import ricegirl from "../../assets/images/ricegirl.png";
+import vietnam from "../../assets/images/vietnam.png";
+import "./maincarousel.scss";
 
 function CarouselPage() {
   return (
-    <Carousel>
+    <Carousel className="carouselimages">
       <div>
         <img src={japan} alt="null" />
         <p className="legend">Izakaya in Japan</p>

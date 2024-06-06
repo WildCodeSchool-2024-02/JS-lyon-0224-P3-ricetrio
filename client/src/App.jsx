@@ -1,6 +1,6 @@
 import "./App.css";
 import Forget from "./pages/Forget/Forget";
-import MainCarousel from "./components/MainCarousel";
+import MainCarousel from "./components/Home/MainCarousel";
 
 function App() {
   return (
