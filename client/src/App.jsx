@@ -1,10 +1,11 @@
 import "./App.css";
+import NavBar from "./components/Navbar";
 
 function App() {
   return (
     <main className="container">
       <header>
-        <h1 className="logo">Harmonia</h1>
+        <NavBar />
       </header>
 
       <footer>
