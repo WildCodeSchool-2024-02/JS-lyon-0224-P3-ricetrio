@@ -35,24 +35,10 @@ export default function Inscription() {
           </form>
           <div className="textUnderButton">
             <p className="underButton">
-              Already have an account.{" "}
-              <a
-                href="https://www.figma.com/design/FBKn4sUw9hrwRsiNdmsFsC/Maquette_origins_digital?node-id=0-1&t=Zt3LBqJmnhRMfwgn-0"
-                target="_blank"
-                rel="noreferrer"
-              >
-                Sign In
-              </a>
+              Already have an account. <span>Sign In</span>
             </p>
             <p className="underButton">
-              I forgot my password.{" "}
-              <a
-                href="https://www.figma.com/design/FBKn4sUw9hrwRsiNdmsFsC/Maquette_origins_digital?node-id=0-1&t=Zt3LBqJmnhRMfwgn-0"
-                target="_blank"
-                rel="noreferrer"
-              >
-                Help
-              </a>
+              I forgot my password. <span>Help</span>
             </p>
           </div>
         </div>
