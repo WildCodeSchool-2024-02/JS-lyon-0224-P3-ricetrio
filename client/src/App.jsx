@@ -1,4 +1,5 @@
 import "./App.css";
+import NavBar from "./components/Navbar";
 import Forget from "./pages/Forget/Forget";
 import MainCarousel from "./components/MainCarousel";
 
