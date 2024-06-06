@@ -1,5 +1,6 @@
 import "./App.css";
 import NavBar from "./components/Navbar";
+import Forget from "./pages/Forget/Forget";
 
 function App() {
   return (
@@ -7,7 +8,6 @@ function App() {
       <header>
         <NavBar />
       </header>
-
       <footer>
         Développé par la&nbsp;
         <a
@@ -19,6 +19,7 @@ function App() {
           Wild Code School
         </a>
       </footer>
+      <Forget />
     </main>
   );
 }
