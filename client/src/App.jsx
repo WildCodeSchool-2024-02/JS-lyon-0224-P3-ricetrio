@@ -1,6 +1,8 @@
 import "./App.css";
 import NavBar from "./components/Navbar";
 import Forget from "./pages/Forget/Forget";
+import Inscription from "./pages/SignUp/Inscription";
+import Signin from "./pages/SignIn/Signin";
 
 function App() {
   return (
@@ -8,17 +10,8 @@ function App() {
       <header>
         <NavBar />
       </header>
-      <footer>
-        Développé par la&nbsp;
-        <a
-          href="https://www.wildcodeschool.com/"
-          className="wcs"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Wild Code School
-        </a>
-      </footer>
+      <Inscription />
+      <Signin />
       <Forget />
     </main>
   );
