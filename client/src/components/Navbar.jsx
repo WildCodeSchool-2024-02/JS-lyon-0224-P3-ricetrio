@@ -1,22 +1,23 @@
-import logo from "../assets/images/KAT.png";
-import search from "../assets/images/search.png";
-import signin from "../assets/images/sign-in.png";
+import Logo from "../assets/images/Kat.png";
+import Search from "../assets/images/Search.png";
+import Signin from "../assets/images/Sign-in.png";
 import styles from "./Navbar.module.css";
 
 function NavBar() {
+  // toto
   return (
     <div className={styles.containParents}>
       <div className={styles.containLeft}>
-        <img src={logo} alt="logo KAT" className={styles.logo} />
+        <img src={Logo} alt="logo KAT" className={styles.logo} />
       </div>
       <div className={styles.containRight}>
         <img
-          src={search}
+          src={Search}
           alt="search with the magnifying glass"
           className={styles.search}
         />
         <img
-          src={signin}
+          src={Signin}
           alt="profil for signin or signup"
           className={styles.profile}
         />
