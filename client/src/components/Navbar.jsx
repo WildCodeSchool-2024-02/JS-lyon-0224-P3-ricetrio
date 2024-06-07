@@ -4,6 +4,7 @@ import Signin from "../assets/images/Sign-in.png";
 import styles from "./Navbar.module.css";
 
 function NavBar() {
+  // toto
   return (
     <div className={styles.containParents}>
       <div className={styles.containLeft}>
