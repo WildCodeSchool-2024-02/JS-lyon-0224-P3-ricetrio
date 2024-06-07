@@ -19,24 +19,10 @@ export default function Forget() {
           </form>
           <div className="textUnderButton">
             <p className="underButton">
-              I'm new user.{" "}
-              <a
-                href="https://www.figma.com/design/FBKn4sUw9hrwRsiNdmsFsC/Maquette_origins_digital?node-id=0-1&t=Zt3LBqJmnhRMfwgn-0"
-                target="_blank"
-                rel="noreferrer"
-              >
-                Sign Up
-              </a>
+              I'm new user. <span>Sign Up</span>
             </p>
             <p className="underButton">
-              Already have an account.{" "}
-              <a
-                href="https://www.figma.com/design/FBKn4sUw9hrwRsiNdmsFsC/Maquette_origins_digital?node-id=0-1&t=Zt3LBqJmnhRMfwgn-0"
-                target="_blank"
-                rel="noreferrer"
-              >
-                Sign In
-              </a>
+              Already have an account. <span>Sign In</span>
             </p>
           </div>
         </div>
