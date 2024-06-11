@@ -35,7 +35,7 @@ export default function EmblaCarousel() {
     if (!emblaApi) return;
     emblaApi.on("select", onSelect);
     onSelect();
-  }, [emblaApi, onSelect]);
+  }, [emblaApi, onSelect, selectedIndex]);
 
   const scrollPrev = useCallback(() => {
     if (emblaApi) emblaApi.scrollPrev();
