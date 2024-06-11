@@ -1,5 +1,5 @@
-import "./App.css";
-import NavBar from "./components/Navbar";
+import "./App.module.css";
+import NavBar from "./components/Navbar/Navbar";
 import Forget from "./pages/Forget/Forget";
 import EmblaCarousel from "./components/Home/EmblaCarousel";
 
