@@ -1,6 +1,6 @@
-import logo from "../assets/images/KAT.png";
-import search from "../assets/images/search.png";
-import signin from "../assets/images/sign-in.png";
+import logo from "../assets/images/Kat.png";
+import search from "../assets/images/Search.png";
+import signin from "../assets/images/Sign-in.png";
 import styles from "./Navbar.module.css";
 
 function NavBar() {
