@@ -30,9 +30,11 @@ export default function Signin() {
                 <input type="password" placeholder="●●●●●●●●" />
               </div>
             </div>
-            <button type="submit">
-              <h3>Sign In</h3>
-            </button>
+            <Link to="/">
+              <button type="submit">
+                <h3>Sign In</h3>
+              </button>
+            </Link>
           </form>
           <div className={styles.textUnderButton}>
             <p className={styles.underButton}>

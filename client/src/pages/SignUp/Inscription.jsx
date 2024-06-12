@@ -36,9 +36,11 @@ export default function Inscription() {
                 <input type="password" placeholder="●●●●●●●●" />
               </div>
             </div>
-            <button className={styles.buttonSubmit} type="submit">
-              <h3>Sign Up</h3>
-            </button>
+            <Link to="/">
+              <button className={styles.buttonSubmit} type="submit">
+                <h3>Sign Up</h3>
+              </button>
+            </Link>
           </form>
           <div className={styles.textUnderButton}>
             <p className={styles.underButton}>

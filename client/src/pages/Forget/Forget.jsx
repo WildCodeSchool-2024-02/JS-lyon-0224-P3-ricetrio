@@ -20,9 +20,11 @@ export default function Forget() {
                 <input type="text" placeholder="mikael.jackson@gmail.com" />
               </div>
             </div>
-            <button type="submit">
-              <h3>Send</h3>
-            </button>
+            <Link to="/">
+              <button type="submit">
+                <h3>Send</h3>
+              </button>
+            </Link>
           </form>
           <div className={styles.textUnderButton}>
             <p className={styles.underButton}>
