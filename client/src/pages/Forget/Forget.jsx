@@ -1,15 +1,22 @@
-import "./forget.scss";
+import { Link } from "react-router-dom";
+import styles from "./forget.module.css";
+import Logo from "../../assets/images/logo-prodkat.svg";
 
 export default function Forget() {
   return (
     <div>
-      <div className="contactContainer">
-        <div className="contactBloc">
+      <div className={styles.logo}>
+        <Link to="/">
+          <img src={Logo} alt="logo prodkat" />
+        </Link>
+      </div>
+      <div className={styles.contactContainer}>
+        <div className={styles.contactBloc}>
           <h2>Forget Password</h2>
-          <form className="contactForm">
-            <div className="row formRow">
+          <form className={styles.contactForm}>
+            <div className={styles.rowFormRow}>
               <h4>Email Address</h4>
-              <div className="pseudoInput">
+              <div className={styles.pseudoInput}>
                 <input type="text" placeholder="mikael.jackson@gmail.com" />
               </div>
             </div>
@@ -17,26 +24,12 @@ export default function Forget() {
               <h3>Send</h3>
             </button>
           </form>
-          <div className="textUnderButton">
-            <p className="underButton">
-              I'm new user.{" "}
-              <a
-                href="https://www.figma.com/design/FBKn4sUw9hrwRsiNdmsFsC/Maquette_origins_digital?node-id=0-1&t=Zt3LBqJmnhRMfwgn-0"
-                target="_blank"
-                rel="noreferrer"
-              >
-                Sign Up
-              </a>
+          <div className={styles.textUnderButton}>
+            <p className={styles.underButton}>
+              I'm new user. <Link to="/inscription">Sign Up</Link>
             </p>
-            <p className="underButton">
-              Already have an account.{" "}
-              <a
-                href="https://www.figma.com/design/FBKn4sUw9hrwRsiNdmsFsC/Maquette_origins_digital?node-id=0-1&t=Zt3LBqJmnhRMfwgn-0"
-                target="_blank"
-                rel="noreferrer"
-              >
-                Sign In
-              </a>
+            <p className={styles.underButton}>
+              Already have an account. <Link to="/signin">Sign In</Link>
             </p>
           </div>
         </div>

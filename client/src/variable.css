@@ -1,3 +1,16 @@
+/* :root {
+  --font-regular: "Poppins Regular", sans-serif;
+  --font-bold: "Poppins Bold", sans-serif;
+  --font-black: "Poppins Black", sans-serif;
+  --main-color: #2b91ad;
+  --secondary-color: #cdecef;
+  --third-color: #f2f7f9;
+  --fourth-color: #d3ddea;
+  --background-color: blue;
+  --text-color: Black;
+}
+
+
 @font-face {
   font-family: "Poppins Black";
   src: url("../src/assets/poppins/Poppins-Black.ttf") format("truetype");
@@ -11,14 +24,4 @@
 @font-face {
   font-family: "Poppins Regular";
   src: url("../src/assets/poppins/Poppins-Regular.ttf") format("truetype");
-}
-
-$main-color: #2b91ad;
-$secondary-color: #cdecef;
-$thirth-color: #f2f7f9;
-$fourth-color: #d3ddea;
-$background-color: #fff;
-$text-color: #000;
-$font-family-regular: "Poppins Regular", sans-serif;
-$font-family-bold: "Poppins Bold", sans-serif;
-$font-family-black: "Poppins Black", sans-serif;
+} */

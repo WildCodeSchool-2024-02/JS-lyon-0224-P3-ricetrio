@@ -1,16 +1,10 @@
-import "./App.module.css";
-import NavBar from "./components/Navbar/Navbar";
-import Forget from "./pages/Forget/Forget";
-import EmblaCarousel from "./components/Home/EmblaCarousel";
+import { Outlet } from "react-router-dom";
+import styles from "./app.module.css";
 
 function App() {
   return (
-    <main className="container">
-      <header>
-        <NavBar />
-      </header>
-      <EmblaCarousel />
-      <Forget />
+    <main className={styles.main}>
+      <Outlet />
     </main>
   );
 }
