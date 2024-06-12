@@ -1,0 +1,26 @@
+.containParents {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  padding-top: 0.5rem;
+  padding-bottom: 1rem;
+}
+
+.logo {
+  height: 3rem;
+}
+
+.containLeft {
+  height: 3rem;
+}
+
+.profile,
+.search {
+  height: 1.5rem;
+}
+
+.containRight {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+}
