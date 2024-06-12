@@ -3,7 +3,7 @@ import styles from "./app.module.css";
 
 function App() {
   return (
-    <main className={styles.main}>
+    <main className={styles.mainApp}>
       <Outlet />
     </main>
   );
