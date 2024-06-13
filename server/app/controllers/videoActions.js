@@ -14,7 +14,7 @@ const browse = async (req, res) => {
 const read = async (req, res) => {
   try {
     const video = await videoRepository.read(req.params.id);
-    if (!video) {
+    if (!video === true) {
       res.status(404).json({ error: "Video not found" });
       return; // Ajout d'un retour explicite après l'envoi de la réponse
     }
