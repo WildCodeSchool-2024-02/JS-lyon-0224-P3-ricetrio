@@ -1,3 +1,4 @@
+import { Link } from "react-router-dom";
 import Logo from "../../assets/images/logo-prodkat.svg";
 import Search from "../../assets/images/Search.svg";
 import Signin from "../../assets/images/Signin.svg";
@@ -7,7 +8,9 @@ function NavBar() {
   return (
     <div className={styles.containParents}>
       <div className={styles.containLeft}>
-        <img src={Logo} alt="logo prodkat" className={styles.logo} />
+        <Link to="/">
+          <img src={Logo} alt="logo prodkat" className={styles.logo} />
+        </Link>
       </div>
       <div className={styles.containRight}>
         <img
@@ -15,11 +18,13 @@ function NavBar() {
           alt="search with the magnifying glass"
           className={styles.search}
         />
-        <img
-          src={Signin}
-          alt="profil for signin or signup"
-          className={styles.profile}
-        />
+        <Link to="/signin">
+          <img
+            src={Signin}
+            alt="profil for signin or signup"
+            className={styles.profile}
+          />
+        </Link>
       </div>
     </div>
   );
