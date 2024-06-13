@@ -1,8 +1,7 @@
+// index.js or router.js
 import React from "react";
 import ReactDOM from "react-dom/client";
-
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
-
 import App from "./App";
 import Signin from "./pages/SignIn/Signin";
 import Forget from "./pages/Forget/Forget";
@@ -17,6 +16,7 @@ const router = createBrowserRouter([
       {
         path: "/",
         element: <Homepage />,
+        loader: async () => fetch("http://localhost:3310/api/videos"),
       },
       {
         path: "/signin",
