@@ -1,67 +1,40 @@
-// Import access to database tables
-const tables = require("../../database/tables");
+const VideoRepository = require("../../database/models/VideoRepository");
 
-// The B of BREAD - Browse (Read All) operation
-const browse = async (req, res, next) => {
+const videoRepository = new VideoRepository();
+
+const browse = async (req, res) => {
   try {
-    // Fetch all items from the database
-    const videos = await tables.video.readAll();
-
-    // Respond with the items in JSON format
+    const videos = await videoRepository.readAll();
     res.json(videos);
-  } catch (err) {
-    // Pass any errors to the error-handling middleware
-    next(err);
+  } catch (error) {
+    res.status(500).json({ error: "Failed to fetch videos" });
   }
 };
 
-// The R of BREAD - Read operation
-const read = async (req, res, next) => {
+const read = async (req, res) => {
   try {
-    // Fetch a specific item from the database based on the provided ID
-    const video = await tables.video.read(req.params.id);
-
-    // If the item is not found, respond with HTTP 404 (Not Found)
-    // Otherwise, respond with the item in JSON format
-    if (video == null) {
-      res.sendStatus(404);
-    } else {
-      res.json(video);
+    const video = await videoRepository.read(req.params.id);
+    if (!video) {
+      return res.status(404).json({ error: "Video not found" });
     }
-  } catch (err) {
-    // Pass any errors to the error-handling middleware
-    next(err);
+    res.json(video);
+  } catch (error) {
+    res.status(500).json({ error: "Failed to fetch video" });
   }
 };
 
-// The E of BREAD - Edit (Update) operation
-// This operation is not yet implemented
-
-// The A of BREAD - Add (Create) operation
-const add = async (req, res, next) => {
-  // Extract the item data from the request body
-  const video = req.body;
-
+const add = async (req, res) => {
   try {
-    // Insert the item into the database
-    const insertId = await tables.video.create(video);
-
-    // Respond with HTTP 201 (Created) and the ID of the newly inserted item
-    res.status(201).json({ insertId });
-  } catch (err) {
-    // Pass any errors to the error-handling middleware
-    next(err);
+    const { title, id } = req.body;
+    const insertId = await videoRepository.create({ title, id });
+    res.status(201).json({ id: insertId });
+  } catch (error) {
+    res.status(500).json({ error: "Failed to add video" });
   }
 };
 
-// The D of BREAD - Destroy (Delete) operation
-// This operation is not yet implemented
-
-// Ready to export the controller functions
 module.exports = {
   browse,
   read,
-  // edit,
   add,
-  // destroy,
 };

@@ -1,19 +1,16 @@
 import { useLoaderData } from "react-router-dom";
 
 export default function VideoSection() {
-  const videos = useLoaderData();
+  const allVideos = useLoaderData();
+  console.log(allVideos);
 
-  if (!videos) {
+  if (!allVideos) {
     return <p>Loading...</p>;
-  }
-
-  if (videos.length === 0) {
-    return <p>No videos available</p>;
   }
 
   return (
     <>
-      {videos.map((video) => (
+      {allVideos.map((video) => (
         <h1 key={video.id}>{video.title}</h1>
       ))}
     </>

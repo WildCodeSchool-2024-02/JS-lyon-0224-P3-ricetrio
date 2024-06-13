@@ -1,3 +1,4 @@
+// index.js or router.js
 import React from "react";
 import ReactDOM from "react-dom/client";
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
@@ -12,7 +13,7 @@ const router = createBrowserRouter([
       {
         path: "/section",
         element: <VideoSection />,
-        loader: async () => fetch(`${process.env.VITE_API_URL}/api/videos`),
+        loader: async () => fetch("http://localhost:3310/api/videos"),
       },
     ],
   },
