@@ -10,7 +10,12 @@ export default function VideoSection() {
   return (
     <>
       {allVideos.map((video) => (
-        <h1 key={video.id}>{video.title}</h1>
+        <div key={video.id}>
+          <img
+            src={`https://image.tmdb.org/t/p/w500/${video.poster}`}
+            alt={video.poster}
+          />
+        </div>
       ))}
     </>
   );
