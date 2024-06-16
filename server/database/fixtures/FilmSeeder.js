@@ -11,23 +11,23 @@ class FilmSeeder extends AbstractSeeder {
   }
 
   run() {
-    const csvFile = fs.readFileSync("public/assets/film.csv", "utf8");
+    const csvFile = fs.readFileSync("public/assets/films.csv", "utf8");
     const csv = Papa.parse(csvFile);
 
     for (let i = 1; i < csv.data.length; i += 1) {
       const row = csv.data[i];
 
-      const film = {
-        name: row[1],
-        genre: row[3],
-        release: row[5],
-        synopsis: row[10],
-        poster: row[12],
-        key: row[16],
-        url: row[17],
+      const films = {
+        nom: row[1],
+        genre: row[2],
+        sortie: row[4],
+        synopsis: row[6],
+        poster: row[8],
+        lien: row[10],
+        youtube: row[11],
       };
 
-      this.insert(film);
+      this.insert(films);
     }
   }
 }
