@@ -1,0 +1,30 @@
+.buttonsCarousel {
+  display: flex;
+  justify-content: center;
+  margin-top: 10px;
+}
+
+.buttonCarousel {
+  background-color: #2b91ad;
+  color: #fff;
+  border: none;
+  padding: 10px 20px;
+  margin: 0 5px;
+  cursor: pointer;
+  font-size: 16px;
+  transition: background-color 0.3s ease;
+  font: "Poppins Regular", sans-serif;
+  border-radius: 10px;
+  cursor: pointer;
+  width: 15%;
+}
+
+.buttonCarousel:hover {
+  background-color: #d3ddea;
+}
+
+.buttonCarousel:disabled,
+.disabled {
+  background-color: #d3ddea;
+  cursor: not-allowed;
+}

@@ -61,6 +61,7 @@ export default function EmblaCarousel() {
           <img src={Vietnam} alt="" />
         </div>
       </div>
+
       <div className={styles.buttonsCarousel}>
         <button
           type="button"
