@@ -1,7 +1,10 @@
+.sectionVideoTitle {
+  text-align: center;
+}
+
 .sectionVideo {
   display: flex;
-  flex-direction: column;
-  flex-wrap: wrap;
+  flex-wrap: nowrap;
   align-content: center;
   justify-content: center;
   align-items: center;
@@ -20,7 +23,6 @@
 
 .containerButtonSectionVideo {
   display: flex;
-  flex-direction: row;
   flex-wrap: nowrap;
   align-content: center;
   justify-content: center;
