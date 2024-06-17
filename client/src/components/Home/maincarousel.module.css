@@ -1,9 +1,20 @@
+.carouselContainer {
+  background-color: #2b91ad;
+}
+
 .embla {
   overflow: hidden;
+  max-width: 500px;
+  border: solid green 5px;
 }
 
 .embla__container {
   display: flex;
+  border: solid red 5px;
+}
+
+.divSize img {
+  border: solid yellow 2px;
 }
 
 .embla__slide {
@@ -11,8 +22,8 @@
   min-width: 0;
 }
 
-.embla > img {
-  width: 100%;
+.poster img {
+  border: solid yellow 2px;
 }
 
 .buttonsCarousel {

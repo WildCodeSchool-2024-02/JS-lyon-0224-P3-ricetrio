@@ -15,7 +15,7 @@ const router = createBrowserRouter([
       {
         path: "/",
         element: <Homepage />,
-        loader: async () => fetch("http://localhost:3310/api/videos"),
+        loader: async () => fetch("http://localhost:3310/api/films"),
       },
       {
         path: "/signin",

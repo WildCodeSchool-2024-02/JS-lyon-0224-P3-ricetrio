@@ -49,35 +49,39 @@ export default function EmblaCarousel() {
   }
 
   return (
-    <div className={styles.embla} ref={emblaRef}>
-      <div className={styles.embla__container}>
-        {allVideos.map((video) => (
-          <div className={styles.embla_slide} key={video.id}>
-            <img
-              className="imgSlider"
-              src={`https://image.tmdb.org/t/p/w500/${video.poster}`}
-              alt={video.poster}
-            />
-          </div>
-        ))}
-      </div>
-      <div className={styles.buttonsCarousel}>
-        <button
-          type="button"
-          className={`${styles.buttonCarousel} ${!prevBtnEnabled ? styles.disabled : ""}`}
-          onClick={scrollPrev}
-          disabled={!prevBtnEnabled}
-        >
-          Prev
-        </button>
-        <button
-          type="button"
-          className={`${styles.buttonCarousel} ${!nextBtnEnabled ? styles.disabled : ""}`}
-          onClick={scrollNext}
-          disabled={!nextBtnEnabled}
-        >
-          Next
-        </button>
+    <div className="carouselContainer">
+      <div className={styles.embla} ref={emblaRef}>
+        <div className={styles.embla__container}>
+          {allVideos.map((video) => (
+            <div className={styles.embla_slide} key={video.id}>
+              <div className="divSize">
+                <img
+                  className="poster"
+                  src={`https://image.tmdb.org/t/p/w500/${video.poster}`}
+                  alt={video.poster}
+                />
+              </div>
+            </div>
+          ))}
+        </div>
+        <div className={styles.buttonsCarousel}>
+          <button
+            type="button"
+            className={`${styles.buttonCarousel} ${!prevBtnEnabled ? styles.disabled : ""}`}
+            onClick={scrollPrev}
+            disabled={!prevBtnEnabled}
+          >
+            Prev
+          </button>
+          <button
+            type="button"
+            className={`${styles.buttonCarousel} ${!nextBtnEnabled ? styles.disabled : ""}`}
+            onClick={scrollNext}
+            disabled={!nextBtnEnabled}
+          >
+            Next
+          </button>
+        </div>
       </div>
     </div>
   );
