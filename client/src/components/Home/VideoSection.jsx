@@ -1,10 +1,9 @@
 import { useLoaderData } from "react-router-dom";
 import { useState } from "react";
-import styles from "./maincarousel.module.css";
+import styles from "./videosection.module.css";
 
 export default function VideoSection() {
   const allVideos = useLoaderData();
-
   const [currentIndex, setCurrentIndex] = useState(0);
 
   const handleNext = () => {
@@ -22,27 +21,53 @@ export default function VideoSection() {
 
   return (
     <>
-      <h2>20's Top 10 Film</h2>
-      <div>
-        <div>
-          <div>
-            <div>
-              {allVideos.slice(currentIndex, currentIndex + 1).map((video) => (
-                <div key={video.title}>
-                  <h3>{video.title}</h3>
-                </div>
-              ))}
-            </div>
-            <div className={styles.buttonsCarousel}>
-              <button type="button" onClick={handlePrev}>
-                &lt;
-              </button>
-              <button type="button" onClick={handleNext}>
-                &gt;
-              </button>
-            </div>
+      <div className={styles.sectionVideo}>
+        <h2>20's Top 10 Film</h2>
+        {allVideos.slice(currentIndex, currentIndex + 1).map((video) => (
+          <div className={styles.containerSection} key={video.id}>
+            <h3>{video.title}</h3>
           </div>
-        </div>
+        ))}
+      </div>
+      <div className={styles.containerButtonSectionVideo}>
+        <button
+          className={styles.buttonSectionVideo}
+          type="button"
+          onClick={handlePrev}
+        >
+          &lt;
+        </button>
+        <button
+          className={styles.buttonSectionVideo}
+          type="button"
+          onClick={handleNext}
+        >
+          &gt;
+        </button>
+      </div>
+      <div className={styles.sectionVideo}>
+        <h2>70's Top 10 Film</h2>
+        {allVideos.slice(currentIndex, currentIndex + 2).map((video) => (
+          <div className={styles.containerSection} key={video.id}>
+            <h3>{video.title}</h3>
+          </div>
+        ))}
+      </div>
+      <div className={styles.containerButtonSectionVideo}>
+        <button
+          className={styles.buttonSectionVideo}
+          type="button"
+          onClick={handlePrev}
+        >
+          &lt;
+        </button>
+        <button
+          className={styles.buttonSectionVideo}
+          type="button"
+          onClick={handleNext}
+        >
+          &gt;
+        </button>
       </div>
     </>
   );

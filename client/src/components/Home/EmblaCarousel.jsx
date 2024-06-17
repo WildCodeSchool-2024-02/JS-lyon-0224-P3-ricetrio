@@ -69,7 +69,7 @@ export default function EmblaCarousel() {
           onClick={scrollPrev}
           disabled={!prevBtnEnabled}
         >
-          Prev
+            &lt;
         </button>
         <button
           type="button"
@@ -77,7 +77,7 @@ export default function EmblaCarousel() {
           onClick={scrollNext}
           disabled={!nextBtnEnabled}
         >
-          Next
+             &gt;
         </button>
       </div>
     </div>
