@@ -18,13 +18,16 @@ class FilmSeeder extends AbstractSeeder {
       const row = csv.data[i];
 
       const films = {
-        nom: row[1],
+        movie_key: row[0],
+        title: row[1],
         genre: row[2],
-        sortie: row[4],
-        synopsis: row[6],
-        poster: row[8],
-        lien: row[10],
-        youtube: row[11],
+        duration: row[3],
+        release_date: row[4],
+        overview: row[6],
+        movie_director: row[7],
+        poster_link: row[8],
+        key_trailer: row[10],
+        trailer_url: row[11],
       };
 
       this.insert(films);
