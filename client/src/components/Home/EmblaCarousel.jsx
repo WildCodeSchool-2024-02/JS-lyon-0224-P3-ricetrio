@@ -35,6 +35,7 @@ export default function EmblaCarousel() {
   }, [slide, onSelect, selectedIndex]);
 
   const scrollPrev = useCallback(() => {
+
     if (!slide === false) slide.scrollPrev();
   }, [slide]);
 
@@ -47,6 +48,7 @@ export default function EmblaCarousel() {
   if (!allVideos === true) {
     return <p>Loading...</p>;
   }
+
 
   return (
     <div className={styles.embla} ref={emblaRef}>
