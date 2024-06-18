@@ -1,5 +1,5 @@
 import { useCallback, useEffect, useState } from "react";
-import { useLoaderData } from "react-router-dom";
+import { useLoaderData, Link } from "react-router-dom";
 import useEmblaCarousel from "embla-carousel-react";
 import Autoplay from "embla-carousel-autoplay";
 import styles from "./maincarousel.module.css";
@@ -54,13 +54,15 @@ export default function EmblaCarousel() {
         <div className={styles.embla__container}>
           {allVideos.map((video) => (
             <div className={styles.embla_slide} key={video.id}>
-              <div className={styles.divSize}>
-                <img
-                  className={styles.poster}
-                  src={`https://image.tmdb.org/t/p/w500/${video.poster_link}`}
-                  alt={video.title}
-                />
-              </div>
+              <Link to="/videopage">
+                <div className={styles.divSize}>
+                  <img
+                    className={styles.poster}
+                    src={`https://image.tmdb.org/t/p/w500/${video.poster_link}`}
+                    alt={video.title}
+                  />
+                </div>
+              </Link>
             </div>
           ))}
         </div>

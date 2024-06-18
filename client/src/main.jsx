@@ -6,6 +6,7 @@ import Signin from "./pages/SignIn/Signin";
 import Forget from "./pages/Forget/Forget";
 import Inscription from "./pages/SignUp/Inscription";
 import Homepage from "./pages/Homepage/Homepage";
+import Videopage from "./pages/Videopage/Videopage";
 
 const router = createBrowserRouter([
   {
@@ -15,7 +16,7 @@ const router = createBrowserRouter([
       {
         path: "/",
         element: <Homepage />,
-        loader: async () => fetch("http://localhost:3310/api/films"),
+        loader: async () => fetch(`${import.meta.env.VITE_API_URL}/api/videos`),
       },
       {
         path: "/signin",
@@ -28,6 +29,10 @@ const router = createBrowserRouter([
       {
         path: "/inscription",
         element: <Inscription />,
+      },
+      {
+        path: "/videopage",
+        element: <Videopage />,
       },
     ],
   },
