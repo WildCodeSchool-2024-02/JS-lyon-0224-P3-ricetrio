@@ -14,9 +14,9 @@ const videosRouter = require("./videos/router");
 
 router.use("/videos", videosRouter);
 
-const FilmsRouter = require("./films/router");
+const filmsRouter = require("./films/router");
 
-router.use("/films", FilmsRouter);
+router.use("/films", filmsRouter);
 
 /* ************************************************************************* */
 
