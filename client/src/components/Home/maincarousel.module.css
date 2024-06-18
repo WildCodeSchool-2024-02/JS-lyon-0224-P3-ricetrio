@@ -1,5 +1,12 @@
+.carouselContainer {
+  display: flex;
+  justify-content: center;
+  width: 100%;
+}
+
 .embla {
   overflow: hidden;
+  max-width: 400px;
 }
 
 .embla__container {
@@ -11,8 +18,13 @@
   min-width: 0;
 }
 
-.embla > img {
-  width: 100%;
+.divSize img {
+  height: 500px;
+}
+
+.poster {
+  max-height: 100%;
+  margin: 0px 35px 0px 35px;
 }
 
 .buttonscarousel {
@@ -28,13 +40,13 @@
   padding: 10px 20px;
   margin: 0 5px;
   cursor: pointer;
-  font-size: 16px;
+  font-size: 10px;
   transition: background-color 0.3s ease;
   font-family: var(--font-regular);
   font-size: 70%;
   border-radius: 10px;
   cursor: pointer;
-  width: 15%;
+  width: 35%;
 }
 
 .buttoncarousel:hover {
