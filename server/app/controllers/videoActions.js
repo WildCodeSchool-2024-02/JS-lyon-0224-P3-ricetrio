@@ -14,7 +14,7 @@ const browse = async (req, res) => {
 const read = async (req, res) => {
   try {
     const video = await videoRepository.read(req.params.id);
-    if (!video) {
+    if (!video === true) {
       res.status(404).json({ error: "Video not found" });
       return; // Ajout d'un retour explicite après l'envoi de la réponse
     }
@@ -26,8 +26,8 @@ const read = async (req, res) => {
 
 const add = async (req, res) => {
   try {
-    const { title, id } = req.body;
-    const insertId = await videoRepository.create({ title, id });
+    const { poster, id } = req.body;
+    const insertId = await videoRepository.create({ poster, id });
     res.status(201).json({ id: insertId });
   } catch (error) {
     res.status(500).json({ error: "Failed to add video" });

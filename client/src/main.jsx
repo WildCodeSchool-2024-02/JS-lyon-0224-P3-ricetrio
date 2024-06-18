@@ -1,3 +1,4 @@
+// index.js or router.js
 import React from "react";
 import ReactDOM from "react-dom/client";
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
@@ -15,7 +16,7 @@ const router = createBrowserRouter([
       {
         path: "/",
         element: <Homepage />,
-        loader: async () => fetch("http://localhost:3310/api/videos"),
+        loader: async () => fetch(`${import.meta.env.VITE_API_URL}/api/videos`),
       },
       {
         path: "/signin",
