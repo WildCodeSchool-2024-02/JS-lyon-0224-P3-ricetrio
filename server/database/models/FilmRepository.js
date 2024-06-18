@@ -12,15 +12,18 @@ class filmRepository extends AbstractRepository {
   async create(film) {
     // Execute the SQL INSERT query to add a new stations to the "stations" table
     const [result] = await this.database.query(
-      `insert into ${this.table} (nom, genre, sortie, synopsis, poster, lien, youtube) values (?, ?, ?, ?, ?, ?, ?)`,
+      `insert into ${this.table} (movie_key, title, genre, duration, release_date, overview, movie_director, poster_link, key_trailer, trailer_url) values (?, ?, ?, ?, ?, ?, ?, ?, ?, ?)`,
       [
-        film.nom,
+        film.movie_key,
+        film.title,
         film.genre,
-        film.sortie,
-        film.synopsis,
-        film.poster,
-        film.lien,
-        film.youtube,
+        film.duration,
+        film.release_date,
+        film.overview,
+        film.movie_director,
+        film.poster_link,
+        film.key_trailer,
+        film.trailer_url,
       ]
     );
 

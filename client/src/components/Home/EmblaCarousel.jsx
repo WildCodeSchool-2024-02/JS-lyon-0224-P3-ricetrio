@@ -13,7 +13,7 @@ export default function EmblaCarousel() {
     playOnInit: true,
   };
 
-  const [emblaRef, emblaApi] = useEmblaCarousel({ loop: false }, [
+  const [emblaRef, slide] = useEmblaCarousel({ loop: false }, [
     Autoplay(autoplayOptions),
   ]);
 
@@ -22,29 +22,29 @@ export default function EmblaCarousel() {
   const [nextBtnEnabled, setNextBtnEnabled] = useState(false);
 
   const onSelect = useCallback(() => {
-    if (!emblaApi) return;
-    setSelectedIndex(emblaApi.selectedScrollSnap());
-    setPrevBtnEnabled(emblaApi.canScrollPrev());
-    setNextBtnEnabled(emblaApi.canScrollNext());
-  }, [emblaApi]);
+    if (!slide === true) return;
+    setSelectedIndex(slide.selectedScrollSnap());
+    setPrevBtnEnabled(slide.canScrollPrev());
+    setNextBtnEnabled(slide.canScrollNext());
+  }, [slide]);
 
   useEffect(() => {
-    if (!emblaApi) return;
-    emblaApi.on("select", onSelect);
+    if (!slide === true) return;
+    slide.on("select", onSelect);
     onSelect();
-  }, [emblaApi, onSelect, selectedIndex]);
+  }, [slide, onSelect, selectedIndex]);
 
   const scrollPrev = useCallback(() => {
-    if (emblaApi) emblaApi.scrollPrev();
-  }, [emblaApi]);
+    if (!slide === false) slide.scrollPrev();
+  }, [slide]);
 
   const scrollNext = useCallback(() => {
-    if (emblaApi) emblaApi.scrollNext();
-  }, [emblaApi]);
+    if (slide !== null || slide !== undefined) slide.scrollNext();
+  }, [slide]);
 
   const allVideos = useLoaderData();
 
-  if (!allVideos) {
+  if (!allVideos === true) {
     return <p>Loading...</p>;
   }
 
