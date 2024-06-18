@@ -58,7 +58,7 @@ export default function EmblaCarousel() {
                 <div className={styles.divSize}>
                   <img
                     className={styles.poster}
-                    src={`https://image.tmdb.org/t/p/w500/${video.poster_link}`}
+                    src={video.poster_link}
                     alt={video.title}
                   />
                 </div>

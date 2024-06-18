@@ -16,7 +16,7 @@ const router = createBrowserRouter([
       {
         path: "/",
         element: <Homepage />,
-        loader: async () => fetch(`${import.meta.env.VITE_API_URL}/api/videos`),
+        loader: async () => fetch(`${import.meta.env.VITE_API_URL}/api/films`),
       },
       {
         path: "/signin",
