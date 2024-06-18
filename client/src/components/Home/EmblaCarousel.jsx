@@ -49,37 +49,42 @@ export default function EmblaCarousel() {
   }
 
   return (
-    <div className={styles.embla} ref={emblaRef}>
-      <div className={styles.embla__container}>
-        {allVideos.map((video) => (
-          <div className={styles.embla_slide} key={video.id}>
-            <Link to="/videopage">
-              <img
-                className="imgSlider"
-                src={`https://image.tmdb.org/t/p/w500/${video.poster}`}
-                alt={video.poster}
-              />
-            </Link>
-          </div>
-        ))}
-      </div>
-      <div className={styles.buttonsCarousel}>
-        <button
-          type="button"
-          className={`${styles.buttonCarousel} ${!prevBtnEnabled === true ? styles.disabled : ""}`}
-          onClick={scrollPrev}
-          disabled={!prevBtnEnabled}
-        >
-          Prev
-        </button>
-        <button
-          type="button"
-          className={`${styles.buttonCarousel} ${!nextBtnEnabled === true ? styles.disabled : ""}`}
-          onClick={scrollNext}
-          disabled={!nextBtnEnabled}
-        >
-          Next
-        </button>
+    <div className={styles.carouselContainer}>
+      <div className={styles.embla} ref={emblaRef}>
+        <div className={styles.embla__container}>
+          {allVideos.map((video) => (
+            <div className={styles.embla_slide} key={video.id}>
+              <Link to="/videopage">
+                <div className={styles.divSize}>
+                  <img
+                    className={styles.poster}
+                    src={video.poster_link}
+                    alt={video.title}
+                  />
+                </div>
+              </Link>
+            </div>
+          ))}
+        </div>
+
+        <div className={styles.buttonsCarousel}>
+          <button
+            type="button"
+            className={`${styles.buttonCarousel} ${!prevBtnEnabled ? styles.disabled : ""}`}
+            onClick={scrollPrev}
+            disabled={!prevBtnEnabled}
+          >
+            Prev
+          </button>
+          <button
+            type="button"
+            className={`${styles.buttonCarousel} ${!nextBtnEnabled ? styles.disabled : ""}`}
+            onClick={scrollNext}
+            disabled={!nextBtnEnabled}
+          >
+            Next
+          </button>
+        </div>
       </div>
     </div>
   );
