@@ -1,12 +1,9 @@
 import { useCallback, useEffect, useState } from "react";
+import { useLoaderData } from "react-router-dom";
 import useEmblaCarousel from "embla-carousel-react";
 import { Link } from "react-router-dom";
 import Autoplay from "embla-carousel-autoplay";
 import styles from "./maincarousel.module.css";
-import Japan from "../../assets/images/japan.png";
-import Moutain from "../../assets/images/mountain.png";
-import Ricegirl from "../../assets/images/ricegirl.png";
-import Vietnam from "../../assets/images/vietnam.png";
 
 export default function EmblaCarousel() {
   const autoplayOptions = {
@@ -39,30 +36,32 @@ export default function EmblaCarousel() {
   }, [slide, onSelect, selectedIndex]);
 
   const scrollPrev = useCallback(() => {
-    if (slide === false) slide.scrollPrev();
+
+    if (!slide === false) slide.scrollPrev();
   }, [slide]);
 
   const scrollNext = useCallback(() => {
-    if (slide === false) slide.scrollNext();
+    if (slide !== null || slide !== undefined) slide.scrollNext();
   }, [slide]);
+
+  const allVideos = useLoaderData();
+  if (!allVideos === true) {
+    return <p>Loading...</p>;
+  }
+
 
   return (
     <div className={styles.embla} ref={emblaRef}>
       <div className={styles.embla__container}>
-        <div className={styles.embla_slide}>
-          <Link to="/videopage">
-            <img src={Japan} alt="" />
-          </Link>
-        </div>
-        <div className={styles.embla_slide}>
-          <img src={Moutain} alt="" />
-        </div>
-        <div className={styles.embla_slide}>
-          <img src={Ricegirl} alt="" />
-        </div>
-        <div className={styles.embla_slide}>
-          <img src={Vietnam} alt="" />
-        </div>
+        {allVideos.map((video) => (
+          <div className={styles.embla_slide} key={video.id}>
+            <img
+              className="imgSlider"
+              src={`https://image.tmdb.org/t/p/w500/${video.poster}`}
+              alt={video.poster}
+            />
+          </div>
+        ))}
       </div>
       <div className={styles.buttonsCarousel}>
         <button

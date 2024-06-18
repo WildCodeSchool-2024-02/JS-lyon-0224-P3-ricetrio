@@ -30,12 +30,12 @@ class VideoSeeder extends AbstractSeeder {
 
       // Insérer les films dans la base de données
       // Extraire les titres des films
-      const titles = data.results.map((movie) => movie.title);
+      const titles = data.results.map((movie) => movie.poster_path);
 
       // Insérer les titres dans la base de données
-      titles.map((title) =>
+      titles.map((poster) =>
         this.insert({
-          title,
+          poster,
         })
       );
 
