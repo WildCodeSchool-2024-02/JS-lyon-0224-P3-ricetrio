@@ -1,5 +1,5 @@
 import { useCallback, useEffect, useState } from "react";
-import { useLoaderData } from "react-router-dom";
+import { useLoaderData, Link } from "react-router-dom";
 import useEmblaCarousel from "embla-carousel-react";
 import Autoplay from "embla-carousel-autoplay";
 import styles from "./maincarousel.module.css";
@@ -35,7 +35,6 @@ export default function EmblaCarousel() {
   }, [slide, onSelect, selectedIndex]);
 
   const scrollPrev = useCallback(() => {
-
     if (!slide === false) slide.scrollPrev();
   }, [slide]);
 
@@ -49,17 +48,18 @@ export default function EmblaCarousel() {
     return <p>Loading...</p>;
   }
 
-
   return (
     <div className={styles.embla} ref={emblaRef}>
       <div className={styles.embla__container}>
         {allVideos.map((video) => (
           <div className={styles.embla_slide} key={video.id}>
-            <img
-              className="imgSlider"
-              src={`https://image.tmdb.org/t/p/w500/${video.poster}`}
-              alt={video.poster}
-            />
+            <Link to="/videopage">
+              <img
+                className="imgSlider"
+                src={`https://image.tmdb.org/t/p/w500/${video.poster}`}
+                alt={video.poster}
+              />
+            </Link>
           </div>
         ))}
       </div>
