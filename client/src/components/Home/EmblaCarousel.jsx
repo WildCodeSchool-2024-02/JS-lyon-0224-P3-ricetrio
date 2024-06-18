@@ -35,7 +35,6 @@ export default function EmblaCarousel() {
   }, [slide, onSelect, selectedIndex]);
 
   const scrollPrev = useCallback(() => {
-
     if (!slide === false) slide.scrollPrev();
   }, [slide]);
 
@@ -48,7 +47,6 @@ export default function EmblaCarousel() {
   if (!allVideos === true) {
     return <p>Loading...</p>;
   }
-
 
   return (
     <div className={styles.embla} ref={emblaRef}>
@@ -71,7 +69,7 @@ export default function EmblaCarousel() {
           onClick={scrollPrev}
           disabled={!prevBtnEnabled}
         >
-            &lt;
+          &lt;
         </button>
         <button
           type="button"
@@ -79,7 +77,7 @@ export default function EmblaCarousel() {
           onClick={scrollNext}
           disabled={!nextBtnEnabled}
         >
-             &gt;
+          &gt;
         </button>
       </div>
     </div>
