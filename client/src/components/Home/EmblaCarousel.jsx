@@ -64,10 +64,10 @@ export default function EmblaCarousel() {
         ))}
       </div>
 
-      <div className={styles.buttonsCarousel}>
+      <div className={styles.buttonscarousel}>
         <button
           type="button"
-          className={`${styles.buttonCarousel} ${!prevBtnEnabled === true ? styles.disabled : ""}`}
+          className={`${styles.buttoncarousel} ${!prevBtnEnabled === true ? styles.disabled : ""}`}
           onClick={scrollPrev}
           disabled={!prevBtnEnabled}
         >
@@ -75,7 +75,7 @@ export default function EmblaCarousel() {
         </button>
         <button
           type="button"
-          className={`${styles.buttonCarousel} ${!nextBtnEnabled === true ? styles.disabled : ""}`}
+          className={`${styles.buttoncarousel} ${!nextBtnEnabled === true ? styles.disabled : ""}`}
           onClick={scrollNext}
           disabled={!nextBtnEnabled}
         >

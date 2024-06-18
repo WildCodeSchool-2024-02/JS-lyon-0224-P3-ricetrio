@@ -1,34 +1,34 @@
-.sectionVideoTitle {
+.sectionvideotitle {
   text-align: center;
 }
 
-.sectionVideo {
+.sectionvideo {
   display: flex;
   flex-wrap: nowrap;
   align-content: center;
   justify-content: center;
   align-items: center;
 }
-.containerSection {
+.containersection {
   border: solid 1px black;
   width: 70vw;
   height: 70vw;
   margin: 1rem;
 }
 
-.buttonSectionVideo {
+.buttonsectionvideo {
   justify-content: center;
   margin-top: 10px;
 }
 
-.containerButtonSectionVideo {
+.containerbuttonsectionvideo {
   display: flex;
   flex-wrap: nowrap;
   align-content: center;
   justify-content: center;
   align-items: center;
 }
-.buttonSectionVideo {
+.buttonsectionvideo {
   background-color: var(--main-color);
   color: var(--background-color);
   border: none;
@@ -44,11 +44,11 @@
   width: 15%;
 }
 
-.buttonSectionVideo:hover {
+.buttonsectionvideo:hover {
   background-color: var(--fourth-color);
 }
 
-.buttonSectionVideo:disabled,
+.buttonsectionvideo:disabled,
 .disabled {
   background-color: var(--fourth-color);
   cursor: not-allowed;

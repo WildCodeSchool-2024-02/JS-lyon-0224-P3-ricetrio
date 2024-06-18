@@ -15,14 +15,14 @@
   width: 100%;
 }
 
-.buttonsCarousel {
+.buttonscarousel {
   display: flex;
   justify-content: center;
   margin-top: 10px;
 }
 
-.buttonCarousel {
-  background-color:var(--main-color);
+.buttoncarousel {
+  background-color: var(--main-color);
   color: var(--background-color);
   border: none;
   padding: 10px 20px;
@@ -37,13 +37,12 @@
   width: 15%;
 }
 
-.buttonCarousel:hover {
-  background-color:var(--fourth-color)
+.buttoncarousel:hover {
+  background-color: var(--fourth-color);
 }
 
-.buttonCarousel:disabled,
+.buttoncarousel:disabled,
 .disabled {
   background-color: var(--fourth-color);
   cursor: not-allowed;
 }
-
