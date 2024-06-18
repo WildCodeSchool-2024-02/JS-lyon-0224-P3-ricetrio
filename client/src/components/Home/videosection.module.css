@@ -9,12 +9,6 @@
   justify-content: center;
   align-items: center;
 }
-.containersection {
-  border: solid 1px black;
-  width: 70vw;
-  height: 70vw;
-  margin: 1rem;
-}
 
 .buttonsectionvideo {
   justify-content: center;
@@ -52,4 +46,13 @@
 .disabled {
   background-color: var(--fourth-color);
   cursor: not-allowed;
+}
+
+.divSize img {
+  height: 60vw;
+}
+
+.poster {
+  max-height: 100%;
+  margin: 0px 20px 0px 20px;
 }
