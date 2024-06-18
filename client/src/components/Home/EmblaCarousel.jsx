@@ -49,21 +49,22 @@ export default function EmblaCarousel() {
   }
 
   return (
-    <div className="carouselContainer">
+    <div className={styles.carouselContainer}>
       <div className={styles.embla} ref={emblaRef}>
         <div className={styles.embla__container}>
           {allVideos.map((video) => (
             <div className={styles.embla_slide} key={video.id}>
-              <div className="divSize">
+              <div className={styles.divSize}>
                 <img
-                  className="poster"
-                  src={`https://image.tmdb.org/t/p/w500/${video.poster}`}
-                  alt={video.poster}
+                  className={styles.poster}
+                  src={`https://image.tmdb.org/t/p/w500/${video.poster_link}`}
+                  alt={video.title}
                 />
               </div>
             </div>
           ))}
         </div>
+
         <div className={styles.buttonsCarousel}>
           <button
             type="button"
