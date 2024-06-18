@@ -3,7 +3,7 @@ import { useLoaderData } from "react-router-dom";
 export default function VideoSection() {
   const allVideos = useLoaderData();
 
-  if (!allVideos === true) {
+  if (!allVideos === false) {
     return <p>Loading...</p>;
   }
 

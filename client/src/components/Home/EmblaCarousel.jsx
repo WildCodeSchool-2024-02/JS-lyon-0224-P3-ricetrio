@@ -1,5 +1,6 @@
 import { useCallback, useEffect, useState } from "react";
 import useEmblaCarousel from "embla-carousel-react";
+import { Link } from "react-router-dom";
 import Autoplay from "embla-carousel-autoplay";
 import styles from "./maincarousel.module.css";
 import Japan from "../../assets/images/japan.png";
@@ -49,7 +50,9 @@ export default function EmblaCarousel() {
     <div className={styles.embla} ref={emblaRef}>
       <div className={styles.embla__container}>
         <div className={styles.embla_slide}>
-          <img src={Japan} alt="" />
+          <Link to="/videopage">
+            <img src={Japan} alt="" />
+          </Link>
         </div>
         <div className={styles.embla_slide}>
           <img src={Moutain} alt="" />
