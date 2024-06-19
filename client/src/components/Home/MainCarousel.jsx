@@ -54,7 +54,7 @@ export default function MainCarousel() {
         <div className={styles.main__container}>
           {allFilms.map((film) => (
             <div className={styles.main_slide} key={film.id}>
-              <Link to="/videopage">
+              <Link to={`/videopage/${video.id}/`}>
                 <div className={styles.divSize}>
                   <img
                     className={styles.poster}
