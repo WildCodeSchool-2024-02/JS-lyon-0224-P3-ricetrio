@@ -31,7 +31,7 @@ export default function FilmSection() {
   return (
     <>
       <FilmCarousel
-        filmFilmCarousels={twentiesFilms}
+        films={twentiesFilms}
         currentIndex={currentTwenty}
         handleNext={handleTwentyNext}
         handlePrev={handleTwentyPrev}
