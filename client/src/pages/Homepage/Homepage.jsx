@@ -1,13 +1,13 @@
 import NavBar from "../../components/Navbar/Navbar";
-import EmblaCarousel from "../../components/Home/EmblaCarousel";
-import VideoSection from "../../components/Home/VideoSection";
+import MainCarousel from "../../components/Home/MainCarousel";
+import FilmSection from "../../components/Home/FilmSection";
 
 function Homepage() {
   return (
     <div>
       <NavBar />
-      <EmblaCarousel />
-      <VideoSection />
+      <MainCarousel />
+      <FilmSection />
     </div>
   );
 }

@@ -4,16 +4,16 @@
   width: 100%;
 }
 
-.embla {
+.main {
   overflow: hidden;
   max-width: 400px;
 }
 
-.embla__container {
+.main__container {
   display: flex;
 }
 
-.embla__slide {
+.main__slide {
   flex: 0 0 100%;
   min-width: 0;
 }
@@ -27,13 +27,13 @@
   margin: 0px 35px 0px 35px;
 }
 
-.buttonscarousel {
+.buttonCcarousel {
   display: flex;
   justify-content: center;
   margin-top: 10px;
 }
 
-.buttoncarousel {
+.buttonCarousel {
   background-color: var(--main-color);
   color: var(--background-color);
   border: none;
@@ -49,11 +49,11 @@
   width: 35%;
 }
 
-.buttoncarousel:hover {
+.buttonCarousel:hover {
   background-color: var(--fourth-color);
 }
 
-.buttoncarousel:disabled,
+.buttonCarousel:disabled,
 .disabled {
   background-color: var(--fourth-color);
   cursor: not-allowed;

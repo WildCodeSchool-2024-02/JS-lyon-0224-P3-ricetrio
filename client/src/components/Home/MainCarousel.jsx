@@ -4,7 +4,7 @@ import useEmblaCarousel from "embla-carousel-react";
 import Autoplay from "embla-carousel-autoplay";
 import styles from "./maincarousel.module.css";
 
-export default function EmblaCarousel() {
+export default function MainCarousel() {
   const autoplayOptions = {
     delay: 2000,
     stopOnInteraction: false,
@@ -13,7 +13,7 @@ export default function EmblaCarousel() {
     playOnInit: true,
   };
 
-  const [emblaRef, slide] = useEmblaCarousel({ loop: false }, [
+  const [mainRef, slide] = useEmblaCarousel({ loop: false }, [
     Autoplay(autoplayOptions),
   ]);
 
@@ -42,24 +42,24 @@ export default function EmblaCarousel() {
     if (slide !== null || slide !== undefined) slide.scrollNext();
   }, [slide]);
 
-  const allVideos = useLoaderData();
+  const allFilms = useLoaderData();
 
-  if (!allVideos === true) {
+  if (!allFilms === true) {
     return <p>Loading...</p>;
   }
 
   return (
     <div className={styles.carouselContainer}>
-      <div className={styles.embla} ref={emblaRef}>
-        <div className={styles.embla__container}>
-          {allVideos.map((video) => (
-            <div className={styles.embla_slide} key={video.id}>
+      <div className={styles.main} ref={mainRef}>
+        <div className={styles.main__container}>
+          {allFilms.map((film) => (
+            <div className={styles.main_slide} key={film.id}>
               <Link to="/videopage">
                 <div className={styles.divSize}>
                   <img
                     className={styles.poster}
-                    src={video.poster_link}
-                    alt={video.title}
+                    src={film.poster_link}
+                    alt={film.title}
                   />
                 </div>
               </Link>
