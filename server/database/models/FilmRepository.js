@@ -9,7 +9,6 @@ class filmRepository extends AbstractRepository {
 
   // The C of CRUD - Create operation
 
-
   async read(id) {
     // Execute the SQL SELECT query to retrieve a specific item by its ID
     const [rows] = await this.database.query(
