@@ -7,13 +7,13 @@ function Validation(values) {
   if (values.pseudo === "") {
     error.pseudo = "Le pseudo est requis";
   } else if (!pseudoPattern.test(values.pseudo)) {
-    error.pseudo = "Le pseudo n'est pas valide, devine le pattern";
+    error.pseudo = "Le pseudo n'est pas valide";
   }
 
   if (values.email === "") {
     error.email = "L'email est requis";
   } else if (!emailPattern.test(values.email)) {
-    error.email = "L'email n'est pas valide, c'est classique";
+    error.email = "L'email n'est pas valide";
   }
 
   if (values.password === "") {

@@ -54,6 +54,8 @@ h4 {
   color: red;
   font-family: var(--font-regular);
   font-size: smaller;
+  max-width: 300px;
+  text-align: justify;
 }
 
 button {
