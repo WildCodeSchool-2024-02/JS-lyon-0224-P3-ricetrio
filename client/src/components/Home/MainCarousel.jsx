@@ -2,6 +2,7 @@ import { useCallback, useEffect, useState } from "react";
 import { useLoaderData, Link } from "react-router-dom";
 import useEmblaCarousel from "embla-carousel-react";
 import Autoplay from "embla-carousel-autoplay";
+// import video from "../../pages/Videopage/Videopage";
 import styles from "./maincarousel.module.css";
 
 export default function MainCarousel() {
@@ -54,7 +55,7 @@ export default function MainCarousel() {
         <div className={styles.main__container}>
           {allFilms.map((film) => (
             <div className={styles.main_slide} key={film.id}>
-              <Link to={`/videopage/${video.id}/`}>
+              <Link to={`/videopage/${film.id}/`}>
                 <div className={styles.divSize}>
                   <img
                     className={styles.poster}

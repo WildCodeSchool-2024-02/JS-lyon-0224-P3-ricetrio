@@ -15,7 +15,7 @@ class VideoSeeder extends AbstractSeeder {
       method: "GET",
       headers: {
         accept: "application/json",
-    Authorization: this.apiKey,
+        Authorization: this.apiKey,
       },
     };
 
