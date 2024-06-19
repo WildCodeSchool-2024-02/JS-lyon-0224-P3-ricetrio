@@ -44,7 +44,7 @@ export default function MainCarousel() {
 
   const allFilms = useLoaderData();
 
-  if (!allFilms === true) {
+  if (allFilms === undefined) {
     return <p>Loading...</p>;
   }
 
