@@ -17,16 +17,16 @@ const browse = async (req, res) => {
   }
 };
 
-const read = async (req,res) => {
-  try{
+const read = async (req, res) => {
+  try {
     const film = await filmRepository.read(req.params.id);
-    if(!film === true) {
-      res.status(404).json({error:"Film not found"});
+    if (!film === true) {
+      res.status(404).json({ error: "Film not found" });
       return;
     }
     res.json(film);
   } catch (error) {
-    res.status(500).json({error: "Failed to add film"});
+    res.status(500).json({ error: "Failed to add film" });
   }
 };
 
