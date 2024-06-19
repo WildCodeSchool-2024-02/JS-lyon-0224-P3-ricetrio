@@ -11,33 +11,31 @@ function VideoPage() {
     <div>
       <NavBar />
         <div className={styles.videoPage}>
-          {allFilms.map((film) =>(
-            <div key={film.id}>
+
             <section className={styles.video}>
               <iframe
-                src={`https://www.youtube.com/embed/${(film.key_trailer)}`}
+                src={`https://www.youtube.com/embed/${(allFilms.key_trailer)}`}
                 title="YouTube video player"
                 allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
                 referrerPolicy="strict-origin-when-cross-origin"
                 allowFullScreen
               />
             </section>
-            <h3>{film.title}</h3>
+            <h3>{allFilms.title}</h3>
             <section className={styles.synopsis}>
               <p>
-                {film.overview}
+                {allFilms.overview}
               </p>
             </section>
             <section className={styles.description}>
-              <p>Date de sortie : {film.release_date}</p>
-              <p>Durée : {film.duration} minutes</p>
-              <p>Genre : {film.genre}</p>
-              <p>Réalisateur : {film.movie_director}</p>
+              <p>Date de sortie : {allFilms.release_date}</p>
+              <p>Durée : {allFilms.duration} minutes</p>
+              <p>Genre : {allFilms.genre}</p>
+              <p>Réalisateur : {allFilms.movie_director}</p>
             </section>
           </div>
-        ))}
+
       </div>
-    </div>
   );
 }
 
