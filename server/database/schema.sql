@@ -15,4 +15,5 @@ CREATE TABLE film (
   poster_link VARCHAR(155) NOT NULL,
   key_trailer VARCHAR(80) NOT NULL,
   trailer_url VARCHAR(155) NOT NULL
+  freenium BOOLEAN NOT NULL,
 );

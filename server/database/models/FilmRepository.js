@@ -12,7 +12,7 @@ class filmRepository extends AbstractRepository {
   async create(film) {
     // Execute the SQL INSERT query to add a new stations to the "stations" table
     const [result] = await this.database.query(
-      `insert into ${this.table} (movie_key, title, genre, duration, release_date, overview, movie_director, poster_link, key_trailer, trailer_url) values (?, ?, ?, ?, ?, ?, ?, ?, ?, ?)`,
+      `insert into ${this.table} (movie_key, title, genre, duration, release_date, overview, movie_director, poster_link, key_trailer, trailer_url, freenium) values (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)`,
       [
         film.movie_key,
         film.title,
@@ -24,6 +24,7 @@ class filmRepository extends AbstractRepository {
         film.poster_link,
         film.key_trailer,
         film.trailer_url,
+        film.freenium,
       ]
     );
 
@@ -34,7 +35,7 @@ class filmRepository extends AbstractRepository {
   async read(id) {
     // Execute the SQL SELECT query to retrieve a specific item by its ID
     const [rows] = await this.database.query(
-      `select * from ${this.table} where id = ?`,
+      `SELECT * FROM ${this.table} WHERE id = ?`,
       [id]
     );
 
@@ -44,7 +45,7 @@ class filmRepository extends AbstractRepository {
 
   async readAll() {
     // Execute the SQL SELECT query to retrieve all stationss from the "stations" table
-    const [rows] = await this.database.query(`select * from ${this.table}`);
+    const [rows] = await this.database.query(`SELECT * FROM ${this.table}`);
 
     // Return the array of stationss
     return rows;
