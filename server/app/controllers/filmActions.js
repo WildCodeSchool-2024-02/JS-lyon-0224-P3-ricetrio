@@ -20,7 +20,7 @@ const browse = async (req, res) => {
 const read = async (req,res) => {
   try{
     const film = await filmRepository.read(req.params.id);
-    if(!film ===true) {
+    if(!film === true) {
       res.status(404).json({error:"Film not found"});
       return;
     }
