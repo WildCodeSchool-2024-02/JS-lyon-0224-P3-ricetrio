@@ -33,7 +33,8 @@ const router = createBrowserRouter([
       {
         path: "/videopage/:id",
         element: <VideoPage />,
-        loader: async ({params}) => fetch(`${import.meta.env.VITE_API_URL}/api/films/${params.id}`),
+        loader: async ({ params }) =>
+          fetch(`${import.meta.env.VITE_API_URL}/api/films/${params.id}`),
       },
     ],
   },
