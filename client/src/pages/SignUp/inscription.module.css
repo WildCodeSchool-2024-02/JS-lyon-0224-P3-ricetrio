@@ -38,7 +38,6 @@ h4 {
   flex-wrap: wrap;
   border: none;
   border-radius: 10px;
-  align-items: center;
 }
 
 .pseudoInput input {
