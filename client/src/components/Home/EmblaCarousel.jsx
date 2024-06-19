@@ -54,7 +54,7 @@ export default function EmblaCarousel() {
         <div className={styles.embla__container}>
           {allVideos.map((video) => (
             <div className={styles.embla_slide} key={video.id}>
-              <Link to="/videopage">
+              <Link to={`/videopage/${video.id}/`}>
                 <div className={styles.divSize}>
                   <img
                     className={styles.poster}
