@@ -30,18 +30,8 @@ const read = async (req,res) => {
   }
 };
 
-const add = async (req, res) => {
-  try {
-    const { title, genre, duration, releaseDate, overview, movieDirector, keyTrailer, trailerUrl, freenium, id } = req.body;
-    const insertId = await filmRepository.create({ title, genre, duration, releaseDate, overview, movieDirector, keyTrailer, trailerUrl, freenium, id });
-    res.status(201).json({ id: insertId });
-  } catch (error) {
-    res.status(500).json({ error: "Failed to add film" });
-  }
-};
 // Ready to export the controller functions
 module.exports = {
   browse,
   read,
-  add,
 };
