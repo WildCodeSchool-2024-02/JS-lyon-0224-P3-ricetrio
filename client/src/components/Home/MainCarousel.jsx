@@ -2,7 +2,6 @@ import { useCallback, useEffect, useState } from "react";
 import { useLoaderData, Link } from "react-router-dom";
 import useEmblaCarousel from "embla-carousel-react";
 import Autoplay from "embla-carousel-autoplay";
-// import video from "../../pages/Videopage/Videopage";
 import styles from "./maincarousel.module.css";
 
 export default function MainCarousel() {

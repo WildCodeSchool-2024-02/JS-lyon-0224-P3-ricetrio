@@ -1,4 +1,5 @@
 import { useState } from "react";
+import { Link } from "react-router-dom";
 import PropTypes from "prop-types";
 import styles from "./filmsection.module.css";
 
@@ -30,11 +31,13 @@ export default function FilmCarousel({
         {films.slice(currentIndex, currentIndex + 2).map((film) => (
           <div key={film.id}>
             <div className={styles.divSize}>
-              <img
-                className={styles.poster}
-                src={film.poster_link}
-                alt={film.title}
-              />
+              <Link to={`/videopage/${film.id}/`}>
+                <img
+                  className={styles.poster}
+                  src={film.poster_link}
+                  alt={film.title}
+                />
+              </Link>
             </div>
           </div>
         ))}
