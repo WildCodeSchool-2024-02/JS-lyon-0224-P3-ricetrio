@@ -10,49 +10,49 @@ export default function FilmSection() {
       return releaseYear >= startYear && releaseYear <= endYear;
     });
 
-  const twentiesfilms = filterfilmsByDecade(allFilms, 2000, 2009);
-  const ninetiesfilms = filterfilmsByDecade(allFilms, 1990, 1999);
-  const eightiesfilms = filterfilmsByDecade(allFilms, 1980, 1989);
-  const seventiesfilms = filterfilmsByDecade(allFilms, 1970, 1979);
+  const twentiesFilms = filterfilmsByDecade(allFilms, 2000, 2009);
+  const ninetiesFilms = filterfilmsByDecade(allFilms, 1990, 1999);
+  const eightiesFilms = filterfilmsByDecade(allFilms, 1980, 1989);
+  const seventiesFilms = filterfilmsByDecade(allFilms, 1970, 1979);
 
   const [currentTwenty, handleTwentyNext, handleTwentyPrev] = useCarousel(
-    twentiesfilms.length
+    twentiesFilms.length
   );
   const [currentNinety, handleNinetyNext, handleNinetyPrev] = useCarousel(
-    ninetiesfilms.length
+    ninetiesFilms.length
   );
   const [currentEighty, handleEightyNext, handleEightyPrev] = useCarousel(
-    eightiesfilms.length
+    eightiesFilms.length
   );
   const [currentSeventy, handleSeventyNext, handleSeventyPrev] = useCarousel(
-    seventiesfilms.length
+    seventiesFilms.length
   );
 
   return (
     <>
       <FilmCarousel
-        films={twentiesfilms}
+        films={twentiesFilms}
         currentIndex={currentTwenty}
         handleNext={handleTwentyNext}
         handlePrev={handleTwentyPrev}
         title="Années 20"
       />
       <FilmCarousel
-        films={ninetiesfilms}
+        films={ninetiesFilms}
         currentIndex={currentNinety}
         handleNext={handleNinetyNext}
         handlePrev={handleNinetyPrev}
         title="Années 90"
       />
       <FilmCarousel
-        films={eightiesfilms}
+        films={eightiesFilms}
         currentIndex={currentEighty}
         handleNext={handleEightyNext}
         handlePrev={handleEightyPrev}
         title="Années 80"
       />
       <FilmCarousel
-        films={seventiesfilms}
+        films={seventiesFilms}
         currentIndex={currentSeventy}
         handleNext={handleSeventyNext}
         handlePrev={handleSeventyPrev}

@@ -1,8 +1,8 @@
-.sectionfilmTitle {
+.sectionFilmTitle {
   text-align: center;
 }
 
-.sectionfilm {
+.sectionFilm {
   display: flex;
   flex-wrap: nowrap;
   align-content: center;
@@ -19,14 +19,14 @@
   margin-top: 10px;
 }
 
-.containerButtonSectionfilm {
+.containerButtonSectionFilm {
   display: flex;
   flex-wrap: nowrap;
   align-content: center;
   justify-content: center;
   align-items: center;
 }
-.buttonSectionfilm {
+.buttonSectionFilm {
   background-color: var(--main-color);
   color: var(--background-color);
   border: none;
@@ -42,11 +42,11 @@
   width: 15%;
 }
 
-.buttonSectionfilm:hover {
+.buttonSectionFilm:hover {
   background-color: var(--fourth-color);
 }
 
-.buttonSectionfilm:disabled,
+.buttonSectionFilm:disabled,
 .disabled {
   background-color: var(--fourth-color);
   cursor: not-allowed;

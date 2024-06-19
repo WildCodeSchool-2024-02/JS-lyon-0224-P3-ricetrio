@@ -26,8 +26,8 @@ export default function FilmCarousel({
 }) {
   return (
     <>
-      <h2 className={styles.sectionfilmTitle}>{title}</h2>
-      <div className={styles.sectionfilm}>
+      <h2 className={styles.sectionFilmTitle}>{title}</h2>
+      <div className={styles.sectionFilm}>
         {films.slice(currentIndex, currentIndex + 2).map((film) => (
           <div key={film.id}>
             <div className={styles.divSize}>
@@ -42,16 +42,16 @@ export default function FilmCarousel({
           </div>
         ))}
       </div>
-      <div className={styles.containerButtonSectionfilm}>
+      <div className={styles.containerButtonSectionFilm}>
         <button
-          className={styles.buttonSectionfilm}
+          className={styles.buttonSectionFilm}
           type="button"
           onClick={handlePrev}
         >
           &lt;
         </button>
         <button
-          className={styles.buttonSectionfilm}
+          className={styles.buttonSectionFilm}
           type="button"
           onClick={handleNext}
         >
