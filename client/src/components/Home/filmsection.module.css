@@ -1,0 +1,62 @@
+.sectionFilmTitle {
+  text-align: center;
+}
+
+.sectionFilm {
+  display: flex;
+  flex-wrap: nowrap;
+  align-content: center;
+  justify-content: center;
+  align-items: center;
+  border: solid 3px grey;
+  margin: 2rem;
+  border-radius: 20px;
+  width: 90vw;
+}
+
+.buttonSectionfilm {
+  justify-content: center;
+  margin-top: 10px;
+}
+
+.containerButtonSectionFilm {
+  display: flex;
+  flex-wrap: nowrap;
+  align-content: center;
+  justify-content: center;
+  align-items: center;
+}
+.buttonSectionFilm {
+  background-color: var(--main-color);
+  color: var(--background-color);
+  border: none;
+  padding: 10px 20px;
+  margin: 0 5px;
+  cursor: pointer;
+  font-size: 16px;
+  transition: background-color 0.3s ease;
+  font-family: var(--font-regular);
+  font-size: 70%;
+  border-radius: 10px;
+  cursor: pointer;
+  width: 15%;
+}
+
+.buttonSectionFilm:hover {
+  background-color: var(--fourth-color);
+}
+
+.buttonSectionFilm:disabled,
+.disabled {
+  background-color: var(--fourth-color);
+  cursor: not-allowed;
+}
+
+.divSize img {
+  height: 60vw;
+}
+
+.poster {
+  max-height: 100%;
+  margin: 1rem;
+}
