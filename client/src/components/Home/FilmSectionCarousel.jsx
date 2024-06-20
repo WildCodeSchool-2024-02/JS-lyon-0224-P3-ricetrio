@@ -28,7 +28,7 @@ export default function FilmCarousel({
     <>
       <h1 className={styles.sectionFilmTitle}>{title}</h1>
       <div className={styles.sectionFilm}>
-        {films.slice(currentIndex, currentIndex + 2).map((film) => (
+        {films.slice(currentIndex, currentIndex + 5).map((film) => (
           <div key={film.id}>
             <div className={styles.divSize}>
               <Link to={`/bandeannonce/${film.id}/`}>
