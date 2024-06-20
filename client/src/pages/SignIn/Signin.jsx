@@ -38,7 +38,8 @@ export default function Signin() {
           </form>
           <div className={styles.textUnderButton}>
             <p className={styles.underButton}>
-            Je suis un·e nouvel·le utilisateur·rice ? <Link to="/inscription">Inscription</Link>
+              Je suis un·e nouvel·le utilisateur·rice ?{" "}
+              <Link to="/inscription">Inscription</Link>
             </p>
           </div>
         </div>

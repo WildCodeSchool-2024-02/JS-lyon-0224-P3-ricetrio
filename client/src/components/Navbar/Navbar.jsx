@@ -13,11 +13,7 @@ function NavBar() {
         </Link>
       </div>
       <div className={styles.containRight}>
-        <img
-          src={Search}
-          alt="fonction recherche"
-          className={styles.search}
-        />
+        <img src={Search} alt="fonction recherche" className={styles.search} />
         <Link to="/connexion">
           <img
             src={Signin}
