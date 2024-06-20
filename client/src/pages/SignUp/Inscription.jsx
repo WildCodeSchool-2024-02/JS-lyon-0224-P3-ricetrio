@@ -34,7 +34,7 @@ export default function Inscription() {
       </div>
       <div className={styles.contactContainer}>
         <div className={styles.contactBloc}>
-          <h2>Sign Up</h2>
+          <h2>Inscription</h2>
           <form className={styles.contactForm} onSubmit={handleSubmit}>
             <label htmlFor="text" className={styles.rowFormRow}>
               <h4>Pseudo</h4>
@@ -53,7 +53,7 @@ export default function Inscription() {
             </div>
 
             <label htmlFor="email" className={styles.rowFormRow}>
-              <h4>Email Address</h4>
+              <h4>Adresse email</h4>
             </label>
             <div className={styles.pseudoInput}>
               <input
@@ -68,7 +68,7 @@ export default function Inscription() {
             </div>
 
             <label htmlFor="text" className={styles.rowFormRow}>
-              <h4>Password</h4>
+              <h4>Mot de passe</h4>
             </label>
             <div className={styles.pseudoInput}>
               <input
@@ -85,16 +85,13 @@ export default function Inscription() {
             </div>
 
             <button className={styles.buttonSubmit} type="submit">
-              <h3>Sign Up</h3>
+              <h3>Inscription</h3>
             </button>
           </form>
 
           <div className={styles.textUnderButton}>
             <p className={styles.underButton}>
-              Already have an account. <Link to="/signin">Sign In</Link>
-            </p>
-            <p className={styles.underButton}>
-              I forgot my password. <Link to="/forgotpassword">Help</Link>
+              J'ai déjà un compte. <Link to="/connexion">Connexion</Link>
             </p>
           </div>
         </div>

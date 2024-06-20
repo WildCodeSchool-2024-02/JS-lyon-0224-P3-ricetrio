@@ -12,7 +12,7 @@ export default function Signin() {
       </div>
       <div className={styles.contactContainer}>
         <div className={styles.contactBloc}>
-          <h2>Sign In</h2>
+          <h2>Connexion</h2>
           <form className={styles.contactForm}>
             <div className={styles.rowDormRow}>
               <h4>Pseudo</h4>
@@ -25,20 +25,20 @@ export default function Signin() {
               </div>
             </div>
             <div className={styles.rowFormRow}>
-              <h4>Password</h4>
+              <h4>Mot de passe</h4>
               <div className={styles.pseudoInput}>
                 <input type="password" placeholder="●●●●●●●●" />
               </div>
             </div>
             <Link to="/">
               <button type="submit">
-                <h3>Sign In</h3>
+                <h3>Connexion</h3>
               </button>
             </Link>
           </form>
           <div className={styles.textUnderButton}>
             <p className={styles.underButton}>
-              I'm new user. <Link to="/inscription">Sign Up</Link>
+            Je suis un·e nouvel·le utilisateur·rice ? <Link to="/inscription">Inscription</Link>
             </p>
           </div>
         </div>

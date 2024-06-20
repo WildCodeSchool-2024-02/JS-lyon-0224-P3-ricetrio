@@ -3,7 +3,6 @@ import ReactDOM from "react-dom/client";
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
 import App from "./App";
 import Signin from "./pages/SignIn/Signin";
-import Forget from "./pages/Forget/Forget";
 import Inscription from "./pages/SignUp/Inscription";
 import Homepage from "./pages/Homepage/Homepage";
 import VideoPage from "./pages/Videopage/Videopage";
@@ -19,19 +18,15 @@ const router = createBrowserRouter([
         loader: async () => fetch(`${import.meta.env.VITE_API_URL}/api/films`),
       },
       {
-        path: "/signin",
+        path: "/connexion",
         element: <Signin />,
-      },
-      {
-        path: "/forgotpassword",
-        element: <Forget />,
       },
       {
         path: "/inscription",
         element: <Inscription />,
       },
       {
-        path: "/videopage/:id",
+        path: "/bandeannonce/:id",
         element: <VideoPage />,
         loader: async ({ params }) =>
           fetch(`${import.meta.env.VITE_API_URL}/api/films/${params.id}`),

@@ -1,8 +1,3 @@
-create table video (
-  id int unsigned primary key auto_increment not null,
-  poster varchar(255) not null
-);
-
 CREATE TABLE film (
   id INT UNSIGNED PRIMARY KEY AUTO_INCREMENT NOT NULL,
   movie_key INT NOT NULL,
