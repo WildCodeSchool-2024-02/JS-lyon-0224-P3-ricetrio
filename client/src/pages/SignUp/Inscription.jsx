@@ -1,4 +1,4 @@
-import { Link } from "react-router-dom";
+import { Form, Link } from "react-router-dom";
 import { useState } from "react";
 import styles from "./inscription.module.css";
 import Logo from "../../assets/images/logo-prodkat.svg";
@@ -16,11 +16,8 @@ export default function Inscription() {
   const handleInput = (event) => {
     setValues((prev) => ({
       ...prev,
-      [event.target.name]: [event.target.value],
+      [event.target.name]: event.target.value,
     }));
-  };
-
-  const handleSubmit = (event) => {
     event.preventDefault();
     setErrors(Validation(values));
   };
@@ -35,7 +32,7 @@ export default function Inscription() {
       <div className={styles.contactContainer}>
         <div className={styles.contactBloc}>
           <h2>Sign Up</h2>
-          <form className={styles.contactForm} onSubmit={handleSubmit}>
+          <Form method="post" className={styles.contactForm}>
             <label htmlFor="text" className={styles.rowFormRow}>
               <h4>Pseudo</h4>
             </label>
@@ -45,13 +42,13 @@ export default function Inscription() {
                 type="text"
                 placeholder="Ton pseudo"
                 name="pseudo"
+                value={values.pseudo}
                 onChange={handleInput}
               />
               <p className={styles.errorsField}>
                 {errors.pseudo !== undefined && <span>{errors.pseudo}</span>}
               </p>
             </div>
-
             <label htmlFor="email" className={styles.rowFormRow}>
               <h4>Email Address</h4>
             </label>
@@ -60,13 +57,13 @@ export default function Inscription() {
                 type="email"
                 placeholder="ton.mail@gmail.com"
                 name="email"
+                value={values.email}
                 onChange={handleInput}
               />
               <p className={styles.errorsField}>
                 {errors.email !== undefined && <span>{errors.email}</span>}
               </p>
             </div>
-
             <label htmlFor="text" className={styles.rowFormRow}>
               <h4>Password</h4>
             </label>
@@ -75,6 +72,7 @@ export default function Inscription() {
                 type="password"
                 placeholder="●●●●●●●●"
                 name="password"
+                value={values.password}
                 onChange={handleInput}
               />
               <p className={styles.errorsField}>
@@ -87,7 +85,7 @@ export default function Inscription() {
             <button className={styles.buttonSubmit} type="submit">
               <h3>Sign Up</h3>
             </button>
-          </form>
+          </Form>
 
           <div className={styles.textUnderButton}>
             <p className={styles.underButton}>

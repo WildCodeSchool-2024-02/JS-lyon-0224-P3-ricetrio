@@ -18,6 +18,10 @@ const filmsRouter = require("./films/router");
 
 router.use("/films", filmsRouter);
 
+const usersRouter = require("./user/router");
+
+router.use("/users", usersRouter);
+
 /* ************************************************************************* */
 
 module.exports = router;
