@@ -35,28 +35,28 @@ export default function FilmSection() {
         currentIndex={currentTwenty}
         handleNext={handleTwentyNext}
         handlePrev={handleTwentyPrev}
-        title="Années 2000"
+        title="Années 20"
       />
       <FilmCarousel
         films={ninetiesFilms}
         currentIndex={currentNinety}
         handleNext={handleNinetyNext}
         handlePrev={handleNinetyPrev}
-        title="Années 1990"
+        title="Années 90"
       />
       <FilmCarousel
         films={eightiesFilms}
         currentIndex={currentEighty}
         handleNext={handleEightyNext}
         handlePrev={handleEightyPrev}
-        title="Années 1980"
+        title="Années 80"
       />
       <FilmCarousel
         films={seventiesFilms}
         currentIndex={currentSeventy}
         handleNext={handleSeventyNext}
         handlePrev={handleSeventyPrev}
-        title="Années 1970"
+        title="Années 70"
       />
     </>
   );
