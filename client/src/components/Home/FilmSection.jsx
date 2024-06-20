@@ -10,21 +10,19 @@ export default function FilmSection() {
       return releaseYear >= startYear && releaseYear <= endYear;
     });
 
-    const twentyTwentyFilms = filterfilmsByDecade(allFilms, 2020, 2024);
-    const twentyTensFilms = filterfilmsByDecade(allFilms, 2010, 2019);
-    const twentiesFilms = filterfilmsByDecade(allFilms, 2000, 2009);
-    const ninetiesFilms = filterfilmsByDecade(allFilms, 1990, 1999);
-    const eightiesFilms = filterfilmsByDecade(allFilms, 1980, 1989);
-    const seventiesFilms = filterfilmsByDecade(allFilms, 1970, 1979);
+  const twentyTwentyFilms = filterfilmsByDecade(allFilms, 2020, 2024);
+  const twentyTensFilms = filterfilmsByDecade(allFilms, 2010, 2019);
+  const twentiesFilms = filterfilmsByDecade(allFilms, 2000, 2009);
+  const ninetiesFilms = filterfilmsByDecade(allFilms, 1990, 1999);
+  const eightiesFilms = filterfilmsByDecade(allFilms, 1980, 1989);
+  const seventiesFilms = filterfilmsByDecade(allFilms, 1970, 1979);
 
-  const [currentTwentyTwenty, handleTwentyTwentyNext, handleTwentyTwentyPrev] = useCarousel(
-    twentyTwentyFilms.length
-    );
+  const [currentTwentyTwenty, handleTwentyTwentyNext, handleTwentyTwentyPrev] =
+    useCarousel(twentyTwentyFilms.length);
 
-  const [currentTwentyTens, handleTwentyTensNext, handleTwentyTensPrev] = useCarousel(
-    twentyTensFilms.length
-    );
-    
+  const [currentTwentyTens, handleTwentyTensNext, handleTwentyTensPrev] =
+    useCarousel(twentyTensFilms.length);
+
   const [currentTwenty, handleTwentyNext, handleTwentyPrev] = useCarousel(
     twentiesFilms.length
   );
@@ -40,14 +38,13 @@ export default function FilmSection() {
 
   return (
     <>
-    
       <FilmCarousel
         films={seventiesFilms}
         currentIndex={currentSeventy}
         handleNext={handleSeventyNext}
         handlePrev={handleSeventyPrev}
         title="Années 1970"
-      />  
+      />
 
       <FilmCarousel
         films={eightiesFilms}
