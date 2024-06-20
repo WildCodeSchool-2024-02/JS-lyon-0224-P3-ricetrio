@@ -31,7 +31,7 @@ export default function FilmCarousel({
         {films.slice(currentIndex, currentIndex + 2).map((film) => (
           <div key={film.id}>
             <div className={styles.divSize}>
-              <Link to={`/videopage/${film.id}/`}>
+              <Link to={`/bandeannonce/${film.id}/`}>
                 <img
                   className={styles.poster}
                   src={film.poster_link}
