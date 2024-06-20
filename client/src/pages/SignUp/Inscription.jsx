@@ -1,8 +1,30 @@
 import { Link } from "react-router-dom";
+import { useState } from "react";
 import styles from "./inscription.module.css";
 import Logo from "../../assets/images/logo-prodkat.svg";
+import Validation from "./InscriptionValidation";
 
 export default function Inscription() {
+  const [values, setValues] = useState({
+    pseudo: "",
+    email: "",
+    password: "",
+  });
+
+  const [errors, setErrors] = useState([]);
+
+  const handleInput = (event) => {
+    setValues((prev) => ({
+      ...prev,
+      [event.target.name]: [event.target.value],
+    }));
+  };
+
+  const handleSubmit = (event) => {
+    event.preventDefault();
+    setErrors(Validation(values));
+  };
+
   return (
     <div>
       <div className={styles.logo}>
@@ -12,42 +34,64 @@ export default function Inscription() {
       </div>
       <div className={styles.contactContainer}>
         <div className={styles.contactBloc}>
-          <h2>Sign Up</h2>
-          <form className={styles.contactForm}>
-            <div className={styles.rowFormRow}>
+          <h2>Inscription</h2>
+          <form className={styles.contactForm} onSubmit={handleSubmit}>
+            <label htmlFor="text" className={styles.rowFormRow}>
               <h4>Pseudo</h4>
-              <div className={styles.pseudoInput}>
-                <input
-                  className={styles.textInput}
-                  type="text"
-                  placeholder="Michael J."
-                />
-              </div>
+            </label>
+            <div className={styles.pseudoInput}>
+              <input
+                className={styles.textInput}
+                type="text"
+                placeholder="Ton pseudo"
+                name="pseudo"
+                onChange={handleInput}
+              />
+              <p className={styles.errorsField}>
+                {errors.pseudo !== undefined && <span>{errors.pseudo}</span>}
+              </p>
             </div>
-            <div className={styles.rowFormRow}>
-              <h4>Email Address</h4>
-              <div className={styles.pseudoInput}>
-                <input type="text" placeholder="mikael.jackson@gmail.com" />
-              </div>
+
+            <label htmlFor="email" className={styles.rowFormRow}>
+              <h4>Adresse email</h4>
+            </label>
+            <div className={styles.pseudoInput}>
+              <input
+                type="email"
+                placeholder="ton.mail@gmail.com"
+                name="email"
+                onChange={handleInput}
+              />
+              <p className={styles.errorsField}>
+                {errors.email !== undefined && <span>{errors.email}</span>}
+              </p>
             </div>
-            <div className={styles.rowFormRow}>
-              <h4>Password</h4>
-              <div className={styles.pseudoInput}>
-                <input type="password" placeholder="●●●●●●●●" />
-              </div>
+
+            <label htmlFor="text" className={styles.rowFormRow}>
+              <h4>Mot de passe</h4>
+            </label>
+            <div className={styles.pseudoInput}>
+              <input
+                type="password"
+                placeholder="●●●●●●●●"
+                name="password"
+                onChange={handleInput}
+              />
+              <p className={styles.errorsField}>
+                {errors.password !== undefined && (
+                  <span>{errors.password}</span>
+                )}
+              </p>
             </div>
-            <Link to="/">
-              <button className={styles.buttonSubmit} type="submit">
-                <h3>Sign Up</h3>
-              </button>
-            </Link>
+
+            <button className={styles.buttonSubmit} type="submit">
+              <h3>Inscription</h3>
+            </button>
           </form>
+
           <div className={styles.textUnderButton}>
             <p className={styles.underButton}>
-              Already have an account. <Link to="/signin">Sign In</Link>
-            </p>
-            <p className={styles.underButton}>
-              I forgot my password. <Link to="/forgotpassword">Help</Link>
+              J'ai déjà un compte. <Link to="/connexion">Connexion</Link>
             </p>
           </div>
         </div>

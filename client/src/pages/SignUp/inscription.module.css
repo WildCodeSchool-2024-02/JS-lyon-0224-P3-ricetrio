@@ -38,7 +38,6 @@ h4 {
   flex-wrap: wrap;
   border: none;
   border-radius: 10px;
-  align-items: center;
 }
 
 .pseudoInput input {
@@ -49,7 +48,14 @@ h4 {
   width: 300px;
   height: 20px;
   padding-left: 20px;
-  margin-bottom: 40px;
+}
+
+.errorsField {
+  color: red;
+  font-family: var(--font-regular);
+  font-size: smaller;
+  max-width: 300px;
+  text-align: justify;
 }
 
 button {

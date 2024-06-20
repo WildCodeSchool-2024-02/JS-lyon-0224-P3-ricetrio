@@ -6,9 +6,9 @@ const router = express.Router();
 // Import And Use Routers Here
 /* ************************************************************************* */
 
-const filmsRouter = require("./films/router");
+const { add } = require("../../../controllers/userActions");
 
-router.use("/films", filmsRouter);
+router.get("/", add);
 
 /* ************************************************************************* */
 
