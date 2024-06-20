@@ -1,5 +1,8 @@
 .sectionFilmTitle {
   text-align: center;
+  font-family: var(--font-regular);
+  color: var(--main-color);
+  border-bottom: thick double var(--main-color);
 }
 
 .sectionFilm {
