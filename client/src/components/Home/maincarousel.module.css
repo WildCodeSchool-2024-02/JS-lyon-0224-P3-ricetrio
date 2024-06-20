@@ -4,16 +4,16 @@
   width: 100%;
 }
 
-.embla {
+.main {
   overflow: hidden;
   max-width: 400px;
 }
 
-.embla__container {
+.main__container {
   display: flex;
 }
 
-.embla__slide {
+.main__slide {
   flex: 0 0 100%;
   min-width: 0;
 }
@@ -27,33 +27,34 @@
   margin: 0px 35px 0px 35px;
 }
 
-.buttonsCarousel {
+.buttonCcarousel {
   display: flex;
   justify-content: center;
   margin-top: 10px;
 }
 
 .buttonCarousel {
-  background-color: #2b91ad;
-  color: #fff;
+  background-color: var(--main-color);
+  color: var(--background-color);
   border: none;
   padding: 10px 20px;
   margin: 0 5px;
   cursor: pointer;
   font-size: 10px;
   transition: background-color 0.3s ease;
-  font: "Poppins Regular", sans-serif;
+  font-family: var(--font-regular);
+  font-size: 70%;
   border-radius: 10px;
   cursor: pointer;
   width: 35%;
 }
 
 .buttonCarousel:hover {
-  background-color: #d3ddea;
+  background-color: var(--fourth-color);
 }
 
 .buttonCarousel:disabled,
 .disabled {
-  background-color: #d3ddea;
+  background-color: var(--fourth-color);
   cursor: not-allowed;
 }
