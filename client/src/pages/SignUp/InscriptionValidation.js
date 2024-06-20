@@ -6,19 +6,19 @@ function Validation(values) {
 
   if (values.pseudo === "") {
     error.pseudo = "Le pseudo est requis";
-  } else if (!pseudoPattern.test(values.pseudo)) {
+  } else if (!pseudoPattern.test(values.pseudo) === true) {
     error.pseudo = "Le pseudo n'est pas valide";
   }
 
   if (values.email === "") {
     error.email = "L'email est requis";
-  } else if (!emailPattern.test(values.email)) {
+  } else if (!emailPattern.test(values.email) === true) {
     error.email = "L'email n'est pas valide";
   }
 
   if (values.password === "") {
     error.password = "Le mot de passe est requis";
-  } else if (!passwordPattern.test(values.password)) {
+  } else if (!passwordPattern.test(values.password) === true) {
     error.password =
       "Le mot de passe doit contenir au moins 8 caractères, une lettre majuscule, une lettre minuscule et un chiffre";
   }

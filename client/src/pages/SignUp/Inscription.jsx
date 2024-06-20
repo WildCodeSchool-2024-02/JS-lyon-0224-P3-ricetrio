@@ -48,7 +48,7 @@ export default function Inscription() {
                 onChange={handleInput}
               />
               <p className={styles.errorsField}>
-                {errors.pseudo && <span>{errors.pseudo}</span>}
+                {errors.pseudo !== null && <span>{errors.pseudo}</span>}
               </p>
             </div>
 
@@ -63,7 +63,7 @@ export default function Inscription() {
                 onChange={handleInput}
               />
               <p className={styles.errorsField}>
-                {errors.email && <span>{errors.email}</span>}
+                {errors.email !== null && <span>{errors.email}</span>}
               </p>
             </div>
 
@@ -78,7 +78,7 @@ export default function Inscription() {
                 onChange={handleInput}
               />
               <p className={styles.errorsField}>
-                {errors.password && <span>{errors.password}</span>}
+                {errors.password !== null && <span>{errors.password}</span>}
               </p>
             </div>
 
