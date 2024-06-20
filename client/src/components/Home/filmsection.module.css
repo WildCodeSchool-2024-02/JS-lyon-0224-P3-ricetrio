@@ -1,8 +1,7 @@
 .sectionFilmTitle {
-  text-align: center;
   font-family: var(--font-regular);
   color: var(--main-color);
-  border-bottom: thick double var(--main-color);
+  border-bottom: solid 2px var(--fourth-color);
 }
 
 .sectionFilm {
@@ -11,9 +10,8 @@
   align-content: center;
   justify-content: center;
   align-items: center;
-  border: solid 3px grey;
+
   margin: 2rem;
-  border-radius: 20px;
   width: 90vw;
 }
 
@@ -56,7 +54,7 @@
 }
 
 .divSize img {
-  height: 60vw;
+  height: 30vw;
 }
 
 .poster {
