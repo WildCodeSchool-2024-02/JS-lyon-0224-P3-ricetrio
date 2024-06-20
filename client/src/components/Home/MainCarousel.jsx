@@ -67,7 +67,7 @@ export default function MainCarousel() {
           ))}
         </div>
 
-        <div className={styles.buttonsCarousel}>
+        <div className={styles.buttonsCarouselContainer}>
           <button
             type="button"
             className={`${styles.buttonCarousel} ${!prevBtnEnabled ? styles.disabled : ""}`}
