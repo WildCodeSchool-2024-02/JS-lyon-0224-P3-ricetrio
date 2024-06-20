@@ -5,7 +5,7 @@ import NavBar from "../../components/Navbar/Navbar";
 function VideoPage() {
   const allFilms = useLoaderData();
   if (!allFilms === true) {
-    return <p>Loading...</p>;
+    return <p>Chargement...</p>;
   }
   return (
     <div>

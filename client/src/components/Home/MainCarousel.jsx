@@ -45,7 +45,7 @@ export default function MainCarousel() {
   const allFilms = useLoaderData();
 
   if (allFilms === undefined) {
-    return <p>Loading...</p>;
+    return <p>Chargement...</p>;
   }
 
   return (
@@ -54,7 +54,7 @@ export default function MainCarousel() {
         <div className={styles.main__container}>
           {allFilms.map((film) => (
             <div className={styles.main_slide} key={film.id}>
-              <Link to={`/videopage/${film.id}/`}>
+              <Link to={`/bandeannonce/${film.id}/`}>
                 <div className={styles.divSize}>
                   <img
                     className={styles.poster}
@@ -67,14 +67,14 @@ export default function MainCarousel() {
           ))}
         </div>
 
-        <div className={styles.buttonsCarousel}>
+        <div className={styles.buttonsCarouselContainer}>
           <button
             type="button"
             className={`${styles.buttonCarousel} ${!prevBtnEnabled ? styles.disabled : ""}`}
             onClick={scrollPrev}
             disabled={!prevBtnEnabled}
           >
-            Prev
+            Précédent
           </button>
           <button
             type="button"
@@ -82,7 +82,7 @@ export default function MainCarousel() {
             onClick={scrollNext}
             disabled={!nextBtnEnabled}
           >
-            Next
+            Suivant
           </button>
         </div>
       </div>
