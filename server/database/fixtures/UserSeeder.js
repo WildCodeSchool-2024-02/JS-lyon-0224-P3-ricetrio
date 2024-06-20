@@ -1,48 +1,30 @@
-require("dotenv").config();
-
 const AbstractSeeder = require("./AbstractSeeder");
 
 class UserSeeder extends AbstractSeeder {
   constructor() {
+    // Call the constructor of the parent class (AbstractSeeder) with appropriate options
     super({ table: "user", truncate: true });
   }
 
-  async run() {
-    const url =
-      "https://api.themoviedb.org/3/discover/movie?include_adult=false&include_video=false&language=en-US&page=1&sort_by=popularity.desc";
-    const options = {
-      method: "GET",
-      headers: {
-        accept: "application/json",
-        Authorization: this.apiKey,
-      },
-    };
+  // The run method - Populate the 'user' table with fake data
 
-    try {
-      const response = await fetch(url, options);
-      if (!response.ok === true) {
-        throw new Error(`HTTP error! status: ${response.status}`);
-      }
-      const data = await response.json();
+  run() {
+    // Generate and insert fake data into the 'user' table
+    for (let i = 0; i < 20; i += 1) {
+      // Generate fake user data
+      const fakeUser = {
+        pseudo: this.faker.lorem.word(), // Gnerate a fake name
+        email: this.faker.internet.email(), // Generate a fake email using faker library
+        password: this.faker.lorem.word(), // Generate a fake name
+      
+        refName: `user_${i}`,
+      };
 
-      console.info(data);
-
-      // Insérer les films dans la base de données
-      // Extraire les titres des films
-      const titles = data.results.map((movie) => movie.poster_path);
-
-      // Insérer les titres dans la base de données
-      titles.map((poster) =>
-        this.insert({
-          poster,
-        })
-      );
-
-      console.info("Data inserted successfully.");
-    } catch (err) {
-      console.error("Error fetching and inserting movies:", err);
+      // Insert the fakeUser data into the 'user' table
+      this.insert(fakeUser); // insert into user(email, password) values (?, ?)
     }
   }
 }
 
+// Export the UserSeeder class
 module.exports = UserSeeder;
