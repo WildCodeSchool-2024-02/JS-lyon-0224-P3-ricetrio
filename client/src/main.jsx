@@ -56,7 +56,7 @@ const router = createBrowserRouter([
             console.error("Fetch error:", err);
             return null;
           }
-          return redirect("/forgotpassword");
+          return redirect("/");
         },
       },
       {
