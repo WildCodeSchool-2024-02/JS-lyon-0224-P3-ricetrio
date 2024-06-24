@@ -1,22 +1,25 @@
+// Import de la classe AbstractRepository
 const AbstractRepository = require("./AbstractRepository");
 
-class userRepository extends AbstractRepository {
+// Repository pour la table "users"
+class UserRepository extends AbstractRepository {
   constructor() {
     // Call the constructor of the parent class (AbstractRepository)
-    // and pass the table name "stations" as configuration
+    // and pass the table name "user" as configuration
     super({ table: "user" });
   }
 
   async create(user) {
-    // Execute the SQL INSERT query to add a new category to the "category" table
     const [result] = await this.database.query(
-      `insert into ${this.table} (name) values (?)`,
-      [user.id]
+      `
+      INSERT INTO ${this.table} (pseudo, email, password)
+      VALUES (?, ?, ?)
+    `,
+      [user.pseudo, user.email, user.password]
     );
 
-    // Return the ID of the newly inserted category
+    // Execute the query and return the result
     return result.insertId;
   }
 }
-
-module.exports = userRepository;
+module.exports = UserRepository;
