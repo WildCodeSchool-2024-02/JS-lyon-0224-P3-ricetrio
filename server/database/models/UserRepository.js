@@ -4,12 +4,11 @@ const AbstractRepository = require("./AbstractRepository");
 // Repository pour la table "users"
 class UserRepository extends AbstractRepository {
   constructor() {
-    // Appelle le constructeur de la classe parente (AbstractRepository)
-    // et passe le nom de la table "users" comme configuration
+    // Call the constructor of the parent class (AbstractRepository)
+    // and pass the table name "user" as configuration
     super({ table: "user" });
   }
 
-  // Méthode pour créer un nouvel utilisateur
   async create(user) {
     const [result] = await this.database.query(
       `
@@ -23,8 +22,4 @@ class UserRepository extends AbstractRepository {
     return result.insertId;
   }
 }
-
-// Ajoutez d'autres méthodes CRUD selon vos besoins
-
-// Exporte une instance unique du UserRepository
 module.exports = UserRepository;
