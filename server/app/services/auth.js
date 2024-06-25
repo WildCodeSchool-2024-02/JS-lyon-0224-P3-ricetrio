@@ -18,9 +18,8 @@ const hashPassword = async (req, res, next) => {
 
     // Remplacement du mot de passe non haché par le mot de passe haché dans la requête
     req.body.hashedPassword = hashedPassword;
-
-    // Suppression du mot de passe non haché de la requête par mesure de sécurité
-    delete req.body.password;
+    // // Suppression du mot de passe non haché de la requête par mesure de sécurité
+    // delete req.body.password;
 
     next();
   } catch (err) {

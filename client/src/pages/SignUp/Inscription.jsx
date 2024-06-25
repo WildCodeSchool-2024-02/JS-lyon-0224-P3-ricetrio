@@ -44,7 +44,7 @@ export default function Inscription() {
             password: values.password,
           }),
         });
-
+        console.log(values);
         if (!response.ok) {
           throw new Error("Erreur lors de l'inscription");
         }
