@@ -22,8 +22,6 @@ export default function Inscription() {
     setErrors(Validation(values));
   };
 
-  console.info(values);
-
   return (
     <div>
       <div className={styles.logo}>
