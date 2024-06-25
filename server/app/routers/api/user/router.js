@@ -13,6 +13,7 @@ const { browse, add } = require("../../../controllers/userActions");
 router.get("/", browse);
 
 router.post("/", add);
+
 /* ************************************************************************* */
 
 module.exports = router;
