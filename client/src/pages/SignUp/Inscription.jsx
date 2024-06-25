@@ -22,17 +22,15 @@ export default function Inscription() {
       ...prev,
       [event.target.name]: event.target.value,
     }));
-    setErrors(Validation(values)); // Valider les champs à chaque changement
+    setErrors(Validation(values));
   };
 
   const handleSubmit = async (event) => {
-    event.preventDefault(); // Empêcher la soumission du formulaire par défaut
+    event.preventDefault();
 
-    // Valider une dernière fois avant la soumission
     const validationErrors = Validation(values);
     setErrors(validationErrors);
 
-    // Vérifier s'il y a des erreurs avant de continuer
     if (Object.keys(validationErrors).length === 0) {
       try {
         const response = await fetch(`${URL}/api/users`, {
@@ -51,11 +49,9 @@ export default function Inscription() {
           throw new Error("Erreur lors de l'inscription");
         }
 
-        // Redirection vers la page d'accueil après inscription réussie
-        navigate("/admin"); // Utilisation de navigate pour la redirection
+        navigate("/admin");
       } catch (err) {
         console.error("Erreur lors de la requête d'inscription:", err);
-        // Gérer l'erreur ici, par exemple afficher un message à l'utilisateur
       }
     }
   };
@@ -88,7 +84,7 @@ export default function Inscription() {
                 onChange={handleInput}
               />
               <p className={styles.errorsField}>
-                {errors.pseudo && <span>{errors.pseudo}</span>}
+                {errors.pseudo !== undefined && <span>{errors.pseudo}</span>}
               </p>
             </div>
             <label htmlFor="email" className={styles.rowFormRow}>
@@ -103,7 +99,7 @@ export default function Inscription() {
                 onChange={handleInput}
               />
               <p className={styles.errorsField}>
-                {errors.email && <span>{errors.email}</span>}
+                {errors.email !== undefined && <span>{errors.email}</span>}
               </p>
             </div>
             <label htmlFor="password" className={styles.rowFormRow}>
@@ -118,7 +114,9 @@ export default function Inscription() {
                 onChange={handleInput}
               />
               <p className={styles.errorsField}>
-                {errors.password && <span>{errors.password}</span>}
+                {errors.password !== undefined && (
+                  <span>{errors.password}</span>
+                )}
               </p>
             </div>
 
