@@ -48,14 +48,14 @@ export default function FilmCarousel({
           type="button"
           onClick={handlePrev}
         >
-          &lt;
+          <span className={styles.arrowSectionSlider}>&lt;</span>
         </button>
         <button
           className={styles.buttonSectionFilm}
           type="button"
           onClick={handleNext}
         >
-          &gt;
+          <span className={styles.arrowSectionSlider}>&gt;</span>
         </button>
       </div>
     </>

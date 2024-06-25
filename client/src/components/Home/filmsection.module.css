@@ -12,7 +12,6 @@
   align-content: center;
   justify-content: center;
   align-items: center;
-
   margin: 2rem;
   width: 90vw;
 }
@@ -33,16 +32,15 @@
   background-color: var(--main-color);
   color: var(--background-color);
   border: none;
-  padding: 10px 20px;
-  margin: 0 5px;
+  padding: 10px;
+  margin: 5px;
   cursor: pointer;
-  font-size: 16px;
   transition: background-color 0.3s ease;
   font-family: var(--font-regular);
-  font-size: 70%;
+  font-size: large;
   border-radius: 10px;
   cursor: pointer;
-  width: 15%;
+  width: 40px;
 }
 
 .buttonSectionFilm:hover {
@@ -56,7 +54,7 @@
 }
 
 .divSize img {
-  height: 30vw;
+  height: 20vw;
 }
 
 .poster {

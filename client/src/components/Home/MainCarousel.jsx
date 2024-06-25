@@ -52,7 +52,11 @@ export default function MainCarousel() {
     <div className={styles.mainCarouselContainer}>
       <div className={styles.wallBackground}>
         <div className={styles.background}>
-          <img src={allFilms.background_img} alt={allFilms.title} />
+          {allFilms.length > 0 && (
+            <div className={styles.posterAdmin} key={allFilms[0].id}>
+              <img src={allFilms[0].background_img} alt={allFilms[0].title} />
+            </div>
+          )}
         </div>
       </div>
       <div className={styles.carouselContainer}>
