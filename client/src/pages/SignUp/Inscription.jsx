@@ -72,7 +72,7 @@ export default function Inscription() {
             onSubmit={handleSubmit}
           >
             <label htmlFor="pseudo" className={styles.rowFormRow}>
-              <h4>Pseudo</h4>
+              <p className={styles.titleForm}>Pseudo</p>
             </label>
             <div className={styles.pseudoInput}>
               <input
@@ -88,7 +88,7 @@ export default function Inscription() {
               </p>
             </div>
             <label htmlFor="email" className={styles.rowFormRow}>
-              <h4>Adresse email</h4>
+              <p className={styles.titleForm}>Adresse email</p>
             </label>
             <div className={styles.pseudoInput}>
               <input
@@ -103,7 +103,7 @@ export default function Inscription() {
               </p>
             </div>
             <label htmlFor="password" className={styles.rowFormRow}>
-              <h4>Mot de passe</h4>
+              <p className={styles.titleForm}>Mot de passe</p>
             </label>
             <div className={styles.pseudoInput}>
               <input
@@ -121,7 +121,7 @@ export default function Inscription() {
             </div>
 
             <button className={styles.buttonSubmit} type="submit">
-              <h3>Inscription</h3>
+              <p className={styles.inscriptionButton}>Inscription</p>
             </button>
           </Form>
 
