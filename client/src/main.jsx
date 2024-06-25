@@ -10,7 +10,6 @@ import Signin from "./pages/SignIn/Signin";
 import Inscription from "./pages/SignUp/Inscription";
 import Homepage from "./pages/Homepage/Homepage";
 import VideoPage from "./pages/Videopage/Videopage";
-import AdminPage from "./pages/AdminPage/AdminPage";
 
 const URL = import.meta.env.VITE_API_URL;
 
@@ -65,11 +64,6 @@ const router = createBrowserRouter([
         element: <VideoPage />,
         loader: async ({ params }) =>
           fetch(`${import.meta.env.VITE_API_URL}/api/films/${params.id}`),
-      },
-      {
-        path: "/admin",
-        element: <AdminPage />,
-        loader: async () => fetch(`${URL}/api/films`),
       },
     ],
   },
