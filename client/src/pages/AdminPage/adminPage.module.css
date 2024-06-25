@@ -1,0 +1,32 @@
+.adminContainer {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.adminButton button {
+  width: 100px;
+  height: 40px;
+  margin: 20px;
+}
+
+.posterAdmin {
+  width: 200px;
+  display: flex;
+
+  justify-content: center;
+  flex-direction: row;
+}
+
+.posterAdmin img {
+  width: 70%;
+  margin: 20px;
+  border: solid var(--main-color) 2px;
+}
+
+.posterContainer {
+  display: flex;
+  flex-wrap: wrap;
+  margin: 10px;
+  justify-content: center;
+}
