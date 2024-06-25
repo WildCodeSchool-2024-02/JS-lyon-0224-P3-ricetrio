@@ -11,6 +11,7 @@ import Inscription from "./pages/SignUp/Inscription";
 import Homepage from "./pages/Homepage/Homepage";
 import VideoPage from "./pages/Videopage/Videopage";
 import AdminPage from "./pages/AdminPage/AdminPage";
+import CreateFilm from "./pages/CreateFilm/CreateFilm";
 
 const URL = import.meta.env.VITE_API_URL;
 
@@ -70,6 +71,10 @@ const router = createBrowserRouter([
         path: "/admin",
         element: <AdminPage />,
         loader: async () => fetch(`${URL}/api/films`),
+      },
+      {
+        path: "/creationpagefilm",
+        element: <CreateFilm />,
       },
     ],
   },
