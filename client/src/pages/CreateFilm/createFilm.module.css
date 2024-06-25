@@ -43,11 +43,14 @@ textarea {
   border-right: none;
   border-bottom: solid grey 1px;
   border-left: none;
-  width: 40rem;
-  height: 2rem;
   padding-left: 20px;
   margin-bottom: 40px;
   font-size: 18px;
+  width: 40rem;
+  min-height: 2rem;
+  max-height: 50rem;
+  overflow: auto;
+  resize: none;
 }
 
 .textarea {

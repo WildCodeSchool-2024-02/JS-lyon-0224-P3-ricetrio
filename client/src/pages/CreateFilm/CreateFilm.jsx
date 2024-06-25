@@ -6,7 +6,7 @@ function CreateFilm() {
   return (
     <div className={styles.createPage}>
       <div className={styles.header}>
-        <Link to="/">
+        <Link to="/admin">
           <img
             src={Arrow}
             alt="Flèche pour tourner à la page d'accueil"
@@ -79,6 +79,13 @@ function CreateFilm() {
           <h4>Freenium</h4>
           <div className={styles.movie_director}>
             <input type="text" placeholder="TRUE" />
+          </div>
+          <h4>Image d'illustration</h4>
+          <div className={styles.background_image}>
+            <input
+              type="url"
+              placeholder="https://image.tmdb.org/t/p/w500/7nrQxtiRjbJYnWpAhDsGieoaDfT.jpg"
+            />
           </div>
           <button type="submit">
             <h3>Sauvegarder</h3>
