@@ -1,4 +1,4 @@
-import { useLoaderData } from "react-router-dom";
+import { useLoaderData, Link } from "react-router-dom";
 import styles from "./adminPage.module.css";
 import NavBar from "../../components/Navbar/Navbar";
 
@@ -11,7 +11,9 @@ function AdminPage() {
         <h2>Admin</h2>
 
         <div className={styles.adminButton}>
-          <button type="submit">Ajouter</button>
+          <Link to="/creationpagefilm">
+            <button type="submit">Ajouter</button>
+          </Link>
         </div>
       </div>
       <div className={styles.posterContainer}>
