@@ -1,7 +1,23 @@
+.mainCarouselContainer {
+  border: solid yellow 2px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
 .carouselContainer {
   display: flex;
   justify-content: center;
   width: 100%;
+}
+
+.wallBackground {
+  border: solid blue 2px;
+  height: 60vw;
+}
+
+.background {
+  border: solid red 2px;
 }
 
 .main {

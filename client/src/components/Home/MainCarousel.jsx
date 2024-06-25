@@ -49,41 +49,48 @@ export default function MainCarousel() {
   }
 
   return (
-    <div className={styles.carouselContainer}>
-      <div className={styles.main} ref={mainRef}>
-        <div className={styles.main__container}>
-          {allFilms.map((film) => (
-            <div className={styles.main_slide} key={film.id}>
-              <Link to={`/bandeannonce/${film.id}/`}>
-                <div className={styles.divSize}>
-                  <img
-                    className={styles.poster}
-                    src={film.poster_link}
-                    alt={film.title}
-                  />
-                </div>
-              </Link>
-            </div>
-          ))}
+    <div className={styles.mainCarouselContainer}>
+      <div className={styles.wallBackground}>
+        <div className={styles.background}>
+          <img src={allFilms.background_img} alt={allFilms.title} />
         </div>
+      </div>
+      <div className={styles.carouselContainer}>
+        <div className={styles.main} ref={mainRef}>
+          <div className={styles.main__container}>
+            {allFilms.map((film) => (
+              <div className={styles.main_slide} key={film.id}>
+                <Link to={`/bandeannonce/${film.id}/`}>
+                  <div className={styles.divSize}>
+                    <img
+                      className={styles.poster}
+                      src={film.poster_link}
+                      alt={film.title}
+                    />
+                  </div>
+                </Link>
+              </div>
+            ))}
+          </div>
 
-        <div className={styles.buttonsCarouselContainer}>
-          <button
-            type="button"
-            className={`${styles.buttonCarousel} ${!prevBtnEnabled ? styles.disabled : ""}`}
-            onClick={scrollPrev}
-            disabled={!prevBtnEnabled}
-          >
-            Précédent
-          </button>
-          <button
-            type="button"
-            className={`${styles.buttonCarousel} ${!nextBtnEnabled ? styles.disabled : ""}`}
-            onClick={scrollNext}
-            disabled={!nextBtnEnabled}
-          >
-            Suivant
-          </button>
+          <div className={styles.buttonsCarouselContainer}>
+            <button
+              type="button"
+              className={`${styles.buttonCarousel} ${!prevBtnEnabled ? styles.disabled : ""}`}
+              onClick={scrollPrev}
+              disabled={!prevBtnEnabled}
+            >
+              Précédent
+            </button>
+            <button
+              type="button"
+              className={`${styles.buttonCarousel} ${!nextBtnEnabled ? styles.disabled : ""}`}
+              onClick={scrollNext}
+              disabled={!nextBtnEnabled}
+            >
+              Suivant
+            </button>
+          </div>
         </div>
       </div>
     </div>
