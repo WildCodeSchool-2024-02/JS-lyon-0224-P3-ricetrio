@@ -8,11 +8,12 @@ const router = express.Router();
 
 // Import offer-related actions
 const { browse, add } = require("../../../controllers/userActions");
+const { hashPassword } = require("../../../services/auth");
 
 // Route to get a list of offers
 router.get("/", browse);
 
-router.post("/", add);
+router.post("/", hashPassword, add);
 
 /* ************************************************************************* */
 

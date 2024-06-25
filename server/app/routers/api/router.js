@@ -14,11 +14,9 @@ const usersRouter = require("./user/router");
 
 router.use("/users", usersRouter);
 
-
 const authRouter = require("./auth/router");
 
 router.use("/login", authRouter);
-
 
 /* ************************************************************************* */
 
