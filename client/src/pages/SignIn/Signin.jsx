@@ -79,7 +79,7 @@ export default function Signin() {
                 />
               </div>
             </div>
-            <Link to="/">
+            <Link to="/profile">
               <button type="submit">
                 <h3>Connexion</h3>
               </button>
