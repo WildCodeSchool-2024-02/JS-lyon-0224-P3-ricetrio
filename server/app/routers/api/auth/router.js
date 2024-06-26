@@ -6,14 +6,11 @@ const router = express.Router();
 // Define Your API Routes Here
 /* ************************************************************************* */
 
-// Import offer-related actions
-const { browse, add } = require("../../../controllers/userActions");
-const { hashPassword } = require("../../../services/auth");
+// Import item-related actions
+const { login } = require("../../../controllers/authActions");
+const { verifyToken } = require("../../../services/auth");
 
-// Route to get a list of offers
-router.get("/", browse);
-
-router.post("/", hashPassword, add);
+router.post("/login", verifyToken, login);
 
 /* ************************************************************************* */
 

@@ -8,14 +8,9 @@ class UserSeeder extends AbstractSeeder {
   run() {
     const users = [
       {
-        pseudo: "Adeline",
-        email: "adeline@adeline.com",
-        password: "Adelinedu69",
-      },
-      {
-        pseudo: "Kana",
-        email: "kana@kana.com",
-        password: "Kanadu69",
+        pseudo: "",
+        email: "",
+        password: "",
       },
     ];
 
