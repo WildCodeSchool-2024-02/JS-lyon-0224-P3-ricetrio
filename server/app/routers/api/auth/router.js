@@ -8,9 +8,11 @@ const router = express.Router();
 
 // Import item-related actions
 const { login } = require("../../../controllers/authActions");
+const { read } = require("../../../controllers/userActions");
 const { verifyToken } = require("../../../services/auth");
 
-router.post("/login", verifyToken, login);
+router.post("/login", login);
+router.get("/:id", verifyToken, read);
 
 /* ************************************************************************* */
 

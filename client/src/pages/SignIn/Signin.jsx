@@ -1,20 +1,26 @@
 import { Link, useOutletContext, useNavigate } from "react-router-dom";
-import { useRef } from "react";
+import { useState } from "react";
 import styles from "./signin.module.css";
 import Logo from "../../assets/images/logo-prodkat.svg";
 
 export default function Signin() {
-  const pseudRef = useRef();
-  const passwordRef = useRef();
-
   const { setAuth } = useOutletContext();
+
+  const [loginInfos, setLoginInfos] = useState({
+    pseudo: "",
+    password: "",
+  });
 
   // Hook pour la navigation
   const navigate = useNavigate();
 
   // Gestionnaire de soumission du formulaire
-  const handleSubmit = async (event) => {
-    event.preventDefault();
+  const handleLoginInfos = (e) => {
+    setLoginInfos({ ...loginInfos, [e.target.name]: e.target.value });
+  };
+
+  const handleLogin = async (e) => {
+    e.preventDefault();
 
     try {
       // Appel à l'API pour demander une connexion
@@ -24,8 +30,8 @@ export default function Signin() {
           method: "post",
           headers: { "Content-Type": "application/json" },
           body: JSON.stringify({
-            pseud: pseudRef.current.value,
-            password: passwordRef.current.value,
+            pseudo: loginInfos.pseudo,
+            password: loginInfos.password,
           }),
         }
       );
@@ -57,15 +63,17 @@ export default function Signin() {
       <div className={styles.contactContainer}>
         <div className={styles.contactBloc}>
           <h2>Connexion</h2>
-          <form onSubmit={handleSubmit} className={styles.contactForm}>
-            <div className={styles.rowDormRow}>
+          <form onSubmit={handleLogin} className={styles.contactForm}>
+            <div className={styles.rowFormRow}>
               <h4>Pseudo</h4>
               <div className={styles.pseudoInput}>
                 <input
                   className={styles.textInput}
                   type="text"
                   placeholder="Michael J."
-                  ref={pseudRef}
+                  name="pseudo"
+                  value={loginInfos.pseudo}
+                  onChange={handleLoginInfos}
                 />
               </div>
             </div>
@@ -73,17 +81,17 @@ export default function Signin() {
               <h4>Mot de passe</h4>
               <div className={styles.pseudoInput}>
                 <input
-                  ref={passwordRef}
+                  value={loginInfos.password}
                   type="password"
+                  name="password"
                   placeholder="●●●●●●●●"
+                  onChange={handleLoginInfos}
                 />
               </div>
             </div>
-            <Link to="/">
-              <button type="submit">
-                <h3>Connexion</h3>
-              </button>
-            </Link>
+            <button type="submit">
+              <h3>Connexion</h3>
+            </button>
           </form>
           <div className={styles.textUnderButton}>
             <p className={styles.underButton}>
