@@ -1,3 +1,5 @@
+const argon2 = require("argon2");
+
 // Import access to database tables
 const tables = require("../../database/tables");
 
@@ -16,11 +18,12 @@ const browse = async (req, res, next) => {
 };
 
 const add = async (req, res, next) => {
+  const user = req.body;
+  console.log("Request body:", req.body);
   try {
-    console.log("Request body:", req.body);
-    const user = req.body;
     // Hash the password before creating the user
-    user.password = req.body.hashedPassword; // Replace the plain text password with the hashed password
+    const hashedPassword = await argon2.hash(user.password);
+    user.password = hashedPassword; // Replace the plain text password with the hashed password
 
     // Create a new user with the hashed password
     const insertId = await tables.user.create(user);
