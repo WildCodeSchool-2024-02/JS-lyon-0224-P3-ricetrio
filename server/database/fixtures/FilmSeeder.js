@@ -32,11 +32,11 @@ class FilmSeeder extends AbstractSeeder {
         key_trailer: row[9],
         trailer_url: row[10],
         freenium: row[11],
-        background_img:[12],
+        background_img: [12],
       };
 
       this.insert(films);
-    };
+    }
   }
 }
 module.exports = FilmSeeder;

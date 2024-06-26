@@ -39,7 +39,7 @@ function CreateFilm() {
 
     const validationErrors = ValidationFilm(values);
     setErrors(validationErrors);
-   
+
     if (Object.keys(validationErrors).length === 0) {
       try {
         const response = await fetch(`${URL}/api/films`, {
@@ -64,12 +64,17 @@ function CreateFilm() {
         });
 
         if (!response.ok) {
-          throw new Error("Erreur lors de la création de la nouvelle fiche de film");
+          throw new Error(
+            "Erreur lors de la création de la nouvelle fiche de film"
+          );
         }
 
         navigate("/admin");
       } catch (err) {
-        console.error("Erreur lors de la requête de la création de la nouvelle fiche de film:", err);
+        console.error(
+          "Erreur lors de la requête de la création de la nouvelle fiche de film:",
+          err
+        );
       }
     }
   };
@@ -87,54 +92,87 @@ function CreateFilm() {
         <h2>Ajouter une nouvelle fiche de film</h2>
       </div>
       <Form
-            method="post"
-            className={styles.contactForm}
-            onSubmit={handleSubmit}
+        method="post"
+        className={styles.contactForm}
+        onSubmit={handleSubmit}
       >
         <div className={styles.formulaire}>
           <h4>Clé du film</h4>
           <div className={styles.movieKey}>
-            <input type="number" placeholder="Clé du film" name="movie_key" value={values.movie_key} onChange={handleInput} />
+            <input
+              type="number"
+              placeholder="Clé du film"
+              name="movie_key"
+              value={values.movie_key}
+              onChange={handleInput}
+            />
             <p className={styles.errorsField}>
-                {errors.movie_key !== undefined && (
-                  <span>{errors.movie_key}</span>
-                )}
-              </p>
+              {errors.movie_key !== undefined && (
+                <span>{errors.movie_key}</span>
+              )}
+            </p>
           </div>
           <h4>Titre</h4>
           <div className={styles.title}>
-            <input type="text" placeholder="Thien la force tranquille" name="title" value={values.title} onChange={handleInput} />
+            <input
+              type="text"
+              placeholder="Thien la force tranquille"
+              name="title"
+              value={values.title}
+              onChange={handleInput}
+            />
             <p className={styles.errorsField}>
               {errors.title !== undefined && <span>{errors.title}</span>}
             </p>
           </div>
           <h4>Genre</h4>
           <div className={styles.genre}>
-            <input type="text" placeholder="Comédie, Drame, Thriller" name="genre" value={values.genre} onChange={handleInput}/>
+            <input
+              type="text"
+              placeholder="Comédie, Drame, Thriller"
+              name="genre"
+              value={values.genre}
+              onChange={handleInput}
+            />
             <p className={styles.errorsField}>
               {errors.genre !== undefined && <span>{errors.genre}</span>}
             </p>
           </div>
           <h4>Durée</h4>
           <div className={styles.time}>
-            <input type="number" placeholder="126" min="1" name="duration" value={values.duration} onChange={handleInput} />
+            <input
+              type="number"
+              placeholder="126"
+              min="1"
+              name="duration"
+              value={values.duration}
+              onChange={handleInput}
+            />
             <p className={styles.errorsField}>
               {errors.duration !== undefined && <span>{errors.duration}</span>}
             </p>
           </div>
           <h4>Date de sortie</h4>
           <div className={styles.date}>
-            <input type="text" placeholder="1982-08-25" name="release_date" value={values.release_date} onChange={handleInput} />
+            <input
+              type="text"
+              placeholder="1982-08-25"
+              name="release_date"
+              value={values.release_date}
+              onChange={handleInput}
+            />
             <p className={styles.errorsField}>
-              {errors.release_date !== undefined && <span>{errors.release_date}</span>}
+              {errors.release_date !== undefined && (
+                <span>{errors.release_date}</span>
+              )}
             </p>
           </div>
           <h4>Résumé</h4>
           <div className={styles.resume}>
             <textarea
               type="text"
-              placeholder="Urssaf est un chat sans poil qui a toujours un air malheureux parce qu'il a toujours froid." 
-              name="overview" 
+              placeholder="Urssaf est un chat sans poil qui a toujours un air malheureux parce qu'il a toujours froid."
+              name="overview"
               value={values.overview}
               onChange={handleInput}
             />
@@ -144,9 +182,17 @@ function CreateFilm() {
           </div>
           <h4>Réalisateur·rice</h4>
           <div className={styles.movie_director}>
-            <input type="text" placeholder="Kana Mutagorou" name="movie_director" value={values.movie_director} onChange={handleInput}/>
+            <input
+              type="text"
+              placeholder="Kana Mutagorou"
+              name="movie_director"
+              value={values.movie_director}
+              onChange={handleInput}
+            />
             <p className={styles.errorsField}>
-              {errors.movie_director !== undefined && <span>{errors.movie_director}</span>}
+              {errors.movie_director !== undefined && (
+                <span>{errors.movie_director}</span>
+              )}
             </p>
           </div>
           <h4>Poster</h4>
@@ -159,16 +205,24 @@ function CreateFilm() {
               onChange={handleInput}
             />
             <p className={styles.errorsField}>
-              {errors.poster_link !== undefined && <span>{errors.poster_link}</span>}
+              {errors.poster_link !== undefined && (
+                <span>{errors.poster_link}</span>
+              )}
             </p>
           </div>
           <h4>Clé de la bande annonce</h4>
           <div className={styles.key_trailer}>
-            <input type="text" placeholder="EMq7B85H5D0"
-             name="key_trailer" value={values.key_trailer}
-             onChange={handleInput}/>
+            <input
+              type="text"
+              placeholder="EMq7B85H5D0"
+              name="key_trailer"
+              value={values.key_trailer}
+              onChange={handleInput}
+            />
             <p className={styles.errorsField}>
-              {errors.key_trailer !== undefined && <span>{errors.key_trailer}</span>}
+              {errors.key_trailer !== undefined && (
+                <span>{errors.key_trailer}</span>
+              )}
             </p>
           </div>
           <h4>Bande annonce</h4>
@@ -181,15 +235,20 @@ function CreateFilm() {
               onChange={handleInput}
             />
             <p className={styles.errorsField}>
-              {errors.trailer_url !== undefined && <span>{errors.trailer_url}</span>}
+              {errors.trailer_url !== undefined && (
+                <span>{errors.trailer_url}</span>
+              )}
             </p>
           </div>
           <h4>Freenium</h4>
           <div className={styles.freenium}>
-            <input type="text"
-            placeholder="0 (FALSE) 1(TRUE)" 
-            name="freenium" value={values.freenium}
-            onChange={handleInput}/>
+            <input
+              type="text"
+              placeholder="0 (FALSE) 1(TRUE)"
+              name="freenium"
+              value={values.freenium}
+              onChange={handleInput}
+            />
             <p className={styles.errorsField}>
               {errors.freenium !== undefined && <span>{errors.freenium}</span>}
             </p>
@@ -201,16 +260,19 @@ function CreateFilm() {
               placeholder="https://image.tmdb.org/t/p/w500/7nrQxtiRjbJYnWpAhDsGieoaDfT.jpg"
               name="background_img"
               value={values.background_img}
-              onChange={handleInput} />               
+              onChange={handleInput}
+            />
             <p className={styles.errorsField}>
-              {errors.background_img !== undefined && <span>{errors.background_img}</span>}
+              {errors.background_img !== undefined && (
+                <span>{errors.background_img}</span>
+              )}
             </p>
           </div>
           <button type="submit">
             <h3>Sauvegarder</h3>
           </button>
         </div>
-        </Form>
+      </Form>
     </div>
   );
 }
