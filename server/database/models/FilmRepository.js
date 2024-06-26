@@ -27,6 +27,19 @@ class filmRepository extends AbstractRepository {
     // Return the array of stationss
     return rows;
   }
+
+  async create(filmAdd) {
+    const [result] = await this.database.query(
+      `
+      INSERT INTO ${this.table} (movie_key, title, genre, duration, release_date, overview, movie_director, poster_link, key_trailer, trailer_url, freenium, background_img)
+      VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)
+    `,
+      [filmAdd.movie_key, filmAdd.title, filmAdd.genre,filmAdd.duration, filmAdd.release_date, filmAdd.overview,filmAdd.movie_director, filmAdd.poster_link, filmAdd.key_trailer,filmAdd.trailer_url, filmAdd.freenium, filmAdd.background_img]
+    );
+
+    // Execute the query and return the result
+    return result.insertId;
+  }
 }
 
 module.exports = filmRepository;
