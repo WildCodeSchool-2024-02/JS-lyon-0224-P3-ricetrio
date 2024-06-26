@@ -63,7 +63,7 @@ function CreateFilm() {
           }),
         });
 
-        if (!response.ok) {
+        if (response.status !== 200) {
           throw new Error(
             "Erreur lors de la création de la nouvelle fiche de film"
           );
