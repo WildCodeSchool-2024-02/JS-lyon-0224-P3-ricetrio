@@ -19,7 +19,6 @@ const browse = async (req, res, next) => {
 
 const add = async (req, res, next) => {
   const user = req.body;
-  console.log("Request body:", req.body);
   try {
     // Hash the password before creating the user
     const hashedPassword = await argon2.hash(user.password);
