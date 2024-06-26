@@ -20,7 +20,7 @@ function CreateFilm() {
     poster_link: "",
     key_trailer: "",
     trailer_url: "",
-    freenium: "",
+    freemium: "",
     background_img: "",
   });
 
@@ -58,7 +58,7 @@ function CreateFilm() {
             poster_link: values.poster_link,
             key_trailer: values.key_trailer,
             trailer_url: values.trailer_url,
-            freenium: values.freenium,
+            freemium: values.freemium,
             background_img: values.background_img,
           }),
         });
@@ -240,17 +240,17 @@ function CreateFilm() {
               )}
             </p>
           </div>
-          <h4>Freenium</h4>
-          <div className={styles.freenium}>
+          <h4>Freemium</h4>
+          <div className={styles.freemium}>
             <input
               type="text"
               placeholder="0 (FALSE) 1(TRUE)"
-              name="freenium"
-              value={values.freenium}
+              name="freemium"
+              value={values.freemium}
               onChange={handleInput}
             />
             <p className={styles.errorsField}>
-              {errors.freenium !== undefined && <span>{errors.freenium}</span>}
+              {errors.freemium !== undefined && <span>{errors.freemium}</span>}
             </p>
           </div>
           <h4>Image d'illustration</h4>

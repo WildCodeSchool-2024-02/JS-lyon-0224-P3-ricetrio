@@ -31,7 +31,7 @@ class filmRepository extends AbstractRepository {
   async create(filmAdd) {
     const [result] = await this.database.query(
       `
-      INSERT INTO ${this.table} (movie_key, title, genre, duration, release_date, overview, movie_director, poster_link, key_trailer, trailer_url, freenium, background_img)
+      INSERT INTO ${this.table} (movie_key, title, genre, duration, release_date, overview, movie_director, poster_link, key_trailer, trailer_url, freemium, background_img)
       VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)
     `,
       [
@@ -45,7 +45,7 @@ class filmRepository extends AbstractRepository {
         filmAdd.poster_link,
         filmAdd.key_trailer,
         filmAdd.trailer_url,
-        filmAdd.freenium,
+        filmAdd.freemium,
         filmAdd.background_img,
       ]
     );

@@ -44,8 +44,8 @@ function ValidationFilm(values) {
     errors.trailer_url = "La bande annonce est requise";
   }
 
-  if (values.freenium === undefined || values.freenium.trim() === "") {
-    errors.freenium = "La donnée est requise";
+  if (values.freemium === undefined || values.freemium.trim() === "") {
+    errors.freemium = "La donnée est requise";
   }
 
   return errors;
