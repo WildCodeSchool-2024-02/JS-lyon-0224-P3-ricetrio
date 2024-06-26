@@ -30,8 +30,21 @@ const read = async (req, res) => {
   }
 };
 
+const add = async (req, res, next) => {
+  try {
+    const filmAdd = req.body;
+    // Créer un nouvel utilisateur
+    const insertId = await tables.film.create(filmAdd);
+
+    res.status(201).json(insertId); // Répondre avec l'utilisateur créé
+  } catch (err) {
+    next(err);
+  }
+};
+
 // Ready to export the controller functions
 module.exports = {
   browse,
   read,
+  add,
 };
