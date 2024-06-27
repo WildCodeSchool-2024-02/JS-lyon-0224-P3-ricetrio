@@ -38,6 +38,8 @@ const add = async (req, res, next) => {
 
     res.status(201).json(insertId); // Répondre avec l'utilisateur créé
   } catch (err) {
+    console.error("Error in add function:", err);
+    res.status(500).json();
     next(err);
   }
 };
