@@ -30,7 +30,6 @@ const add = async (req, res, next) => {
     res.status(201).json(insertId); // Respond with the created user's ID
   } catch (err) {
     console.error("Error in add function:", err);
-    res.status(400).json("Les champs ne sont pas correctement remplis");
     res.status(500).json();
     next(err);
   }
