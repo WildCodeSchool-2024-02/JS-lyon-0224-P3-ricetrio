@@ -12,7 +12,7 @@ const { read } = require("../../../controllers/userActions");
 const { verifyToken } = require("../../../services/auth");
 
 router.post("/", login);
-router.get("/id", verifyToken, read);
+router.get("/:id", verifyToken, read);
 
 /* ************************************************************************* */
 

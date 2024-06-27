@@ -31,6 +31,9 @@ const login = async (req, res, next) => {
         }
       );
 
+      console.log("APP_SECRET:", process.env.APP_SECRET);
+      console.log("Generated JWT token:", token);
+
       res.json({
         token,
         user,

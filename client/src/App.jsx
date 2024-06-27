@@ -4,6 +4,7 @@ import "./app.css";
 
 function App() {
   const [auth, setAuth] = useState();
+  
   return (
     <main>
       <Outlet context={{ auth, setAuth }} />

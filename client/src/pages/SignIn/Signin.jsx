@@ -5,7 +5,6 @@ import Logo from "../../assets/images/logo-prodkat.svg";
 
 export default function Signin() {
   const { setAuth } = useOutletContext();
-
   const [loginInfos, setLoginInfos] = useState({
     pseudo: "",
     password: "",
