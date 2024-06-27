@@ -45,7 +45,7 @@ const add = async (req, res, next) => {
     // Create a new user with the hashed password
     const insertId = await tables.user.create(user);
 
-    res.status(201).json(insertId); // Respond with the created user's ID
+    res.status(201).json({insertId}); // Respond with the created user's ID
   } catch (err) {
     console.error("Error in add function:", err);
     next(err);

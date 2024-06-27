@@ -9,7 +9,7 @@ export default function Signin() {
     pseudo: "",
     password: "",
   });
-
+  console.log(loginInfos);
   // Hook pour la navigation
   const navigate = useNavigate();
 
@@ -19,6 +19,7 @@ export default function Signin() {
   };
 
   const handleLogin = async (e) => {
+    console.log("toto");
     e.preventDefault();
 
     try {
@@ -28,10 +29,7 @@ export default function Signin() {
         {
           method: "post",
           headers: { "Content-Type": "application/json" },
-          body: JSON.stringify({
-            pseudo: loginInfos.pseudo,
-            password: loginInfos.password,
-          }),
+          body: JSON.stringify(loginInfos),
         }
       );
 
@@ -40,7 +38,7 @@ export default function Signin() {
         const auth = await response.json();
 
         setAuth(auth);
-
+        console.log("Token received and set:", auth);
         navigate("/");
       } else {
         // Log des détails de la réponse en cas d'échec

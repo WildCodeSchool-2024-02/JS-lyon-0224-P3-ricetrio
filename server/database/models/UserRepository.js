@@ -12,7 +12,7 @@ class UserRepository extends AbstractRepository {
   async create(user) {
     const [result] = await this.database.query(
       `
-      INSERT INTO ${this.table} (pseudo, email, password)
+      INSERT INTO ${this.table} (pseudo, email, hashed_password)
       VALUES (?, ?, ?)
     `,
       [user.pseudo, user.email, user.password]
@@ -45,11 +45,11 @@ class UserRepository extends AbstractRepository {
     return rows;
   }
 
-  async readByEmailWithPassword(email) {
+  async readByEmailWithPassword(pseudo) {
     // Execute the SQL SELECT query to retrieve a specific user by its email
     const [rows] = await this.database.query(
       `select * from ${this.table} where pseudo = ?`,
-      [email]
+      [pseudo]
     );
 
     // Return the array of users
