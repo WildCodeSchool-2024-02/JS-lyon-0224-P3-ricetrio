@@ -89,9 +89,11 @@ export default function Signin() {
                 />
               </div>
             </div>
-            <button type="submit">
-              <h3>Connexion</h3>
-            </button>
+            <Link to="/profile">
+              <button type="submit">
+                <h3>Connexion</h3>
+              </button>
+            </Link>
           </form>
           <div className={styles.textUnderButton}>
             <p className={styles.underButton}>
