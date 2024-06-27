@@ -1,0 +1,65 @@
+.logo {
+  width: 9.3rem;
+  padding-top: 0.5rem;
+  padding-bottom: 1rem;
+}
+
+.containerProfile {
+  display: flex;
+  flex-direction: column;
+  flex-wrap: wrap;
+  align-items: center;
+}
+
+.profile {
+  width: 40rem;
+  height: 20rem;
+  padding: 2rem;
+  border-radius: 5px;
+  background-color: var(--secondary-color);
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.myProfile {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  padding-bottom: 50px;
+}
+
+.avatar {
+  width: 8rem;
+  padding: 0rem 2rem 0rem 2rem;
+}
+
+.informations {
+  padding-left: 20px;
+}
+
+.pseudo {
+  font-family: var(--font-black);
+  font-size: 25px;
+}
+
+.mail {
+  font-family: var(--font-bold);
+  font-size: 20px;
+}
+
+.button {
+  display: flex;
+  justify-content: center;
+}
+
+button[type="submit"] {
+  width: 70%;
+  background-color: var(--main-color);
+  color: white;
+  margin: 8px 0;
+  border: none;
+  border-radius: 10px;
+  cursor: pointer;
+}

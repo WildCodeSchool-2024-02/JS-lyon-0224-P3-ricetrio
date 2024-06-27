@@ -7,15 +7,10 @@ const router = express.Router();
 /* ************************************************************************* */
 
 // Import item-related actions
-const { browse, read, add } = require("../../../controllers/filmActions");
+const { login } = require("../../../controllers/authActions");
+const { verifyToken } = require("../../../services/auth");
 
-// Route to get a list of items
-router.get("/", browse);
-
-router.post("/", add);
-
-// Route to get a specific item by ID
-router.get("/:id", read);
+router.post("/login", verifyToken, login);
 
 /* ************************************************************************* */
 

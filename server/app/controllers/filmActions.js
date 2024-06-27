@@ -26,7 +26,21 @@ const read = async (req, res) => {
     }
     res.json(film);
   } catch (error) {
-    res.status(500).json({ error: "Failed to add film" });
+    res.status(400).json({ error: "Failed to add film" });
+  }
+};
+
+const add = async (req, res, next) => {
+  try {
+    const filmAdd = req.body;
+    // Créer un nouvel utilisateur
+    const insertId = await tables.film.create(filmAdd);
+
+    res.status(201).json(insertId); // Répondre avec l'utilisateur créé
+  } catch (err) {
+    console.error("Error in add function:", err);
+    res.status(500).json();
+    next(err);
   }
 };
 
@@ -34,4 +48,5 @@ const read = async (req, res) => {
 module.exports = {
   browse,
   read,
+  add,
 };

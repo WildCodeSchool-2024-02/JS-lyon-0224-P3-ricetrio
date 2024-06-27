@@ -3,12 +3,18 @@ const express = require("express");
 const router = express.Router();
 
 /* ************************************************************************* */
-// Import And Use Routers Here
+// Define Your API Routes Here
 /* ************************************************************************* */
 
-const { add } = require("../../../controllers/userActions");
+// Import offer-related actions
+const { browse, add } = require("../../../controllers/userActions");
+const { hashPassword } = require("../../../services/auth");
+const validateSignIn = require("../../../services/validateSignIn");
 
-router.get("/", add);
+// Route to get a list of offers
+router.get("/", browse);
+
+router.post("/", hashPassword, validateSignIn, add);
 
 /* ************************************************************************* */
 

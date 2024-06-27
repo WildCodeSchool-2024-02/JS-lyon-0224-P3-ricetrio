@@ -63,7 +63,7 @@ export default function FilmCarousel({
 }
 
 FilmCarousel.propTypes = {
-  films: PropTypes.string.isRequired,
+  films: PropTypes.oneOfType([PropTypes.string, PropTypes.array]).isRequired,
   currentIndex: PropTypes.number.isRequired,
   handleNext: PropTypes.func.isRequired,
   handlePrev: PropTypes.func.isRequired,
