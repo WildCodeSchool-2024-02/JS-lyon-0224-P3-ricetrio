@@ -26,7 +26,7 @@ function CreateFilm() {
 
   const [errors, setErrors] = useState({});
 
-  const handleInput = (event) => {
+  const handleInputCreate = (event) => {
     setValues((prev) => ({
       ...prev,
       [event.target.name]: event.target.value,
@@ -34,7 +34,7 @@ function CreateFilm() {
     setErrors(ValidationFilm(values));
   };
 
-  const handleSubmit = async (event) => {
+  const handleSubmitCreate = async (event) => {
     event.preventDefault();
 
     const validationErrors = ValidationFilm(values);
@@ -63,7 +63,7 @@ function CreateFilm() {
           }),
         });
 
-        if (response.status !== 200) {
+        if (response.status === 200) {
           throw new Error(
             "Erreur lors de la création de la nouvelle fiche de film"
           );
@@ -94,7 +94,7 @@ function CreateFilm() {
       <Form
         method="post"
         className={styles.contactForm}
-        onSubmit={handleSubmit}
+        onSubmit={handleSubmitCreate}
       >
         <div className={styles.formulaire}>
           <h4>Clé du film</h4>
@@ -104,7 +104,7 @@ function CreateFilm() {
               placeholder="Clé du film"
               name="movie_key"
               value={values.movie_key}
-              onChange={handleInput}
+              onChange={handleInputCreate}
             />
             <p className={styles.errorsField}>
               {errors.movie_key !== undefined && (
@@ -119,7 +119,7 @@ function CreateFilm() {
               placeholder="Thien la force tranquille"
               name="title"
               value={values.title}
-              onChange={handleInput}
+              onChange={handleInputCreate}
             />
             <p className={styles.errorsField}>
               {errors.title !== undefined && <span>{errors.title}</span>}
@@ -132,7 +132,7 @@ function CreateFilm() {
               placeholder="Comédie, Drame, Thriller"
               name="genre"
               value={values.genre}
-              onChange={handleInput}
+              onChange={handleInputCreate}
             />
             <p className={styles.errorsField}>
               {errors.genre !== undefined && <span>{errors.genre}</span>}
@@ -146,7 +146,7 @@ function CreateFilm() {
               min="1"
               name="duration"
               value={values.duration}
-              onChange={handleInput}
+              onChange={handleInputCreate}
             />
             <p className={styles.errorsField}>
               {errors.duration !== undefined && <span>{errors.duration}</span>}
@@ -159,7 +159,7 @@ function CreateFilm() {
               placeholder="1982-08-25"
               name="release_date"
               value={values.release_date}
-              onChange={handleInput}
+              onChange={handleInputCreate}
             />
             <p className={styles.errorsField}>
               {errors.release_date !== undefined && (
@@ -174,7 +174,7 @@ function CreateFilm() {
               placeholder="Urssaf est un chat sans poil qui a toujours un air malheureux parce qu'il a toujours froid."
               name="overview"
               value={values.overview}
-              onChange={handleInput}
+              onChange={handleInputCreate}
             />
             <p className={styles.errorsField}>
               {errors.overview !== undefined && <span>{errors.overview}</span>}
@@ -187,7 +187,7 @@ function CreateFilm() {
               placeholder="Kana Mutagorou"
               name="movie_director"
               value={values.movie_director}
-              onChange={handleInput}
+              onChange={handleInputCreate}
             />
             <p className={styles.errorsField}>
               {errors.movie_director !== undefined && (
@@ -202,7 +202,7 @@ function CreateFilm() {
               placeholder="https://image.tmdb.org/t/p/w500/7nrQxtiRjbJYnWpAhDsGieoaDfT.jpg"
               name="poster_link"
               value={values.poster_link}
-              onChange={handleInput}
+              onChange={handleInputCreate}
             />
             <p className={styles.errorsField}>
               {errors.poster_link !== undefined && (
@@ -217,7 +217,7 @@ function CreateFilm() {
               placeholder="EMq7B85H5D0"
               name="key_trailer"
               value={values.key_trailer}
-              onChange={handleInput}
+              onChange={handleInputCreate}
             />
             <p className={styles.errorsField}>
               {errors.key_trailer !== undefined && (
@@ -232,7 +232,7 @@ function CreateFilm() {
               placeholder="https://www.youtube.com/watch?v=EMq7B85H5D0"
               name="trailer_url"
               value={values.trailer_url}
-              onChange={handleInput}
+              onChange={handleInputCreate}
             />
             <p className={styles.errorsField}>
               {errors.trailer_url !== undefined && (
@@ -247,7 +247,7 @@ function CreateFilm() {
               placeholder="0 (FALSE) 1(TRUE)"
               name="freemium"
               value={values.freemium}
-              onChange={handleInput}
+              onChange={handleInputCreate}
             />
             <p className={styles.errorsField}>
               {errors.freemium !== undefined && <span>{errors.freemium}</span>}
@@ -260,7 +260,7 @@ function CreateFilm() {
               placeholder="https://image.tmdb.org/t/p/w500/7nrQxtiRjbJYnWpAhDsGieoaDfT.jpg"
               name="background_img"
               value={values.background_img}
-              onChange={handleInput}
+              onChange={handleInputCreate}
             />
             <p className={styles.errorsField}>
               {errors.background_img !== undefined && (
