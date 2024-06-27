@@ -4,6 +4,7 @@ import { createBrowserRouter, RouterProvider } from "react-router-dom";
 import App from "./App";
 import Signin from "./pages/SignIn/Signin";
 import Inscription from "./pages/SignUp/Inscription";
+import Profile from "./pages/Profile/Profile";
 import Homepage from "./pages/Homepage/Homepage";
 import VideoPage from "./pages/Videopage/Videopage";
 import AdminPage from "./pages/AdminPage/AdminPage";
@@ -28,6 +29,10 @@ const router = createBrowserRouter([
       {
         path: "/inscription",
         element: <Inscription />,
+      },
+      {
+        path: "/profile",
+        element: <Profile />,
       },
       {
         path: "/bandeannonce/:id",

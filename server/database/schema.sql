@@ -10,7 +10,7 @@ CREATE TABLE film (
   poster_link VARCHAR(155) NOT NULL,
   key_trailer VARCHAR(80) NOT NULL,
   trailer_url VARCHAR(155) NOT NULL,
-  freenium BOOLEAN NOT NULL,
+  freemium BOOLEAN NOT NULL,
   background_img VARCHAR(155) NOT NULL
 );
 
@@ -18,5 +18,5 @@ CREATE TABLE user(
   id INT UNSIGNED PRIMARY KEY AUTO_INCREMENT NOT NULL,
   pseudo VARCHAR(30) NOT NULL,
   email VARCHAR(255) NOT NULL,
-  password  VARCHAR(20) NOT NULL
+  password  VARCHAR(255) NOT NULL
 );

@@ -31,8 +31,8 @@ class FilmSeeder extends AbstractSeeder {
         poster_link: row[8],
         key_trailer: row[9],
         trailer_url: row[10],
-        freenium: row[11],
-        background_img: row[12],
+        freemium: row[11],
+        background_img: [12],
       };
 
       this.insert(films);
