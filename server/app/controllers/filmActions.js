@@ -26,7 +26,7 @@ const read = async (req, res) => {
     }
     res.json(film);
   } catch (error) {
-    res.status(500).json({ error: "Failed to add film" });
+    res.status(400).json({ error: "Failed to add film" });
   }
 };
 
