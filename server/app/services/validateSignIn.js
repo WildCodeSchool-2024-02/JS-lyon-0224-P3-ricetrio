@@ -6,7 +6,7 @@ const signInSchema = Joi.object({
   pseudo: Joi.string().min(3).max(20).required(),
   email: Joi.string().email().required(),
   password: Joi.string().pattern(passwordPattern).required(),
-  hashedPassword: Joi.string().required(), // Cette ligne si "hashedPassword" doit être validé
+  hashedPassword: Joi.string().required(),
 });
 
 const validateSignIn = (req, res, next) => {
@@ -16,7 +16,7 @@ const validateSignIn = (req, res, next) => {
     console.info("201", req.body);
     next();
   } else {
-    console.info("Ca ne marche pas !");
+    console.info("Les champs ne sont pas correctement remplis");
     res.status(400).json({ validationErrors: error.details });
   }
 };

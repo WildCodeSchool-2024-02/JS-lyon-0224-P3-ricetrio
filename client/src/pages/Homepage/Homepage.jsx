@@ -1,12 +1,12 @@
 import NavBar from "../../components/Navbar/Navbar";
-import MainCarousel from "../../components/Home/MainCarousel";
 import FilmSection from "../../components/Home/FilmSection";
+import SecondCarousel from "../../components/Home/SecondCarousel";
 
 function Homepage() {
   return (
     <div>
       <NavBar />
-      <MainCarousel />
+      <SecondCarousel />
       <FilmSection />
     </div>
   );

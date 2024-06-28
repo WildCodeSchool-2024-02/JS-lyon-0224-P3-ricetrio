@@ -1,4 +1,5 @@
 import { useCallback, useEffect, useState } from "react";
+import { useLoaderData } from "react-router-dom";
 import useEmblaCarousel from "embla-carousel-react";
 import Autoplay from "embla-carousel-autoplay";
 import styles from "./secondCarousel.module.css";
@@ -12,7 +13,7 @@ export default function SecondCarousel() {
     playOnInit: true,
   };
 
-  const [emblaRef, emblaApi] = useEmblaCarousel({ loop: false }, [
+  const [emblaRef, slider] = useEmblaCarousel({ loop: false }, [
     Autoplay(autoplayOptions),
   ]);
 
@@ -21,28 +22,37 @@ export default function SecondCarousel() {
   const [nextBtnEnabled, setNextBtnEnabled] = useState(false);
 
   const onSelect = useCallback(() => {
-    if (!emblaApi) return;
-    setSelectedIndex(emblaApi.selectedScrollSnap());
-    setPrevBtnEnabled(emblaApi.canScrollPrev());
-    setNextBtnEnabled(emblaApi.canScrollNext());
-  }, [emblaApi]);
+    if (!slider === true) return;
+    setSelectedIndex(slider.selectedScrollSnap());
+    setPrevBtnEnabled(slider.canScrollPrev());
+    setNextBtnEnabled(slider.canScrollNext());
+  }, [slider]);
 
   useEffect(() => {
-    if (!emblaApi) return;
-    emblaApi.on("select", onSelect);
+    if (!slider === true) return;
+    slider.on("select", onSelect);
     onSelect();
-  }, [emblaApi, onSelect, selectedIndex]);
+  }, [slider, onSelect, selectedIndex]);
 
   const scrollPrev = useCallback(() => {
-    if (emblaApi) emblaApi.scrollPrev();
-  }, [emblaApi]);
+    if (slider !== false) slider.scrollPrev();
+  }, [slider]);
 
   const scrollNext = useCallback(() => {
-    if (emblaApi) emblaApi.scrollNext();
-  }, [emblaApi]);
+    if (slider !== false) slider.scrollNext();
+  }, [slider]);
+  const allFilms = useLoaderData();
 
+  if (allFilms === undefined) {
+    return <p>Chargement...</p>;
+  }
   return (
     <div className={styles.principalContainer}>
+      <img
+        className={styles.logoEmbla}
+        src="https://images3.alphacoders.com/133/thumb-1920-1332803.png"
+        alt=""
+      />
       <div className={styles.embla} ref={emblaRef}>
         <div className={styles.embla__container}>
           <div className={styles.embla_slide}>

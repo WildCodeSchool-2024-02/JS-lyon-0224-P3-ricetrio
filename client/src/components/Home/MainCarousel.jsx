@@ -50,7 +50,10 @@ export default function MainCarousel() {
 
   return (
     <div className={styles.mainCarouselContainer}>
-      zz
+      <img
+        src="https://www.embla-carousel.com/static/embla-logo-dark-theme-blur-dd6671f5992e7089fd82e1f04db7370e.svg"
+        alt=""
+      />
       <div className={styles.carouselContainer}>
         <div className={styles.main} ref={mainRef}>
           <div className={styles.main__container}>

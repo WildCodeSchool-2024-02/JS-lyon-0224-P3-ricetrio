@@ -1,53 +1,39 @@
 .principalContainer {
   display: flex;
   justify-content: center;
-  background-color: green;
+  /* position: relative; */
+  width: 100%;
+  height: 100%;
 }
 
-/* .embla {
-  overflow: hidden;
-  background-color: blue;
-  max-width: 450px;
-} */
-
+.logoEmbla {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  z-index: 1;
+  opacity: 0.5; /* Ajustez l'opacité selon vos besoins */
+  pointer-events: none; /* Pour que l'image ne bloque pas les interactions avec le carousel */
+}
 .embla {
-  max-width: 48rem;
-  margin: auto;
-  --slide-height: 19rem;
-  --slide-spacing: 1rem;
-  --slide-size: 80%;
+  overflow: hidden;
+  max-width: 450px;
+  position: relative;
+  z-index: 2;
 }
-
-/* .embla__container {
-  display: flex;
-  background-color: yellow;
-} */
 
 .embla__container {
-  backface-visibility: hidden;
   display: flex;
-  touch-action: pan-y pinch-zoom;
-  margin-left: calc(var(--slide-spacing) * -1);
 }
 
-/* .embla__slide {
+.embla__slide {
   flex: 0 0 100%;
   min-width: 0;
   height: 250px;
-} */
-
-.embla__slide {
-  flex: 0 0 var(--slide-size);
-  min-width: 0;
-  padding-left: var(--slide-spacing);
 }
 
-/* .embla > img {
+.embla > img {
   height: 100%;
-} */
-
-.carouselIMg {
-  height: 30%;
 }
 
 .buttonsCarousel {
