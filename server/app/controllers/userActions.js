@@ -40,12 +40,13 @@ const add = async (req, res, next) => {
   try {
     // Hash the password before creating the user
     const hashedPassword = await argon2.hash(user.password);
-    user.password = hashedPassword; // Replace the plain text password with the hashed password
+    // Replace the plain text password with the hashed password
+    user.password = hashedPassword;
 
     // Create a new user with the hashed password
     const insertId = await tables.user.create(user);
 
-    res.status(201).json(insertId); // Respond with the created user's ID
+    res.status(201).json({ insertId }); // Respond with the created user's ID
   } catch (err) {
     console.error("Error in add function:", err);
     res.status(500).json();

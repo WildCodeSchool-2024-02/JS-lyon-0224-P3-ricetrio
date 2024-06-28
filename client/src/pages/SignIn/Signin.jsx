@@ -9,6 +9,7 @@ export default function Signin() {
     pseudo: "",
     password: "",
   });
+
   console.log(loginInfos);
   // Hook pour la navigation
   const navigate = useNavigate();
@@ -21,7 +22,10 @@ export default function Signin() {
   const handleLogin = async (e) => {
     console.log("toto");
     e.preventDefault();
-
+    if (!loginInfos.pseudo || !loginInfos.password) {
+      console.error("Pseudo and password must be non-empty strings");
+      return;
+    }
     try {
       // Appel à l'API pour demander une connexion
       const response = await fetch(
@@ -86,11 +90,10 @@ export default function Signin() {
                 />
               </div>
             </div>
-            <Link to="/profile">
-              <button type="submit">
-                <h3>Connexion</h3>
-              </button>
-            </Link>
+
+            <button type="submit">
+              <h3>Connexion</h3>
+            </button>
           </form>
           <div className={styles.textUnderButton}>
             <p className={styles.underButton}>
