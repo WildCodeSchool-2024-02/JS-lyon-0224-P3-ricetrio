@@ -27,9 +27,8 @@ const login = async (req, res, next) => {
     );
 
     if (verified === true) {
-      // Respond with the user and a signed token in JSON format (but without the hashed password)
       delete user[0].hashed_password;
-      // res.status(201).json({ id: user.id });
+
       const token = await jwt.sign(
         { sub: user.id, isAdmin: user.is_admin },
         process.env.APP_SECRET,
@@ -51,7 +50,6 @@ const login = async (req, res, next) => {
       res.sendStatus(422);
     }
   } catch (err) {
-    // Pass any errors to the error-handling middleware
     next(err);
   }
 };
