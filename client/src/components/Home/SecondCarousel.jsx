@@ -1,9 +1,11 @@
+// src/components/SecondCarousel.js
 import { useCallback, useEffect, useState } from "react";
+import PropTypes from "prop-types"; // Importez PropTypes depuis 'prop-types'
 import useEmblaCarousel from "embla-carousel-react";
 import Autoplay from "embla-carousel-autoplay";
 import styles from "./secondCarousel.module.css";
 
-export default function SecondCarousel() {
+export default function SecondCarousel({ films }) {
   const autoplayOptions = {
     delay: 2000,
     stopOnInteraction: false,
@@ -17,14 +19,10 @@ export default function SecondCarousel() {
   ]);
 
   const [selectedIndex, setSelectedIndex] = useState(0);
-  const [prevBtnEnabled, setPrevBtnEnabled] = useState(false);
-  const [nextBtnEnabled, setNextBtnEnabled] = useState(false);
 
   const onSelect = useCallback(() => {
     if (!emblaApi) return;
     setSelectedIndex(emblaApi.selectedScrollSnap());
-    setPrevBtnEnabled(emblaApi.canScrollPrev());
-    setNextBtnEnabled(emblaApi.canScrollNext());
   }, [emblaApi]);
 
   useEffect(() => {
@@ -33,106 +31,47 @@ export default function SecondCarousel() {
     onSelect();
   }, [emblaApi, onSelect, selectedIndex]);
 
-  const scrollPrev = useCallback(() => {
-    if (emblaApi) emblaApi.scrollPrev();
-  }, [emblaApi]);
-
-  const scrollNext = useCallback(() => {
-    if (emblaApi) emblaApi.scrollNext();
-  }, [emblaApi]);
-
   return (
-    <div className={styles.principalContainer}>
-      <img
-        className={styles.logoEmbla}
-        src="https://images7.alphacoders.com/133/thumb-1920-1330715.png"
-        alt=""
-      />
-      <div className={styles.embla} ref={emblaRef}>
-        <div className={styles.embla__container}>
-          <div className={styles.embla_slide}>
-            <img
-              className={styles.carouselIMg}
-              src="https://www.posters.fr/media/catalog/product/cache/cb3faf85ecb1e071fdba48f981c86454/p/p/pp34925.jpg"
-              alt=""
-            />
+    <div>
+      <div className={styles.principalContainer}>
+        <div className={styles.contenter}>
+          {films.map((film) => (
+            <div className={styles.main_slide} key={film.id}>
+              <div>
+                <img
+                  className={styles.logoEmbla}
+                  src={film.background_img}
+                  alt=""
+                />
+              </div>
+            </div>
+          ))}
+
+          <div className={styles.embla} ref={emblaRef}>
+            <div className={styles.embla__container}>
+              {films.map((film) => (
+                <div className={styles.embla_slide} key={film.id}>
+                  <img
+                    className={styles.carouselIMg}
+                    src={film.poster_link}
+                    alt=""
+                  />
+                </div>
+              ))}
+            </div>
           </div>
-          <div className={styles.embla_slide}>
-            <img
-              className={styles.carouselIMg}
-              src="https://www.posters.fr/media/catalog/product/cache/cb3faf85ecb1e071fdba48f981c86454/p/p/pp34925.jpg"
-              alt=""
-            />
-          </div>
-          <div className={styles.embla_slide}>
-            <img
-              className={styles.carouselIMg}
-              src="https://www.posters.fr/media/catalog/product/cache/cb3faf85ecb1e071fdba48f981c86454/p/p/pp34925.jpg"
-              alt=""
-            />
-          </div>
-          <div className={styles.embla_slide}>
-            <img
-              className={styles.carouselIMg}
-              src="https://www.posters.fr/media/catalog/product/cache/cb3faf85ecb1e071fdba48f981c86454/p/p/pp34925.jpg"
-              alt=""
-            />
-          </div>
-          <div className={styles.embla_slide}>
-            <img
-              className={styles.carouselIMg}
-              src="https://www.posters.fr/media/catalog/product/cache/cb3faf85ecb1e071fdba48f981c86454/p/p/pp34925.jpg"
-              alt=""
-            />
-          </div>
-          <div className={styles.embla_slide}>
-            <img
-              className={styles.carouselIMg}
-              src="https://www.posters.fr/media/catalog/product/cache/cb3faf85ecb1e071fdba48f981c86454/p/p/pp34925.jpg"
-              alt=""
-            />
-          </div>
-          <div className={styles.embla_slide}>
-            <img
-              className={styles.carouselIMg}
-              src="https://www.posters.fr/media/catalog/product/cache/cb3faf85ecb1e071fdba48f981c86454/p/p/pp34925.jpg"
-              alt=""
-            />
-          </div>
-          <div className={styles.embla_slide}>
-            <img
-              className={styles.carouselIMg}
-              src="https://www.posters.fr/media/catalog/product/cache/cb3faf85ecb1e071fdba48f981c86454/p/p/pp34925.jpg"
-              alt=""
-            />
-          </div>
-          <div className={styles.embla_slide}>
-            <img
-              className={styles.carouselIMg}
-              src="https://www.posters.fr/media/catalog/product/cache/cb3faf85ecb1e071fdba48f981c86454/p/p/pp34925.jpg"
-              alt=""
-            />
-          </div>
-        </div>
-        <div className={styles.buttonsCarousel}>
-          <button
-            type="button"
-            className={`${styles.buttonCarousel} ${!prevBtnEnabled ? styles.disabled : ""}`}
-            onClick={scrollPrev}
-            disabled={!prevBtnEnabled}
-          >
-            Prev
-          </button>
-          <button
-            type="button"
-            className={`${styles.buttonCarousel} ${!nextBtnEnabled ? styles.disabled : ""}`}
-            onClick={scrollNext}
-            disabled={!nextBtnEnabled}
-          >
-            Next
-          </button>
         </div>
       </div>
     </div>
   );
 }
+
+SecondCarousel.propTypes = {
+  films: PropTypes.arrayOf(
+    PropTypes.shape({
+      id: PropTypes.number.isRequired,
+      background_img: PropTypes.string.isRequired,
+      poster_link: PropTypes.string.isRequired,
+    })
+  ).isRequired,
+};

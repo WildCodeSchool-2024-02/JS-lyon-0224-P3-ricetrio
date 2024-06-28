@@ -1,25 +1,35 @@
 .principalContainer {
   display: flex;
   justify-content: center;
-  /* position: relative; */
-  width: 100%;
-  height: 100%;
+}
+
+.contenter {
+  overflow: hidden;
+  border: solid red 2px;
+  width: 100vw;
+  display: flex;
+  justify-content: center;
+  margin-top: 150px;
 }
 
 .logoEmbla {
   position: absolute;
-  top: 50%;
+  top: 45%;
   left: 50%;
   transform: translate(-50%, -50%);
   z-index: 1;
   opacity: 0.5; /* Ajustez l'opacité selon vos besoins */
   pointer-events: none; /* Pour que l'image ne bloque pas les interactions avec le carousel */
+  height: 380px;
+
+  border: solid yellow 2px;
 }
+
 .embla {
-  overflow: hidden;
-  max-width: 450px;
-  position: relative;
+  max-width: 150px;
+  /* position: relative; */
   z-index: 2;
+  border: solid yellow 2px;
 }
 
 .embla__container {
@@ -27,42 +37,15 @@
 }
 
 .embla__slide {
-  flex: 0 0 100%;
+  /* flex: 0 0 100%; */
   min-width: 0;
-  height: 250px;
 }
 
 .embla > img {
   height: 100%;
 }
 
-.buttonsCarousel {
-  display: flex;
-  justify-content: center;
-  margin-top: 10px;
-}
-
-.buttonCarousel {
-  background-color: #2b91ad;
-  color: #fff;
-  border: none;
-  padding: 10px 20px;
-  margin: 0 5px;
-  cursor: pointer;
-  font-size: 16px;
-  transition: background-color 0.3s ease;
-  font: "Poppins Regular", sans-serif;
-  border-radius: 10px;
-  cursor: pointer;
-  width: 15%;
-}
-
-.buttonCarousel:hover {
-  background-color: #d3ddea;
-}
-
-.buttonCarousel:disabled,
-.disabled {
-  background-color: #d3ddea;
-  cursor: not-allowed;
+.carouselIMg {
+  height: 200px;
+  margin: 0px 12px 0px 12px;
 }
