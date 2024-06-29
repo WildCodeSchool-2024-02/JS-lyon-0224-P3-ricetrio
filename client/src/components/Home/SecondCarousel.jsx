@@ -5,6 +5,7 @@ import PropTypes from "prop-types";
 import useEmblaCarousel from "embla-carousel-react";
 import Autoplay from "embla-carousel-autoplay";
 import styles from "./secondCarousel.module.css";
+import BackImg from "../../assets/images/backImg2.jpg";
 
 export default function SecondCarousel({ films }) {
   const autoplayOptions = {
@@ -15,7 +16,7 @@ export default function SecondCarousel({ films }) {
     playOnInit: true,
   };
 
-  const [emblaRef, emblaApi] = useEmblaCarousel({ loop: false }, [
+  const [emblaRef, emblaApi] = useEmblaCarousel({ loop: true }, [
     Autoplay(autoplayOptions),
   ]);
 
@@ -38,15 +39,9 @@ export default function SecondCarousel({ films }) {
         <div className={styles.contenter}>
           {films.map((film) => (
             <div className={styles.main_slide} key={film.id}>
-              <div>
-                <Link to={`/bandeannonce/${film.id}/`}>
-                  <img
-                    className={styles.logoEmbla}
-                    src={film.background_img}
-                    alt=""
-                  />
-                </Link>
-              </div>
+              <Link to={`/bandeannonce/${film.id}/`}>
+                <img className={styles.logoEmbla} src={BackImg} alt="" />
+              </Link>
             </div>
           ))}
 

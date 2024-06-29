@@ -3,12 +3,12 @@
   flex-direction: row;
   justify-content: space-between;
   padding-top: 0.5rem;
-  padding-bottom: 1rem;
+
   background-color: black;
 }
 
 .logo {
-  height: 5rem;
+  height: 4rem;
   margin: 1rem;
 }
 
