@@ -5,10 +5,10 @@
 
 .contenter {
   overflow: hidden;
-  border: solid red 2px;
+
   width: 100vw;
   display: flex;
-  justify-content: center;
+  justify-content: left;
   margin-top: 150px;
 }
 
@@ -21,15 +21,12 @@
   opacity: 0.5; /* Ajustez l'opacité selon vos besoins */
   pointer-events: none; /* Pour que l'image ne bloque pas les interactions avec le carousel */
   height: 380px;
-
-  border: solid yellow 2px;
 }
 
 .embla {
   max-width: 150px;
   /* position: relative; */
   z-index: 2;
-  border: solid yellow 2px;
 }
 
 .embla__container {
@@ -46,6 +43,9 @@
 }
 
 .carouselIMg {
-  height: 200px;
+  height: 210px;
   margin: 0px 12px 0px 12px;
+  /* border-radius: 15%; */
+  box-shadow: 1px 1px 3px rgba(255, 255, 255, 0.5);
+  /* border-radius: 30% 70% 70% 30% / 30% 58% 42% 70%; */
 }

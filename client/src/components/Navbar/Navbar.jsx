@@ -1,7 +1,7 @@
 import { Link } from "react-router-dom";
-import Logo from "../../assets/images/logo-prodkat.svg";
-import Search from "../../assets/images/Search.svg";
-import Signin from "../../assets/images/Signin.svg";
+import Logo from "../../assets/images/logo-prodcat-noir.svg";
+import Search from "../../assets/images/Search-blue.svg";
+import Signin from "../../assets/images/Signin-blue.svg";
 import styles from "./Navbar.module.css";
 
 function NavBar() {

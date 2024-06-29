@@ -1,6 +1,7 @@
 // src/components/SecondCarousel.js
 import { useCallback, useEffect, useState } from "react";
-import PropTypes from "prop-types"; // Importez PropTypes depuis 'prop-types'
+import { Link } from "react-router-dom";
+import PropTypes from "prop-types";
 import useEmblaCarousel from "embla-carousel-react";
 import Autoplay from "embla-carousel-autoplay";
 import styles from "./secondCarousel.module.css";
@@ -38,11 +39,13 @@ export default function SecondCarousel({ films }) {
           {films.map((film) => (
             <div className={styles.main_slide} key={film.id}>
               <div>
-                <img
-                  className={styles.logoEmbla}
-                  src={film.background_img}
-                  alt=""
-                />
+                <Link to={`/bandeannonce/${film.id}/`}>
+                  <img
+                    className={styles.logoEmbla}
+                    src={film.background_img}
+                    alt=""
+                  />
+                </Link>
               </div>
             </div>
           ))}
@@ -51,11 +54,13 @@ export default function SecondCarousel({ films }) {
             <div className={styles.embla__container}>
               {films.map((film) => (
                 <div className={styles.embla_slide} key={film.id}>
-                  <img
-                    className={styles.carouselIMg}
-                    src={film.poster_link}
-                    alt=""
-                  />
+                  <Link to={`/bandeannonce/${film.id}/`}>
+                    <img
+                      className={styles.carouselIMg}
+                      src={film.poster_link}
+                      alt=""
+                    />
+                  </Link>
                 </div>
               ))}
             </div>
