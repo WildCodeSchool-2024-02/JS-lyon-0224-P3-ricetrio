@@ -10,7 +10,6 @@ export default function Signin() {
     password: "",
   });
 
-  console.log(loginInfos);
   // Hook pour la navigation
   const navigate = useNavigate();
 
@@ -20,7 +19,6 @@ export default function Signin() {
   };
 
   const handleLogin = async (e) => {
-    console.log("toto");
     e.preventDefault();
     if (!loginInfos.pseudo || !loginInfos.password) {
       console.error("Pseudo and password must be non-empty strings");
@@ -42,7 +40,7 @@ export default function Signin() {
         const auth = await response.json();
 
         setAuth(auth);
-        console.log("Token received and set:", auth);
+        console.info("Token received and set:", auth);
         navigate("/");
       } else {
         // Log des détails de la réponse en cas d'échec
