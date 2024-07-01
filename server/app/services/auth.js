@@ -17,7 +17,7 @@ const hashPassword = async (req, res, next) => {
     const hashedPassword = await argon2.hash(password, hashingOptions);
 
     // Remplacement du mot de passe non haché par le mot de passe haché dans la requête
-    req.body.hashedPassword = hashedPassword;
+    req.body.hashed_password = hashedPassword;
 
     next();
   } catch (err) {

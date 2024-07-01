@@ -10,7 +10,7 @@ class UserSeeder extends AbstractSeeder {
       {
         pseudo: "",
         email: "",
-        password: "",
+        hashed_password: "",
       },
     ];
 
