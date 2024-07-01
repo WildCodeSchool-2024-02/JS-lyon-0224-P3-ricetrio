@@ -6,7 +6,6 @@ const tables = require("../../database/tables");
 
 const login = async (req, res, next) => {
   try {
-    console.info("coucou");
     console.info(req.body);
     console.info(req.body.pseudo);
     // Fetch a specific user from the database based on the provided email
@@ -17,7 +16,6 @@ const login = async (req, res, next) => {
       return;
     }
 
-    console.info("coucou2");
     console.info(user[0].hashed_password);
     console.info(req.body.password);
 
