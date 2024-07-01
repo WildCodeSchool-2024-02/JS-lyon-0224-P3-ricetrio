@@ -12,7 +12,9 @@ function VerifyFreemiumUser() {
           <h3>
             Déjà un compte?
             <Link to="/connexion">
-              <button type="button">Se connecter</button>
+              <button type="button">
+                <h3>Se connecter</h3>
+              </button>
             </Link>
           </h3>
         </div>
@@ -20,7 +22,9 @@ function VerifyFreemiumUser() {
           <h3>
             Nouvel utilisateur ?
             <Link to="/inscription">
-              <button type="button">S'inscrire</button>
+              <button type="button">
+                <h3>S'inscrire</h3>
+              </button>
             </Link>
           </h3>
         </div>

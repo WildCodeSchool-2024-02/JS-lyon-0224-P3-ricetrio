@@ -8,25 +8,31 @@
 
 .verifyContainer > h3 {
   color: grey;
-  font-family: var(--font-regular);
-  font-size: 22px;
-  margin: 0;
+  font-family: var(--font-bold);
+}
+.verifyContainer > div > h3 > a {
+  text-decoration: none;
 }
 
-.verifyContainer > button {
+.verifyContainer > div > h3 > a > button {
   width: 100%;
   background-color: var(--main-color);
   color: white;
-  margin: 8px 0;
+  margin: 20px 0;
   border: none;
   border-radius: 10px;
   cursor: pointer;
 }
 
 .verifyTextContainer {
-  margin: 4rem;
+  margin: 1rem;
 }
 
-.verifyTextContainer > a {
+.verifyContainer > div > h3 > a {
   display: flex;
+  flex-direction: column;
+  flex-wrap: wrap;
+  align-content: center;
+  justify-content: center;
+  align-items: center;
 }

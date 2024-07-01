@@ -120,7 +120,7 @@ export default function Inscription() {
             </div>
 
             <button className={styles.buttonSubmit} type="submit">
-              <p className={styles.inscriptionButton}>Inscription</p>
+              <h3 className={styles.inscriptionButton}>Inscription</h3>
             </button>
           </Form>
 
