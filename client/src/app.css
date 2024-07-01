@@ -24,3 +24,6 @@
   --background-color: white;
   --text-color: Black;
 }
+body {
+  background-color: black;
+}
