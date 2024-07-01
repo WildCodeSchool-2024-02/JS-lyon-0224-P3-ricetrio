@@ -54,15 +54,15 @@ export default function MainCarousel() {
         <div className={styles.main__container}>
           {allFilms.map((film) => (
             <div className={styles.main_slide} key={film.id}>
-              <Link to={`/bandeannonce/${film.id}/`}>
-                <div className={styles.divSize}>
-                  <img
-                    className={styles.poster}
-                    src={film.poster_link}
-                    alt={film.title}
-                  />
-                </div>
-              </Link>
+              {film.freemium === 1 ? (
+                <Link to="/verifyfreemium">
+                  <img src={film.poster_link} alt={film.title} />
+                </Link>
+              ) : (
+                <Link to={`/bandeannonce/${film.id}/`}>
+                  <img src={film.poster_link} alt={film.title} />
+                </Link>
+              )}
             </div>
           ))}
         </div>

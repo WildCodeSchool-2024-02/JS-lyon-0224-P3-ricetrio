@@ -1,0 +1,32 @@
+.verifyContainer {
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.verifyContainer > h3 {
+  color: grey;
+  font-family: var(--font-regular);
+  font-size: 22px;
+  margin: 0;
+}
+
+.verifyContainer > button {
+  width: 100%;
+  background-color: var(--main-color);
+  color: white;
+  margin: 8px 0;
+  border: none;
+  border-radius: 10px;
+  cursor: pointer;
+}
+
+.verifyTextContainer {
+  margin: 4rem;
+}
+
+.verifyTextContainer > a {
+  display: flex;
+}

@@ -9,6 +9,7 @@ import Homepage from "./pages/Homepage/Homepage";
 import VideoPage from "./pages/Videopage/Videopage";
 import AdminPage from "./pages/AdminPage/AdminPage";
 import CreateFilm from "./pages/CreateFilm/CreateFilm";
+import VerifyFreemiumUser from "./pages/Freemium/VerifyFreemiumUser";
 
 const URL = import.meta.env.VITE_API_URL;
 
@@ -48,6 +49,10 @@ const router = createBrowserRouter([
       {
         path: "/creationpagefilm",
         element: <CreateFilm />,
+      },
+      {
+        path: "/verifyfreemium",
+        element: <VerifyFreemiumUser />,
       },
     ],
   },
