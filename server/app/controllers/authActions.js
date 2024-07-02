@@ -35,12 +35,16 @@ const login = async (req, res, next) => {
         }
       );
 
-      console.info("APP_SECRET:", process.env.APP_SECRET);
-      console.info("Generated JWT token:", token);
+      res.cookie("token", token, {
+        httpOnly: true,
+        maxAge: 3600000,
+      });
+
+      delete user.password;
+      delete user.id;
 
       res
         .json({
-          token,
           user,
         })
         .status(200);
