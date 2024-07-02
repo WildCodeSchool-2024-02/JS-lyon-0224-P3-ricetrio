@@ -17,8 +17,8 @@
   left: 50%;
   transform: translate(-50%, -60%);
   z-index: 1;
-  opacity: 0.5; /* Ajustez l'opacité selon vos besoins */
-  pointer-events: none; /* Pour que l'image ne bloque pas les interactions avec le carousel */
+  opacity: 0.5;
+  pointer-events: none;
   min-height: 200px;
   max-width: 100vw;
 }
@@ -43,13 +43,12 @@
 .carouselIMg {
   height: 150px;
   margin: 0px 15px 0px 15px;
-  /* border-radius: 30% 70% 70% 30% / 30% 58% 42% 70%; */
-  transition: 0.3s ease; /* Transition sur transform pour une animation fluide */
+  transition: 0.3s ease;
   transform-origin: border top;
 }
 .carouselIMg:hover {
   transform: scale(1.15);
   box-shadow: 1px 1px 3px rgba(255, 255, 255, 0.5);
-  position: relative; /* Ajouté pour permettre aux images de déborder */
+  position: relative;
   overflow: visible;
 }
