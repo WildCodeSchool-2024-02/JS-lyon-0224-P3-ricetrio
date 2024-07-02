@@ -7,26 +7,26 @@ function VerifyFreemiumUser() {
     <div>
       <NavBar />
       <div className={styles.verifyContainer}>
-        <h4>Continuer à regarder les vidéos Freemium</h4>
+        <p>Continuer à regarder les vidéos Freemium</p>
         <div className={styles.verifyTextContainer}>
-          <h3>
+          <p>
             Déjà un compte?
             <Link to="/connexion">
               <button type="button">
-                <h3>Se connecter</h3>
+                <p>Se connecter</p>
               </button>
             </Link>
-          </h3>
+          </p>
         </div>
         <div className={styles.verifyTextContainer}>
-          <h3>
+          <p>
             Nouvel utilisateur ?
             <Link to="/inscription">
               <button type="button">
-                <h3>S'inscrire</h3>
+                <p>S'inscrire</p>
               </button>
             </Link>
-          </h3>
+          </p>
         </div>
       </div>
     </div>
