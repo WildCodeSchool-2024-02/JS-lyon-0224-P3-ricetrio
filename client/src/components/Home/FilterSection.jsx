@@ -65,7 +65,7 @@ function FilterSection() {
             <div className={styles.filterPosterContainer}>
               {category.map((film) => (
                 <div className={styles.imgContainer} key={film.id}>
-                  <img src={film.background_img} alt={film.title} />
+                  <img src={film.poster_link} alt={film.title} />
                 </div>
               ))}
             </div>

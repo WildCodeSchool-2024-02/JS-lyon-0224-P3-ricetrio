@@ -47,7 +47,11 @@ export default function SecondCarousel({ films }) {
               {films.map((film) => (
                 <div className={styles.embla_slide} key={film.id}>
                   <Link to={`/bandeannonce/${film.id}/`}>
-                    <img className={styles.carouselIMg} src={film.z} alt="" />
+                    <img
+                      className={styles.carouselIMg}
+                      src={film.poster_link}
+                      alt=""
+                    />
                   </Link>
                 </div>
               ))}
