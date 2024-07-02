@@ -1,7 +1,7 @@
 import { Link, useOutletContext } from "react-router-dom";
 import { useState } from "react";
 import styles from "./signin.module.css";
-import Logo from "../../assets/images/logo-prodkat.svg";
+import Logo from "../../assets/images/logo-prodcat-noir.svg";
 
 export default function Signin() {
   const { setAuth } = useOutletContext();

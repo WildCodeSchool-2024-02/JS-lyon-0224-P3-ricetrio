@@ -1,7 +1,7 @@
 import { Form, Link, useNavigate } from "react-router-dom";
 import { useState } from "react";
 import styles from "./inscription.module.css";
-import Logo from "../../assets/images/logo-prodkat.svg";
+import Logo from "../../assets/images/logo-prodcat-noir.svg";
 import Validation from "./InscriptionValidation";
 
 const URL = import.meta.env.VITE_API_URL;
