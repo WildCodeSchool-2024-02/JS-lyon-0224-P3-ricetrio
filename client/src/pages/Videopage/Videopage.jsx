@@ -7,11 +7,45 @@ function VideoPage() {
   if (!allFilms === true) {
     return <p>Chargement...</p>;
   }
+
+  const formatDate = (isoDate) => {
+    const date = new Date(isoDate);
+    const options = { year: "numeric", month: "long", day: "numeric" };
+    return date.toLocaleDateString("fr-FR", options);
+  };
+
   return (
     <div>
       <NavBar />
       <div className={styles.videoPage}>
-        <section className={styles.video}>
+        <div className={styles.title}>
+          <p className={styles.titre}>{allFilms.title}</p>
+        </div>
+        <div className={styles.description}>
+          <div className={styles.poster}>
+            <img
+              src={allFilms.poster_link}
+              alt={allFilms.title}
+              className={styles.affiche}
+            />
+          </div>
+          <div className={styles.info}>
+            <p className={styles.detail}>Description</p>
+            <div className={styles.infoDetail}>
+              <p>Date de sortie : {formatDate(allFilms.release_date)}</p>
+              <p>Durée : {allFilms.duration} minutes</p>
+              <p>Genre : {allFilms.genre}</p>
+              <p>Réalisateur : {allFilms.movie_director}</p>
+            </div>
+          </div>
+        </div>
+
+        <div className={styles.synopsis}>
+          <p className={styles.resume}>Résumé</p>
+          <p className={styles.overview}>{allFilms.overview}</p>
+        </div>
+
+        <div className={styles.video}>
           <iframe
             src={`https://www.youtube.com/embed/${allFilms.key_trailer}`}
             title="YouTube video player"
@@ -19,17 +53,7 @@ function VideoPage() {
             referrerPolicy="strict-origin-when-cross-origin"
             allowFullScreen
           />
-        </section>
-        <h3>{allFilms.title}</h3>
-        <section className={styles.synopsis}>
-          <p>{allFilms.overview}</p>
-        </section>
-        <section className={styles.description}>
-          <p>Date de sortie : {allFilms.release_date}</p>
-          <p>Durée : {allFilms.duration} minutes</p>
-          <p>Genre : {allFilms.genre}</p>
-          <p>Réalisateur : {allFilms.movie_director}</p>
-        </section>
+        </div>
       </div>
     </div>
   );
