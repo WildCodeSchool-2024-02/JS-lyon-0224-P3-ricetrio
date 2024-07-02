@@ -21,7 +21,7 @@ const router = createBrowserRouter([
       {
         path: "/",
         element: <Homepage />,
-        loader: async () => fetch(`${URL}/api/films`),
+        loader: async () => fetch(`${URL}/api/films`)
       },
       {
         path: "/connexion",

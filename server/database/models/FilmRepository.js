@@ -53,6 +53,15 @@ class filmRepository extends AbstractRepository {
     // Execute the query and return the result
     return result.insertId;
   }
+
+  async delete(id) {
+    const [result] = await this.database.query(
+      `delete from ${this.table} where id = ?`,
+      [id]
+    );
+
+    return result;
+  }
 }
 
 module.exports = filmRepository;
