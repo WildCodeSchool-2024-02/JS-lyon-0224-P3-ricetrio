@@ -21,30 +21,24 @@ export default function Signin() {
       console.error("Pseudo and password must be non-empty strings");
       return;
     }
-    try {
-      // Appel à l'API pour demander une connexion
-      const response = await fetch(
-        `${import.meta.env.VITE_API_URL}/api/login`,
-        {
-          method: "post",
-          headers: { "Content-Type": "application/json" },
-          body: JSON.stringify(loginInfos),
-        }
-      );
 
-      // Redirection vers la page de connexion si la création réussit
-      if (response.status === 200) {
-        const auth = await response.json();
+    // Appel à l'API pour demander une connexion
+    const response = await fetch(`${import.meta.env.VITE_API_URL}/api/login`, {
+      method: "post",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify(loginInfos),
+      credentials: "include",
+    });
 
-        setAuth(auth);
-        console.info("Token received and set:", auth);
-      } else {
-        // Log des détails de la réponse en cas d'échec
-        console.info(response);
-      }
-    } catch (err) {
-      // Log des erreurs possibles
-      console.error(err);
+    // Redirection vers la page de connexion si la création réussit
+    if (response.status === 200) {
+      const auth = await response.json();
+
+      setAuth(auth);
+      console.info("Token received and set:", auth);
+    } else {
+      // Log des détails de la réponse en cas d'échec
+      console.info(response);
     }
   };
 
