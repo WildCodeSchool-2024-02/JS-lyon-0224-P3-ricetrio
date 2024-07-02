@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { useLoaderData } from "react-router-dom";
+import { useLoaderData, Link } from "react-router-dom";
 import styles from "./filterSection.module.css";
 
 function FilterSection() {
@@ -65,7 +65,15 @@ function FilterSection() {
             <div className={styles.filterPosterContainer}>
               {category.map((film) => (
                 <div className={styles.imgContainer} key={film.id}>
-                  <img src={film.poster_link} alt={film.title} />
+                  {film.freemium === 1 ? (
+                    <Link to="/verifyfreemium">
+                      <img src={film.poster_link} alt={film.title} />
+                    </Link>
+                  ) : (
+                    <Link to={`/bandeannonce/${film.id}/`}>
+                      <img src={film.poster_link} alt={film.title} />
+                    </Link>
+                  )}
                 </div>
               ))}
             </div>

@@ -1,0 +1,50 @@
+.verifyContainer {
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.verifyContainer > p {
+  color: grey;
+  font-family: var(--font-bold);
+}
+
+.verifyContainer > div > p > a {
+  text-decoration: none;
+}
+
+.verifyContainer > div > p > a > button {
+  width: 100%;
+  background-color: var(--main-color);
+  margin: 20px 0;
+  border: none;
+  border-radius: 10px;
+  cursor: pointer;
+  color: white;
+  font-family: var(--font-bold);
+}
+
+.verifyContainer > div > p > a {
+  display: flex;
+  flex-direction: column;
+  flex-wrap: wrap;
+  align-content: center;
+  justify-content: center;
+  align-items: center;
+}
+
+.verifyContainer > div > p {
+  color: grey;
+  font-family: var(--font-bold);
+}
+
+.verifyTextContainer {
+  margin: 1rem;
+}
+
+.verifyTextContainer > a > button > p {
+  color: grey;
+  font-family: var(--font-bold);
+}
