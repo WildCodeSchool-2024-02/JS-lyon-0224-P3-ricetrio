@@ -13,7 +13,7 @@
 
 .logoEmbla {
   position: absolute;
-  top: 30%;
+  top: 28%;
   left: 50%;
   transform: translate(-50%, -60%);
   z-index: 1;
@@ -32,25 +32,24 @@
   display: flex;
 }
 .embla__slide {
-  /* flex: 0 0 100%; */
+  flex: 10% 10% 100%;
   min-width: 0;
 }
 .embla > img {
-  height: 100%;
+  height: 60%;
   border: solid blue 2px;
 }
 
 .carouselIMg {
   height: 150px;
   margin: 0px 15px 0px 15px;
-  /* border-radius: 15%; */
-
   /* border-radius: 30% 70% 70% 30% / 30% 58% 42% 70%; */
-  transition: transform 0.3s ease; /* Transition sur transform pour une animation fluide */
-  display: block; /* S'assurer que l'image est un élément de bloc */
+  transition: 0.3s ease; /* Transition sur transform pour une animation fluide */
+  transform-origin: border top;
 }
 .carouselIMg:hover {
-  height: 240px;
-  margin: 0px 12px -10px 12px;
+  transform: scale(1.15);
   box-shadow: 1px 1px 3px rgba(255, 255, 255, 0.5);
+  position: relative; /* Ajouté pour permettre aux images de déborder */
+  overflow: visible;
 }

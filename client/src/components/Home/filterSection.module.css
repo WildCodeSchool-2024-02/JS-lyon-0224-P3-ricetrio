@@ -3,12 +3,14 @@
   flex-direction: row;
   justify-content: center;
   margin-bottom: 20px;
+  font-family: var(--font-regular);
 }
 
 .buttonDecade button {
   border-radius: 5px;
   border-style: none;
   margin: 0px 5px 0px 5px;
+  cursor: pointer;
 }
 
 .posterContainer {
@@ -19,7 +21,7 @@
 
 .filterPosterContainer {
   height: 500px;
-  width: 800px;
+  width: 100vw;
   display: flex;
   flex-wrap: wrap;
   justify-content: center;
