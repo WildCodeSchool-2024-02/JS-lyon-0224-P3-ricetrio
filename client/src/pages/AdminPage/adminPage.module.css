@@ -13,9 +13,10 @@
 .posterAdmin {
   width: 200px;
   display: flex;
-
   justify-content: center;
-  flex-direction: row;
+  flex-direction: column;
+  flex-wrap: wrap;
+  align-items: center;
 }
 
 .posterAdmin img {
@@ -29,4 +30,14 @@
   flex-wrap: wrap;
   margin: 10px;
   justify-content: center;
+}
+
+.posterAdmin button {
+  background-color: var(--main-color);
+  color: white;
+  margin: 8px 0;
+  border: none;
+  border-radius: 10px;
+  cursor: pointer;
+  font-family: var(--font-regular);
 }
