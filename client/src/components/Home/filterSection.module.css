@@ -21,11 +21,13 @@
 
 .filterPosterContainer {
   height: 500px;
-  width: 100vw;
+  width: 100%;
   display: flex;
   flex-wrap: wrap;
   justify-content: center;
-  gap: 1rem;
+  gap: 2rem;
+  margin: 0;
+  padding: 0;
 }
 
 .imgContainer {
@@ -33,4 +35,6 @@
 }
 .imgContainer img {
   height: 200px;
+  border-radius: 5px;
+  box-shadow: 1px 1px 3px rgba(255, 255, 255, 0.5);
 }

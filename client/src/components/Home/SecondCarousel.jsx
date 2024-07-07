@@ -5,7 +5,7 @@ import PropTypes from "prop-types";
 import useEmblaCarousel from "embla-carousel-react";
 import Autoplay from "embla-carousel-autoplay";
 import styles from "./secondCarousel.module.css";
-import BackImg from "../../assets/images/backImg2.jpg";
+import BackImg from "../../assets/images/backImg2-black.jpg";
 
 export default function SecondCarousel({ films }) {
   const autoplayOptions = {
@@ -47,11 +47,13 @@ export default function SecondCarousel({ films }) {
               {films.map((film) => (
                 <div className={styles.embla_slide} key={film.id}>
                   <Link to={`/bandeannonce/${film.id}/`}>
-                    <img
-                      className={styles.carouselIMg}
-                      src={film.poster_link}
-                      alt=""
-                    />
+                    <div className={styles.posterContainer}>
+                      <img
+                        className={styles.carouselIMg}
+                        src={film.poster_link}
+                        alt=""
+                      />
+                    </div>
                   </Link>
                 </div>
               ))}
