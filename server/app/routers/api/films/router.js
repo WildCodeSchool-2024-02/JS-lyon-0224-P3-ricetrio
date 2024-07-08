@@ -10,6 +10,7 @@ const router = express.Router();
 const {
   browse,
   read,
+  edit,
   add,
   destroy,
 } = require("../../../controllers/filmActions");
@@ -19,6 +20,8 @@ router.get("/", browse);
 
 // Route to get a specific item by ID
 router.get("/:id", read);
+
+router.put("/:id", edit);
 
 router.post("/", add);
 
