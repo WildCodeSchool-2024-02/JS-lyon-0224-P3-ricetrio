@@ -1,10 +1,11 @@
-import { Link, useOutletContext } from "react-router-dom";
+import { Link, useOutletContext, useNavigate } from "react-router-dom";
 import { useState } from "react";
 import styles from "./signin.module.css";
 import Logo from "../../assets/images/logo-prodcat-noir.svg";
 
 export default function Signin() {
   const { setAuth } = useOutletContext();
+  const navigate = useNavigate(); // Ajout de la navigation pour rediriger
   const [loginInfos, setLoginInfos] = useState({
     pseudo: "",
     password: "",
@@ -36,6 +37,14 @@ export default function Signin() {
 
       setAuth(auth);
       console.info("Token received and set:", auth);
+
+      // Vérifier le rôle de l'utilisateur et rediriger en conséquence
+      if (loginInfos.pseudo === "Admin") {
+        // Vérification du rôle
+        navigate("/admin"); // Redirige vers la page admin si l'utilisateur est un admin
+      } else {
+        navigate("/"); // Redirige vers la page d'accueil sinon
+      }
     } else {
       // Log des détails de la réponse en cas d'échec
       console.info(response);

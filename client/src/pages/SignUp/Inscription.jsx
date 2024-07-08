@@ -13,6 +13,7 @@ export default function Inscription() {
     pseudo: "",
     email: "",
     password: "",
+    role: "",
   });
 
   const [errors, setErrors] = useState({});
@@ -42,13 +43,20 @@ export default function Inscription() {
             pseudo: values.pseudo,
             email: values.email,
             password: values.password,
+            role: values.admin,
           }),
         });
         if (response.status === 200) {
           throw new Error("Erreur lors de l'inscription");
         }
+        const userData = await response.json();
 
-        navigate("/admin");
+        // Vérifiez le rôle de l'utilisateur
+        if (userData.role === "admin") {
+          navigate("/admin"); // Redirige vers la page admin si l'utilisateur est un admin
+        } else {
+          navigate("/"); // Redirige vers la page d'accueil sinon
+        }
       } catch (err) {
         console.error("Erreur lors de la requête d'inscription:", err);
       }

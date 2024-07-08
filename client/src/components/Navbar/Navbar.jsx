@@ -21,9 +21,6 @@ function NavBar() {
             className={styles.profile}
           />
         </Link>
-        <Link to="/admin">
-          <span>Admin</span>
-        </Link>
       </div>
     </div>
   );
