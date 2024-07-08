@@ -17,43 +17,45 @@ function VideoPage() {
   return (
     <div>
       <NavBar />
-      <div className={styles.videoPage}>
-        <div className={styles.title}>
-          <p className={styles.titre}>{allFilms.title}</p>
-        </div>
-        <div className={styles.description}>
-          <div className={styles.poster}>
-            <img
-              src={allFilms.poster_link}
-              alt={allFilms.title}
-              className={styles.affiche}
-            />
-          </div>
-          <div className={styles.info}>
-            <p className={styles.detail}>Description</p>
-            <div className={styles.infoDetail}>
-              <p>Date de sortie : {formatDate(allFilms.release_date)}</p>
-              <p>Durée : {allFilms.duration} minutes</p>
-              <p>Genre : {allFilms.genre}</p>
-              <p>Réalisateur : {allFilms.movie_director}</p>
+      <div className={styles.page}>
+        <div className={styles.videoPage}>
+          <div className={styles.blocInfo}>
+            <div className={styles.title}>
+              <p className={styles.titre}>{allFilms.title}</p>
+              <div className={styles.text}>
+                <p className={styles.resume}>{allFilms.overview}</p>
+              </div>
+              <div className={styles.timeDate}>
+                <p className={styles.duree}>{allFilms.duration} minutes</p>
+                <p className={styles.date}>
+                  {formatDate(allFilms.release_date)}
+                </p>
+              </div>
+              <p className={styles.genre}>{allFilms.genre}</p>
+              <p className={styles.real}>
+                Réalisateur : {allFilms.movie_director}
+              </p>
+              <p className={styles.annonce}>Découvrir la bande annonce</p>
             </div>
           </div>
-        </div>
 
-        <div className={styles.synopsis}>
-          <p className={styles.resume}>Résumé</p>
-          <p className={styles.overview}>{allFilms.overview}</p>
+          <div className={styles.blocImage}>
+            <img
+              src={allFilms.background_img}
+              alt={allFilms.title}
+              className={styles.fond}
+            />
+          </div>
         </div>
-
-        <div className={styles.video}>
-          <iframe
-            src={`https://www.youtube.com/embed/${allFilms.key_trailer}`}
-            title="YouTube video player"
-            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
-            referrerPolicy="strict-origin-when-cross-origin"
-            allowFullScreen
-          />
-        </div>
+      </div>
+      <div className={styles.video}>
+        <iframe
+          src={`https://www.youtube.com/embed/${allFilms.key_trailer}`}
+          title="YouTube video player"
+          allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+          referrerPolicy="strict-origin-when-cross-origin"
+          allowFullScreen
+        />
       </div>
     </div>
   );
