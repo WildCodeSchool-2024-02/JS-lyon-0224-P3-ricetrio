@@ -10,6 +10,7 @@ import VideoPage from "./pages/Videopage/Videopage";
 import AdminPage from "./pages/AdminPage/AdminPage";
 import CreateFilm from "./pages/CreateFilm/CreateFilm";
 import VerifyFreemiumUser from "./pages/Freemium/VerifyFreemiumUser";
+import EditFilm from "./pages/AdminPage/EditFilm";
 
 const URL = import.meta.env.VITE_API_URL;
 
@@ -40,6 +41,10 @@ const router = createBrowserRouter([
         element: <VideoPage />,
         loader: async ({ params }) =>
           fetch(`${import.meta.env.VITE_API_URL}/api/films/${params.id}`),
+      },
+      {
+        path: "/bandeannonce/:id/edit",
+        element: <EditFilm />,
       },
       {
         path: "/admin",

@@ -30,6 +30,24 @@ const read = async (req, res) => {
   }
 };
 
+// The E of BREAD - Edit (Update) operation
+const edit = async (req, res, next) => {
+  // Extract the item data from the request body
+  const films = req.body;
+
+  try {
+    // Update the item into the database
+    const updatedFilms = await tables.film.update(films.title, 2);
+
+    // Respond with HTTP 201 (OK) and the response data
+    res.status(200).json({ updatedFilms });
+  } catch (err) {
+    // Pass any errors to the error-handling middleware
+    next(err);
+  }
+};
+
+// The A of BREAD - Add (Create) operation
 const add = async (req, res, next) => {
   try {
     const filmAdd = req.body;
@@ -65,5 +83,6 @@ module.exports = {
   browse,
   read,
   add,
+  edit,
   destroy,
 };
