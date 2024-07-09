@@ -9,6 +9,9 @@ function EditFilm() {
 
   const [values, setValues] = useState({
     title: "",
+    genre: "",
+    duration: "",
+    overview: "",
     id: "",
   });
 
@@ -19,7 +22,10 @@ function EditFilm() {
       fetch(`${api}/api/films/${id}`) // Fetch the film with a given id
         .then((response) => response.json())
         .then((data) => {
-          setValues({ title: data.title }); // Replace values from the empty form by values from the film we just got
+          setValues({ 
+            title: data.title,
+            genre: data.genre,
+           }); // Replace values from the empty form by values from the film we just got
         })
         .catch((error) => console.error("Error fetching the film:", error));
     }
@@ -58,6 +64,12 @@ function EditFilm() {
         type="text"
         name="title"
         value={values.title}
+        onChange={handleUpdateForm}
+      />
+      <input
+        type="text"
+        name="genre"
+        value={values.genre}
         onChange={handleUpdateForm}
       />
       <button type="submit">
