@@ -18,6 +18,10 @@ const authRouter = require("./auth/router");
 
 router.use("/login", authRouter);
 
+// const adminRouter = require("./admin/router");
+
+// router.use("/admin", adminRouter);
+
 /* ************************************************************************* */
 
 module.exports = router;

@@ -11,6 +11,7 @@ class UserSeeder extends AbstractSeeder {
         pseudo: "",
         email: "",
         hashed_password: "",
+        role: "",
       },
     ];
 
