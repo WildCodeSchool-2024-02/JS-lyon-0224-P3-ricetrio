@@ -37,7 +37,7 @@ const edit = async (req, res, next) => {
 
   try {
     // Update the item into the database
-    const updatedFilms = await tables.film.update(films.title, 2);
+    const updatedFilms = await tables.film.update(films.title, films.genre, 2);
 
     // Respond with HTTP 201 (OK) and the response data
     res.status(200).json({ updatedFilms });

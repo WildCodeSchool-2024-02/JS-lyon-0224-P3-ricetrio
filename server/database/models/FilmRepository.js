@@ -54,22 +54,16 @@ class filmRepository extends AbstractRepository {
     return result.insertId;
   }
 
-  async update(title, id) {
+  async update(title, genre, id) {
     const [result] = await this.database.query(
-      `update ${this.table} SET title= ? WHERE id = ?;`,
+      `update ${this.table} SET 
+      title= ?, 
+      genre= ?
+      WHERE id = ?;`,
       [
         title,
+        genre,
         id,
-        // films.genre,
-        // films.duration,
-        // films.release_date,
-        // films.overview,
-        // films.movie_director,
-        // films.poster_link,
-        // films.key_trailer,
-        // films.trailer_url,
-        // films.freemium,
-        // films.background_img,
       ]
     );
     return result;
