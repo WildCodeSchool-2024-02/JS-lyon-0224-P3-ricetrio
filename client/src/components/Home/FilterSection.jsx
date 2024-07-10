@@ -1,10 +1,11 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { useLoaderData, Link } from "react-router-dom";
 import styles from "./filterSection.module.css";
 
 function FilterSection() {
   const allFilms = useLoaderData();
   const [category, setCategory] = useState(allFilms);
+  const [isMobile, setIsMobile] = useState(window.innerWidth <= 768);
 
   const filterFilmsByDecade = (films, startYear, endYear) =>
     films.filter((film) => {
@@ -31,52 +32,74 @@ function FilterSection() {
       setCategory(filterFilmsByDecade(allFilms, 1970, 1979));
     }
   };
+  useEffect(() => {
+    const handleResize = () => {
+      setIsMobile(window.innerWidth <= 768);
+    };
 
+    window.addEventListener("resize", handleResize);
+
+    return () => {
+      window.removeEventListener("resize", handleResize);
+    };
+  }, []);
   return (
     <div>
       <section>
         <div>
-          <h2>React Filter</h2>
-
-          <div className={styles.buttonDecade}>
-            <button type="button" value="All" onClick={handleBtns}>
-              All
-            </button>
-            <button type="button" value="1970s" onClick={handleBtns}>
-              1970s
-            </button>
-            <button type="button" value="1980s" onClick={handleBtns}>
-              1980s
-            </button>
-            <button type="button" value="1990s" onClick={handleBtns}>
-              1990s
-            </button>
-            <button type="button" value="2000s" onClick={handleBtns}>
-              2000s
-            </button>
-            <button type="button" value="2010s" onClick={handleBtns}>
-              2010s
-            </button>
-            <button type="button" value="2020s" onClick={handleBtns}>
-              2020s
-            </button>
-          </div>
-          <div className={styles.posterContainer}>
-            <div className={styles.filterPosterContainer}>
-              {category.map((film) => (
-                <div className={styles.imgContainer} key={film.id}>
-                  {film.freemium === 1 ? (
-                    <Link to="/verifyfreemium">
-                      <img src={film.poster_link} alt={film.title} />
-                    </Link>
-                  ) : (
-                    <Link to={`/bandeannonce/${film.id}/`}>
-                      <img src={film.poster_link} alt={film.title} />
-                    </Link>
-                  )}
-                </div>
-              ))}
+          {isMobile === true ? (
+            <div className={styles.listeDeroulante}>
+              <select onChange={handleBtns}>
+                <option value="All">Toutes les années</option>
+                <option value="1970s">1970s</option>
+                <option value="1980s">1980s</option>
+                <option value="1990s">1990s</option>
+                <option value="2000s">2000s</option>
+                <option value="2010s">2010s</option>
+                <option value="2020s">2020s</option>
+              </select>
             </div>
+          ) : (
+            <div className={styles.buttonDecade}>
+              <button type="button" value="All" onClick={handleBtns}>
+                <p className={styles.buttonTitle}>Toutes les années</p>
+              </button>
+              <button type="button" value="1970s" onClick={handleBtns}>
+                <p className={styles.buttonTitle}>Les années 1970s</p>
+              </button>
+              <button type="button" value="1980s" onClick={handleBtns}>
+                <p className={styles.buttonTitle}>Les années 1980s</p>
+              </button>
+              <button type="button" value="1990s" onClick={handleBtns}>
+                <p className={styles.buttonTitle}>Les années 1990s</p>
+              </button>
+              <button type="button" value="2000s" onClick={handleBtns}>
+                <p className={styles.buttonTitle}>Les années 2000s</p>
+              </button>
+              <button type="button" value="2010s" onClick={handleBtns}>
+                <p className={styles.buttonTitle}>Les années 2010s</p>
+              </button>
+              <button type="button" value="2020s" onClick={handleBtns}>
+                <p className={styles.buttonTitle}>Les années 2020s</p>
+              </button>
+            </div>
+          )}
+        </div>
+        <div className={styles.posterContainer}>
+          <div className={styles.filterPosterContainer}>
+            {category.map((film) => (
+              <div className={styles.imgContainer} key={film.id}>
+                {film.freemium === 1 ? (
+                  <Link to="/verifyfreemium">
+                    <img src={film.poster_link} alt={film.title} />
+                  </Link>
+                ) : (
+                  <Link to={`/bandeannonce/${film.id}/`}>
+                    <img src={film.poster_link} alt={film.title} />
+                  </Link>
+                )}
+              </div>
+            ))}
           </div>
         </div>
       </section>
