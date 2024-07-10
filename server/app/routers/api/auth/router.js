@@ -10,7 +10,6 @@ const router = express.Router();
 const { login } = require("../../../controllers/authActions");
 const { read } = require("../../../controllers/userActions");
 const { verifyToken } = require("../../../services/auth");
-// const checkAdminRole = require("../../../services/checkAdminRole");
 
 router.post("/", login);
 router.get("/:id", verifyToken, read);

@@ -6,7 +6,7 @@ function EditFilm() {
   const api = import.meta.env.VITE_API_URL;
   const navigate = useNavigate();
   const { id } = useParams();
-  const editMode = id !== undefined; // Determine edit mode based on the presence of an id
+  const editMode = id !== undefined;
 
   const [newFilm, setNewFilm] = useState({
     title: "",
@@ -24,7 +24,7 @@ function EditFilm() {
   });
 
   useEffect(() => {
-    if (editMode) {
+    if (editMode !== undefined) {
       fetch(`${api}/api/films/${id}`)
         .then((response) => response.json())
         .then((data) => {
@@ -63,7 +63,7 @@ function EditFilm() {
         body: JSON.stringify(newFilm),
       });
 
-      if (response.ok) {
+      if (response.ok === true) {
         navigate(`/bandeannonce/${id}`);
       } else {
         console.error(`Error: Received status code ${response.status}`);

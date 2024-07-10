@@ -45,16 +45,16 @@ export default function Inscription() {
             role: values.role,
           }),
         });
-        if (!response.ok) {
+        if (response.status === 200) {
           throw new Error("Erreur lors de l'inscription");
         }
         const userData = await response.json();
 
         // Vérifiez le rôle de l'utilisateur
         if (userData.role === "admin") {
-          navigate("/admin"); // Redirige vers la page admin si l'utilisateur est un admin
+          navigate("/admin");
         } else {
-          navigate("/"); // Redirige vers la page d'accueil sinon
+          navigate("/");
         }
       } catch (err) {
         console.error("Erreur lors de la requête d'inscription:", err);
