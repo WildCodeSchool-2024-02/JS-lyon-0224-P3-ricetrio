@@ -28,7 +28,7 @@ const read = async (req, res, next) => {
       res.json(user);
     }
   } catch (err) {
-    // Pass any errors to the error-handling middleware
+    // Pass any errors to the error-handling middzleware
     next(err);
   }
 };

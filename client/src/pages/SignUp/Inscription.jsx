@@ -23,7 +23,6 @@ export default function Inscription() {
       ...prev,
       [event.target.name]: event.target.value,
     }));
-    setErrors(Validation(values));
   };
 
   const handleSubmit = async (event) => {
@@ -43,7 +42,7 @@ export default function Inscription() {
             pseudo: values.pseudo,
             email: values.email,
             password: values.password,
-            role: values.admin,
+            role: values.role,
           }),
         });
         if (response.status === 200) {
@@ -53,9 +52,9 @@ export default function Inscription() {
 
         // Vérifiez le rôle de l'utilisateur
         if (userData.role === "admin") {
-          navigate("/admin"); // Redirige vers la page admin si l'utilisateur est un admin
+          navigate("/admin");
         } else {
-          navigate("/"); // Redirige vers la page d'accueil sinon
+          navigate("/");
         }
       } catch (err) {
         console.error("Erreur lors de la requête d'inscription:", err);
