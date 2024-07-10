@@ -59,9 +59,6 @@ function AdminPage() {
           <Link to="/creationpagefilm">
             <button type="submit">Ajouter</button>
           </Link>
-          <Link to="/bandeannonce/:id/edit">
-            <button type="submit">Modifier</button>
-          </Link>
         </div>
       </div>
       <div className={styles.posterContainer}>
@@ -75,6 +72,9 @@ function AdminPage() {
             >
               Supprimer
             </button>
+            <Link to={`/bandeannonce/${film.id}/edit`}>
+              <button type="submit">Modifier</button>
+            </Link>
           </div>
         ))}
       </div>

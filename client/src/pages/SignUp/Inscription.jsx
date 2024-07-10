@@ -23,7 +23,6 @@ export default function Inscription() {
       ...prev,
       [event.target.name]: event.target.value,
     }));
-    setErrors(Validation(values));
   };
 
   const handleSubmit = async (event) => {
@@ -43,10 +42,10 @@ export default function Inscription() {
             pseudo: values.pseudo,
             email: values.email,
             password: values.password,
-            role: values.admin,
+            role: values.role,
           }),
         });
-        if (response.status === 200) {
+        if (!response.ok) {
           throw new Error("Erreur lors de l'inscription");
         }
         const userData = await response.json();

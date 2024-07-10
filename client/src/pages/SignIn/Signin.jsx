@@ -39,7 +39,7 @@ export default function Signin() {
       console.info("Token received and set:", auth);
 
       // Vérifier le rôle de l'utilisateur et rediriger en conséquence
-      if (loginInfos.pseudo === "Admin") {
+      if (loginInfos.pseudo === "admin") {
         // Vérification du rôle
         navigate("/admin"); // Redirige vers la page admin si l'utilisateur est un admin
       } else {

@@ -1,0 +1,36 @@
+.editFormContainer {
+  border: solid red 2px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.editForm {
+  border: solid aqua 2px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 500px;
+}
+
+.editInput {
+  border: solid violet 2px;
+  flex-direction: column;
+  max-width: 200px;
+  min-height: 10px;
+  max-height: 500px;
+  resize: both;
+  overflow: auto;
+}
+
+.editTitle {
+  color: var(--main-color);
+  font-family: var(--font-regular);
+  font-size: 20px;
+  font-weight: bold;
+  margin: 0;
+}
+
+.editButton {
+  max-width: 300px;
+}
