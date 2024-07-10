@@ -61,26 +61,61 @@ function FilterSection() {
             </div>
           ) : (
             <div className={styles.buttonDecade}>
-              <button type="button" value="All" onClick={handleBtns}>
-                <p className={styles.buttonTitle}>Toutes les années</p>
+              <button
+                className={styles.buttonTitle}
+                type="button"
+                value="All"
+                onClick={handleBtns}
+              >
+                Toutes les années
               </button>
-              <button type="button" value="1970s" onClick={handleBtns}>
-                <p className={styles.buttonTitle}>Les années 1970s</p>
+              <button
+                className={styles.buttonTitle}
+                type="button"
+                value="1970s"
+                onClick={handleBtns}
+              >
+                Les années 1970s
               </button>
-              <button type="button" value="1980s" onClick={handleBtns}>
-                <p className={styles.buttonTitle}>Les années 1980s</p>
+              <button
+                className={styles.buttonTitle}
+                type="button"
+                value="1980s"
+                onClick={handleBtns}
+              >
+                Les années 1980s
               </button>
-              <button type="button" value="1990s" onClick={handleBtns}>
-                <p className={styles.buttonTitle}>Les années 1990s</p>
+              <button
+                className={styles.buttonTitle}
+                type="button"
+                value="1990s"
+                onClick={handleBtns}
+              >
+                Les années 1990s
               </button>
-              <button type="button" value="2000s" onClick={handleBtns}>
-                <p className={styles.buttonTitle}>Les années 2000s</p>
+              <button
+                className={styles.buttonTitle}
+                type="button"
+                value="2000s"
+                onClick={handleBtns}
+              >
+                Les années 2000s
               </button>
-              <button type="button" value="2010s" onClick={handleBtns}>
-                <p className={styles.buttonTitle}>Les années 2010s</p>
+              <button
+                className={styles.buttonTitle}
+                type="button"
+                value="2010s"
+                onClick={handleBtns}
+              >
+                Les années 2010s
               </button>
-              <button type="button" value="2020s" onClick={handleBtns}>
-                <p className={styles.buttonTitle}>Les années 2020s</p>
+              <button
+                className={styles.buttonTitle}
+                type="button"
+                value="2020s"
+                onClick={handleBtns}
+              >
+                Les années 2020s
               </button>
             </div>
           )}
