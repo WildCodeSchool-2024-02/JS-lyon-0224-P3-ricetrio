@@ -55,8 +55,8 @@ function FilterSection() {
             <div className={styles.listeDeroulante}>
               <select onChange={handleBtns}>
                 <option value="All">Toutes les années</option>
-                <option value="1970s">1970s</option>
-                <option value="1980s">1980s</option>
+                <option value="1970s">Les années 1970s</option>
+                <option value="1980s">Les années 1980s</option>
                 <option value="1990s" disabled={!user}>
                   {`${!user ? "Veuillez vous connecter" : "Les années 1990s"}`}{" "}
                 </option>

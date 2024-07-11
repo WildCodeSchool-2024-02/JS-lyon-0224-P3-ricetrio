@@ -1,5 +1,6 @@
 import { useState, useEffect } from "react";
 import { useParams, useNavigate } from "react-router-dom";
+import styles from "./editFilm.module.css";
 
 function EditFilm() {
   const api = import.meta.env.VITE_API_URL;
@@ -73,98 +74,98 @@ function EditFilm() {
   };
 
   return (
-    <div className="editFormContainer">
-      <form className="editForm" method="put" onSubmit={handleFilms}>
-        <p className="editTitle">Titre</p>
+    <div className={styles.editFormContainer}>
+      <form className={styles.editForm} method="put" onSubmit={handleFilms}>
+        <p className={styles.editTitle}>Titre</p>
         <input
-          className="editInput"
+          className={styles.editInput}
           type="text"
           name="title"
           value={newFilm.title}
           onChange={handleUpdateForm}
         />
-        <p className="editTitle">Genre</p>
+        <p className={styles.editTitle}>Genre</p>
         <input
-          className="editInput"
+          className={styles.editInput}
           type="text"
           name="genre"
           value={newFilm.genre}
           onChange={handleUpdateForm}
         />
-        <p className="editTitle">Durée</p>
+        <p className={styles.editTitle}>Durée</p>
         <input
-          className="editInput"
+          className={styles.editInput}
           type="text"
           name="duration"
           value={newFilm.duration}
           onChange={handleUpdateForm}
         />
-        <p className="editTitle">Date de sortie</p>
+        <p className={styles.editTitle}>Date de sortie</p>
         <input
-          className="editInput"
+          className={styles.editInput}
           type="text"
           name="release_date"
           value={newFilm.release_date}
           onChange={handleUpdateForm}
         />
-        <p className="editTitle">Résumé</p>
+        <p className={styles.editTitle}>Résumé</p>
         <textarea
-          className="editInput"
+          className={styles.editInput}
           type="text"
           name="overview"
           value={newFilm.overview}
           onChange={handleUpdateForm}
         />
-        <p className="editTitle">Producteur</p>
+        <p className={styles.editTitle}>Producteur</p>
         <input
-          className="editInput"
+          className={styles.editInput}
           type="text"
           name="movie_director"
           value={newFilm.movie_director}
           onChange={handleUpdateForm}
         />
-        <p className="editTitle">Affiche du film</p>
+        <p className={styles.editTitle}>Affiche du film</p>
         <input
-          className="editInput"
+          className={styles.editInput}
           type="text"
           name="poster_link"
           value={newFilm.poster_link}
           onChange={handleUpdateForm}
         />
-        <p className="editTitle">Clé du trailer</p>
+        <p className={styles.editTitle}>Clé du trailer</p>
         <input
-          className="editInput"
+          className={styles.editInput}
           type="text"
           name="key_trailer"
           value={newFilm.key_trailer}
           onChange={handleUpdateForm}
         />
-        <p className="editTitle">URL du trailer</p>
+        <p className={styles.editTitle}>URL du trailer</p>
         <input
-          className="editInput"
+          className={styles.editInput}
           type="text"
           name="trailer_url"
           value={newFilm.trailer_url}
           onChange={handleUpdateForm}
         />
-        <p className="editTitle">Freemium</p>
+        <p className={styles.editTitle}>Freemium</p>
         <input
-          className="editInput"
+          className={styles.editInput}
           type="text"
           name="freemium"
           value={newFilm.freemium}
           onChange={handleUpdateForm}
         />
-        <p className="editTitle">Image de fond</p>
+        <p className={styles.editTitle}>Image de fond</p>
         <input
-          className="editInput"
+          className={styles.editInput}
           type="text"
           name="background_img"
           value={newFilm.background_img}
           onChange={handleUpdateForm}
         />
-        <button className="editButton" type="submit">
-          <h3>Sauvegarder les modifications</h3>
+        <button className={styles.editButton} type="submit">
+          <p>Sauvegarder les modifications</p>
         </button>
       </form>
     </div>
