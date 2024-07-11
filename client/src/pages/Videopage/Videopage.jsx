@@ -46,12 +46,12 @@ function VideoPage() {
               <div className={styles.pouce}>
                 <button
                   onClick={handleClickLike}
-                  className={styles.button}
+                  className={styles.buttonLike}
                   type="button"
                 >
                   <img
                     src={like ? LikeBlue : LikeWhite}
-                    alt={like ? "Logo j'aime" : "Logo je n'aime pas"}
+                    alt={like ? "Logo j'aime" : "Logo j'aime pas"}
                     className={styles.like}
                   />{" "}
                 </button>

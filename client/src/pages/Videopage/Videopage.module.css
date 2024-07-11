@@ -52,10 +52,6 @@ p {
   font-weight: 600;
 }
 
-.overview {
-  width: 60%;
-}
-
 .timeDate {
   display: flex;
   flex-direction: row;
@@ -67,7 +63,7 @@ p {
   margin-bottom: 0;
 }
 
-button {
+.buttonLike {
   background: none;
   border: none;
   cursor: pointer;
@@ -93,6 +89,17 @@ button {
   height: 35rem;
 }
 
+@media (max-width: 550px) {
+  .title {
+    max-height: 400px;
+    padding-left: 3rem;
+  }
+
+  .video {
+    padding-top: 6rem;
+  }
+}
+
 @media (max-width: 768px) {
   .page {
     margin: 1rem 0rem 0rem 2rem;
@@ -113,16 +120,12 @@ button {
   }
 
   .title {
-    padding-top: 2.5rem;
+    padding-top: 3rem;
   }
 
   .resume {
     font-size: 14px;
     font-weight: 600;
-  }
-
-  .overview {
-    width: 80%;
   }
 
   .duree,
@@ -153,5 +156,9 @@ button {
 @media (min-width: 1000px) {
   .title {
     padding-left: 10rem;
+  }
+
+  .overview {
+    width: 60%;
   }
 }
