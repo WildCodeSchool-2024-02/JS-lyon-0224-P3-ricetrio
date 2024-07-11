@@ -1,3 +1,4 @@
+// contexts/UserContext.js
 import PropTypes from "prop-types";
 import { createContext, useContext, useMemo } from "react";
 import { useNavigate } from "react-router-dom";
@@ -5,7 +6,7 @@ import useLocalStorage from "../hooks/useLocalStorage";
 
 const UserContext = createContext();
 
-export default function UserProvider({ children }) {
+export function UserProvider({ children }) {
   const ApiUrl = import.meta.env.VITE_API_URL;
   const navigate = useNavigate();
 

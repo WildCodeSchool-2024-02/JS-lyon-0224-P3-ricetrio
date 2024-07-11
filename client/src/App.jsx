@@ -1,6 +1,6 @@
 import { Outlet } from "react-router-dom";
 import { useState } from "react";
-import UserProvider from "./contexts/UserContext";
+import { UserProvider } from "./contexts/UserContext";
 import "./app.css";
 
 function App() {
