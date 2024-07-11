@@ -2,8 +2,11 @@ import { Link } from "react-router-dom";
 import Logo from "../../assets/images/logo-prodcat-noir.svg";
 import Signin from "../../assets/images/login.svg";
 import styles from "./Navbar.module.css";
+import { useUserContext } from "../../contexts/UserContext";
 
 function NavBar() {
+  const { user } = useUserContext();
+
   return (
     <div className={styles.containParents}>
       <div className={styles.containLeft}>
@@ -12,13 +15,23 @@ function NavBar() {
         </Link>
       </div>
       <div className={styles.containRight}>
-        <Link to="/connexion">
-          <img
-            src={Signin}
-            alt="profile connexion ou inscription"
-            className={styles.profile}
-          />
-        </Link>
+        {user[0].role !== "user" ? (
+          <Link to="/connexion">
+            <img
+              src={Signin}
+              alt="profile connexion ou inscription"
+              className={styles.profile}
+            />
+          </Link>
+        ) : (
+          <Link to="/profile">
+            <img
+              src={Signin}
+              alt="profile connexion ou inscription"
+              className={styles.profile}
+            />
+          </Link>
+        )}
       </div>
     </div>
   );
