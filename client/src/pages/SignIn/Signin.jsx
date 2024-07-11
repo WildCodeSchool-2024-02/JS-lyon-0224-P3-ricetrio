@@ -1,53 +1,60 @@
-import { Link, useOutletContext, useNavigate } from "react-router-dom";
+// src/pages/SignIn/Signin.jsx
+import { Link, useNavigate } from "react-router-dom";
 import { useState } from "react";
+import { useUserContext } from "../../contexts/UserContext";
 import styles from "./signin.module.css";
 import Logo from "../../assets/images/logo-prodcat-noir.svg";
 
 export default function Signin() {
-  const { setAuth } = useOutletContext();
-  const navigate = useNavigate(); // Ajout de la navigation pour rediriger
+  const navigate = useNavigate();
+  const { login } = useUserContext();
   const [loginInfos, setLoginInfos] = useState({
     pseudo: "",
     password: "",
   });
 
-  // Gestionnaire de soumission du formulaire
   const handleLoginInfos = (e) => {
     setLoginInfos({ ...loginInfos, [e.target.name]: e.target.value });
   };
 
   const handleLogin = async (e) => {
     e.preventDefault();
-    if (loginInfos.pseudo === undefined || loginInfos.password === undefined) {
+    if (loginInfos.pseudo.trim() === "" || loginInfos.password.trim() === "") {
       console.error("Pseudo and password must be non-empty strings");
       return;
     }
 
-    // Appel à l'API pour demander une connexion
-    const response = await fetch(`${import.meta.env.VITE_API_URL}/api/login`, {
-      method: "post",
-      headers: { "Content-Type": "application/json" },
-      body: JSON.stringify(loginInfos),
-      credentials: "include",
-    });
+    try {
+      const response = await fetch(
+        `${import.meta.env.VITE_API_URL}/api/login`,
+        {
+          method: "POST",
+          credentials: "include",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify(loginInfos),
+        }
+      );
 
-    // Redirection vers la page de connexion si la création réussit
-    if (response.status === 200) {
-      const auth = await response.json();
+      if (response.status === 200) {
+        const responseData = await response.json();
+        console.info("API response:", responseData);
 
-      setAuth(auth);
-      console.info("Token received and set:", auth);
+        if (responseData.user) {
+          login(responseData.user);
 
-      // Vérifier le rôle de l'utilisateur et rediriger en conséquence
-      if (loginInfos.pseudo === "admin") {
-        // Vérification du rôle
-        navigate("/admin"); // Redirige vers la page admin si l'utilisateur est un admin
+          if (loginInfos.pseudo === "admin") {
+            navigate("/admin");
+          } else {
+            navigate("/");
+          }
+        } else {
+          console.error("User object is missing in the response");
+        }
       } else {
-        navigate("/"); // Redirige vers la page d'accueil sinon
+        console.info("Login failed with status:", response.status);
       }
-    } else {
-      // Log des détails de la réponse en cas d'échec
-      console.info(response);
+    } catch (error) {
+      console.error("Error during login:", error);
     }
   };
 
