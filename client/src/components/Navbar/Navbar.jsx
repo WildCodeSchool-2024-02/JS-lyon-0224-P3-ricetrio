@@ -15,7 +15,7 @@ function NavBar() {
         </Link>
       </div>
       <div className={styles.containRight}>
-        {user[0].role !== "user" ? (
+        {!user ? (
           <Link to="/connexion">
             <img
               src={Signin}
