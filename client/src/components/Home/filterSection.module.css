@@ -23,8 +23,31 @@
 }
 
 .buttonTitle {
+  background-color: var(--main-color);
   font-family: var(--font-regular);
   margin: 0;
+}
+
+.buttonTitle.disabledButton {
+  background-color: #ccc;
+  cursor: not-allowed;
+}
+
+.buttonTitle.disabledButton::after {
+  content: "";
+  display: none;
+  position: absolute;
+  top: 50%;
+  right: 10px;
+  transform: translateY(-50%);
+  width: 16px;
+  height: 16px;
+  background-image: url("path/to/lock-icon.svg");
+  background-size: cover;
+}
+
+.buttonTitle.disabledButton:hover::after {
+  display: block;
 }
 .buttonDecade {
   display: flex;

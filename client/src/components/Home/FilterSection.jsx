@@ -1,11 +1,13 @@
 import { useState, useEffect } from "react";
 import { useLoaderData, Link } from "react-router-dom";
+import { useUserContext } from "../../contexts/UserContext";
 import styles from "./filterSection.module.css";
 
 function FilterSection() {
   const allFilms = useLoaderData();
   const [category, setCategory] = useState(allFilms);
   const [isMobile, setIsMobile] = useState(window.innerWidth <= 768);
+  const { user } = useUserContext();
 
   const filterFilmsByDecade = (films, startYear, endYear) =>
     films.filter((film) => {
@@ -32,6 +34,7 @@ function FilterSection() {
       setCategory(filterFilmsByDecade(allFilms, 1970, 1979));
     }
   };
+
   useEffect(() => {
     const handleResize = () => {
       setIsMobile(window.innerWidth <= 768);
@@ -43,6 +46,7 @@ function FilterSection() {
       window.removeEventListener("resize", handleResize);
     };
   }, []);
+
   return (
     <div>
       <section>
@@ -53,10 +57,18 @@ function FilterSection() {
                 <option value="All">Toutes les années</option>
                 <option value="1970s">1970s</option>
                 <option value="1980s">1980s</option>
-                <option value="1990s">1990s</option>
-                <option value="2000s">2000s</option>
-                <option value="2010s">2010s</option>
-                <option value="2020s">2020s</option>
+                <option value="1990s" disabled={!user}>
+                  {`${!user ? "Veuillez vous connecter" : "Les années 1990s"}`}{" "}
+                </option>
+                <option value="2000s" disabled={!user}>
+                  {`${!user ? "Veuillez vous connecter" : "Les années 2000s"}`}{" "}
+                </option>
+                <option value="2010s" disabled={!user}>
+                  {`${!user ? "Veuillez vous connecter" : "Les années 2010s"}`}{" "}
+                </option>
+                <option value="2020s" disabled={!user}>
+                  {`${!user ? "Veuillez vous connecter" : "Les années 2020s"}`}{" "}
+                </option>
               </select>
             </div>
           ) : (
@@ -86,36 +98,40 @@ function FilterSection() {
                 Les années 1980s
               </button>
               <button
-                className={styles.buttonTitle}
+                className={`${styles.buttonTitle} ${!user ? styles.disabledButton : styles.buttonTitle}`}
                 type="button"
                 value="1990s"
                 onClick={handleBtns}
+                disabled={!user}
               >
-                Les années 1990s
+                {`${!user ? "Veuillez vous connecter" : "Les années 1990s"}`}
               </button>
               <button
-                className={styles.buttonTitle}
+                className={`${styles.buttonTitle} ${!user ? styles.disabledButton : styles.buttonTitle}`}
                 type="button"
                 value="2000s"
                 onClick={handleBtns}
+                disabled={!user}
               >
-                Les années 2000s
+                {`${!user ? "Veuillez vous connecter" : "Les années 2000s"}`}
               </button>
               <button
-                className={styles.buttonTitle}
+                className={`${styles.buttonTitle} ${!user ? styles.disabledButton : styles.buttonTitle}`}
                 type="button"
                 value="2010s"
                 onClick={handleBtns}
+                disabled={!user}
               >
-                Les années 2010s
+                {`${!user ? "Veuillez vous connecter" : "Les années 2010s"}`}
               </button>
               <button
-                className={styles.buttonTitle}
+                className={`${styles.buttonTitle} ${!user ? styles.disabledButton : styles.buttonTitle}`}
                 type="button"
                 value="2020s"
                 onClick={handleBtns}
+                disabled={!user}
               >
-                Les années 2020s
+                {`${!user ? "Veuillez vous connecter" : "Les années 2020s"}`}
               </button>
             </div>
           )}

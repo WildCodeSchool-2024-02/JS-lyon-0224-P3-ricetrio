@@ -24,6 +24,7 @@
   opacity: 0.5;
   pointer-events: none;
   height: 350px;
+  max-width: 768px;
 }
 
 .embla {
@@ -71,6 +72,6 @@
     opacity: 0.5;
     pointer-events: none;
     max-height: 350px;
-    max-width: 100vw;
+    max-width: 1300px;
   }
 }

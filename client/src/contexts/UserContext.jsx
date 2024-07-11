@@ -1,7 +1,7 @@
-// contexts/UserContext.js
 import PropTypes from "prop-types";
 import { createContext, useContext, useMemo } from "react";
 import { useNavigate } from "react-router-dom";
+
 import useLocalStorage from "../hooks/useLocalStorage";
 
 const UserContext = createContext();
@@ -19,7 +19,7 @@ export function UserProvider({ children }) {
   const logout = async (sessionExpired) => {
     try {
       const response = await fetch(`${ApiUrl}/user/logout`, {
-        credentials: "include",
+        credentials: "include", // envoyer / recevoir le cookie à chaque requête
         headers: {
           "Content-Type": "application/json",
         },
@@ -30,11 +30,16 @@ export function UserProvider({ children }) {
         navigate(sessionExpired === true ? "/connexion" : "/");
       }
     } catch (err) {
+      // Log des erreurs possibles
       console.error(err);
     }
   };
 
-  const memo = useMemo(() => ({ user, setUser, login, logout }), [user]);
+  const memo = useMemo(
+    () => ({ user, setUser, login, logout }),
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+    [user]
+  );
 
   return <UserContext.Provider value={memo}>{children}</UserContext.Provider>;
 }

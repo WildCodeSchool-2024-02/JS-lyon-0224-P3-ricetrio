@@ -44,7 +44,11 @@ function VideoPage() {
                 Réalisateur.rice : {allFilms.movie_director}
               </p>
               <div className={styles.pouce}>
-                <button onClick={handleClickLike} className={styles.button} type="button">
+                <button
+                  onClick={handleClickLike}
+                  className={styles.buttonLike}
+                  type="button"
+                >
                   <img
                     src={like ? LikeBlue : LikeWhite}
                     alt={like ? "Logo j'aime" : "Logo je n'aime pas"}

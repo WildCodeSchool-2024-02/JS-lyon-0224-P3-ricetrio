@@ -1,6 +1,6 @@
 import { Link } from "react-router-dom";
 import Logo from "../../assets/images/logo-prodcat-noir.svg";
-import Signin from "../../assets/images/Signin-blue.svg";
+import Signin from "../../assets/images/login.svg";
 import styles from "./Navbar.module.css";
 
 function NavBar() {
