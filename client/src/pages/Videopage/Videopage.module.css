@@ -7,15 +7,18 @@
 }
 
 .blocInfo {
+  display: flex;
+  justify-content: center;
+  align-items: center;
   position: absolute;
-  left: 0;
+  left: -10%;
   width: 100%;
   height: 100%;
   z-index: 2;
   background: linear-gradient(
     to right,
-    rgba(0, 0, 0, 1) 15%,
-    rgba(0, 0, 0, 1) 15%,
+    rgba(0, 0, 0, 1) 35%,
+    rgba(0, 0, 0, 1) 35%,
     rgba(0, 0, 0, 0) 100%
   );
 }
@@ -34,25 +37,51 @@ p {
   z-index: -100;
 }
 
-.text {
-  width: 40%;
+.title {
+  padding-left: 5rem;
 }
 
 .titre {
   font-family: var(--font-bold);
   font-size: 40px;
+  margin-top: 0;
 }
 
-.resume,
-.annonce {
-  font-size: 18px;
+.resume {
+  font-size: 17px;
   font-weight: 600;
+}
+
+.overview {
+  width: 60%;
 }
 
 .timeDate {
   display: flex;
   flex-direction: row;
   gap: 3rem;
+}
+
+.date,
+.duree {
+  margin-bottom: 0;
+}
+
+button {
+  background: none;
+  border: none;
+  cursor: pointer;
+}
+
+.like,
+.dislike {
+  height: 2rem;
+}
+
+.annonce {
+  margin-top: 2rem;
+  font-size: 20px;
+  font-weight: 700;
 }
 
 .video {
@@ -64,10 +93,65 @@ p {
   height: 35rem;
 }
 
-/* 
-@media (min-width: 431px) {
+@media (max-width: 768px) {
+  .page {
+    margin: 1rem 0rem 0rem 2rem;
+  }
+
+  .videoPage {
+    margin: 1rem 0rem 0rem 0rem;
+  }
+
+  .blocInfo {
+    left: -10%;
+  }
+
+  .titre {
+    font-family: var(--font-bold);
+    font-size: 30px;
+    margin-top: 0;
+  }
+
+  .title {
+    padding-top: 2.5rem;
+  }
+
+  .resume {
+    font-size: 14px;
+    font-weight: 600;
+  }
+
+  .overview {
+    width: 80%;
+  }
+
+  .duree,
+  .date,
+  .genre,
+  .real {
+    font-size: 14px;
+  }
+
+  .annonce {
+    margin-top: 1rem;
+    font-size: 16px;
+    font-weight: 700;
+  }
+
+  .fond {
+    height: 20rem;
+    z-index: -100;
+  }
+
   .video iframe {
     width: 100%;
-    height: 40rem;
+    height: 20rem;
+    margin-top: 3rem;
   }
-} */
+}
+
+@media (min-width: 1000px) {
+  .title {
+    padding-left: 10rem;
+  }
+}
