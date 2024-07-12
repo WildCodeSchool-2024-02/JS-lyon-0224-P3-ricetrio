@@ -1,0 +1,37 @@
+.searchbarContainer {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.searchbarInput {
+  width: 50vw;
+}
+
+.searchbarContainer .searchButton {
+  text-align: center;
+  background-color: var(--main-color);
+  color: white;
+  border: none;
+  border-radius: 10px;
+  cursor: pointer;
+  width: 20%;
+  height: 2rem;
+}
+
+.searchResult {
+  list-style: none;
+  text-align: center;
+  font-family: var(--font-regular);
+  font-size: 15px;
+}
+
+.searchResult a {
+  text-decoration: none;
+  color: white;
+}
+
+.searchResult a:hover {
+  color: var(--main-color);
+}
