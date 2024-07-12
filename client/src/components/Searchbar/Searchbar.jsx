@@ -25,26 +25,32 @@ function Searchbar() {
 
   return (
     <div className={styles.searchbarContainer}>
-      <form onSubmit={(e) => e.preventDefault()} disabled={!user}>
-        <input
-          className={styles.searchbarInput}
-          type="text"
-          placeholder="Cherchez votre film"
-          name="film"
-          value={searchFilm}
-          onChange={(e) => handleSearchFilm(e.target.value)}
-        />
-      </form>
-      <button className={styles.searchButton} type="submit">
-        Recherche
-      </button>
-      <ul className={styles.searchResult}>
-        {results.map((film) => (
-          <Link key={film.id} to={`/bandeannonce/${film.id}/`}>
-            <li key={film.id}>{film.title}</li>
-          </Link>
-        ))}
-      </ul>
+      {user !== "" ? (
+        <>
+          <form onSubmit={(e) => e.preventDefault()}>
+            <input
+              className={styles.searchbarInput}
+              type="text"
+              placeholder="Cherchez votre film"
+              name="film"
+              value={searchFilm}
+              onChange={(e) => handleSearchFilm(e.target.value)}
+            />
+          </form>
+          <button className={styles.searchButton} type="submit">
+            Recherche
+          </button>
+          <ul className={styles.searchResult}>
+            {results.map((film) => (
+              <Link key={film.id} to={`/bandeannonce/${film.id}/`}>
+                <li key={film.id}>{film.title}</li>
+              </Link>
+            ))}
+          </ul>
+        </>
+      ) : (
+        <p>Bienvenue sur prodkat, bon voyage cinématographique !</p>
+      )}
     </div>
   );
 }
