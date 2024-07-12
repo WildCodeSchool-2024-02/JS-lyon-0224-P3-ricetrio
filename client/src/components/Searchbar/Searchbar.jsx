@@ -38,7 +38,7 @@ function Searchbar() {
       <button className={styles.searchButton} type="submit">
         Recherche
       </button>
-      <ul>
+      <ul className={styles.searchResult}>
         {results.map((film) => (
           <Link key={film.id} to={`/bandeannonce/${film.id}/`}>
             <li key={film.id}>{film.title}</li>
