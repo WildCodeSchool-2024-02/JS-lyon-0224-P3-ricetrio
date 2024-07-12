@@ -10,7 +10,7 @@ export default function UserProvider({ children }) {
   const ApiUrl = import.meta.env.VITE_API_URL;
   const navigate = useNavigate();
 
-  const [user, setUser] = useLocalStorage("user", null);
+  const [user, setUser] = useLocalStorage("user", "");
 
   const login = (userData) => {
     setUser(userData);

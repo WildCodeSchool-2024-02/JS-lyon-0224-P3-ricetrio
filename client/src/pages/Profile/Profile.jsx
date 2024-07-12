@@ -1,7 +1,6 @@
 import { useState, useEffect } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import { useUserContext } from "../../contexts/UserContext";
-
 import styles from "./profile.module.css";
 import Logo from "../../assets/images/logo-prodkat.svg";
 import Avatar from "../../assets/images/avatar.png";
@@ -10,20 +9,17 @@ function Profile() {
   const ApiUrl = import.meta.env.VITE_API_URL;
   const [userData, setUserData] = useState(null);
   const navigate = useNavigate();
-  const [loading, setLoading] = useState(false); // État de chargement
   const { user, logout } = useUserContext();
 
   const handleLogout = async () => {
-    setLoading(true);
     logout(false);
     localStorage.removeItem("user");
 
     // Simuler un délai pour démonstration
     setTimeout(() => {
-      setLoading(false);
       navigate("/");
       window.location.reload();
-    }, 1000);
+    }, 200);
   };
 
   const getProfile = async () => {
@@ -57,10 +53,6 @@ function Profile() {
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
-  if (loading) {
-    return <div>Déconnexion en cours...</div>; // Afficher l'indicateur de chargement
-  }
-
   return (
     <div>
       <div className={styles.logo}>
@@ -85,7 +77,6 @@ function Profile() {
                 type="button"
                 className={`nes-btn is-red ${styles.logout_btn}`}
                 onClick={handleLogout}
-                disabled={loading}
               >
                 Se déconnecter
               </button>
