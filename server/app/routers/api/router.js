@@ -18,6 +18,10 @@ const authRouter = require("./auth/router");
 
 router.use("/login", authRouter);
 
+const favoriteRouter = require ("./favorite/router");
+
+router.use("/favorite", favoriteRouter)
+
 // const adminRouter = require("./admin/router");
 
 // router.use("/admin", adminRouter);
