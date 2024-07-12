@@ -1,12 +1,11 @@
 import { Link } from "react-router-dom";
+import { useUserContext } from "../../contexts/UserContext";
 import Logo from "../../assets/images/logo-prodcat-noir.svg";
 import Signin from "../../assets/images/login.svg";
 import styles from "./Navbar.module.css";
-import { useUserContext } from "../../contexts/UserContext";
 
 function NavBar() {
   const { user } = useUserContext();
-
   return (
     <div className={styles.containParents}>
       <div className={styles.containLeft}>
@@ -15,7 +14,7 @@ function NavBar() {
         </Link>
       </div>
       <div className={styles.containRight}>
-        {user[0].role !== "user" ? (
+        {!user ? (
           <Link to="/connexion">
             <img
               src={Signin}
@@ -36,5 +35,4 @@ function NavBar() {
     </div>
   );
 }
-
 export default NavBar;
