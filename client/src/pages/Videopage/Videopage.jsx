@@ -7,9 +7,9 @@ import LikeWhite from "../../assets/images/like-blanc.svg";
 
 function VideoPage() {
   const [like, setLike] = useState(false);
-  const handleClickLike = () => {
-    setLike(!like);
-  };
+  // const handleClickLike = () => {
+  //   setLike(!like);
+  // };
 
   const allFilms = useLoaderData();
   if (!allFilms === true) {
@@ -21,6 +21,24 @@ function VideoPage() {
     const options = { year: "numeric", month: "long", day: "numeric" };
     return date.toLocaleDateString("fr-FR", options);
   };
+  const handleFavorite = async (event) => {
+    event.preventDefault();
+    setLike(!like);
+      await fetch(`${URL}/api/favorite`, {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({ like }),
+      });
+
+      // if (response.status === 200) {
+      //   throw new Error('Failed to update favorite status');
+      // }
+      // const favoriteData = await response.json();
+      // if (favoriteData)
+      // }
+    }
 
   return (
     <div>
@@ -45,9 +63,10 @@ function VideoPage() {
               </p>
               <div className={styles.pouce}>
                 <button
-                  onClick={handleClickLike}
+                  onClick={handleFavorite}
                   className={styles.buttonLike}
                   type="button"
+                  value={like}
                 >
                   <img
                     src={like ? LikeBlue : LikeWhite}
@@ -55,6 +74,7 @@ function VideoPage() {
                     className={styles.like}
                   />{" "}
                 </button>
+  
               </div>
               <p className={styles.annonce}>Découvrir la bande annonce</p>
             </div>

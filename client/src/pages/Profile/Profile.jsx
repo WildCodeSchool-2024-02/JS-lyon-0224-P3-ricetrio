@@ -70,6 +70,9 @@ function Profile() {
               <p className={styles.mail}>chat@tropmignon.fr</p>
             </div>
           </div>
+          <div>
+            <p>Mes favoris</p>
+          </div>
           <div className={styles.button}>
             {userData}
             <Link to="/">
