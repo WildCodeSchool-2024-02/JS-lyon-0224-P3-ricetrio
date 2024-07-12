@@ -1,11 +1,13 @@
 // src/pages/SignIn/Signin.jsx
 import { Link, useNavigate } from "react-router-dom";
 import { useState } from "react";
+import { toast } from "react-toastify";
 import { useUserContext } from "../../contexts/UserContext";
 import styles from "./signin.module.css";
 import Logo from "../../assets/images/logo-prodcat-noir.svg";
 
 export default function Signin() {
+  const notifySuccess = (text) => toast.success(text);
   const navigate = useNavigate();
   const { login } = useUserContext();
   const [loginInfos, setLoginInfos] = useState({
@@ -44,8 +46,10 @@ export default function Signin() {
 
           if (loginInfos.pseudo === "admin") {
             navigate("/admin");
+            notifySuccess(`Bienvenue`);
           } else {
             navigate("/");
+            notifySuccess(`Bienvenue`);
           }
         } else {
           console.error("User object is missing in the response");
@@ -67,7 +71,7 @@ export default function Signin() {
       </div>
       <div className={styles.contactContainer}>
         <div className={styles.contactBloc}>
-          <h2>Connexion</h2>
+          <p className={styles.titleConnexion}>Connexion</p>
           <form onSubmit={handleLogin} className={styles.contactForm}>
             <div className={styles.rowFormRow}>
               <h4>Pseudo</h4>
@@ -95,13 +99,13 @@ export default function Signin() {
               </div>
             </div>
             <button type="submit">
-              <h3>Connexion</h3>
+              <p>Connexion</p>
             </button>
           </form>
           <div className={styles.textUnderButton}>
             <p className={styles.underButton}>
-              Je suis un·e nouvel·le utilisateur·rice ?{" "}
-              <Link to="/inscription">Inscription</Link>
+              Je suis un·e nouvel·le utilisateur·rice ?
+              <Link to="/inscription"> Inscription</Link>
             </p>
           </div>
         </div>

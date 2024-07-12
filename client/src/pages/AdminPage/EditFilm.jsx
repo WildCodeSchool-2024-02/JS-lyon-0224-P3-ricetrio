@@ -84,14 +84,15 @@ function EditFilm() {
           value={newFilm.title}
           onChange={handleUpdateForm}
         />
-        <p className={styles.editTitle}>Genre</p>
-        <input
+        <p className={styles.editTitle}>Résumé</p>
+        <textarea
           className={styles.editInput}
           type="text"
-          name="genre"
-          value={newFilm.genre}
+          name="overview"
+          value={newFilm.overview}
           onChange={handleUpdateForm}
         />
+
         <p className={styles.editTitle}>Durée</p>
         <input
           className={styles.editInput}
@@ -108,12 +109,12 @@ function EditFilm() {
           value={newFilm.release_date}
           onChange={handleUpdateForm}
         />
-        <p className={styles.editTitle}>Résumé</p>
-        <textarea
+        <p className={styles.editTitle}>Genre</p>
+        <input
           className={styles.editInput}
           type="text"
-          name="overview"
-          value={newFilm.overview}
+          name="genre"
+          value={newFilm.genre}
           onChange={handleUpdateForm}
         />
         <p className={styles.editTitle}>Producteur</p>
@@ -165,9 +166,28 @@ function EditFilm() {
           onChange={handleUpdateForm}
         />
         <button className={styles.editButton} type="submit">
-          <p>Sauvegarder les modifications</p>
+          <p className={styles.saveButton}>Sauvegarder</p>
         </button>
       </form>
+      <div className={styles.previewContainer}>
+        <p className={styles.previewTitle}>Prévisualisation</p>
+        <div className={styles.previewImgContainer}>
+          <img
+            className={styles.previewImg}
+            src={newFilm.background_img}
+            alt=""
+          />
+        </div>
+        <div className={styles.previewTextContainer}>
+          <p className={styles.previewTextTitle}>{newFilm.title}</p>
+          <p className={styles.previewText}>{newFilm.overview}</p>
+          <p className={styles.previewText}>
+            {newFilm.duration} minutes {newFilm.release_date}
+          </p>
+          <p className={styles.previewText}>{newFilm.genre}</p>
+          <p className={styles.previewText}>{newFilm.movie_director}</p>
+        </div>
+      </div>
     </div>
   );
 }
