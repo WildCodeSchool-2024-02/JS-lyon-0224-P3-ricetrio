@@ -5,7 +5,7 @@ class FavoriteRepository extends AbstractRepository {
   constructor() {
     super({ table: "favorite" });
   }
-  
+
   async read(id) {
     // Execute the SQL SELECT query to retrieve a specific item by its ID
     const [rows] = await this.database.query(
@@ -22,16 +22,12 @@ class FavoriteRepository extends AbstractRepository {
 
     const [result] = await this.database.query(
       `INSERT INTO ${this.table} (user_id, film_id) VALUES (?, ?) `,
-      [favorite.user_Id,
-       favorite.film_Id, 
-      ]
+      [favorite.user_Id, favorite.film_Id]
     );
 
     // Return the first row of the result, which represents the item
     return result.insertId;
   }
-
-
 
   // async readAll() {
   //   // Execute the SQL SELECT query to retrieve all stations from the "station" table
@@ -43,4 +39,3 @@ class FavoriteRepository extends AbstractRepository {
 }
 
 module.exports = FavoriteRepository;
-

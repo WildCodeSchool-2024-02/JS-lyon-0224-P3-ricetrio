@@ -11,6 +11,7 @@ import AdminPage from "./pages/AdminPage/AdminPage";
 import CreateFilm from "./pages/CreateFilm/CreateFilm";
 import VerifyFreemiumUser from "./pages/Freemium/VerifyFreemiumUser";
 import EditFilm from "./pages/AdminPage/EditFilm";
+import Contact from "./pages/Contact/Contact";
 
 const URL = import.meta.env.VITE_API_URL;
 
@@ -58,6 +59,10 @@ const router = createBrowserRouter([
       {
         path: "/verifyfreemium",
         element: <VerifyFreemiumUser />,
+      },
+      {
+        path: "/contact",
+        element: <Contact />,
       },
     ],
   },
