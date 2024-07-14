@@ -4,12 +4,17 @@ import styles from "./Videopage.module.css";
 import NavBar from "../../components/Navbar/Navbar";
 import LikeBlue from "../../assets/images/like-bleu.svg";
 import LikeWhite from "../../assets/images/like-blanc.svg";
+import { useUserContext } from "../../contexts/UserContext";
 
 function VideoPage() {
   const [like, setLike] = useState(false);
   // const handleClickLike = () => {
   //   setLike(!like);
   // };
+
+  const ApiUrl = import.meta.env.VITE_API_URL;
+
+  const { user } = useUserContext();
 
   const allFilms = useLoaderData();
   if (!allFilms === true) {
@@ -21,25 +26,19 @@ function VideoPage() {
     const options = { year: "numeric", month: "long", day: "numeric" };
     return date.toLocaleDateString("fr-FR", options);
   };
+
   const handleFavorite = async (event) => {
     event.preventDefault();
     setLike(!like);
-      await fetch(`${URL}/api/favorite`, {
+      await fetch(`${ApiUrl}/api/favorite`, {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
         },
-        body: JSON.stringify({ like }),
+        body: JSON.stringify({filmId:allFilms.id, userId:user[0].id}),
       });
-
-      // if (response.status === 200) {
-      //   throw new Error('Failed to update favorite status');
-      // }
-      // const favoriteData = await response.json();
-      // if (favoriteData)
-      // }
     }
-
+    
   return (
     <div>
       <NavBar />
@@ -62,6 +61,8 @@ function VideoPage() {
                 Réalisateur.rice : {allFilms.movie_director}
               </p>
               <div className={styles.pouce}>
+
+
                 <button
                   onClick={handleFavorite}
                   className={styles.buttonLike}

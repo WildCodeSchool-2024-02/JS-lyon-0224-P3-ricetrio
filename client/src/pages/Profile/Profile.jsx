@@ -1,4 +1,4 @@
-import { useState, useEffect } from "react";
+import { useEffect, useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import { useUserContext } from "../../contexts/UserContext";
 import styles from "./profile.module.css";
@@ -10,6 +10,7 @@ function Profile() {
   const [userData, setUserData] = useState(null);
   const navigate = useNavigate();
   const { user, logout } = useUserContext();
+
 
   const handleLogout = async () => {
     logout(false);
@@ -53,6 +54,12 @@ function Profile() {
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
+//   const allFavorite = useLoaderData();
+//   // if (!allFavorite === true) {
+//   //   return <p>Chargement...</p>;
+//   // }
+// console.log(allFavorite);
+
   return (
     <div>
       <div className={styles.logo}>
@@ -70,9 +77,12 @@ function Profile() {
               <p className={styles.mail}>chat@tropmignon.fr</p>
             </div>
           </div>
-          <div>
+
+          <div className={styles.favorite}>
             <p>Mes favoris</p>
+            {/* <p>{allFavorite.title}</p> */}
           </div>
+
           <div className={styles.button}>
             {userData}
             <Link to="/">
