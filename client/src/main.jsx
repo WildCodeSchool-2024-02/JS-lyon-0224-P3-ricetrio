@@ -12,6 +12,7 @@ import CreateFilm from "./pages/CreateFilm/CreateFilm";
 import VerifyFreemiumUser from "./pages/Freemium/VerifyFreemiumUser";
 import EditFilm from "./pages/AdminPage/EditFilm";
 import Contact from "./pages/Contact/Contact";
+import Received from "./pages/Contact/Received";
 
 const URL = import.meta.env.VITE_API_URL;
 
@@ -63,6 +64,10 @@ const router = createBrowserRouter([
       {
         path: "/contact",
         element: <Contact />,
+      },
+      {
+        path: "/received",
+        element: <Received />,
       },
     ],
   },

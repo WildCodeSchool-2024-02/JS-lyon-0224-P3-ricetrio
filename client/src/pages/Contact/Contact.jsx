@@ -1,12 +1,15 @@
-import { Form, Link } from "react-router-dom";
+import { Form, Link, useNavigate } from "react-router-dom";
 import { useState } from "react";
 import styles from "./contact.module.css";
 import Logo from "../../assets/images/logo-prodcat-noir.svg";
+
+const URL = import.meta.env.VITE_API_URL;
 
 export default function Contact() {
   const [values, setValues] = useState({
     request: "",
   });
+  const navigate = useNavigate();
 
   const handleInputContact = (event) => {
     setValues((prev) => ({
@@ -17,33 +20,27 @@ export default function Contact() {
 
   const handleContact = async (event) => {
     event.preventDefault();
+    try {
+      const response = await fetch(`${URL}/api/request`, {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({
+          request: values.request,
+        }),
+      });
+      if (!response.ok) {
+        throw new Error("Network response was not ok");
+      }
+
+      const data = await response.json();
+      navigate("/received");
+      console.info("Request successful:", data);
+    } catch (err) {
+      console.error("Erreur lors de la requête de contact:", err);
+    }
   };
-
-  //   const handleSubmit = async (event) => {
-  //     event.preventDefault();
-
-  //     const validationErrors = Validation(values);
-  //     setErrors(validationErrors);
-
-  //     if (Object.keys(validationErrors).length === 0) {
-  //       try {
-  //         const response = await fetch(`${URL}/api/users`, {
-  //           method: "POST",
-  //           headers: {
-  //             "Content-Type": "application/json",
-  //           },
-  //           body: JSON.stringify({
-  //             pseudo: values.pseudo,
-  //             email: values.email,
-
-  //             message: values.message,
-  //           }),
-  //         });
-  //     }catch{
-  //       console.info("error")
-  //     }
-  //   };
-  // }
 
   return (
     <div>
@@ -61,19 +58,16 @@ export default function Contact() {
             onSubmit={handleContact}
           >
             <label htmlFor="request" className={styles.rowFormRow}>
-              <p className={styles.titleForm}> request</p>
+              <p className={styles.titleForm}>Request</p>
             </label>
             <div className={styles.requestInput}>
               <input
                 type="text"
-                placeholder="ecrivez votre requête de film "
+                placeholder="Ecrivez votre requête de film "
                 name="request"
                 value={values.request}
                 onChange={handleInputContact}
               />
-              <p className={styles.errorsField}>
-                {/* {errors.me !== undefined && <span>{errors.message}</span>} */}
-              </p>
             </div>
             <button className={styles.buttonSubmit} type="submit">
               <p className={styles.inscriptionButton}>Envoyer</p>
