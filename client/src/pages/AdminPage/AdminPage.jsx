@@ -53,7 +53,7 @@ function AdminPage() {
     <div>
       <NavBar />
       <div className={styles.adminContainer}>
-        <h2>Admin</h2>
+        <h2 className="adminTitle">Admin</h2>
 
         <div className={styles.adminButton}>
           <Link to="/creationpagefilm">

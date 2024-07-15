@@ -25,6 +25,15 @@
   --text-color: Black;
 }
 
+/* .toastStyle {
+  background-color: var(--main-color);
+} */
+
+.toastBody {
+  background-color: white;
+  color: var(--main-color);
+}
+
 html {
   margin: 0;
   padding: 0;
