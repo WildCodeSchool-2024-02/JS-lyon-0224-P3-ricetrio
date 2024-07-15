@@ -11,7 +11,6 @@ function Profile() {
   const navigate = useNavigate();
   const { user, logout } = useUserContext();
 
-
   const handleLogout = async () => {
     logout(false);
     localStorage.removeItem("user");
@@ -53,12 +52,6 @@ function Profile() {
     }
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
-
-//   const allFavorite = useLoaderData();
-//   // if (!allFavorite === true) {
-//   //   return <p>Chargement...</p>;
-//   // }
-// console.log(allFavorite);
 
   return (
     <div>

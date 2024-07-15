@@ -4,44 +4,29 @@ import styles from "./Videopage.module.css";
 import NavBar from "../../components/Navbar/Navbar";
 import LikeBlue from "../../assets/images/like-bleu.svg";
 import LikeWhite from "../../assets/images/like-blanc.svg";
-import { useUserContext } from "../../contexts/UserContext";
+import { useFavoritesContext } from "../../contexts/FavoriteContext";
 
 function VideoPage() {
-  const api = import.meta.env.VITE_API_URL;
-
   const allFilms = useLoaderData();
-  const { user } = useUserContext();
+  const { favorites, addFavorite, removeFavorite } = useFavoritesContext();
   const [like, setLike] = useState(false);
-  const [favorite, setFavorite] = useState();
 
   useEffect(() => {
-    const fetchFavorite = async () => {
-      const response = await fetch(`${api}/api/favorite/${user[0].id}`);
-      const data = await response.json();
-      setFavorite(data);
-      // Check if the current film is in the favorite list
-      if (data.some((fav) => fav.film_id === allFilms.id)) {
-        setLike(true);
-      }
-    };
-    fetchFavorite();
-  }, [api, allFilms.id, user]);
+    if (favorites.some((fav) => fav.film_id === allFilms.id)) {
+      setLike(true);
+    }
+  }, [favorites, allFilms.id]);
 
   const handleFavorite = async (event) => {
     event.preventDefault();
-    const method = like && user ? "DELETE" : "POST";
-    const response = await fetch(`${api}/api/favorite`, {
-      method,
-      headers: {
-        "Content-Type": "application/json",
-      },
-      body: JSON.stringify({ userId: user[0].id, filmId: allFilms.id }),
-    });
-
-    if (response.ok) {
-      setLike(!like);
+    if (like) {
+      await removeFavorite(allFilms.id);
+    } else {
+      await addFavorite(allFilms.id);
     }
+    setLike(!like);
   };
+
   const formatDate = (isoDate) => {
     const date = new Date(isoDate);
     const options = { year: "numeric", month: "long", day: "numeric" };
