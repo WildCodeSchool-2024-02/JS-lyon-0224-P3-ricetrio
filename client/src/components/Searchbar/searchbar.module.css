@@ -6,8 +6,14 @@
   margin-top: 30px;
 }
 
+.searchBarForm {
+  margin: 0;
+  padding: 0;
+}
 .searchbarInput {
-  width: 50vw;
+  width: 60vw;
+  border-radius: 5px;
+  margin: 0;
 }
 
 .searchbarContainer .searchButton {
@@ -26,13 +32,27 @@
   text-align: center;
   font-family: var(--font-regular);
   font-size: 15px;
+  padding: 0;
+  margin: 0;
 }
 
 .searchResult a {
   text-decoration: none;
-  color: white;
 }
 
 .searchResult a:hover {
   color: var(--main-color);
+}
+
+.searchResult li {
+  color: black;
+  background-color: white;
+  text-align: left;
+  padding: 5px;
+  width: 60vw;
+}
+
+.searchResult li:hover {
+  color: var(--main-color);
+  cursor: pointer;
 }

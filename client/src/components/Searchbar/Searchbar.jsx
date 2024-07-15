@@ -27,7 +27,10 @@ function Searchbar() {
     <div className={styles.searchbarContainer}>
       {user !== "" ? (
         <>
-          <form onSubmit={(e) => e.preventDefault()}>
+          <form
+            className={styles.searchBarForm}
+            onSubmit={(e) => e.preventDefault()}
+          >
             <input
               className={styles.searchbarInput}
               type="text"
@@ -37,9 +40,6 @@ function Searchbar() {
               onChange={(e) => handleSearchFilm(e.target.value)}
             />
           </form>
-          <button className={styles.searchButton} type="submit">
-            Recherche
-          </button>
           <ul className={styles.searchResult}>
             {results.map((film) => (
               <Link key={film.id} to={`/bandeannonce/${film.id}/`}>
