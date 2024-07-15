@@ -2,6 +2,7 @@
 const FavoriteRepository = require("./models/FavoriteRepository");
 const FilmRepository = require("./models/FilmRepository");
 const UserRepository = require("./models/UserRepository");
+const RequestRepository = require("./models/RequestRepository");
 
 // Create an empty object to hold data repositories for different tables
 const tables = {};
@@ -14,6 +15,7 @@ const tables = {};
 tables.film = new FilmRepository();
 tables.user = new UserRepository();
 tables.favorite = new FavoriteRepository();
+tables.request = new RequestRepository();
 
 /* ************************************************************************* */
 

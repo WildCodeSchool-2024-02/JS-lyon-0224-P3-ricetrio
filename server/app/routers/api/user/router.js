@@ -16,7 +16,6 @@ router.get("/", browse);
 
 router.post("/", hashPassword, validateSignIn, add);
 
-
 /* ************************************************************************* */
 
 module.exports = router;
