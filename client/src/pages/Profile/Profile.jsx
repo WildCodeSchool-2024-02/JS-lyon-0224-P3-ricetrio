@@ -1,4 +1,4 @@
-import { useState, useEffect } from "react";
+import { useEffect, useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import { useUserContext } from "../../contexts/UserContext";
 import styles from "./profile.module.css";
@@ -70,6 +70,12 @@ function Profile() {
               <p className={styles.mail}>chat@tropmignon.fr</p>
             </div>
           </div>
+
+          <div className={styles.favorite}>
+            <p>Mes favoris</p>
+            {/* <p>{allFavorite.title}</p> */}
+          </div>
+
           <div className={styles.button}>
             {userData}
             <Link to="/">

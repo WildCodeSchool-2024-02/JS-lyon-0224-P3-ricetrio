@@ -1,20 +1,31 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { useLoaderData } from "react-router-dom";
 import styles from "./Videopage.module.css";
 import NavBar from "../../components/Navbar/Navbar";
 import LikeBlue from "../../assets/images/like-bleu.svg";
 import LikeWhite from "../../assets/images/like-blanc.svg";
+import { useFavoritesContext } from "../../contexts/FavoriteContext";
 
 function VideoPage() {
+  const allFilms = useLoaderData();
+  const { favorites, addFavorite, removeFavorite } = useFavoritesContext();
   const [like, setLike] = useState(false);
-  const handleClickLike = () => {
+
+  useEffect(() => {
+    if (favorites.some((fav) => fav.film_id === allFilms.id)) {
+      setLike(true);
+    }
+  }, [favorites, allFilms.id]);
+
+  const handleFavorite = async (event) => {
+    event.preventDefault();
+    if (like) {
+      await removeFavorite(allFilms.id);
+    } else {
+      await addFavorite(allFilms.id);
+    }
     setLike(!like);
   };
-
-  const allFilms = useLoaderData();
-  if (!allFilms === true) {
-    return <p>Chargement...</p>;
-  }
 
   const formatDate = (isoDate) => {
     const date = new Date(isoDate);
@@ -45,15 +56,16 @@ function VideoPage() {
               </p>
               <div className={styles.pouce}>
                 <button
-                  onClick={handleClickLike}
+                  onClick={handleFavorite}
                   className={styles.buttonLike}
                   type="button"
+                  value={like}
                 >
                   <img
                     src={like ? LikeBlue : LikeWhite}
                     alt={like ? "Logo j'aime" : "Logo j'aime pas"}
                     className={styles.like}
-                  />{" "}
+                  />
                 </button>
               </div>
               <p className={styles.annonce}>Découvrir la bande annonce</p>
