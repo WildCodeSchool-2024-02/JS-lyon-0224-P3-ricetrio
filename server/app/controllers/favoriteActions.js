@@ -2,7 +2,8 @@ const tables = require ("../../database/tables");
 
 const browse = async (req, res, next) => {
     try {
-        const favorite = await tables.favorite.readAll();
+        //dynamic react
+        const favorite = await tables.favorite.isFavorite(filmsId, usersId);
         res.json(favorite);
     } catch (err) {
     next(err);
@@ -24,24 +25,25 @@ const like = async (req, res, next) => {
 };
 
 
-// const add = async (req, res, next) => {
-//     try {
-//       const favoriteAdd = req.body;
-//       // Créer un favori
-//       const insertId = await tables.favorite.create(favoriteAdd);
-  
-//       res.status(201).json(insertId); // Répondre avec l'utilisateur créé
-//     } catch (err) {
-//       console.error("Error in add function:", err);
-//       res.status(500).json();
-//       next(err);
-//     }
-//   };
+const read = async (req, res, next) => {
+    try {
+      const favoriteRead= req.body;
+      console.info(favoriteRead)
+      // Créer un favori
+      const insertId = await tables.favorite.read(favoriteRead);
+      res.status(201).json(insertId); // Répondre avec l'utilisateur créé
+    } catch (err) {
+      console.error("Error in add function:", err);
+      res.status(500).json();
+      next(err);
+    }
+  };
 
 
 // Ready to export the controller functions
 module.exports = {
   browse,
   like,
+  read,
 //   add,
 };

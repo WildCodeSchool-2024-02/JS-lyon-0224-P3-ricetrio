@@ -34,13 +34,13 @@ class FavoriteRepository extends AbstractRepository {
 
 
 
-  // async readAll() {
+  async isFavorite(filmsId, usersId) {
   //   // Execute the SQL SELECT query to retrieve all stations from the "station" table
-  //   const [rows] = await this.database.query(`select * from ${this.table}`);
+  const [rows] = await this.database.query(`select * from ${this.table}`);
 
   //   // Return the array of stations
-  //   return rows;
-  // }
+return rows;
+}
 }
 
 module.exports = FavoriteRepository;

@@ -1,5 +1,5 @@
-import { useState } from "react";
-import { useLoaderData } from "react-router-dom";
+import { useEffect, useState } from "react";
+import { useLoaderData, } from "react-router-dom";
 import styles from "./Videopage.module.css";
 import NavBar from "../../components/Navbar/Navbar";
 import LikeBlue from "../../assets/images/like-bleu.svg";
@@ -7,19 +7,41 @@ import LikeWhite from "../../assets/images/like-blanc.svg";
 import { useUserContext } from "../../contexts/UserContext";
 
 function VideoPage() {
+  const api = import.meta.env.VITE_API_URL;
+
+  const allFilms = useLoaderData();
+  const { user } = useUserContext();
+
+
+  // if (!allFilms === true) {
+  //   return <p>Chargement...</p>;
+  // }
+
+
   const [like, setLike] = useState(false);
   // const handleClickLike = () => {
   //   setLike(!like);
   // };
+const [favorite, setFavorite] = useState();
 
-  const ApiUrl = import.meta.env.VITE_API_URL;
-
-  const { user } = useUserContext();
-
-  const allFilms = useLoaderData();
-  if (!allFilms === true) {
-    return <p>Chargement...</p>;
-  }
+  useEffect(() => {
+    console.log("coucou2");
+    const  sendFavorite = async () => { 
+      const response = await fetch(`${api}/api/favorite/${allFilms.id}/${user[0].id}`, {
+      method: "GET",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      }
+    )
+    const data = await response.json()
+    console.log("coucou");
+    console.log(data);
+    setFavorite(data);
+  } 
+  sendFavorite();    
+  },[api])
+  
 
   const formatDate = (isoDate) => {
     const date = new Date(isoDate);
@@ -30,7 +52,7 @@ function VideoPage() {
   const handleFavorite = async (event) => {
     event.preventDefault();
     setLike(!like);
-      await fetch(`${ApiUrl}/api/favorite`, {
+      await fetch(`${api}/api/favorite/title`, {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
@@ -38,7 +60,7 @@ function VideoPage() {
         body: JSON.stringify({filmId:allFilms.id, userId:user[0].id}),
       });
     }
-    
+
   return (
     <div>
       <NavBar />
