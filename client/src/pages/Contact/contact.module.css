@@ -1,14 +1,12 @@
 .logo {
-  width: 11.8rem;
-  padding-top: 1.4rem;
+  width: 9.3rem;
+  padding-top: 0.5rem;
   padding-bottom: 1rem;
-  padding-left: 2.5rem;
 }
 
 h2 {
-  color: white;
+  color: var(--main-color);
   font-family: var(--font-regular);
-  margin: 0;
 }
 
 h4 {
@@ -17,10 +15,10 @@ h4 {
   margin: 0;
 }
 
-.titleConnexion {
+.titleForm {
+  color: grey;
   font-family: var(--font-regular);
-  font-size: larger;
-  font-weight: bold;
+  margin: 0;
 }
 
 .contactContainer {
@@ -46,7 +44,6 @@ h4 {
   flex-wrap: wrap;
   border: none;
   border-radius: 10px;
-  align-items: center;
 }
 
 .pseudoInput input {
@@ -57,7 +54,24 @@ h4 {
   width: 300px;
   height: 20px;
   padding-left: 20px;
-  margin-bottom: 40px;
+}
+
+.messageInput input {
+  border-top: none;
+  border-right: none;
+  border-bottom: solid grey 1px;
+  border-left: none;
+  width: 300px;
+  height: 40px;
+  padding-left: 20px;
+}
+
+.errorsField {
+  color: red;
+  font-family: var(--font-regular);
+  font-size: smaller;
+  max-width: 300px;
+  text-align: justify;
 }
 
 button {
@@ -66,7 +80,7 @@ button {
   width: 100px;
 }
 
-button[type="submit"] {
+.buttonSubmit {
   width: 100%;
   background-color: var(--main-color);
   color: white;
@@ -83,7 +97,7 @@ button[type="submit"] {
   color: grey;
 }
 
-.underButton a {
+.underButton {
   color: var(--main-color);
   text-decoration: none;
 }
@@ -92,5 +106,11 @@ button[type="submit"] {
   display: flex;
   flex-direction: column;
   align-items: center;
-  margin-top: 20px;
+}
+
+.contactContainer > div > form > button > p {
+  font-size: 1.17em;
+  font-weight: bold;
+  color: white;
+  font-family: var(--font-regular);
 }

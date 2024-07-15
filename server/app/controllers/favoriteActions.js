@@ -1,4 +1,4 @@
-const tables = require ("../../database/tables");
+const tables = require("../../database/tables");
 
 const browse = async (req, res, next) => {
     try {
@@ -7,7 +7,7 @@ const browse = async (req, res, next) => {
         res.json(favorite);
     } catch (err) {
     next(err);
-}
+  }
 };
 
 const like = async (req, res, next) => {

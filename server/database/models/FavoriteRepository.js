@@ -44,4 +44,3 @@ return rows;
 }
 
 module.exports = FavoriteRepository;
-

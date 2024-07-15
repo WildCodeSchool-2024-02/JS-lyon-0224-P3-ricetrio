@@ -7,14 +7,12 @@ const router = express.Router();
 /* ************************************************************************* */
 
 // Import item-related actions
-const { browse, like, read } = require("../../../controllers/favoriteActions");
+const { browse, read, add } = require("../../../controllers/requestActions");
 
 // Route to get a list of items
-router.get("/:filmid/:userid", browse);
-
-router.get("/title", read);
-
-router.post("/", like);
+router.get("/", browse);
+router.get("/", read);
+router.post("/", add);
 
 /* ************************************************************************* */
 

@@ -1,0 +1,21 @@
+.logo {
+  width: 9.3rem;
+  padding-top: 0.5rem;
+  padding-bottom: 1rem;
+}
+
+.receivedContainer {
+  margin: 2rem;
+  background-color: var(--background-color);
+  padding: 20px;
+  display: flex;
+  flex-direction: column;
+  flex-wrap: wrap;
+  border: none;
+  border-radius: 10px;
+  align-items: center;
+}
+
+.receivedContainer p {
+  color: black;
+}

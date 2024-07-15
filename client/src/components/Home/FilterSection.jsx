@@ -55,19 +55,19 @@ function FilterSection() {
             <div className={styles.listeDeroulante}>
               <select onChange={handleBtns}>
                 <option value="All">Toutes les années</option>
-                <option value="1970s">Les années 1970s</option>
-                <option value="1980s">Les années 1980s</option>
+                <option value="1970s">Les années 1970</option>
+                <option value="1980s">Les années 1980</option>
                 <option value="1990s" disabled={!user}>
-                  {`${!user === "" ? "Veuillez vous connecter" : "Les années 1990s"}`}
+                  {`${!user === "" ? "Veuillez vous connecter" : "Les années 1990"}`}
                 </option>
                 <option value="2000s" disabled={!user}>
-                  {`${!user === "" ? "Veuillez vous connecter" : "Les années 2000s"}`}
+                  {`${!user === "" ? "Veuillez vous connecter" : "Les années 2000"}`}
                 </option>
                 <option value="2010s" disabled={!user}>
-                  {`${!user === "" ? "Veuillez vous connecter" : "Les années 2010s"}`}
+                  {`${!user === "" ? "Veuillez vous connecter" : "Les années 2010"}`}
                 </option>
                 <option value="2020s" disabled={!user}>
-                  {`${!user === "" ? "Veuillez vous connecter" : "Les années 2020s"}`}
+                  {`${!user === "" ? "Veuillez vous connecter" : "Les années 2020"}`}
                 </option>
               </select>
             </div>
@@ -87,7 +87,7 @@ function FilterSection() {
                 value="1970s"
                 onClick={handleBtns}
               >
-                Les années 1970s
+                Les années 1970
               </button>
               <button
                 className={styles.buttonTitle}
@@ -95,7 +95,7 @@ function FilterSection() {
                 value="1980s"
                 onClick={handleBtns}
               >
-                Les années 1980s
+                Les années 1980
               </button>
               <button
                 className={`${styles.buttonTitle} ${
@@ -106,7 +106,7 @@ function FilterSection() {
                 onClick={handleBtns}
                 disabled={!user}
               >
-                {`${!user ? "Veuillez vous connecter" : "Les années 1990s"}`}
+                {`${!user ? "Veuillez vous connecter" : "Les années 1990"}`}
               </button>
               <button
                 className={`${styles.buttonTitle} ${
@@ -117,7 +117,7 @@ function FilterSection() {
                 onClick={handleBtns}
                 disabled={!user}
               >
-                {`${!user ? "Veuillez vous connecter" : "Les années 2000s"}`}
+                {`${!user ? "Veuillez vous connecter" : "Les années 2000"}`}
               </button>
               <button
                 className={`${styles.buttonTitle} ${
@@ -128,7 +128,7 @@ function FilterSection() {
                 onClick={handleBtns}
                 disabled={!user}
               >
-                {`${!user ? "Veuillez vous connecter" : "Les années 2010s"}`}
+                {`${!user ? "Veuillez vous connecter" : "Les années 2010"}`}
               </button>
               <button
                 className={`${styles.buttonTitle} ${
@@ -139,7 +139,7 @@ function FilterSection() {
                 onClick={handleBtns}
                 disabled={!user}
               >
-                {`${!user ? "Veuillez vous connecter" : "Les années 2020s"}`}
+                {`${!user ? "Veuillez vous connecter" : "Les années 2020"}`}
               </button>
             </div>
           )}

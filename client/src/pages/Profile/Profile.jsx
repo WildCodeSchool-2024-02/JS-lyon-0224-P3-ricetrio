@@ -2,7 +2,7 @@ import { useEffect, useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import { useUserContext } from "../../contexts/UserContext";
 import styles from "./profile.module.css";
-import Logo from "../../assets/images/logo-prodkat.svg";
+import Logo from "../../assets/images/logo-prodcat-noir.svg";
 import Avatar from "../../assets/images/avatar.png";
 
 function Profile() {
