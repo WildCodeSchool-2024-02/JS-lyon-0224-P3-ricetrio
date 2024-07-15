@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import { useLoaderData, } from "react-router-dom";
+import { useLoaderData } from "react-router-dom";
 import styles from "./Videopage.module.css";
 import NavBar from "../../components/Navbar/Navbar";
 import LikeBlue from "../../assets/images/like-bleu.svg";
@@ -11,55 +11,42 @@ function VideoPage() {
 
   const allFilms = useLoaderData();
   const { user } = useUserContext();
-
-
-  // if (!allFilms === true) {
-  //   return <p>Chargement...</p>;
-  // }
-
-
   const [like, setLike] = useState(false);
-  // const handleClickLike = () => {
-  //   setLike(!like);
-  // };
-const [favorite, setFavorite] = useState();
+  const [favorite, setFavorite] = useState();
 
   useEffect(() => {
-    console.log("coucou2");
-    const  sendFavorite = async () => { 
-      const response = await fetch(`${api}/api/favorite/${allFilms.id}/${user[0].id}`, {
-      method: "GET",
+    const fetchFavorite = async () => {
+      const response = await fetch(`${api}/api/favorite/${user[0].id}`);
+      const data = await response.json();
+      setFavorite(data);
+      // Check if the current film is in the favorite list
+      if (data.some((fav) => fav.film_id === allFilms.id)) {
+        setLike(true);
+      }
+    };
+    fetchFavorite();
+  }, [api, allFilms.id, user]);
+
+  const handleFavorite = async (event) => {
+    event.preventDefault();
+    const method = like && user ? "DELETE" : "POST";
+    const response = await fetch(`${api}/api/favorite`, {
+      method,
       headers: {
         "Content-Type": "application/json",
       },
-      }
-    )
-    const data = await response.json()
-    console.log("coucou");
-    console.log(data);
-    setFavorite(data);
-  } 
-  sendFavorite();    
-  },[api])
-  
+      body: JSON.stringify({ userId: user[0].id, filmId: allFilms.id }),
+    });
 
+    if (response.ok) {
+      setLike(!like);
+    }
+  };
   const formatDate = (isoDate) => {
     const date = new Date(isoDate);
     const options = { year: "numeric", month: "long", day: "numeric" };
     return date.toLocaleDateString("fr-FR", options);
   };
-
-  const handleFavorite = async (event) => {
-    event.preventDefault();
-    setLike(!like);
-      await fetch(`${api}/api/favorite/title`, {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify({filmId:allFilms.id, userId:user[0].id}),
-      });
-    }
 
   return (
     <div>
@@ -83,8 +70,6 @@ const [favorite, setFavorite] = useState();
                 Réalisateur.rice : {allFilms.movie_director}
               </p>
               <div className={styles.pouce}>
-
-
                 <button
                   onClick={handleFavorite}
                   className={styles.buttonLike}
@@ -95,9 +80,8 @@ const [favorite, setFavorite] = useState();
                     src={like ? LikeBlue : LikeWhite}
                     alt={like ? "Logo j'aime" : "Logo j'aime pas"}
                     className={styles.like}
-                  />{" "}
+                  />
                 </button>
-  
               </div>
               <p className={styles.annonce}>Découvrir la bande annonce</p>
             </div>
