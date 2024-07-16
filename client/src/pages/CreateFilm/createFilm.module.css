@@ -7,6 +7,9 @@ h2 {
   padding-bottom: 10px;
 }
 
+.saveTitle {
+  color: white;
+}
 h4 {
   color: grey;
   font-family: var(--font-regular);

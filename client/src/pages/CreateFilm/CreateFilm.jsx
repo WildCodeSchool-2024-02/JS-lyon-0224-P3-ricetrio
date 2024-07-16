@@ -269,7 +269,7 @@ function CreateFilm() {
             </p>
           </div>
           <button type="submit">
-            <h3>Sauvegarder</h3>
+            <p className={styles.saveTitle}>Sauvegarder</p>
           </button>
         </div>
       </Form>

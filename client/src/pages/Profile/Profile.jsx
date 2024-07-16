@@ -1,6 +1,8 @@
 import { useEffect, useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
+import { toast } from "react-toastify";
 import { useUserContext } from "../../contexts/UserContext";
+import "react-toastify/dist/ReactToastify.css";
 import styles from "./profile.module.css";
 import Logo from "../../assets/images/logo-prodcat-noir.svg";
 import Avatar from "../../assets/images/avatar.png";
@@ -19,7 +21,8 @@ function Profile() {
     setTimeout(() => {
       navigate("/");
       window.location.reload();
-    }, 200);
+    }, 1000);
+    toast.info("Déconnexion réussie !");
   };
 
   const getProfile = async () => {
@@ -93,13 +96,13 @@ function Profile() {
           </div>
 
           <div className={styles.favorite}>
-            <p>Mes favoris</p>
+            <p className={styles.titleFav}>Mes favoris</p>
             <div className={styles.favoritesList}>
               {favorites.length > 0 ? (
                 favorites.map((favorite) => (
                   <div key={favorite.film_id} className={styles.favoriteItem}>
                     <Link to={`/bandeannonce/${favorite.film_id}`}>
-                      <p>{favorite.film_id}</p>
+                      <p className={styles.titleFav}>{favorite.film_id}</p>
                       <img
                         src={favorite.poster_link}
                         alt={favorite.title}
@@ -118,8 +121,8 @@ function Profile() {
             {userData}
             <Link to="/">
               <button
-                type="button"
-                className={`nes-btn is-red ${styles.logout_btn}`}
+                type="submit"
+                className={`button ${styles.logout_btn}`}
                 onClick={handleLogout}
               >
                 Se déconnecter

@@ -1,7 +1,8 @@
 .logo {
-  width: 9.3rem;
-  padding-top: 0.5rem;
+  width: 11.8rem;
+  padding-top: 1.4rem;
   padding-bottom: 1rem;
+  padding-left: 2.5rem;
 }
 
 h2 {
@@ -18,7 +19,7 @@ h4 {
 .titleForm {
   color: grey;
   font-family: var(--font-regular);
-  margin: 0;
+  margin-bottom: 20px;
 }
 
 .contactContainer {

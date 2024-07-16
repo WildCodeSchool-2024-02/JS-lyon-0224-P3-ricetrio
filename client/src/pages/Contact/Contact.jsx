@@ -58,12 +58,12 @@ export default function Contact() {
             onSubmit={handleContact}
           >
             <label htmlFor="request" className={styles.rowFormRow}>
-              <p className={styles.titleForm}>Request</p>
+              <p className={styles.titleForm}>Une suggestion ?</p>
             </label>
             <div className={styles.requestInput}>
               <input
                 type="text"
-                placeholder="Ecrivez votre requête de film "
+                placeholder="Un nouveau film à ajouter"
                 name="request"
                 value={values.request}
                 onChange={handleInputContact}

@@ -6,6 +6,14 @@ class FavoriteRepository extends AbstractRepository {
     super({ table: "favorite" });
   }
 
+  async readByUserId() {
+    // Execute the SQL SELECT query to retrieve all stationss from the "stations" table
+    const [rows] = await this.database.query(`SELECT * FROM ${this.table}`);
+
+    // Return the array of stationss
+    return rows;
+  }
+
   async create(favorite) {
     // Execute the SQL SELECT query to retrieve a specific item by its ID
 
