@@ -27,7 +27,7 @@ function Profile() {
 
   const getProfile = async () => {
     try {
-      const response = await fetch(`${ApiUrl}/user`, {
+      const response = await fetch(`${ApiUrl}/users`, {
         credentials: "include",
         headers: {
           "Content-Type": "application/json",
@@ -56,9 +56,9 @@ function Profile() {
       });
 
       if (responseFavorite.status === 200) {
-        const data = await responseFavorite.json();
+        const favoriteData = await responseFavorite.json();
 
-        setUserData(data);
+        setUserData(favoriteData);
       } else if (responseFavorite.status === 401) {
         logout(true);
       }
@@ -75,7 +75,7 @@ function Profile() {
       navigate("/");
     }
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, []);
+  }, [user]);
 
   return (
     <div>
@@ -90,8 +90,14 @@ function Profile() {
           <div className={styles.myProfile}>
             <img src={Avatar} alt="Avatar Kat" className={styles.avatar} />
             <div className={styles.informations}>
-              <p className={styles.pseudo}>Urssafito</p>
-              <p className={styles.mail}>chat@tropmignon.fr</p>
+              {user ? (
+                <div>
+                  <p className={styles.pseudo}>{user[0].pseudo}</p>
+                  <p className={styles.mail}>{user[0].email}</p>
+                </div>
+              ) : (
+                <p>User undefined</p>
+              )}
             </div>
           </div>
 
