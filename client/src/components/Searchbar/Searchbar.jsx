@@ -14,8 +14,10 @@ function Searchbar() {
       (film) =>
         value &&
         film &&
+        film.genre &&
         film.title &&
-        film.title.toLowerCase().includes(value.toLowerCase())
+        (film.genre.toLowerCase().includes(value.toLowerCase()) ||
+          film.title.toLowerCase().includes(value.toLowerCase()))
     );
 
   const handleSearchFilm = (value) => {
@@ -27,14 +29,12 @@ function Searchbar() {
     <div className={styles.searchbarContainer}>
       {user !== "" ? (
         <>
-          <form
-            className={styles.searchBarForm}
-            onSubmit={(e) => e.preventDefault()}
-          >
+          <p>Rechercher votre film par title et par genre</p>
+          <form onSubmit={(e) => e.preventDefault()}>
             <input
               className={styles.searchbarInput}
               type="text"
-              placeholder="Cherchez votre film"
+              placeholder=""
               name="film"
               value={searchFilm}
               onChange={(e) => handleSearchFilm(e.target.value)}
