@@ -96,13 +96,13 @@ function Profile() {
           </div>
 
           <div className={styles.favorite}>
-            <p>Mes favoris</p>
+            <p className={styles.titleFav}>Mes favoris</p>
             <div className={styles.favoritesList}>
               {favorites.length > 0 ? (
                 favorites.map((favorite) => (
                   <div key={favorite.film_id} className={styles.favoriteItem}>
                     <Link to={`/bandeannonce/${favorite.film_id}`}>
-                      <p>{favorite.film_id}</p>
+                      <p className={styles.titleFav}>{favorite.film_id}</p>
                       <img
                         src={favorite.poster_link}
                         alt={favorite.title}
