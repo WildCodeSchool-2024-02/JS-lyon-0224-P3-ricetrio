@@ -10,17 +10,19 @@
   flex-direction: column;
   flex-wrap: wrap;
   align-items: center;
+  margin-top: 100px;
 }
 
 .profile {
   width: 40rem;
-  height: 20rem;
+  min-height: 20rem;
   padding: 2rem;
   border-radius: 5px;
-  background-color: var(--secondary-color);
+  background-color: white;
   display: flex;
   flex-direction: column;
   justify-content: center;
+  align-items: center;
 }
 
 .myProfile {
@@ -28,7 +30,6 @@
   flex-direction: row;
   justify-content: center;
   align-items: center;
-  padding-bottom: 50px;
 }
 
 .avatar {
@@ -52,13 +53,22 @@
   color: var(--main-color);
 }
 
+.titleFav {
+  color: var(--main-color);
+}
 .button {
   display: flex;
   justify-content: center;
 }
 
+button {
+  background-color: var(--main-color);
+  color: white;
+  width: 150px;
+}
+
 button[type="submit"] {
-  width: 70%;
+  width: 100%;
   background-color: var(--main-color);
   color: white;
   margin: 8px 0;

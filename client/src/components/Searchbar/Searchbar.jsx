@@ -40,9 +40,6 @@ function Searchbar() {
               onChange={(e) => handleSearchFilm(e.target.value)}
             />
           </form>
-          <button className={styles.searchButton} type="submit">
-            Recherche
-          </button>
           <ul className={styles.searchResult}>
             {results.map((film) => (
               <Link key={film.id} to={`/bandeannonce/${film.id}/`}>

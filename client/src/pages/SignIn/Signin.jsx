@@ -1,13 +1,14 @@
-// src/pages/SignIn/Signin.jsx
 import { Link, useNavigate } from "react-router-dom";
 import { useState } from "react";
 import { toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css"; // Assurez-vous d'importer le CSS de Toastify
 import { useUserContext } from "../../contexts/UserContext";
 import styles from "./signin.module.css";
 import Logo from "../../assets/images/logo-prodcat-noir.svg";
 
 export default function Signin() {
   const notifySuccess = (text) => toast.success(text);
+  const notifyError = (text) => toast.error(text); // Notification d'erreur ajoutée
   const navigate = useNavigate();
   const { login } = useUserContext();
   const [loginInfos, setLoginInfos] = useState({
@@ -22,7 +23,7 @@ export default function Signin() {
   const handleLogin = async (e) => {
     e.preventDefault();
     if (loginInfos.pseudo.trim() === "" || loginInfos.password.trim() === "") {
-      console.error("Pseudo and password must be non-empty strings");
+      notifyError("Pseudo et mot de passe doivent être renseignés");
       return;
     }
 
@@ -52,13 +53,15 @@ export default function Signin() {
             notifySuccess(`Bienvenue`);
           }
         } else {
-          console.error("User object is missing in the response");
+          notifyError("Utilisateur introuvable");
         }
       } else {
         console.info("Login failed with status:", response.status);
+        notifyError("Identifiants invalides");
       }
     } catch (error) {
       console.error("Error during login:", error);
+      notifyError("Une erreur est survenue lors de la connexion");
     }
   };
 
@@ -79,7 +82,7 @@ export default function Signin() {
                 <input
                   className={styles.textInput}
                   type="text"
-                  placeholder="Michael J."
+                  placeholder="Pseudo"
                   name="pseudo"
                   value={loginInfos.pseudo}
                   onChange={handleLoginInfos}
