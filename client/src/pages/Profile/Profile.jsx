@@ -6,17 +6,18 @@ import "react-toastify/dist/ReactToastify.css";
 import styles from "./profile.module.css";
 import Logo from "../../assets/images/logo-prodcat-noir.svg";
 import Avatar from "../../assets/images/avatar.png";
+import { useFavoritesContext } from "../../contexts/FavoriteContext";
 
 function Profile() {
   const ApiUrl = import.meta.env.VITE_API_URL;
   const [userData, setUserData] = useState(null);
   const navigate = useNavigate();
   const { user, logout } = useUserContext();
+  const { favorites } = useFavoritesContext();
 
   const handleLogout = async () => {
     logout(false);
     localStorage.removeItem("user");
-
     setTimeout(() => {
       navigate("/");
       window.location.reload();
@@ -45,9 +46,31 @@ function Profile() {
     }
   };
 
+  const getFavorite = async () => {
+    try {
+      const responseFavorite = await fetch(`${ApiUrl}/favorite`, {
+        credentials: "include",
+        headers: {
+          "Content-Type": "application/json",
+        },
+      });
+
+      if (responseFavorite.status === 200) {
+        const data = await responseFavorite.json();
+
+        setUserData(data);
+      } else if (responseFavorite.status === 401) {
+        logout(true);
+      }
+    } catch (err) {
+      console.error(err);
+    }
+  };
+
   useEffect(() => {
     if (user !== "null" || user !== null) {
       getProfile();
+      getFavorite();
     } else {
       navigate("/");
     }
@@ -73,8 +96,25 @@ function Profile() {
           </div>
 
           <div className={styles.favorite}>
-            <p className={styles.titleFav}>Mes favoris</p>
-            {/* <p>{allFavorite.title}</p> */}
+            <p>Mes favoris</p>
+            <div className={styles.favoritesList}>
+              {favorites.length > 0 ? (
+                favorites.map((favorite) => (
+                  <div key={favorite.film_id} className={styles.favoriteItem}>
+                    <Link to={`/bandeannonce/${favorite.film_id}`}>
+                      <p>{favorite.film_id}</p>
+                      <img
+                        src={favorite.poster_link}
+                        alt={favorite.title}
+                        className={styles.favoriteImage}
+                      />
+                    </Link>
+                  </div>
+                ))
+              ) : (
+                <p>No favorite films found.</p>
+              )}
+            </div>
           </div>
 
           <div className={styles.button}>
