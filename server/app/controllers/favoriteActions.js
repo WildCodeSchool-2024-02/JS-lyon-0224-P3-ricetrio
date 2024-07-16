@@ -1,31 +1,48 @@
-const tables = require ("../../database/tables");
+const tables = require("../../database/tables");
 
-const browse = async (req, res, next) => {
-    try {
-        const favorite = await tables.favorite.readAll();
-        res.json(favorite);
-    } catch (err) {
-    next(err);
-}
-};
-
-const like = async (req, res, next) => {
-    const dataLike = req.body;
-
-    try {
-        const result = await tables.favorite.create(dataLike);
-        res.status(201).json(result);
-    } catch (err) {
-        console.error("Error creating like:", err);
-        res
-        .status (500)
-        .json ({ error: "An error occurred while creating the favorite" });
+const read = async (req, res, next) => {
+  try {
+    const favorites = await tables.favorite.readByUserId();
+    res.json(favorites);
+  } catch (err) {
     next(err);
   }
 };
 
-// Ready to export the controller functions
+const addFavorite = async (req, res, next) => {
+  try {
+    const favorite = req.body;
+    const isFavorite = await tables.favorite.isFavorite(
+      favorite.filmId,
+      favorite.userId
+    );
+    if (!isFavorite) {
+      const insertId = await tables.favorite.create(favorite);
+      res.status(201).json({ insertId });
+    } else {
+      res.status(400).json({ message: "Already a favorite" });
+    }
+  } catch (err) {
+    next(err);
+  }
+};
+
+const removeFavorite = async (req, res, next) => {
+  try {
+    const favorite = req.body;
+    const deleted = await tables.favorite.delete(favorite);
+    if (deleted) {
+      res.sendStatus(204);
+    } else {
+      res.status(404).json({ message: "Favorite not found" });
+    }
+  } catch (err) {
+    next(err);
+  }
+};
+
 module.exports = {
-  browse,
-  like,
+  read,
+  addFavorite,
+  removeFavorite,
 };

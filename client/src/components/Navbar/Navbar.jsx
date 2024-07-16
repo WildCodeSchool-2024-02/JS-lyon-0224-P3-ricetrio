@@ -1,6 +1,7 @@
 import { Link } from "react-router-dom";
 import { useUserContext } from "../../contexts/UserContext";
 import Logo from "../../assets/images/logo-prodcat-noir.svg";
+import Contact from "../../assets/images/email.png";
 import Signin from "../../assets/images/login.svg";
 import styles from "./Navbar.module.css";
 
@@ -31,6 +32,13 @@ function NavBar() {
             />
           </Link>
         )}
+        <Link to="/contact">
+          <img
+            src={Contact}
+            alt="contact au admin"
+            className={styles.contactFormulaire}
+          />
+        </Link>
       </div>
     </div>
   );

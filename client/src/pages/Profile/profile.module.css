@@ -1,7 +1,8 @@
 .logo {
-  width: 9.3rem;
-  padding-top: 0.5rem;
+  width: 11.8rem;
+  padding-top: 1.4rem;
   padding-bottom: 1rem;
+  padding-left: 2.5rem;
 }
 
 .containerProfile {
@@ -42,11 +43,13 @@
 .pseudo {
   font-family: var(--font-black);
   font-size: 25px;
+  color: var(--main-color);
 }
 
 .mail {
   font-family: var(--font-bold);
   font-size: 20px;
+  color: var(--main-color);
 }
 
 .button {

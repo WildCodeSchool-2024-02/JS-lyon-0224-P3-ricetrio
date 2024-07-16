@@ -1,5 +1,6 @@
 import { Form, Link, useNavigate } from "react-router-dom";
 import { useState } from "react";
+import { toast } from "react-toastify";
 import styles from "./inscription.module.css";
 import Logo from "../../assets/images/logo-prodcat-noir.svg";
 import Validation from "./InscriptionValidation";
@@ -7,6 +8,7 @@ import Validation from "./InscriptionValidation";
 const URL = import.meta.env.VITE_API_URL;
 
 export default function Inscription() {
+  const notifySuccess = (text) => toast.success(text);
   const navigate = useNavigate();
 
   const [values, setValues] = useState({
@@ -53,6 +55,7 @@ export default function Inscription() {
         // Vérifiez le rôle de l'utilisateur
         if (userData.role === "admin") {
           navigate("/admin");
+          notifySuccess(`Bienvenue Maitre(sse)`);
         } else {
           navigate("/");
         }
@@ -71,7 +74,7 @@ export default function Inscription() {
       </div>
       <div className={styles.contactContainer}>
         <div className={styles.contactBloc}>
-          <h2>Inscription</h2>
+          <p className={styles.titleConnexion}>Inscription</p>
           <Form
             method="post"
             className={styles.contactForm}

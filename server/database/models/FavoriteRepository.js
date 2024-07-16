@@ -5,42 +5,34 @@ class FavoriteRepository extends AbstractRepository {
   constructor() {
     super({ table: "favorite" });
   }
-  
-  async read(id) {
-    // Execute the SQL SELECT query to retrieve a specific item by its ID
-    const [rows] = await this.database.query(
-      `select * from ${this.table} where id = ?`,
-      [id]
-    );
-
-    // Return the first row of the result, which represents the item
-    return rows[0];
-  }
 
   async create(favorite) {
     // Execute the SQL SELECT query to retrieve a specific item by its ID
 
     const [result] = await this.database.query(
-      `INSERT INTO ${this.table} (user_id, film_id) VALUES (?, ?) `,
-      [favorite.user_Id,
-       favorite.film_Id, 
-      ]
+      `INSERT INTO ${this.table} (film_id, user_id ) VALUES (?, ?) `,
+      [favorite.filmId, favorite.userId]
     );
 
     // Return the first row of the result, which represents the item
     return result.insertId;
   }
 
+  async isFavorite(filmId, userId) {
+    const [rows] = await this.database.query(
+      `SELECT * FROM ${this.table} WHERE film_id = ? AND user_id = ?`,
+      [filmId, userId]
+    );
+    return rows.length > 0;
+  }
 
-
-  // async readAll() {
-  //   // Execute the SQL SELECT query to retrieve all stations from the "station" table
-  //   const [rows] = await this.database.query(`select * from ${this.table}`);
-
-  //   // Return the array of stations
-  //   return rows;
-  // }
+  async delete(favorite) {
+    const [result] = await this.database.query(
+      `DELETE FROM ${this.table} WHERE film_id = ? AND user_id = ?`,
+      [favorite.filmId, favorite.userId]
+    );
+    return result.affectedRows > 0;
+  }
 }
 
 module.exports = FavoriteRepository;
-

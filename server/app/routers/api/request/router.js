@@ -7,17 +7,12 @@ const router = express.Router();
 /* ************************************************************************* */
 
 // Import item-related actions
-const {
-  read,
-  addFavorite,
-  removeFavorite,
-} = require("../../../controllers/favoriteActions");
+const { browse, read, add } = require("../../../controllers/requestActions");
 
 // Route to get a list of items
-// router.get("/", browse); // Get all favorites for a user
-router.get("/:userId", read); // Get all favorites for a user
-router.post("/", addFavorite); // Add a favorite
-router.delete("/", removeFavorite); // Remove a favorite
+router.get("/", browse);
+router.get("/", read);
+router.post("/", add);
 
 /* ************************************************************************* */
 
