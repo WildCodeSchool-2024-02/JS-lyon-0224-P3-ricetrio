@@ -6,22 +6,26 @@ const tables = require("../../database/tables");
 
 const login = async (req, res, next) => {
   try {
+    console.info(req.body);
+    console.info(req.body.pseudo);
     // Fetch a specific user from the database based on the provided email
-    const user = await tables.user.readByEmailWithPassword(req.body.email);
-
-    if (user == null) {
+    const user = await tables.user.readByPseudoWithPassword(req.body.pseudo);
+    console.info(user);
+    if (user === null) {
       res.sendStatus(422);
       return;
     }
 
+    console.info(user[0].hashed_password);
+    console.info(req.body.password);
+
     const verified = await argon2.verify(
-      user.hashed_password,
+      user[0].hashed_password,
       req.body.password
     );
 
     if (verified === true) {
-      // Respond with the user and a signed token in JSON format (but without the hashed password)
-      delete user.hashed_password;
+      delete user[0].hashed_password;
 
       const token = await jwt.sign(
         { sub: user.id, isAdmin: user.is_admin },
@@ -31,19 +35,35 @@ const login = async (req, res, next) => {
         }
       );
 
-      res.json({
-        token,
-        user,
+      res.cookie("access_token", token, {
+        httpOnly: true,
+        maxAge: 3600000,
+        secure: process.env.NODE_ENV === "production",
+        sameSite: "Strict",
+        path: "/",
       });
+
+      delete user.password;
+      delete user.id;
+
+      res
+        .json({
+          user,
+        })
+        .status(200);
     } else {
       res.sendStatus(422);
     }
   } catch (err) {
-    // Pass any errors to the error-handling middleware
     next(err);
   }
 };
 
+const logout = (req, res) => {
+  res.clearCookie("access_token").sendStatus(200);
+};
+
 module.exports = {
   login,
+  logout,
 };

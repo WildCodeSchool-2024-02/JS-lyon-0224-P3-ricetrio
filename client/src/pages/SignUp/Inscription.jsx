@@ -1,18 +1,23 @@
 import { Form, Link, useNavigate } from "react-router-dom";
 import { useState } from "react";
+import { toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css"; // Assurez-vous d'importer le CSS de Toastify
 import styles from "./inscription.module.css";
-import Logo from "../../assets/images/logo-prodkat.svg";
+import Logo from "../../assets/images/logo-prodcat-noir.svg";
 import Validation from "./InscriptionValidation";
 
 const URL = import.meta.env.VITE_API_URL;
 
 export default function Inscription() {
+  const notifySuccess = (text) => toast.success(text);
+  const notifyError = (text) => toast.error(text); // Notification d'erreur ajoutée
   const navigate = useNavigate();
 
   const [values, setValues] = useState({
     pseudo: "",
     email: "",
     password: "",
+    role: "",
   });
 
   const [errors, setErrors] = useState({});
@@ -22,7 +27,6 @@ export default function Inscription() {
       ...prev,
       [event.target.name]: event.target.value,
     }));
-    setErrors(Validation(values));
   };
 
   const handleSubmit = async (event) => {
@@ -42,16 +46,28 @@ export default function Inscription() {
             pseudo: values.pseudo,
             email: values.email,
             password: values.password,
+            role: values.role,
           }),
         });
-        if (response.status === 200) {
+        if (!response.ok) {
           throw new Error("Erreur lors de l'inscription");
         }
+        const userData = await response.json();
 
-        navigate("/admin");
+        // Vérifiez le rôle de l'utilisateur
+        if (userData.role === "admin") {
+          navigate("/admin");
+          notifySuccess(`Bienvenue Maitre(sse)`);
+        } else {
+          navigate("/");
+          notifySuccess(`Inscription réussie ! Bienvenue ${userData.pseudo}`);
+        }
       } catch (err) {
         console.error("Erreur lors de la requête d'inscription:", err);
+        notifyError("Une erreur est survenue lors de l'inscription");
       }
+    } else {
+      notifyError("Veuillez corriger les erreurs dans le formulaire");
     }
   };
 
@@ -64,7 +80,7 @@ export default function Inscription() {
       </div>
       <div className={styles.contactContainer}>
         <div className={styles.contactBloc}>
-          <h2>Inscription</h2>
+          <p className={styles.titleConnexion}>Inscription</p>
           <Form
             method="post"
             className={styles.contactForm}

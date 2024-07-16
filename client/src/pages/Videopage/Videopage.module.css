@@ -1,39 +1,164 @@
 .videoPage {
-  margin-left: 1rem;
-  margin-right: 1rem;
+  margin: 1rem 0rem 0rem 3rem;
+  position: relative;
+  display: flex;
+  justify-content: right;
+  z-index: 100;
+}
+
+.blocInfo {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: absolute;
+  left: -10%;
+  width: 100%;
+  height: 100%;
+  z-index: 2;
+  background: linear-gradient(
+    to right,
+    rgba(0, 0, 0, 1) 35%,
+    rgba(0, 0, 0, 1) 35%,
+    rgba(0, 0, 0, 0) 100%
+  );
+}
+
+.blocImage {
+  z-index: -100;
+}
+
+p {
+  color: white;
+  font-family: var(--font-regular);
+}
+
+.fond {
+  height: 40rem;
+  z-index: -100;
+}
+
+.title {
+  padding-left: 5rem;
+}
+
+.titre {
+  font-family: var(--font-bold);
+  font-size: 40px;
+  margin-top: 0;
+}
+
+.resume {
+  font-size: 17px;
+  font-weight: 600;
+}
+
+.timeDate {
+  display: flex;
+  flex-direction: row;
+  gap: 3rem;
+}
+
+.date,
+.duree {
+  margin-bottom: 0;
+}
+
+.buttonLike {
+  background: none;
+  border: none;
+  cursor: pointer;
+}
+
+.like,
+.dislike {
+  height: 2rem;
+}
+
+.annonce {
+  margin-top: 2rem;
+  font-size: 20px;
+  font-weight: 700;
 }
 
 .video {
-  margin-top: 2.5rem;
-  display: flex;
-  justify-content: center;
+  padding: 2rem 2rem 2rem 2rem;
 }
 
 .video iframe {
   width: 100%;
-  height: 20rem;
+  height: 35rem;
 }
 
-h3 {
-  font-family: var(--font-bold);
+@media (max-width: 550px) {
+  .title {
+    max-height: 400px;
+    padding-left: 3rem;
+  }
+
+  .video {
+    padding-top: 6rem;
+  }
 }
 
-.synopsis {
-  padding: 1rem;
-  margin-bottom: 2rem;
-  background-color: var(--fourth-color);
-  font-family: var(--font-regular);
-}
+@media (max-width: 768px) {
+  .page {
+    margin: 1rem 0rem 0rem 2rem;
+  }
 
-.description {
-  font-family: var(--font-regular);
-  font-size: 14px;
-  padding: 1rem;
-  background-color: var(--third-color);
-}
+  .videoPage {
+    margin: 1rem 0rem 0rem 0rem;
+  }
 
-@media (min-width: 431px) {
+  .blocInfo {
+    left: -10%;
+  }
+
+  .titre {
+    font-family: var(--font-bold);
+    font-size: 30px;
+    margin-top: 0;
+  }
+
+  .title {
+    padding-top: 3rem;
+  }
+
+  .resume {
+    font-size: 14px;
+    font-weight: 600;
+  }
+
+  .duree,
+  .date,
+  .genre,
+  .real {
+    font-size: 14px;
+  }
+
+  .annonce {
+    margin-top: 1rem;
+    font-size: 16px;
+    font-weight: 700;
+  }
+
+  .fond {
+    height: 20rem;
+    z-index: -100;
+  }
+
   .video iframe {
-    height: 30rem;
+    width: 100%;
+    height: 20rem;
+    margin-top: 3rem;
+  }
+}
+
+@media (min-width: 1000px) {
+  .title {
+    padding-left: 10rem;
+  }
+
+  .overview {
+    width: 60%;
   }
 }

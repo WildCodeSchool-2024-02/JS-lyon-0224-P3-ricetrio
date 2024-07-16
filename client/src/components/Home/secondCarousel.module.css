@@ -1,0 +1,77 @@
+.principalContainer {
+  display: flex;
+  justify-content: center;
+  width: 100%;
+  margin: 0;
+  padding: 0;
+  height: 370px;
+}
+
+.contenter {
+  overflow: hidden;
+  width: 100vw;
+  display: flex;
+  justify-content: left;
+  margin-top: 100px;
+}
+
+.logoEmbla {
+  position: absolute;
+  top: 40%;
+  left: 50%;
+  transform: translate(-50%, -60%);
+  z-index: 1;
+  opacity: 0.5;
+  pointer-events: none;
+  height: 350px;
+  max-width: 768px;
+}
+
+.embla {
+  max-width: 150px;
+  /* position: relative; */
+  z-index: 2;
+}
+.embla__container {
+  display: flex;
+}
+.embla__slide {
+  flex: 10% 10% 100%;
+  min-width: 0;
+}
+.embla > img {
+  height: 60%;
+  border: solid blue 2px;
+}
+
+.posterContainer {
+  height: 200px;
+}
+.carouselIMg {
+  height: 200px;
+  margin: 15px 15px 15px 15px;
+  transition: 0.3s ease;
+  transform-origin: border top;
+  border-radius: 5px;
+  box-shadow: 1px 1px 3px rgba(255, 255, 255, 0.5);
+}
+.carouselIMg:hover {
+  transform: scale(1.15);
+  margin: 15px 15px 15px 15px;
+  box-shadow: 2px 2px 6px rgba(255, 255, 255, 0.5);
+  border-radius: 10px;
+}
+
+@media screen and (min-width: 768px) {
+  .logoEmbla {
+    position: absolute;
+    top: 40%;
+    left: 50%;
+    transform: translate(-50%, -60%);
+    z-index: 1;
+    opacity: 0.5;
+    pointer-events: none;
+    max-height: 350px;
+    max-width: 1300px;
+  }
+}

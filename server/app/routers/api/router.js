@@ -18,6 +18,14 @@ const authRouter = require("./auth/router");
 
 router.use("/login", authRouter);
 
+const favoriteRouter = require("./favorite/router");
+
+router.use("/favorite", favoriteRouter);
+
+const requestRouter = require("./request/router");
+
+router.use("/request", requestRouter);
+
 /* ************************************************************************* */
 
 module.exports = router;

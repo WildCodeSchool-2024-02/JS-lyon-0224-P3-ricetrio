@@ -53,6 +53,37 @@ class filmRepository extends AbstractRepository {
     // Execute the query and return the result
     return result.insertId;
   }
+
+  async update(film) {
+    const [result] = await this.database.query(
+      `update ${this.table} SET title = ?, genre = ?, duration = ?, release_date = ?, overview = ?, movie_director = ?, poster_link = ?, key_trailer = ?, trailer_url = ?, freemium = ?, background_img = ? where id = ?`,
+      [
+        film.title,
+        film.genre,
+        film.duration,
+        film.release_date,
+        film.overview,
+        film.movie_director,
+        film.poster_link,
+        film.key_trailer,
+        film.trailer_url,
+        film.freemium,
+        film.background_img,
+        film.id,
+      ]
+    );
+
+    return result;
+  }
+
+  async delete(id) {
+    const [result] = await this.database.query(
+      `delete from ${this.table} where id = ?`,
+      [id]
+    );
+
+    return result;
+  }
 }
 
 module.exports = filmRepository;

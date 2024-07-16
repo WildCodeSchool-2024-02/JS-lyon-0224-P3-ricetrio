@@ -3,10 +3,13 @@ h2 {
   font-family: var(--font-regular);
   font-size: 25px;
   text-align: center;
-  padding-left: 20px;
+
   padding-bottom: 10px;
 }
 
+.saveTitle {
+  color: white;
+}
 h4 {
   color: grey;
   font-family: var(--font-regular);

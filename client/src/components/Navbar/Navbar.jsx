@@ -1,10 +1,12 @@
 import { Link } from "react-router-dom";
-import Logo from "../../assets/images/logo-prodkat.svg";
-import Search from "../../assets/images/Search.svg";
-import Signin from "../../assets/images/Signin.svg";
+import { useUserContext } from "../../contexts/UserContext";
+import Logo from "../../assets/images/logo-prodcat-noir.svg";
+import Contact from "../../assets/images/message.svg";
+import Signin from "../../assets/images/login2.svg";
 import styles from "./Navbar.module.css";
 
 function NavBar() {
+  const { user } = useUserContext();
   return (
     <div className={styles.containParents}>
       <div className={styles.containLeft}>
@@ -13,20 +15,32 @@ function NavBar() {
         </Link>
       </div>
       <div className={styles.containRight}>
-        <img src={Search} alt="fonction recherche" className={styles.search} />
-        <Link to="/connexion">
+        {!user ? (
+          <Link to="/connexion">
+            <img
+              src={Signin}
+              alt="profile connexion ou inscription"
+              className={styles.profile}
+            />
+          </Link>
+        ) : (
+          <Link to="/profile">
+            <img
+              src={Signin}
+              alt="profile connexion ou inscription"
+              className={styles.profile}
+            />
+          </Link>
+        )}
+        <Link to="/contact">
           <img
-            src={Signin}
-            alt="profile connexion ou inscription"
+            src={Contact}
+            alt="contact au admin"
             className={styles.profile}
           />
-        </Link>
-        <Link to="/admin">
-          <span>Admin</span>
         </Link>
       </div>
     </div>
   );
 }
-
 export default NavBar;

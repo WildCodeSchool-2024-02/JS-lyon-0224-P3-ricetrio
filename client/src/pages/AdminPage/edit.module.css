@@ -1,0 +1,107 @@
+.editFormContainer {
+  display: flex;
+  flex-wrap: wrap;
+  flex-direction: row;
+  align-items: top;
+  justify-content: center;
+  gap: 3rem;
+  padding: 20px;
+  align-items: center;
+}
+
+.editForm {
+  border: solid white 2px;
+  display: flex;
+  flex-wrap: wrap;
+  flex-direction: column;
+  align-items: center;
+  width: 500px;
+  border-radius: 5px;
+  height: 620px;
+  padding: 10px;
+}
+
+.previewContainer {
+  border: solid white 2px;
+  display: flex;
+  flex-direction: column;
+  align-items: left;
+  height: 620px;
+  width: 500px;
+  border-radius: 5px;
+  padding: 20px;
+  position: relative;
+}
+
+.previewTitle {
+  font-size: 30px;
+  border-style: double;
+  padding: 10px;
+  border-radius: 5px;
+  border-color: var(--main-color);
+}
+
+.previewText {
+  color: white;
+  font-size: 12px;
+}
+
+.previewTextTitle {
+  color: white;
+  font-size: 18px;
+  font-weight: bold;
+  margin: 0;
+}
+
+.previewImgContainer {
+  position: relative;
+  top: 10%;
+  width: 100%;
+}
+.previewTextContainer {
+  position: absolute;
+  top: 32%;
+  left: 0;
+  width: 100%;
+  height: 300px;
+  color: white;
+  background: linear-gradient(
+    to right,
+    rgba(0, 0, 0, 1) 25%,
+    rgba(0, 0, 0, 1) 25%,
+    rgba(0, 0, 0, 0) 100%
+  );
+  padding: 20px;
+  box-sizing: border-box;
+}
+
+.previewImg {
+  width: 100%;
+  height: auto;
+  display: block;
+}
+.editInput {
+  flex-direction: column;
+  max-width: 180px;
+  min-height: 10px;
+  max-height: 500px;
+  resize: both;
+  overflow: auto;
+  border-radius: 5px;
+}
+
+.editTitle {
+  color: white;
+  font-family: var(--font-regular);
+  font-size: 20px;
+  font-weight: bold;
+  margin: 0;
+}
+
+.editButton {
+  max-width: 100px;
+}
+
+.saveButton {
+  color: white;
+}

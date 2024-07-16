@@ -1,13 +1,15 @@
 import NavBar from "../../components/Navbar/Navbar";
-import MainCarousel from "../../components/Home/MainCarousel";
-import FilmSection from "../../components/Home/FilmSection";
+import CarouselWrapper from "../../components/Home/CarouselWrapper";
+import FilterSection from "../../components/Home/FilterSection";
+import Searchbar from "../../components/Searchbar/Searchbar";
 
 function Homepage() {
   return (
     <div>
       <NavBar />
-      <MainCarousel />
-      <FilmSection />
+      <CarouselWrapper />
+      <Searchbar />
+      <FilterSection />
     </div>
   );
 }
