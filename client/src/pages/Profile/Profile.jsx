@@ -1,6 +1,8 @@
 import { useEffect, useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
+import { toast } from "react-toastify";
 import { useUserContext } from "../../contexts/UserContext";
+import "react-toastify/dist/ReactToastify.css";
 import styles from "./profile.module.css";
 import Logo from "../../assets/images/logo-prodcat-noir.svg";
 import Avatar from "../../assets/images/avatar.png";
@@ -15,11 +17,11 @@ function Profile() {
     logout(false);
     localStorage.removeItem("user");
 
-    // Simuler un délai pour démonstration
     setTimeout(() => {
       navigate("/");
       window.location.reload();
-    }, 200);
+    }, 1000);
+    toast.info("Déconnexion réussie !");
   };
 
   const getProfile = async () => {
@@ -39,7 +41,6 @@ function Profile() {
         logout(true);
       }
     } catch (err) {
-      // Log des erreurs possibles
       console.error(err);
     }
   };
@@ -72,7 +73,7 @@ function Profile() {
           </div>
 
           <div className={styles.favorite}>
-            <p>Mes favoris</p>
+            <p className={styles.titleFav}>Mes favoris</p>
             {/* <p>{allFavorite.title}</p> */}
           </div>
 
@@ -80,8 +81,8 @@ function Profile() {
             {userData}
             <Link to="/">
               <button
-                type="button"
-                className={`nes-btn is-red ${styles.logout_btn}`}
+                type="submit"
+                className={`button ${styles.logout_btn}`}
                 onClick={handleLogout}
               >
                 Se déconnecter

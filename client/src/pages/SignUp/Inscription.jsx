@@ -1,6 +1,7 @@
 import { Form, Link, useNavigate } from "react-router-dom";
 import { useState } from "react";
 import { toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css"; // Assurez-vous d'importer le CSS de Toastify
 import styles from "./inscription.module.css";
 import Logo from "../../assets/images/logo-prodcat-noir.svg";
 import Validation from "./InscriptionValidation";
@@ -9,6 +10,7 @@ const URL = import.meta.env.VITE_API_URL;
 
 export default function Inscription() {
   const notifySuccess = (text) => toast.success(text);
+  const notifyError = (text) => toast.error(text); // Notification d'erreur ajoutée
   const navigate = useNavigate();
 
   const [values, setValues] = useState({
@@ -47,7 +49,7 @@ export default function Inscription() {
             role: values.role,
           }),
         });
-        if (response.status === 200) {
+        if (!response.ok) {
           throw new Error("Erreur lors de l'inscription");
         }
         const userData = await response.json();
@@ -58,10 +60,14 @@ export default function Inscription() {
           notifySuccess(`Bienvenue Maitre(sse)`);
         } else {
           navigate("/");
+          notifySuccess(`Inscription réussie ! Bienvenue ${userData.pseudo}`);
         }
       } catch (err) {
         console.error("Erreur lors de la requête d'inscription:", err);
+        notifyError("Une erreur est survenue lors de l'inscription");
       }
+    } else {
+      notifyError("Veuillez corriger les erreurs dans le formulaire");
     }
   };
 

@@ -1,8 +1,8 @@
 import { Link } from "react-router-dom";
 import { useUserContext } from "../../contexts/UserContext";
 import Logo from "../../assets/images/logo-prodcat-noir.svg";
-import Contact from "../../assets/images/email.png";
-import Signin from "../../assets/images/login.svg";
+import Contact from "../../assets/images/message.svg";
+import Signin from "../../assets/images/login2.svg";
 import styles from "./Navbar.module.css";
 
 function NavBar() {
@@ -36,7 +36,7 @@ function NavBar() {
           <img
             src={Contact}
             alt="contact au admin"
-            className={styles.contactFormulaire}
+            className={styles.profile}
           />
         </Link>
       </div>

@@ -38,6 +38,9 @@ const login = async (req, res, next) => {
       res.cookie("access_token", token, {
         httpOnly: true,
         maxAge: 3600000,
+        secure: process.env.NODE_ENV === "production",
+        sameSite: "Strict",
+        path: "/",
       });
 
       delete user.password;
