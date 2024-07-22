@@ -57,7 +57,7 @@ export default function Inscription() {
         // Vérifiez le rôle de l'utilisateur
         if (userData.role === "admin") {
           navigate("/admin");
-          notifySuccess(`Bienvenue Maitre(sse)`);
+          notifySuccess(`Bienvenue Maitre.sse`);
         } else {
           navigate("/");
           notifySuccess(`Inscription réussie ! Bienvenue ${values.pseudo}`);

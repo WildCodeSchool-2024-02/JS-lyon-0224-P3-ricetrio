@@ -31,7 +31,7 @@ export function FavoritesProvider({ children }) {
           setFavorites(data);
         }
       } catch (error) {
-        notifyError("Error fetching favorites:", error);
+        notifyError("Erreur lors de la récupération du favori :", error);
       }
     }
   }, [user]);
@@ -59,7 +59,7 @@ export function FavoritesProvider({ children }) {
           notifyError("Échec lors de l'ajout du favori");
         }
       } catch (error) {
-        notifyError("Error adding favorite:", error);
+        notifyError("Erreur lors de l'ajout du favori", error);
       }
     },
     [user]
@@ -84,10 +84,10 @@ export function FavoritesProvider({ children }) {
             prevFavorites.filter((fav) => fav.film_id !== filmId)
           );
         } else {
-          notifyError("Failed to remove favorite");
+          notifyError("Échec lors de la suppression du favori");
         }
       } catch (error) {
-        notifyError("Error removing favorite:", error);
+        notifyError("Erreur lors de la suppression du favori", error);
       }
     },
     [user]

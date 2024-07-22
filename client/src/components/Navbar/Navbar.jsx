@@ -19,7 +19,7 @@ function NavBar() {
           <Link to="/connexion">
             <img
               src={Signin}
-              alt="profile connexion ou inscription"
+              alt="Profile connexion ou inscription"
               className={styles.profile}
             />
           </Link>
@@ -27,7 +27,7 @@ function NavBar() {
           <Link to="/profile">
             <img
               src={Signin}
-              alt="profile connexion ou inscription"
+              alt="Profile connexion ou inscription"
               className={styles.profile}
             />
           </Link>
