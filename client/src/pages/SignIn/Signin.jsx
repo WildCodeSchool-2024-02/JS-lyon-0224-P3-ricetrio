@@ -40,7 +40,6 @@ export default function Signin() {
 
       if (response.status === 200) {
         const responseData = await response.json();
-        console.info("API response:", responseData);
 
         if (responseData.user) {
           login(responseData.user);
@@ -53,14 +52,12 @@ export default function Signin() {
             notifySuccess(`Bienvenue`);
           }
         } else {
-          notifyError("Utilisateur introuvable");
+          notifyError("Utilisateur.rice introuvable");
         }
       } else {
-        console.info("Login failed with status:", response.status);
         notifyError("Identifiants invalides");
       }
     } catch (error) {
-      console.error("Error during login:", error);
       notifyError("Une erreur est survenue lors de la connexion");
     }
   };
@@ -69,7 +66,7 @@ export default function Signin() {
     <div>
       <div className={styles.logo}>
         <Link to="/">
-          <img src={Logo} alt="logo prodkat" />
+          <img src={Logo} alt="Logo prodkat" />
         </Link>
       </div>
       <div className={styles.contactContainer}>
@@ -107,7 +104,7 @@ export default function Signin() {
           </form>
           <div className={styles.textUnderButton}>
             <p className={styles.underButton}>
-              Je suis un·e nouvel·le utilisateur·rice ?
+              Je suis un.e nouvel.le utilisateur.rice ?
               <Link to="/inscription"> Inscription</Link>
             </p>
           </div>

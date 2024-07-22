@@ -1,5 +1,7 @@
 import { Form, Link, useNavigate } from "react-router-dom";
 import { useState } from "react";
+import { toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 import styles from "./contact.module.css";
 import Logo from "../../assets/images/logo-prodcat-noir.svg";
 
@@ -10,6 +12,8 @@ export default function Contact() {
     request: "",
   });
   const navigate = useNavigate();
+  const notifySuccess = (text) => toast.success(text);
+  const notifyError = (text) => toast.error(text); // Notification d'erreur ajoutée
 
   const handleInputContact = (event) => {
     setValues((prev) => ({
@@ -30,15 +34,13 @@ export default function Contact() {
           request: values.request,
         }),
       });
-      if (!response.ok) {
-        throw new Error("Network response was not ok");
+      if (response.status > 200 || response.status < 300) {
+        const data = await response.json();
+        navigate("/received");
+        notifySuccess("Requête réussie :", data);
       }
-
-      const data = await response.json();
-      navigate("/received");
-      console.info("Request successful:", data);
     } catch (err) {
-      console.error("Erreur lors de la requête de contact:", err);
+      notifyError("Erreur lors de la requête de contact:", err);
     }
   };
 
@@ -46,7 +48,7 @@ export default function Contact() {
     <div>
       <div className={styles.logo}>
         <Link to="/">
-          <img src={Logo} alt="logo prodkat" />
+          <img src={Logo} alt="Logo prodkat" />
         </Link>
       </div>
       <div className={styles.contactContainer}>

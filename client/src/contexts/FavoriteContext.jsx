@@ -1,4 +1,5 @@
-// src/contexts/FavoritesContext.js
+import { toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 import PropTypes from "prop-types";
 import {
   createContext,
@@ -18,6 +19,8 @@ export function FavoritesProvider({ children }) {
   const { user } = useUserContext();
   const [favorites, setFavorites] = useState([]);
 
+  const notifyError = (text) => toast.error(text); // Notification d'erreur ajoutée
+
   useEffect(() => {
     const fetchFavorites = async () => {
       if (user) {
@@ -29,15 +32,13 @@ export function FavoritesProvider({ children }) {
             const data = await response.json();
             setFavorites(data);
           } else {
-            console.error("Failed to fetch favorites");
+            notifyError("Échec de la demande de favori");
           }
         } catch (error) {
-          console.error("Error fetching favorites:", error);
+          notifyError("Erreur lors de la récupération des favoris :", error);
         }
       }
-    };
-
-    fetchFavorites();
+    };    fetchFavorites();
   }, [user]);
 
   const addFavorite = useCallback(
@@ -60,10 +61,10 @@ export function FavoritesProvider({ children }) {
             { film_id: filmId },
           ]);
         } else {
-          console.error("Failed to add favorite");
+          notifyError("Échec lors de l'ajout du favori");
         }
       } catch (error) {
-        console.error("Error adding favorite:", error);
+        notifyError("Erreur lors de l'ajout du favori", error);
       }
     },
     [user]
@@ -88,10 +89,10 @@ export function FavoritesProvider({ children }) {
             prevFavorites.filter((fav) => fav.film_id !== filmId)
           );
         } else {
-          console.error("Failed to remove favorite");
+          notifyError("Échec lors de la suppression du favori");
         }
       } catch (error) {
-        console.error("Error removing favorite:", error);
+        notifyError("Erreur lors de la suppression du favori", error);
       }
     },
     [user]

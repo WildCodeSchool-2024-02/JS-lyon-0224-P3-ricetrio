@@ -7,7 +7,7 @@ export default function Received() {
     <div>
       <div className={styles.logo}>
         <Link to="/">
-          <img src={Logo} alt="logo prodkat" />
+          <img src={Logo} alt="Logo prodkat" />
         </Link>
       </div>
       <div className={styles.receivedContainer}>

@@ -1,8 +1,9 @@
 import PropTypes from "prop-types";
 import { createContext, useContext, useMemo } from "react";
 import { useNavigate } from "react-router-dom";
-
+import { toast } from "react-toastify";
 import useLocalStorage from "../hooks/useLocalStorage";
+import "react-toastify/dist/ReactToastify.css";
 
 const UserContext = createContext();
 
@@ -11,6 +12,7 @@ export default function UserProvider({ children }) {
   const navigate = useNavigate();
 
   const [user, setUser] = useLocalStorage("user", "");
+  const notifyError = (text) => toast.error(text); // Notification d'erreur ajoutée
 
   const login = (userData) => {
     setUser(userData);
@@ -31,7 +33,7 @@ export default function UserProvider({ children }) {
       }
     } catch (err) {
       // Log des erreurs possibles
-      console.error(err);
+      notifyError(err);
     }
   };
 

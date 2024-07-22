@@ -16,12 +16,12 @@ const read = async (req, res) => {
   try {
     const request = await requestRepository.read(req.params.id);
     if (!request === true) {
-      res.status(404).json({ error: "request not found" });
+      res.status(404).json({ error: "Requête non trouvée" });
       return;
     }
     res.json(request);
   } catch (error) {
-    res.status(400).json({ error: "Failed to request film" });
+    res.status(400).json({ error: "Échec de la demande de film" });
   }
 };
 
@@ -32,7 +32,7 @@ const add = async (req, res, next) => {
 
     res.status(201).json({ insertId });
   } catch (err) {
-    console.error("Error in add function:", err);
+    console.error("Erreur dans la fonction d'ajout:", err);
     res.status(500).json();
     next(err);
   }

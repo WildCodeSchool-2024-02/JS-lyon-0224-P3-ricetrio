@@ -14,6 +14,7 @@ function Profile() {
   const navigate = useNavigate();
   const { user, logout } = useUserContext();
   const { favorites } = useFavoritesContext();
+  const notifyError = (text) => toast.error(text);
 
   const handleLogout = async () => {
     logout(false);
@@ -42,7 +43,7 @@ function Profile() {
         logout(true);
       }
     } catch (err) {
-      console.error(err);
+      notifyError("Erreur lors de la récupération du profile", err);
     }
   };
 
@@ -63,7 +64,7 @@ function Profile() {
         logout(true);
       }
     } catch (err) {
-      console.error(err);
+      notifyError("Erreur lors de la récupération des favoris", err);
     }
   };
 
@@ -81,7 +82,7 @@ function Profile() {
     <div>
       <div className={styles.logo}>
         <Link to="/">
-          <img src={Logo} alt="logo prodkat" />
+          <img src={Logo} alt="Logo prodkat" />
         </Link>
       </div>
 
@@ -96,7 +97,7 @@ function Profile() {
                   <p className={styles.mail}>{user[0].email}</p>
                 </div>
               ) : (
-                <p>Utilisateur introuvable</p>
+                <p>Utilisateur.rice introuvable</p>
               )}
             </div>
           </div>

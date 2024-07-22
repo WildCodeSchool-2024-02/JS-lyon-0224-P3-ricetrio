@@ -57,17 +57,17 @@ function FilterSection() {
                 <option value="All">Toutes les années</option>
                 <option value="1970s">Les années 1970</option>
                 <option value="1980s">Les années 1980</option>
-                <option value="1990s" disabled={!user}>
-                  {`${!user === "" ? "Veuillez vous connecter" : "Les années 1990"}`}
+                <option value="1990s" disabled={user === ""}>
+                  {`${user === "" ? "Veuillez vous connecter" : "Les années 1990"}`}
                 </option>
-                <option value="2000s" disabled={!user}>
-                  {`${!user === "" ? "Veuillez vous connecter" : "Les années 2000"}`}
+                <option value="2000s" disabled={user === ""}>
+                  {`${user === "" ? "Veuillez vous connecter" : "Les années 2000"}`}
                 </option>
-                <option value="2010s" disabled={!user}>
-                  {`${!user === "" ? "Veuillez vous connecter" : "Les années 2010"}`}
+                <option value="2000s" disabled={user === ""}>
+                  {`${user === "" ? "Veuillez vous connecter" : "Les années 2010"}`}
                 </option>
-                <option value="2020s" disabled={!user}>
-                  {`${!user === "" ? "Veuillez vous connecter" : "Les années 2020"}`}
+                <option value="2020s" disabled={user === ""}>
+                  {`${user === "" ? "Veuillez vous connecter" : "Les années 2020"}`}
                 </option>
               </select>
             </div>
@@ -99,47 +99,47 @@ function FilterSection() {
               </button>
               <button
                 className={`${styles.buttonTitle} ${
-                  !user ? styles.disabledButton : styles.buttonTitle
+                  user === "" ? styles.disabledButton : styles.buttonTitle
                 }`}
                 type="button"
                 value="1990s"
                 onClick={handleBtns}
-                disabled={!user}
+                disabled={user === ""}
               >
-                {`${!user ? "Veuillez vous connecter" : "Les années 1990"}`}
+                {`${user === null ? "Veuillez vous connecter" : "Les années 1990"}`}
               </button>
               <button
                 className={`${styles.buttonTitle} ${
-                  !user ? styles.disabledButton : styles.buttonTitle
+                  user === null ? styles.disabledButton : styles.buttonTitle
                 }`}
                 type="button"
                 value="2000s"
                 onClick={handleBtns}
-                disabled={!user}
+                disabled={user === ""}
               >
-                {`${!user ? "Veuillez vous connecter" : "Les années 2000"}`}
+                {`${user !== true ? "Veuillez vous connecter" : "Les années 2000"}`}
               </button>
               <button
                 className={`${styles.buttonTitle} ${
-                  !user ? styles.disabledButton : styles.buttonTitle
+                  user === "" ? styles.disabledButton : styles.buttonTitle
                 }`}
                 type="button"
                 value="2010s"
                 onClick={handleBtns}
-                disabled={!user}
+                disabled={user === ""}
               >
-                {`${!user ? "Veuillez vous connecter" : "Les années 2010"}`}
+                {`${user === "" ? "Veuillez vous connecter" : "Les années 2010"}`}
               </button>
               <button
                 className={`${styles.buttonTitle} ${
-                  !user ? styles.disabledButton : styles.buttonTitle
+                  user === "" ? styles.disabledButton : styles.buttonTitle
                 }`}
                 type="button"
                 value="2020s"
                 onClick={handleBtns}
-                disabled={!user}
+                disabled={user === ""}
               >
-                {`${!user ? "Veuillez vous connecter" : "Les années 2020"}`}
+                {`${user === "" ? "Veuillez vous connecter" : "Les années 2020"}`}
               </button>
             </div>
           )}
@@ -148,7 +148,7 @@ function FilterSection() {
           <div className={styles.filterPosterContainer}>
             {category.map((film) => (
               <div className={styles.imgContainer} key={film.id}>
-                {film.freemium === 1 && !user ? (
+                {film.freemium === 1 && user === "" ? (
                   <Link to="/verifyfreemium">
                     <img src={film.poster_link} alt={film.title} />
                   </Link>
