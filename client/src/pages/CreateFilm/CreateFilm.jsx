@@ -1,5 +1,7 @@
 import { Form, Link, useNavigate } from "react-router-dom";
 import { useState } from "react";
+import { toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 import ValidationFilm from "./CreateFilmValidation";
 import Arrow from "../../assets/images/arrow.svg";
 import styles from "./createFilm.module.css";
@@ -8,6 +10,8 @@ const URL = import.meta.env.VITE_API_URL;
 
 function CreateFilm() {
   const navigate = useNavigate();
+  const notifySuccess = (text) => toast.success(text);
+  const notifyError = (text) => toast.error(text); // Notification d'erreur ajoutée
 
   const [values, setValues] = useState({
     movie_key: "",
@@ -64,13 +68,16 @@ function CreateFilm() {
         });
 
         if (response.status === 200) {
+          notifyError("L'opération d'ajout du contenu a échouée");
           throw new Error(
             "Erreur lors de la création de la nouvelle fiche de film"
           );
         }
 
         navigate("/admin");
+        notifySuccess("L'opération d'ajout du contenu a réussi");
       } catch (err) {
+        notifyError("L'opération d'ajout du contenu a échouée");
         console.error(
           "Erreur lors de la requête de la création de la nouvelle fiche de film:",
           err

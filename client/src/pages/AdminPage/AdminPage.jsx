@@ -1,5 +1,7 @@
 import { useState, useEffect } from "react";
 import { useLoaderData, Link } from "react-router-dom";
+import { toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 import styles from "./adminPage.module.css";
 import NavBar from "../../components/Navbar/Navbar";
 
@@ -7,6 +9,8 @@ function AdminPage() {
   const initialFilms = useLoaderData();
   const [allFilms, setAllFilms] = useState(initialFilms);
   const [refreshFilm, setRefreshFilm] = useState(0);
+  const notifySuccess = (text) => toast.success(text);
+  const notifyError = (text) => toast.error(text); // Notification d'erreur ajoutée
 
   const fetchFilms = async () => {
     try {
@@ -37,15 +41,15 @@ function AdminPage() {
       );
 
       if (response.status === 200) {
-        console.info("L'opération a réussie", id);
+        notifySuccess("L'opération de suppression du contenu a réussi", id);
       } else {
-        console.info("L'opération a échouée");
+        notifyError("L'opération de suppression du contenu a échouée");
       }
 
       setRefreshFilm((i) => i + 1);
     } catch (err) {
       console.error(err);
-      console.info("Une erreur s'est produite");
+      notifyError("Une erreur s'est produite");
     }
   };
 

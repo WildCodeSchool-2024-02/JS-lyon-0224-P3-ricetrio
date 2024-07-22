@@ -1,5 +1,7 @@
 import { useState, useEffect } from "react";
 import { useParams, useNavigate } from "react-router-dom";
+import { toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 import styles from "./edit.module.css";
 
 function EditFilm() {
@@ -7,6 +9,8 @@ function EditFilm() {
   const navigate = useNavigate();
   const { id } = useParams();
   const editMode = id !== undefined;
+  const notifySuccess = (text) => toast.success(text);
+  const notifyError = (text) => toast.error(text); // Notification d'erreur ajoutée
 
   const [newFilm, setNewFilm] = useState({
     title: "",
@@ -65,8 +69,10 @@ function EditFilm() {
 
       if (response.ok === true) {
         navigate(`/bandeannonce/${id}`);
+        notifySuccess("L'opération de modification du contenu a réussi");
       } else {
         console.error(`Error: Received status code ${response.status}`);
+        notifyError("L'opération de modification du contenu a échouée");
       }
     } catch (err) {
       console.error("An error occurred:", err);
