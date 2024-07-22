@@ -49,7 +49,7 @@ export default function Inscription() {
             role: values.role,
           }),
         });
-        if (!response.ok) {
+        if (response.status === 200) {
           throw new Error("Erreur lors de l'inscription");
         }
         const userData = await response.json();
@@ -63,7 +63,6 @@ export default function Inscription() {
           notifySuccess(`Inscription réussie ! Bienvenue ${userData.pseudo}`);
         }
       } catch (err) {
-        console.error("Erreur lors de la requête d'inscription:", err);
         notifyError("Une erreur est survenue lors de l'inscription");
       }
     } else {

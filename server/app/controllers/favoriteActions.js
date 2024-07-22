@@ -23,6 +23,7 @@ const addFavorite = async (req, res, next) => {
       res.status(400).json({ message: "Already a favorite" });
     }
   } catch (err) {
+    console.error("Error in add function:", err);
     next(err);
   }
 };

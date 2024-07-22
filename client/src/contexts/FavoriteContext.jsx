@@ -1,4 +1,5 @@
-// src/contexts/FavoritesContext.js
+import { toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 import PropTypes from "prop-types";
 import {
   createContext,
@@ -18,6 +19,8 @@ export function FavoritesProvider({ children }) {
   const { user } = useUserContext();
   const [favorites, setFavorites] = useState([]);
 
+  const notifyError = (text) => toast.error(text); // Notification d'erreur ajoutée
+
   useEffect(() => {
     const fetchFavorites = async () => {
       if (user) {
@@ -29,10 +32,10 @@ export function FavoritesProvider({ children }) {
             const data = await response.json();
             setFavorites(data);
           } else {
-            console.error("Failed to fetch favorites");
+            notifyError("Failed to fetch favorites");
           }
         } catch (error) {
-          console.error("Error fetching favorites:", error);
+          notifyError("Error fetching favorites:", error);
         }
       }
     };
@@ -60,10 +63,10 @@ export function FavoritesProvider({ children }) {
             { film_id: filmId },
           ]);
         } else {
-          console.error("Failed to add favorite");
+          notifyError("Failed to add favorite");
         }
       } catch (error) {
-        console.error("Error adding favorite:", error);
+        notifyError("Error adding favorite:", error);
       }
     },
     [user]
@@ -88,10 +91,10 @@ export function FavoritesProvider({ children }) {
             prevFavorites.filter((fav) => fav.film_id !== filmId)
           );
         } else {
-          console.error("Failed to remove favorite");
+          notifyError("Failed to remove favorite");
         }
       } catch (error) {
-        console.error("Error removing favorite:", error);
+        notifyError("Error removing favorite:", error);
       }
     },
     [user]
