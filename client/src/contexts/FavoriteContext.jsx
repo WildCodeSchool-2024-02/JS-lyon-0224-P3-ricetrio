@@ -29,8 +29,6 @@ export function FavoritesProvider({ children }) {
         if (response.status === 200) {
           const data = response.json();
           setFavorites(data);
-        } else {
-          notifyError("Failed to fetch favorites");
         }
       } catch (error) {
         notifyError("Error fetching favorites:", error);

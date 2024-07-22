@@ -43,7 +43,7 @@ function Profile() {
         logout(true);
       }
     } catch (err) {
-      notifyError(err);
+      notifyError("Error fetching profile", err);
     }
   };
 
@@ -64,7 +64,7 @@ function Profile() {
         logout(true);
       }
     } catch (err) {
-      notifyError(err);
+      notifyError("Error fetching favorites", err);
     }
   };
 
