@@ -60,7 +60,7 @@ export default function Inscription() {
           notifySuccess(`Bienvenue Maitre(sse)`);
         } else {
           navigate("/");
-          notifySuccess(`Inscription réussie ! Bienvenue ${userData.pseudo}`);
+          notifySuccess(`Inscription réussie ! Bienvenue ${values.pseudo}`);
         }
       } catch (err) {
         notifyError("Une erreur est survenue lors de l'inscription");

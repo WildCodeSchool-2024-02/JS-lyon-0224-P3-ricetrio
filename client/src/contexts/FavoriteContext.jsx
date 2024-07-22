@@ -22,25 +22,20 @@ export function FavoritesProvider({ children }) {
   const notifyError = (text) => toast.error(text); // Notification d'erreur ajoutée
 
   useEffect(() => {
-    const fetchFavorites = async () => {
-      if (user) {
-        try {
-          const response = await fetch(
-            `${import.meta.env.VITE_API_URL}/api/favorite/${user[0].id}`
-          );
-          if (response.ok) {
-            const data = await response.json();
-            setFavorites(data);
-          } else {
-            notifyError("Failed to fetch favorites");
-          }
-        } catch (error) {
-          notifyError("Error fetching favorites:", error);
+    if (user) {
+      try {
+        const response = async () =>
+          fetch(`${import.meta.env.VITE_API_URL}/api/favorite/${user[0].id}`);
+        if (response.status === 200) {
+          const data = response.json();
+          setFavorites(data);
+        } else {
+          notifyError("Failed to fetch favorites");
         }
+      } catch (error) {
+        notifyError("Error fetching favorites:", error);
       }
-    };
-
-    fetchFavorites();
+    }
   }, [user]);
 
   const addFavorite = useCallback(
