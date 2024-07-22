@@ -103,14 +103,16 @@ function Profile() {
           </div>
 
           <div className={styles.favorite}>
-            <p className={styles.titleFav}>Mes favoris</p>
+            <p className={styles.titleFavorite}>MES FAVORIS</p>
             <div className={styles.favoritesList}>
               {favorites.length > 0 ? (
                 favorites.map((favorite) => (
                   <div key={favorite.film_id} className={styles.favoriteItem}>
-                    <Link to={`/bandeannonce/${favorite.id}`}>
-                      <p className={styles.titleFav}>{favorite.title}</p>
-                    </Link>
+                    <div className={styles.favoriteBloc}>
+                      <Link to={`/bandeannonce/${favorite.id}`}>
+                        <p className={styles.titleFav}>{favorite.title}</p>
+                      </Link>
+                    </div>
                   </div>
                 ))
               ) : (
@@ -124,7 +126,7 @@ function Profile() {
             <Link to="/">
               <button
                 type="submit"
-                className={`button ${styles.logout_btn}`}
+                className={`buttonLogout ${styles.logout_btn}`}
                 onClick={handleLogout}
               >
                 Se déconnecter

@@ -175,7 +175,6 @@ function EditFilm() {
         </button>
       </form>
       <div className={styles.previewContainer}>
-        <p className={styles.previewTitle}>Prévisualisation</p>
         <div className={styles.previewImgContainer}>
           <img
             className={styles.previewImg}
