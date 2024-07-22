@@ -1,4 +1,5 @@
-// src/contexts/FavoritesContext.js
+import { toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 import PropTypes from "prop-types";
 import {
   createContext,
@@ -18,26 +19,21 @@ export function FavoritesProvider({ children }) {
   const { user } = useUserContext();
   const [favorites, setFavorites] = useState([]);
 
-  useEffect(() => {
-    const fetchFavorites = async () => {
-      if (user) {
-        try {
-          const response = await fetch(
-            `${import.meta.env.VITE_API_URL}/api/favorite/${user[0].id}`
-          );
-          if (response.ok) {
-            const data = await response.json();
-            setFavorites(data);
-          } else {
-            console.error("Échec de la récupération du favori");
-          }
-        } catch (error) {
-          console.error("Erreur lors de la récupération du favori", error);
-        }
-      }
-    };
+  const notifyError = (text) => toast.error(text); // Notification d'erreur ajoutée
 
-    fetchFavorites();
+  useEffect(() => {
+    if (user) {
+      try {
+        const response = async () =>
+          fetch(`${import.meta.env.VITE_API_URL}/api/favorite/${user[0].id}`);
+        if (response.status === 200) {
+          const data = response.json();
+          setFavorites(data);
+        }
+      } catch (error) {
+        notifyError("Error fetching favorites:", error);
+      }
+    }
   }, [user]);
 
   const addFavorite = useCallback(
@@ -60,10 +56,10 @@ export function FavoritesProvider({ children }) {
             { film_id: filmId },
           ]);
         } else {
-          console.error("Échec lors de l'ajout du favori");
+          notifyError("Échec lors de l'ajout du favori");
         }
       } catch (error) {
-        console.error("Erreur lors de l'ajout du favori:", error);
+        notifyError("Error adding favorite:", error);
       }
     },
     [user]
@@ -88,10 +84,10 @@ export function FavoritesProvider({ children }) {
             prevFavorites.filter((fav) => fav.film_id !== filmId)
           );
         } else {
-          console.error("Échec de la suppression du favori");
+          notifyError("Failed to remove favorite");
         }
       } catch (error) {
-        console.error("Erreur lors de la suppression du favori :", error);
+        notifyError("Error removing favorite:", error);
       }
     },
     [user]

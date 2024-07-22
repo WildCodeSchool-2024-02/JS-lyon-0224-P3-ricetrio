@@ -40,7 +40,6 @@ export default function Signin() {
 
       if (response.status === 200) {
         const responseData = await response.json();
-        console.info("API response:", responseData);
 
         if (responseData.user) {
           login(responseData.user);
@@ -56,11 +55,9 @@ export default function Signin() {
           notifyError("Utilisateur.rice introuvable");
         }
       } else {
-        console.info("Échec de la connexion avec le statut :", response.status);
         notifyError("Identifiants invalides");
       }
     } catch (error) {
-      console.error("Erreur lors de la connexion :", error);
       notifyError("Une erreur est survenue lors de la connexion");
     }
   };

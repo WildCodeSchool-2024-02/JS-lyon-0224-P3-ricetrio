@@ -24,6 +24,7 @@ const addFavorite = async (req, res, next) => {
       res.status(400).json({ message: "Déjà en favori" });
     }
   } catch (err) {
+    console.error("Error in add function:", err);
     next(err);
   }
 };

@@ -18,7 +18,7 @@ function AdminPage() {
       const data = await response.json();
       setAllFilms(data);
     } catch (error) {
-      console.error("Échec de la récupération du contenu:", error);
+      notifyError("Failed to fetch films:", error);
     }
   };
 
@@ -27,7 +27,6 @@ function AdminPage() {
   }, [refreshFilm]);
 
   const handleDelete = async (id) => {
-    console.info("Deleting film with id:", id);
     try {
       const response = await fetch(
         `${import.meta.env.VITE_API_URL}/api/films/delete`,
@@ -48,7 +47,6 @@ function AdminPage() {
 
       setRefreshFilm((i) => i + 1);
     } catch (err) {
-      console.error(err);
       notifyError("Une erreur s'est produite");
     }
   };

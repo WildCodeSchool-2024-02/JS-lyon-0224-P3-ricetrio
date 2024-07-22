@@ -29,6 +29,7 @@ const read = async (req, res, next) => {
     }
   } catch (err) {
     // Pass any errors to the error-handling middzleware
+    console.error("Error in add function:", err);
     next(err);
   }
 };

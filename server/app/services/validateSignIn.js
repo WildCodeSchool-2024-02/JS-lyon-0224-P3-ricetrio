@@ -13,10 +13,8 @@ const validateSignIn = (req, res, next) => {
   const { error } = signInSchema.validate(req.body, { abortEarly: true });
 
   if (error !== null) {
-    console.info("201", req.body);
     next();
   } else {
-    console.info("Ca ne marche pas !");
     res.status(400).json({ validationErrors: error.details });
   }
 };
