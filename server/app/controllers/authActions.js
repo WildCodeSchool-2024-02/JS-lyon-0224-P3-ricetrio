@@ -6,18 +6,12 @@ const tables = require("../../database/tables");
 
 const login = async (req, res, next) => {
   try {
-    console.info(req.body);
-    console.info(req.body.pseudo);
     // Fetch a specific user from the database based on the provided email
     const user = await tables.user.readByPseudoWithPassword(req.body.pseudo);
-    console.info(user);
     if (user === null) {
       res.sendStatus(422);
       return;
     }
-
-    console.info(user[0].hashed_password);
-    console.info(req.body.password);
 
     const verified = await argon2.verify(
       user[0].hashed_password,

@@ -69,19 +69,12 @@ function CreateFilm() {
 
         if (response.status === 200) {
           notifyError("L'opération d'ajout du contenu a échouée");
-          throw new Error(
-            "Erreur lors de la création de la nouvelle fiche de film"
-          );
         }
 
         navigate("/admin");
         notifySuccess("L'opération d'ajout du contenu a réussi");
       } catch (err) {
         notifyError("L'opération d'ajout du contenu a échouée");
-        console.error(
-          "Erreur lors de la requête de la création de la nouvelle fiche de film:",
-          err
-        );
       }
     }
   };

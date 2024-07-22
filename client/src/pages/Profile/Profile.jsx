@@ -14,6 +14,7 @@ function Profile() {
   const navigate = useNavigate();
   const { user, logout } = useUserContext();
   const { favorites } = useFavoritesContext();
+  const notifyError = (text) => toast.error(text);
 
   const handleLogout = async () => {
     logout(false);
@@ -42,7 +43,7 @@ function Profile() {
         logout(true);
       }
     } catch (err) {
-      console.error(err);
+      notifyError("Error fetching profile", err);
     }
   };
 
@@ -63,7 +64,7 @@ function Profile() {
         logout(true);
       }
     } catch (err) {
-      console.error(err);
+      notifyError("Error fetching favorites", err);
     }
   };
 

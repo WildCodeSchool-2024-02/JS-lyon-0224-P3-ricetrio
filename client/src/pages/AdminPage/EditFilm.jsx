@@ -48,7 +48,7 @@ function EditFilm() {
             id: data.id,
           });
         })
-        .catch((error) => console.error("Error fetching the film:", error));
+        .catch((error) => notifyError("Error fetching the film:", error));
     }
   }, [api, editMode, id]);
 
@@ -67,15 +67,14 @@ function EditFilm() {
         body: JSON.stringify(newFilm),
       });
 
-      if (response.ok === true) {
+      if (response.status === 200) {
         navigate(`/bandeannonce/${id}`);
         notifySuccess("L'opération de modification du contenu a réussi");
       } else {
-        console.error(`Error: Received status code ${response.status}`);
         notifyError("L'opération de modification du contenu a échouée");
       }
     } catch (err) {
-      console.error("An error occurred:", err);
+      notifyError("An error occurred:", err);
     }
   };
 
