@@ -2,7 +2,8 @@ const tables = require("../../database/tables");
 
 const read = async (req, res, next) => {
   try {
-    const favorites = await tables.favorite.readByUserId();
+    const { userId } = req.params;
+    const favorites = await tables.favorite.readByUserId(userId);
     res.json(favorites);
   } catch (err) {
     next(err);

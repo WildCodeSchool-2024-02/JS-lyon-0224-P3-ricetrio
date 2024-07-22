@@ -12,7 +12,7 @@ function VideoPage() {
   const [like, setLike] = useState(false);
 
   useEffect(() => {
-    if (favorites.some((fav) => fav.film_id === allFilms.id)) {
+    if (favorites.some((fav) => fav.id === allFilms.id)) {
       setLike(true);
     }
   }, [favorites, allFilms.id]);

@@ -97,7 +97,7 @@ function Profile() {
                   <p className={styles.mail}>{user[0].email}</p>
                 </div>
               ) : (
-                <p>User undefined</p>
+                <p>Utilisateur introuvable</p>
               )}
             </div>
           </div>
@@ -108,18 +108,13 @@ function Profile() {
               {favorites.length > 0 ? (
                 favorites.map((favorite) => (
                   <div key={favorite.film_id} className={styles.favoriteItem}>
-                    <Link to={`/bandeannonce/${favorite.film_id}`}>
-                      <p className={styles.titleFav}>{favorite.film_id}</p>
-                      <img
-                        src={favorite.poster_link}
-                        alt={favorite.title}
-                        className={styles.favoriteImage}
-                      />
+                    <Link to={`/bandeannonce/${favorite.id}`}>
+                      <p className={styles.titleFav}>{favorite.title}</p>
                     </Link>
                   </div>
                 ))
               ) : (
-                <p>No favorite films found.</p>
+                <p>Aucun favori trouvé</p>
               )}
             </div>
           </div>

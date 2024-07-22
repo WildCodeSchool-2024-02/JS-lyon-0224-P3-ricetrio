@@ -6,11 +6,15 @@ class FavoriteRepository extends AbstractRepository {
     super({ table: "favorite" });
   }
 
-  async readByUserId() {
-    // Execute the SQL SELECT query to retrieve all stationss from the "stations" table
-    const [rows] = await this.database.query(`SELECT * FROM ${this.table}`);
-
-    // Return the array of stationss
+  async readByUserId(userId) {
+    // Execute the SQL SELECT query to retrieve all favorite films for a user
+    const [rows] = await this.database.query(
+      `SELECT film.id, film.title
+       FROM ${this.table}
+       JOIN film ON favorite.film_id = film.id
+       WHERE favorite.user_id = ?`,
+      [userId]
+    );
     return rows;
   }
 
