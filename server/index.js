@@ -18,5 +18,5 @@ app
     console.info(`Server is listening on port ${port}`);
   })
   .on("error", (err) => {
-    console.error("Error:", err.message);
+    console.error("Erreur:", err.message);
   });

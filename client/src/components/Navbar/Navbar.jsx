@@ -11,7 +11,7 @@ function NavBar() {
     <div className={styles.containParents}>
       <div className={styles.containLeft}>
         <Link to="/">
-          <img src={Logo} alt="logo prodkat" className={styles.logo} />
+          <img src={Logo} alt="Logo prodkat" className={styles.logo} />
         </Link>
       </div>
       <div className={styles.containRight}>
@@ -35,7 +35,7 @@ function NavBar() {
         <Link to="/contact">
           <img
             src={Contact}
-            alt="contact au admin"
+            alt="Lien pour nous contacter"
             className={styles.profile}
           />
         </Link>

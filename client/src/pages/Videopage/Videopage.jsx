@@ -63,7 +63,7 @@ function VideoPage() {
                 >
                   <img
                     src={like ? LikeBlue : LikeWhite}
-                    alt={like ? "Logo j'aime" : "Logo j'aime pas"}
+                    alt={like ? "Logo j'aime" : "Logo je n'aime pas"}
                     className={styles.like}
                   />
                 </button>

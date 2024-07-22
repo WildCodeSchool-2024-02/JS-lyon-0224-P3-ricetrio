@@ -29,10 +29,10 @@ export function FavoritesProvider({ children }) {
             const data = await response.json();
             setFavorites(data);
           } else {
-            console.error("Failed to fetch favorites");
+            console.error("Échec de la récupération du favori");
           }
         } catch (error) {
-          console.error("Error fetching favorites:", error);
+          console.error("Erreur lors de la récupération du favori", error);
         }
       }
     };
@@ -60,10 +60,10 @@ export function FavoritesProvider({ children }) {
             { film_id: filmId },
           ]);
         } else {
-          console.error("Failed to add favorite");
+          console.error("Échec lors de l'ajout du favori");
         }
       } catch (error) {
-        console.error("Error adding favorite:", error);
+        console.error("Erreur lors de l'ajout du favori:", error);
       }
     },
     [user]
@@ -88,10 +88,10 @@ export function FavoritesProvider({ children }) {
             prevFavorites.filter((fav) => fav.film_id !== filmId)
           );
         } else {
-          console.error("Failed to remove favorite");
+          console.error("Échec de la suppression du favori");
         }
       } catch (error) {
-        console.error("Error removing favorite:", error);
+        console.error("Erreur lors de la suppression du favori :", error);
       }
     },
     [user]

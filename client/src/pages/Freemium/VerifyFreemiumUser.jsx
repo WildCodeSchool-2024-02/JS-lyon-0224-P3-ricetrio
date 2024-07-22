@@ -20,7 +20,7 @@ function VerifyFreemiumUser() {
         </div>
         <div className={styles.verifyTextContainer}>
           <p>
-            Nouvel utilisateur ?
+            Nouvel.le utilisateur.rice ?
             <Link to="/inscription">
               <button type="button">
                 <p>S'inscrire</p>

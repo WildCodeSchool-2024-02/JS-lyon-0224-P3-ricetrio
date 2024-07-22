@@ -31,7 +31,7 @@ export default function Contact() {
         }),
       });
       if (!response.ok) {
-        throw new Error("Network response was not ok");
+        throw new Error("La réponse du réseau n'était pas valide");
       }
 
       const data = await response.json();
@@ -46,7 +46,7 @@ export default function Contact() {
     <div>
       <div className={styles.logo}>
         <Link to="/">
-          <img src={Logo} alt="logo prodkat" />
+          <img src={Logo} alt="Logo prodkat" />
         </Link>
       </div>
       <div className={styles.contactContainer}>

@@ -21,7 +21,7 @@ const addFavorite = async (req, res, next) => {
       const insertId = await tables.favorite.create(favorite);
       res.status(201).json({ insertId });
     } else {
-      res.status(400).json({ message: "Already a favorite" });
+      res.status(400).json({ message: "Déjà en favori" });
     }
   } catch (err) {
     next(err);
@@ -35,7 +35,7 @@ const removeFavorite = async (req, res, next) => {
     if (deleted) {
       res.sendStatus(204);
     } else {
-      res.status(404).json({ message: "Favorite not found" });
+      res.status(404).json({ message: "Favori non trouvé" });
     }
   } catch (err) {
     next(err);

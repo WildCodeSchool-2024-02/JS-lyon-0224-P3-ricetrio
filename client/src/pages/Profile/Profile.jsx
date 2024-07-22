@@ -81,7 +81,7 @@ function Profile() {
     <div>
       <div className={styles.logo}>
         <Link to="/">
-          <img src={Logo} alt="logo prodkat" />
+          <img src={Logo} alt="Logo prodkat" />
         </Link>
       </div>
 
@@ -96,7 +96,7 @@ function Profile() {
                   <p className={styles.mail}>{user[0].email}</p>
                 </div>
               ) : (
-                <p>Utilisateur introuvable</p>
+                <p>Utilisateur.rice introuvable</p>
               )}
             </div>
           </div>
