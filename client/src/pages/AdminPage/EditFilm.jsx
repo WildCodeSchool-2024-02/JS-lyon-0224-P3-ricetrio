@@ -48,7 +48,7 @@ function EditFilm() {
             id: data.id,
           });
         })
-        .catch((error) => notifyError("Error fetching the film:", error));
+        .catch((error) => notifyError("Erreur lors de la récupération du film :", error));
     }
   }, [api, editMode, id]);
 
@@ -74,7 +74,7 @@ function EditFilm() {
         notifyError("L'opération de modification du contenu a échouée");
       }
     } catch (err) {
-      notifyError("An error occurred:", err);
+      notifyError("Une erreur s'est produite :", err);
     }
   };
 
@@ -180,7 +180,7 @@ function EditFilm() {
           <img
             className={styles.previewImg}
             src={newFilm.background_img}
-            alt=""
+            alt="Illustration du film"
           />
         </div>
         <div className={styles.previewTextContainer}>

@@ -30,17 +30,17 @@ const hashPassword = async (req, res, next) => {
 const verifyToken = (req, res, next) => {
   try {
     // Vérifier la présence de l'en-tête "Authorization" dans la requête
-    const authorizationHeader = req.get("Authorization");
+    const authorizationHeader = req.get("Autorisation");
 
     if (authorizationHeader == null) {
-      throw new Error("Authorization header is missing");
+      throw new Error("En-tête d'autorisation est manquante");
     }
 
     // Vérifier que l'en-tête a la forme "Bearer <token>"
     const [type, token] = authorizationHeader.split(" ");
 
     if (type !== "Bearer") {
-      throw new Error("Authorization header has not the 'Bearer' type");
+      throw new Error("L'en-tête d'autorisation n'a pas le type 'Bearer");
     }
 
     // Vérifier la validité du token (son authenticité et sa date d'expériation)
@@ -65,7 +65,7 @@ const verifyCookie = (req, res, next) => {
 
     return next();
   } catch (err) {
-    return res.sendStatus(404).send("il y eu une erreur");
+    return res.sendStatus(404).send("Il y eu une erreur");
   }
 };
 
@@ -81,7 +81,7 @@ const verifyIsAdmin = async (req, res, next) => {
 
     return next();
   } catch (err) {
-    return res.sendStatus(404).send("il y eu une erreur");
+    return res.sendStatus(404).send("Il y eu une erreur");
   }
 };
 

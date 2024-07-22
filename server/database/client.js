@@ -23,9 +23,10 @@ client.checkConnection = () => {
     })
     .catch((error) => {
       console.warn(
-        "Warning:",
-        "Failed to establish a database connection.",
-        "Please check your database credentials in the .env file if you need a database access."
+      "Attention :",
+      "Échec de l'établissement de la connexion à la base de données.",
+      "Veuillez vérifier vos identifiants de base de données dans le fichier .env si vous avez besoin d'un accès à la base de données."
+
       );
       console.warn(error.message);
     });

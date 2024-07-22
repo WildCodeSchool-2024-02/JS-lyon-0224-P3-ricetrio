@@ -43,7 +43,7 @@ function Profile() {
         logout(true);
       }
     } catch (err) {
-      notifyError("Error fetching profile", err);
+      notifyError("Erreur lors de la récupération du profile", err);
     }
   };
 
@@ -64,7 +64,7 @@ function Profile() {
         logout(true);
       }
     } catch (err) {
-      notifyError("Error fetching favorites", err);
+      notifyError("Erreur lors de la récupération des favoris", err);
     }
   };
 
@@ -82,7 +82,7 @@ function Profile() {
     <div>
       <div className={styles.logo}>
         <Link to="/">
-          <img src={Logo} alt="logo prodkat" />
+          <img src={Logo} alt="Logo prodkat" />
         </Link>
       </div>
 
@@ -97,7 +97,7 @@ function Profile() {
                   <p className={styles.mail}>{user[0].email}</p>
                 </div>
               ) : (
-                <p>Utilisateur introuvable</p>
+                <p>Utilisateur.rice introuvable</p>
               )}
             </div>
           </div>

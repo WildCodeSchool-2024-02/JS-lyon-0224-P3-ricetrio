@@ -29,7 +29,7 @@ function Searchbar() {
     <div className={styles.searchbarContainer}>
       {user !== "" ? (
         <>
-          <p>Rechercher votre film par title et par genre</p>
+          <p>Chercher un film par son titre ou son genre</p>
           <form onSubmit={(e) => e.preventDefault()}>
             <input
               className={styles.searchbarInput}
@@ -49,7 +49,7 @@ function Searchbar() {
           </ul>
         </>
       ) : (
-        <p>Bienvenue sur prodkat, bon voyage cinématographique !</p>
+        <p>Bienvenue sur Prodkat, bon voyage cinématographique !</p>
       )}
     </div>
   );

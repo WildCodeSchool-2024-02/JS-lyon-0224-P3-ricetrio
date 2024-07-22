@@ -52,7 +52,7 @@ export default function Signin() {
             notifySuccess(`Bienvenue`);
           }
         } else {
-          notifyError("Utilisateur introuvable");
+          notifyError("Utilisateur.rice introuvable");
         }
       } else {
         notifyError("Identifiants invalides");
@@ -66,7 +66,7 @@ export default function Signin() {
     <div>
       <div className={styles.logo}>
         <Link to="/">
-          <img src={Logo} alt="logo prodkat" />
+          <img src={Logo} alt="Logo prodkat" />
         </Link>
       </div>
       <div className={styles.contactContainer}>
@@ -104,7 +104,7 @@ export default function Signin() {
           </form>
           <div className={styles.textUnderButton}>
             <p className={styles.underButton}>
-              Je suis un·e nouvel·le utilisateur·rice ?
+              Je suis un.e nouvel.le utilisateur.rice ?
               <Link to="/inscription"> Inscription</Link>
             </p>
           </div>

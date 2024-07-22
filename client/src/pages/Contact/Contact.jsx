@@ -37,7 +37,7 @@ export default function Contact() {
       if (response.status > 200 || response.status < 300) {
         const data = await response.json();
         navigate("/received");
-        notifySuccess("Request successful:", data);
+        notifySuccess("Requête réussie :", data);
       }
     } catch (err) {
       notifyError("Erreur lors de la requête de contact:", err);
@@ -48,7 +48,7 @@ export default function Contact() {
     <div>
       <div className={styles.logo}>
         <Link to="/">
-          <img src={Logo} alt="logo prodkat" />
+          <img src={Logo} alt="Logo prodkat" />
         </Link>
       </div>
       <div className={styles.contactContainer}>

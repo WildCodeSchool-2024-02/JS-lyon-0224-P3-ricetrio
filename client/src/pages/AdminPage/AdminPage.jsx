@@ -18,7 +18,7 @@ function AdminPage() {
       const data = await response.json();
       setAllFilms(data);
     } catch (error) {
-      notifyError("Failed to fetch films:", error);
+      notifyError("Échec lors de la récupération du film", error);
     }
   };
 
