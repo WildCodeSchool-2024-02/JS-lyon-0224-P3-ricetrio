@@ -22,18 +22,23 @@ export function FavoritesProvider({ children }) {
   const notifyError = (text) => toast.error(text); // Notification d'erreur ajoutée
 
   useEffect(() => {
-    if (user) {
-      try {
-        const response = async () =>
-          fetch(`${import.meta.env.VITE_API_URL}/api/favorite/${user[0].id}`);
-        if (response.status === 200) {
-          const data = response.json();
-          setFavorites(data);
+    const fetchFavorites = async () => {
+      if (user) {
+        try {
+          const response = await fetch(
+            `${import.meta.env.VITE_API_URL}/api/favorite/${user[0].id}`
+          );
+          if (response.ok) {
+            const data = await response.json();
+            setFavorites(data);
+          } else {
+            notifyError("Échec de la demande de favori");
+          }
+        } catch (error) {
+          notifyError("Erreur lors de la récupération des favoris :", error);
         }
-      } catch (error) {
-        notifyError("Erreur lors de la récupération du favori :", error);
       }
-    }
+    };    fetchFavorites();
   }, [user]);
 
   const addFavorite = useCallback(
