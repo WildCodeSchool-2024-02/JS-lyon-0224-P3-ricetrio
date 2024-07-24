@@ -28,17 +28,16 @@ export function FavoritesProvider({ children }) {
           const response = await fetch(
             `${import.meta.env.VITE_API_URL}/api/favorite/${user[0].id}`
           );
-          if (response.ok) {
+          if (response.status === 200) {
             const data = await response.json();
             setFavorites(data);
-          } else {
-            notifyError("Échec de la demande de favori");
           }
         } catch (error) {
           notifyError("Erreur lors de la récupération des favoris :", error);
         }
       }
-    };    fetchFavorites();
+    };
+    fetchFavorites();
   }, [user]);
 
   const addFavorite = useCallback(
@@ -55,13 +54,11 @@ export function FavoritesProvider({ children }) {
           }
         );
 
-        if (response.ok) {
+        if (response.status === 200) {
           setFavorites((prevFavorites) => [
             ...prevFavorites,
             { film_id: filmId },
           ]);
-        } else {
-          notifyError("Échec lors de l'ajout du favori");
         }
       } catch (error) {
         notifyError("Erreur lors de l'ajout du favori", error);
@@ -84,12 +81,10 @@ export function FavoritesProvider({ children }) {
           }
         );
 
-        if (response.ok) {
+        if (response.status === 200) {
           setFavorites((prevFavorites) =>
             prevFavorites.filter((fav) => fav.film_id !== filmId)
           );
-        } else {
-          notifyError("Échec lors de la suppression du favori");
         }
       } catch (error) {
         notifyError("Erreur lors de la suppression du favori", error);
