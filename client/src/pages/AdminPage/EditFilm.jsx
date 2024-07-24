@@ -10,8 +10,9 @@ function EditFilm() {
   const { id } = useParams();
   const editMode = id !== undefined;
   const notifySuccess = (text) => toast.success(text);
-  const notifyError = (text) => toast.error(text); // Notification d'erreur ajoutée
+  const notifyError = (text) => toast.error(text);
 
+  // État initial pour les données du film
   const [newFilm, setNewFilm] = useState({
     title: "",
     genre: "",
@@ -27,12 +28,13 @@ function EditFilm() {
     id: "",
   });
 
+  // Effet pour charger les données du film en mode édition
   useEffect(() => {
     if (editMode !== undefined) {
       fetch(`${api}/api/films/${id}`)
         .then((response) => response.json())
         .then((data) => {
-          const formattedDate = data.release_date.split("T")[0];
+          const formattedDate = data.release_date.split("T")[0]; // Formatage de la date pour l'affichage
           setNewFilm({
             title: data.title,
             genre: data.genre,
@@ -54,10 +56,12 @@ function EditFilm() {
     }
   }, [api, editMode, id]);
 
+  // Mise à jour de l'état du film en fonction des champs de formulaire
   const handleUpdateForm = (e) => {
     setNewFilm({ ...newFilm, [e.target.name]: e.target.value });
   };
 
+  // Gestion de la soumission du formulaire pour créer ou mettre à jour le film
   const handleFilms = async (e) => {
     e.preventDefault();
     try {
