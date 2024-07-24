@@ -48,7 +48,9 @@ function EditFilm() {
             id: data.id,
           });
         })
-        .catch((error) => notifyError("Erreur lors de la récupération du film :", error));
+        .catch((error) =>
+          notifyError("Erreur lors de la récupération du film :", error)
+        );
     }
   }, [api, editMode, id]);
 

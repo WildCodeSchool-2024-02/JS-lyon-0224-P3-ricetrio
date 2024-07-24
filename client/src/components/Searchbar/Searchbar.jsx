@@ -12,10 +12,10 @@ function Searchbar() {
   const searchResult = (value) =>
     allFilms.filter(
       (film) =>
-        value &&
-        film &&
-        film.genre &&
-        film.title &&
+        value !== null &&
+        film !== null &&
+        film.genre !== null &&
+        film.title !== null &&
         (film.genre.toLowerCase().includes(value.toLowerCase()) ||
           film.title.toLowerCase().includes(value.toLowerCase()))
     );
