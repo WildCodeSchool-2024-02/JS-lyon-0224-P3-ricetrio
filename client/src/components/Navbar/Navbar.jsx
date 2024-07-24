@@ -5,8 +5,11 @@ import Contact from "../../assets/images/message.svg";
 import Signin from "../../assets/images/login2.svg";
 import styles from "./Navbar.module.css";
 
+// Définition du composant NavBar
 function NavBar() {
+  // Récupération de l'utilisateur depuis le contexte
   const { user } = useUserContext();
+
   return (
     <div className={styles.containParents}>
       <div className={styles.containLeft}>
@@ -15,7 +18,9 @@ function NavBar() {
         </Link>
       </div>
       <div className={styles.containRight}>
+        {/* Vérification si l'utilisateur est connecté */}
         {user === "" ? (
+          // Si l'utilisateur n'est pas connecté, afficher l'icône de connexion
           <Link to="/connexion">
             <img
               src={Signin}
@@ -24,6 +29,7 @@ function NavBar() {
             />
           </Link>
         ) : (
+          // Si l'utilisateur est connecté, afficher l'icône de profil
           <Link to="/profile">
             <img
               src={Signin}
@@ -43,4 +49,5 @@ function NavBar() {
     </div>
   );
 }
+
 export default NavBar;

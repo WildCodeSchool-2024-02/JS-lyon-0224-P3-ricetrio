@@ -7,25 +7,33 @@ import NavBar from "../../components/Navbar/Navbar";
 
 function AdminPage() {
   const initialFilms = useLoaderData();
-  const [allFilms, setAllFilms] = useState(initialFilms);
-  const [refreshFilm, setRefreshFilm] = useState(0);
-  const notifySuccess = (text) => toast.success(text);
-  const notifyError = (text) => toast.error(text); // Notification d'erreur ajoutée
 
+  // État pour stocker tous les films
+  const [allFilms, setAllFilms] = useState(initialFilms);
+
+  const [refreshFilm, setRefreshFilm] = useState(0);
+
+  const notifySuccess = (text) => toast.success(text);
+  const notifyError = (text) => toast.error(text);
+
+  // Fonction pour récupérer la liste des films depuis l'API
   const fetchFilms = async () => {
     try {
       const response = await fetch(`${import.meta.env.VITE_API_URL}/api/films`);
       const data = await response.json();
       setAllFilms(data);
     } catch (error) {
-      notifyError("Échec lors de la récupération du film", error);
+      notifyError("Échec lors de la récupération du film");
     }
   };
 
+  // Effet pour récupérer les films au chargement et lors du rafraîchissement
   useEffect(() => {
     fetchFilms();
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [refreshFilm]);
 
+  // Fonction pour gérer la suppression d'un film
   const handleDelete = async (id) => {
     try {
       const response = await fetch(
@@ -40,7 +48,7 @@ function AdminPage() {
       );
 
       if (response.status === 200) {
-        notifySuccess("L'opération de suppression du contenu a réussi", id);
+        notifySuccess("L'opération de suppression du contenu a réussi");
       } else {
         notifyError("L'opération de suppression du contenu a échouée");
       }
@@ -54,6 +62,7 @@ function AdminPage() {
   return (
     <div>
       <NavBar />
+
       <div className={styles.adminContainer}>
         <h2 className="adminTitle">Admin</h2>
 
@@ -63,6 +72,7 @@ function AdminPage() {
           </Link>
         </div>
       </div>
+
       <div className={styles.posterContainer}>
         {allFilms.map((film) => (
           <div className={styles.posterAdmin} key={film.id}>
