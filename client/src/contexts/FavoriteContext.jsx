@@ -1,3 +1,4 @@
+// "toast" est une bibiliothéque pour affichier des notifications
 import { toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import PropTypes from "prop-types";
@@ -9,25 +10,32 @@ import {
   useMemo,
   useCallback,
 } from "react";
+// Un hook personnalisé pour accéder au contexte utilisateur
 import { useUserContext } from "./UserContext";
 
 const FavoritesContext = createContext();
 
+// Un hook personnalisé
 export const useFavoritesContext = () => useContext(FavoritesContext);
 
 export function FavoritesProvider({ children }) {
+  // L'utilisateur actuel obtenu du contexte utilisateur.
   const { user } = useUserContext();
+  // L'état et le setter pour les favoris.
   const [favorites, setFavorites] = useState([]);
+  // Notification d'erreur ajoutée
+  const notifyError = (text) => toast.error(text);
 
-  const notifyError = (text) => toast.error(text); // Notification d'erreur ajoutée
-
+  // Un hook qui exécute du code lorsque user change
   useEffect(() => {
     const fetchFavorites = async () => {
+      // Ce fetch est utilisé pour récupérer la liste des favoris de l'utilisateur depuis l'API lorsque le composant est monté ou lorsque user change
       if (user) {
         try {
           const response = await fetch(
             `${import.meta.env.VITE_API_URL}/api/favorite/${user[0].id}`
           );
+          // Si "response" est 200, les favoris sont mise à jour
           if (response.ok) {
             const data = await response.json();
             setFavorites(data);
@@ -38,9 +46,11 @@ export function FavoritesProvider({ children }) {
           notifyError("Erreur lors de la récupération des favoris :", error);
         }
       }
-    };    fetchFavorites();
+    };
+    fetchFavorites();
   }, [user]);
 
+  // Une fonction pour ajouter un film aux favoris
   const addFavorite = useCallback(
     async (filmId) => {
       try {
@@ -51,6 +61,7 @@ export function FavoritesProvider({ children }) {
             headers: {
               "Content-Type": "application/json",
             },
+            // Une requête POST avec l'ID de l'utilisateur et l'ID du film
             body: JSON.stringify({ userId: user[0].id, filmId }),
           }
         );
@@ -70,6 +81,7 @@ export function FavoritesProvider({ children }) {
     [user]
   );
 
+  // Une fonction pour supprimer un film des favoris.
   const removeFavorite = useCallback(
     async (filmId) => {
       try {
@@ -80,6 +92,7 @@ export function FavoritesProvider({ children }) {
             headers: {
               "Content-Type": "application/json",
             },
+            // Une requête POST avec l'ID de l'utilisateur et l'ID du film
             body: JSON.stringify({ userId: user[0].id, filmId }),
           }
         );
@@ -98,6 +111,9 @@ export function FavoritesProvider({ children }) {
     [user]
   );
 
+  // Utilise useMemo pour mémoriser les valeurs du contexte (favoris, ajout et suppression de favoris) afin d'optimiser les performances
+  //  le contexte (addFavorite, removeFavorite) conservent la même référence tant que leurs dépendances ne changent pas
+  // Pour eviter des recalculs inutiles
   const value = useMemo(
     () => ({
       favorites,

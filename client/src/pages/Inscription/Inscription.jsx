@@ -6,12 +6,14 @@ import styles from "./inscription.module.css";
 import Logo from "../../assets/images/logo-prodcat-noir.svg";
 import Validation from "./InscriptionValidation";
 
+// Pour récupérée à partir des variables d'environnement de .env
 const URL = import.meta.env.VITE_API_URL;
 
 export default function Inscription() {
   const notifySuccess = (text) => toast.success(text);
   const notifyError = (text) => toast.error(text); // Notification d'erreur ajoutée
   const navigate = useNavigate();
+  
 
   const [values, setValues] = useState({
     pseudo: "",

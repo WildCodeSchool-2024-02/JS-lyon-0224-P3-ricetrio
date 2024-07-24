@@ -9,6 +9,7 @@ import Avatar from "../../assets/images/avatar.png";
 import { useFavoritesContext } from "../../contexts/FavoriteContext";
 
 function Profile() {
+  // URL de l'API, récupérée depuis les variables d'environnement de .env 
   const ApiUrl = import.meta.env.VITE_API_URL;
   const [userData, setUserData] = useState(null);
   const navigate = useNavigate();
