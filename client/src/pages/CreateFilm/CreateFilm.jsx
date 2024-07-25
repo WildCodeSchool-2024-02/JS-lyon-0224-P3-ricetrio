@@ -58,10 +58,10 @@ function CreateFilm() {
           body: JSON.stringify(values),
         });
 
-        if (response.status === 200) {
+        if (response.status >= 200 || response.status < 300) {
           notifySuccess("L'opération d'ajout du contenu a réussi");
         } else {
-          notifyError("L'opération d'ajout du contenu a échoué");
+          notifyError("L'opération d'ajout du contenu a réussi");
         }
 
         navigate("/admin");
