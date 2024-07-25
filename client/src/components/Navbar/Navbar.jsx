@@ -4,6 +4,7 @@ import Logo from "../../assets/images/logo-prodcat-noir.svg";
 import Contact from "../../assets/images/message.svg";
 import Signin from "../../assets/images/login2.svg";
 import styles from "./Navbar.module.css";
+import Admin from "../../assets/images/admin.svg";
 
 // Définition du composant NavBar
 function NavBar() {
@@ -38,6 +39,13 @@ function NavBar() {
             />
           </Link>
         )}
+
+        {user !== undefined && user !== "" && user[0].role === "admin" && (
+          <Link to="/admin">
+            <img src={Admin} alt="admin" className={styles.profile} />
+          </Link>
+        )}
+
         <Link to="/contact">
           <img
             src={Contact}

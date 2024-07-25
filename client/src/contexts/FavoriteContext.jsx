@@ -74,7 +74,10 @@ export function FavoritesProvider({ children }) {
         }
       } catch (error) {
         // Notification en cas d'erreur lors de l'ajout d'un film aux favoris
-        notifyError("Erreur lors de l'ajout du favori", error);
+        notifyError(
+          "Veuillez vous connecter pour ajouter des films en favoris",
+          error
+        );
       }
     },
     [user] // Dépendance sur `user` pour garantir que l'ID utilisateur est disponible

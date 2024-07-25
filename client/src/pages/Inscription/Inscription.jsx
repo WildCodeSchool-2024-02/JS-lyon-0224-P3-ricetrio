@@ -59,8 +59,8 @@ export default function Inscription() {
           navigate("/admin");
           notifySuccess(`Bienvenue Maitre.sse`);
         } else {
-          navigate("/");
-          notifySuccess(`Inscription réussie ! Bienvenue ${values.pseudo}`);
+          navigate("/connexion");
+          notifySuccess(`Inscription réussie !`);
         }
       } catch (err) {
         notifyError("Une erreur est survenue lors de l'inscription");
