@@ -9,7 +9,7 @@ import Logo from "../../assets/images/logo-prodcat-noir.svg";
 export default function Signin() {
   const URL = import.meta.env.VITE_API_URL;
   const notifySuccess = (text) => toast.success(text);
-  const notifyError = (text) => toast.error(text); // Notification d'erreur ajoutée
+  const notifyError = (text) => toast.error(text); 
   const navigate = useNavigate();
   const { login } = useUserContext();
   // État pour stocker les informations de connexion
