@@ -60,22 +60,22 @@
 }
 
 .previewTextContainer {
-  top: 12%;
+  top: -84%;
   left: 0;
-  height: 280px;
+  height: 400px;
   background: linear-gradient(
     to right,
     rgba(0, 0, 0, 1) 25%,
     rgba(0, 0, 0, 1) 25%,
     rgba(0, 0, 0, 0) 100%
   );
-  padding: 20px;
+  padding: 35px;
   box-sizing: border-box;
 }
 
 .previewImg {
   width: 100%;
-  height: auto;
+  height: 100%;
   display: block;
 }
 

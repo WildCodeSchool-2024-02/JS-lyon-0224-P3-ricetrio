@@ -26,6 +26,10 @@ const requestRouter = require("./request/router");
 
 router.use("/request", requestRouter);
 
+const adminRouter = require("./admin/router");
+
+router.use("/admin", adminRouter);
+
 /* ************************************************************************* */
 
 module.exports = router;

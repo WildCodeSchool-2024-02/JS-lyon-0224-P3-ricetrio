@@ -11,18 +11,18 @@ export default function Signin() {
   const notifyError = (text) => toast.error(text); // Notification d'erreur ajoutée
   const navigate = useNavigate();
   const { login } = useUserContext();
-  const [loginInfos, setLoginInfos] = useState({
+  const [values, setvalues] = useState({
     pseudo: "",
     password: "",
   });
 
-  const handleLoginInfos = (e) => {
-    setLoginInfos({ ...loginInfos, [e.target.name]: e.target.value });
+  const handlevalues = (e) => {
+    setvalues({ ...values, [e.target.name]: e.target.value });
   };
 
   const handleLogin = async (e) => {
     e.preventDefault();
-    if (loginInfos.pseudo.trim() === "" || loginInfos.password.trim() === "") {
+    if (values.pseudo.trim() === "" || values.password.trim() === "") {
       notifyError("Pseudo et mot de passe doivent être renseignés");
       return;
     }
@@ -34,7 +34,7 @@ export default function Signin() {
           method: "POST",
           credentials: "include",
           headers: { "Content-Type": "application/json" },
-          body: JSON.stringify(loginInfos),
+          body: JSON.stringify(values),
         }
       );
 
@@ -44,12 +44,12 @@ export default function Signin() {
         if (responseData.user) {
           login(responseData.user);
 
-          if (loginInfos.pseudo === "admin") {
+          if (values.pseudo === "admin") {
             navigate("/admin");
             notifySuccess(`Bienvenue`);
           } else {
             navigate("/");
-            notifySuccess(`Bienvenue`);
+            notifySuccess(`Bienvenue ${values.pseudo}`);
           }
         } else {
           notifyError("Utilisateur.rice introuvable");
@@ -81,8 +81,8 @@ export default function Signin() {
                   type="text"
                   placeholder="Pseudo"
                   name="pseudo"
-                  value={loginInfos.pseudo}
-                  onChange={handleLoginInfos}
+                  value={values.pseudo}
+                  onChange={handlevalues}
                 />
               </div>
             </div>
@@ -90,11 +90,11 @@ export default function Signin() {
               <h4>Mot de passe</h4>
               <div className={styles.pseudoInput}>
                 <input
-                  value={loginInfos.password}
+                  value={values.password}
                   type="password"
                   name="password"
                   placeholder="●●●●●●●●"
-                  onChange={handleLoginInfos}
+                  onChange={handlevalues}
                 />
               </div>
             </div>
