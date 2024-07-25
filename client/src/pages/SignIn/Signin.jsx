@@ -7,19 +7,21 @@ import styles from "./signin.module.css";
 import Logo from "../../assets/images/logo-prodcat-noir.svg";
 
 export default function Signin() {
+  const URL = import.meta.env.VITE_API_URL;
   const notifySuccess = (text) => toast.success(text);
   const notifyError = (text) => toast.error(text); // Notification d'erreur ajoutée
   const navigate = useNavigate();
   const { login } = useUserContext();
+  // État pour stocker les informations de connexion
   const [loginInfos, setLoginInfos] = useState({
     pseudo: "",
     password: "",
   });
-
+  // Fonction pour mettre à jour les informations de connexion à chaque modification des champs
   const handleLoginInfos = (e) => {
     setLoginInfos({ ...loginInfos, [e.target.name]: e.target.value });
   };
-
+  // Fonction pour gérer la soumission du formulaire de connexion
   const handleLogin = async (e) => {
     e.preventDefault();
     if (loginInfos.pseudo.trim() === "" || loginInfos.password.trim() === "") {
@@ -28,27 +30,26 @@ export default function Signin() {
     }
 
     try {
-      const response = await fetch(
-        `${import.meta.env.VITE_API_URL}/api/login`,
-        {
-          method: "POST",
-          credentials: "include",
-          headers: { "Content-Type": "application/json" },
-          body: JSON.stringify(loginInfos),
-        }
-      );
+      const response = await fetch(`${URL}/api/login`, {
+        method: "POST",
+        credentials: "include",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(loginInfos),
+      });
 
       if (response.status === 200) {
         const responseData = await response.json();
 
         if (responseData.user) {
+          // Appel de la fonction login du contexte utilisateur
           login(responseData.user);
 
           if (loginInfos.pseudo === "admin") {
+            // Redirection vers la page admin si l'utilisateur est un admin
             navigate("/admin");
             notifySuccess(`Bienvenue`);
           } else {
-            navigate("/");
+            navigate("/"); // Redirection vers la page d'accueil pour les autres utilisateurs
             notifySuccess(`Bienvenue`);
           }
         } else {

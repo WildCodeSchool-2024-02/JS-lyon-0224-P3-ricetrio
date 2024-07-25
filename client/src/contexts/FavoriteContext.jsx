@@ -1,4 +1,3 @@
-// "toast" est une bibiliothéque pour affichier des notifications
 import { toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import PropTypes from "prop-types";
@@ -10,50 +9,51 @@ import {
   useMemo,
   useCallback,
 } from "react";
-// Un hook personnalisé pour accéder au contexte utilisateur
 import { useUserContext } from "./UserContext";
 
+// Création du contexte pour les favoris
 const FavoritesContext = createContext();
 
-// Un hook personnalisé
+// Hook personnalisé pour accéder au contexte des favoris
 export const useFavoritesContext = () => useContext(FavoritesContext);
 
 export function FavoritesProvider({ children }) {
-  // L'utilisateur actuel obtenu du contexte utilisateur.
+  // Obtention des informations sur l'utilisateur depuis le contexte utilisateur
   const { user } = useUserContext();
-  // L'état et le setter pour les favoris.
+
+  // État local pour stocker les films favoris de l'utilisateur
   const [favorites, setFavorites] = useState([]);
-  // Notification d'erreur ajoutée
+
+  // Fonction pour afficher une notification d'erreur
   const notifyError = (text) => toast.error(text);
 
-  // Un hook qui exécute du code lorsque user change
+  // Effet pour récupérer les favoris de l'utilisateur lorsqu'il est connecté
   useEffect(() => {
     const fetchFavorites = async () => {
-      // Ce fetch est utilisé pour récupérer la liste des favoris de l'utilisateur depuis l'API lorsque le composant est monté ou lorsque user change
       if (user) {
         try {
+          // Requête pour obtenir les favoris de l'utilisateur depuis l'API
           const response = await fetch(
             `${import.meta.env.VITE_API_URL}/api/favorite/${user[0].id}`
           );
-          // Si "response" est 200, les favoris sont mise à jour
-          if (response.ok) {
+          if (response.status === 200) {
             const data = await response.json();
-            setFavorites(data);
-          } else {
-            notifyError("Échec de la demande de favori");
+            setFavorites(data); // Mise à jour de l'état avec les favoris obtenus
           }
         } catch (error) {
+          // Notification en cas d'erreur lors de la récupération des favoris
           notifyError("Erreur lors de la récupération des favoris :", error);
         }
       }
     };
     fetchFavorites();
-  }, [user]);
+  }, [user]); // Dépendance sur `user` pour recharger les favoris si l'utilisateur change
 
-  // Une fonction pour ajouter un film aux favoris
+  // Fonction pour ajouter un film aux favoris
   const addFavorite = useCallback(
     async (filmId) => {
       try {
+        // Requête pour ajouter un film aux favoris via l'API
         const response = await fetch(
           `${import.meta.env.VITE_API_URL}/api/favorite`,
           {
@@ -61,30 +61,30 @@ export function FavoritesProvider({ children }) {
             headers: {
               "Content-Type": "application/json",
             },
-            // Une requête POST avec l'ID de l'utilisateur et l'ID du film
             body: JSON.stringify({ userId: user[0].id, filmId }),
           }
         );
 
-        if (response.ok) {
+        if (response.status === 200) {
+          // Mise à jour de l'état avec le nouveau film ajouté aux favoris
           setFavorites((prevFavorites) => [
             ...prevFavorites,
             { film_id: filmId },
           ]);
-        } else {
-          notifyError("Échec lors de l'ajout du favori");
         }
       } catch (error) {
+        // Notification en cas d'erreur lors de l'ajout d'un film aux favoris
         notifyError("Erreur lors de l'ajout du favori", error);
       }
     },
-    [user]
+    [user] // Dépendance sur `user` pour garantir que l'ID utilisateur est disponible
   );
 
-  // Une fonction pour supprimer un film des favoris.
+  // Fonction pour retirer un film des favoris
   const removeFavorite = useCallback(
     async (filmId) => {
       try {
+        // Requête pour retirer un film des favoris via l'API
         const response = await fetch(
           `${import.meta.env.VITE_API_URL}/api/favorite`,
           {
@@ -92,28 +92,25 @@ export function FavoritesProvider({ children }) {
             headers: {
               "Content-Type": "application/json",
             },
-            // Une requête POST avec l'ID de l'utilisateur et l'ID du film
             body: JSON.stringify({ userId: user[0].id, filmId }),
           }
         );
 
-        if (response.ok) {
+        if (response.status === 200) {
+          // Mise à jour de l'état en retirant le film supprimé des favoris
           setFavorites((prevFavorites) =>
             prevFavorites.filter((fav) => fav.film_id !== filmId)
           );
-        } else {
-          notifyError("Échec lors de la suppression du favori");
         }
       } catch (error) {
+        // Notification en cas d'erreur lors de la suppression d'un film des favoris
         notifyError("Erreur lors de la suppression du favori", error);
       }
     },
-    [user]
+    [user] // Dépendance sur `user` pour garantir que l'ID utilisateur est disponible
   );
 
-  // Utilise useMemo pour mémoriser les valeurs du contexte (favoris, ajout et suppression de favoris) afin d'optimiser les performances
-  //  le contexte (addFavorite, removeFavorite) conservent la même référence tant que leurs dépendances ne changent pas
-  // Pour eviter des recalculs inutiles
+  // Memoization du contexte pour éviter les re-rendus inutiles
   const value = useMemo(
     () => ({
       favorites,
@@ -123,6 +120,7 @@ export function FavoritesProvider({ children }) {
     [favorites, addFavorite, removeFavorite]
   );
 
+  // Fourniture du contexte aux composants enfants
   return (
     <FavoritesContext.Provider value={value}>
       {children}
@@ -130,6 +128,7 @@ export function FavoritesProvider({ children }) {
   );
 }
 
+// Définition des types des props pour le composant FavoritesProvider
 FavoritesProvider.propTypes = {
   children: PropTypes.node.isRequired,
 };

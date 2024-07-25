@@ -9,25 +9,28 @@ function Searchbar() {
   const [results, setResults] = useState([]);
   const { user } = useUserContext();
 
+  // Fonction pour filtrer les films en fonction de la recherche
   const searchResult = (value) =>
     allFilms.filter(
       (film) =>
-        value &&
-        film &&
-        film.genre &&
-        film.title &&
+        value !== null &&
+        film !== null &&
+        film.genre !== null &&
+        film.title !== null &&
         (film.genre.toLowerCase().includes(value.toLowerCase()) ||
           film.title.toLowerCase().includes(value.toLowerCase()))
     );
 
+  // Fonction appelée lors du changement de la valeur de recherche
   const handleSearchFilm = (value) => {
     setSearchFilm(value);
-    setResults(searchResult(value));
+    setResults(searchResult(value)); // Met à jour les résultats de la recherche
   };
 
   return (
     <div className={styles.searchbarContainer}>
       {user !== "" ? (
+        // Si l'utilisateur est connecté, afficher la barre de recherche et les résultats
         <>
           <p>Chercher un film par son titre ou son genre</p>
           <form onSubmit={(e) => e.preventDefault()}>
@@ -49,10 +52,11 @@ function Searchbar() {
           </ul>
         </>
       ) : (
+        // Si l'utilisateur n'est pas connecté, afficher un message de bienvenue
         <p>Bienvenue sur Prodkat, bon voyage cinématographique !</p>
       )}
     </div>
   );
 }
 
-export default Searchbar;
+export default Searchbar; // Exportation du composant Searchbar

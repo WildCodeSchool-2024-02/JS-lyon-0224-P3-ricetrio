@@ -1,10 +1,13 @@
+// Importation des modules nécessaires pour la navigation et les styles
 import { Link } from "react-router-dom";
 import styles from "./verifyfreemiumuser.module.css";
 import NavBar from "../../components/Navbar/Navbar";
 
+// Définition du composant VerifyFreemiumUser
 function VerifyFreemiumUser() {
   return (
     <div>
+      {/* Inclusion de la barre de navigation */}
       <NavBar />
       <div className={styles.verifyContainer}>
         <p>Continuer à regarder les vidéos Freemium</p>
@@ -33,4 +36,5 @@ function VerifyFreemiumUser() {
   );
 }
 
+// Exportation du composant VerifyFreemiumUser
 export default VerifyFreemiumUser;

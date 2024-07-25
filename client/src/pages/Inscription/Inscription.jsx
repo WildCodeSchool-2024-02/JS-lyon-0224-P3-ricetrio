@@ -1,3 +1,4 @@
+// Importation des modules nécessaires pour la navigation, les états locaux, et les notifications
 import { Form, Link, useNavigate } from "react-router-dom";
 import { useState } from "react";
 import { toast } from "react-toastify";
@@ -6,15 +7,18 @@ import styles from "./inscription.module.css";
 import Logo from "../../assets/images/logo-prodcat-noir.svg";
 import Validation from "./InscriptionValidation";
 
-// Pour récupérée à partir des variables d'environnement de .env
+// Pour récupérer les variables d'environnement à partir de .env
 const URL = import.meta.env.VITE_API_URL;
 
+// Définition du composant Inscription
 export default function Inscription() {
+  // Fonction pour afficher une notification de succès
   const notifySuccess = (text) => toast.success(text);
-  const notifyError = (text) => toast.error(text); // Notification d'erreur ajoutée
+  // Fonction pour afficher une notification d'erreur
+  const notifyError = (text) => toast.error(text);
   const navigate = useNavigate();
-  
 
+  // Initialisation de l'état local pour les valeurs du formulaire
   const [values, setValues] = useState({
     pseudo: "",
     email: "",
@@ -22,8 +26,10 @@ export default function Inscription() {
     role: "",
   });
 
+  // Initialisation de l'état local pour les erreurs de validation
   const [errors, setErrors] = useState({});
 
+  // Gestion de la mise à jour des valeurs du formulaire
   const handleInput = (event) => {
     setValues((prev) => ({
       ...prev,
@@ -31,12 +37,15 @@ export default function Inscription() {
     }));
   };
 
+  // Gestion de la soumission du formulaire d'inscription
   const handleSubmit = async (event) => {
     event.preventDefault();
 
+    // Validation des champs du formulaire
     const validationErrors = Validation(values);
     setErrors(validationErrors);
 
+    // Si aucune erreur de validation, envoyer les données au serveur
     if (Object.keys(validationErrors).length === 0) {
       try {
         const response = await fetch(`${URL}/api/users`, {
@@ -51,12 +60,15 @@ export default function Inscription() {
             role: values.role,
           }),
         });
-        if (response.status === 200) {
+
+        // Vérification de la réponse du serveur
+        if (response.status !== 200) {
           throw new Error("Erreur lors de l'inscription");
         }
+
         const userData = await response.json();
 
-        // Vérifiez le rôle de l'utilisateur
+        // Vérifiez le rôle de l'utilisateur et redirigez en conséquence
         if (userData.role === "admin") {
           navigate("/admin");
           notifySuccess(`Bienvenue Maitre.sse`);

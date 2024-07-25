@@ -1,8 +1,9 @@
+/* Styles pour .listeDeroulante */
 .listeDeroulante {
   height: 50px;
-  margin: 20px 0px 20px 0px;
+  margin: 20px 0;
   text-align: center;
-  border-style: none;
+  border: none;
 }
 
 .listeDeroulante select {
@@ -11,21 +12,16 @@
   background-color: var(--main-color);
   font-family: var(--font-regular);
   color: white;
+  cursor: pointer;
 }
 
-.listeDeroulante select {
-  border-radius: 5px;
-  height: 50px;
-  background-color: var(--main-color);
-  font-family: var(--font-regular);
-  color: white;
-}
-
+/* Styles pour .buttonTitle */
 .buttonTitle {
   background-color: var(--main-color);
   font-family: var(--font-regular);
   margin: 0;
   min-width: 100px;
+  cursor: pointer;
 }
 
 .buttonTitle.disabledButton {
@@ -49,22 +45,31 @@
 .buttonTitle.disabledButton:hover::after {
   display: block;
 }
+
+/* Styles pour .buttonDecade */
 .buttonDecade {
   display: flex;
   flex-direction: row;
   justify-content: center;
-  margin: 10px 0px 10px 0px;
+  margin: 10px 0;
   gap: 1rem;
   height: 50px;
 }
 
 .buttonDecade button {
   border-radius: 5px;
-  border-style: none;
-  margin: 0px 5px 0px 5px;
+  border: none;
+  margin: 0 5px;
   cursor: pointer;
 }
 
+@media screen and (min-width: 768px) {
+  .buttonDecade {
+    margin: 20px 0;
+  }
+}
+
+/* Styles pour .posterContainer et .filterPosterContainer */
 .posterContainer {
   display: flex;
   flex-direction: column;
@@ -78,17 +83,24 @@
   flex-wrap: wrap;
   justify-content: center;
   gap: 2rem;
-  margin: 20px 0px 0px 0px;
+  margin: 20px 0 0;
   padding: 0;
 }
 
+/* Styles pour .imgContainer */
 .imgContainer {
   display: flex;
 }
+
 .imgContainer img {
   height: 150px;
   border-radius: 5px;
   box-shadow: 1px 1px 3px rgba(255, 255, 255, 0.5);
+  cursor: pointer;
+}
+
+.imgContainer img:hover {
+  border: solid white 1px;
 }
 
 /* Mixins */
@@ -213,10 +225,4 @@ h3 {
   line-height: 100%;
   pointer-events: none;
   color: #d32f2f;
-}
-
-@media screen and (min-width: 768px) {
-  .buttonDecade {
-    margin: 20px 0px 20px 0px;
-  }
 }

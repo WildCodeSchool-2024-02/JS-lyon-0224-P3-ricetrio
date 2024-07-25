@@ -1,3 +1,4 @@
+// Importation des modules nécessaires pour la navigation, l'état, les notifications, et les styles
 import { Form, Link, useNavigate } from "react-router-dom";
 import { useState } from "react";
 import { toast } from "react-toastify";
@@ -6,13 +7,16 @@ import ValidationFilm from "./CreateFilmValidation";
 import Arrow from "../../assets/images/arrow.svg";
 import styles from "./createFilm.module.css";
 
+// Déclaration de l'URL de l'API
 const URL = import.meta.env.VITE_API_URL;
-
+// Initialisation de la navigation
 function CreateFilm() {
   const navigate = useNavigate();
+  // Fonctions pour afficher des notifications de succès ou d'erreur
   const notifySuccess = (text) => toast.success(text);
-  const notifyError = (text) => toast.error(text); // Notification d'erreur ajoutée
+  const notifyError = (text) => toast.error(text);
 
+  // Initialisation de l'état local pour les valeurs du formulaire de création de film
   const [values, setValues] = useState({
     movie_key: "",
     title: "",
@@ -28,8 +32,9 @@ function CreateFilm() {
     background_img: "",
   });
 
-  const [errors, setErrors] = useState({});
+  const [errors, setErrors] = useState({}); // Initialisation de l'état local pour les erreurs de validation
 
+  // Gestion de la mise à jour des valeurs du formulaire et validation des champs
   const handleInputCreate = (event) => {
     setValues((prev) => ({
       ...prev,
@@ -38,12 +43,13 @@ function CreateFilm() {
     setErrors(ValidationFilm(values));
   };
 
+  // Gestion de la soumission du formulaire de création de film
   const handleSubmitCreate = async (event) => {
     event.preventDefault();
-
+    // Validation des champs du formulaire
     const validationErrors = ValidationFilm(values);
     setErrors(validationErrors);
-
+    // Si pas d'erreurs, soumission des données
     if (Object.keys(validationErrors).length === 0) {
       try {
         const response = await fetch(`${URL}/api/films`, {
@@ -51,30 +57,18 @@ function CreateFilm() {
           headers: {
             "Content-Type": "application/json",
           },
-          body: JSON.stringify({
-            movie_key: values.movie_key,
-            title: values.title,
-            genre: values.genre,
-            duration: values.duration,
-            release_date: values.release_date,
-            overview: values.overview,
-            movie_director: values.movie_director,
-            poster_link: values.poster_link,
-            key_trailer: values.key_trailer,
-            trailer_url: values.trailer_url,
-            freemium: values.freemium,
-            background_img: values.background_img,
-          }),
+          body: JSON.stringify(values),
         });
-
+        // Vérification de la réponse et affichage des notifications
         if (response.status === 200) {
-          notifyError("L'opération d'ajout du contenu a échouée");
+          notifySuccess("L'opération d'ajout du contenu a réussi");
+        } else {
+          notifyError("L'opération d'ajout du contenu a échoué");
         }
-
+        // Redirection vers la page d'administration
         navigate("/admin");
-        notifySuccess("L'opération d'ajout du contenu a réussi");
       } catch (err) {
-        notifyError("L'opération d'ajout du contenu a échouée");
+        notifyError("L'opération d'ajout du contenu a échoué");
       }
     }
   };
@@ -85,7 +79,7 @@ function CreateFilm() {
         <Link to="/admin">
           <img
             src={Arrow}
-            alt="Flèche pour tourner à la page d'accueil"
+            alt="Flèche pour retourner à la page d'accueil"
             className={styles.arrow}
           />
         </Link>
@@ -107,9 +101,7 @@ function CreateFilm() {
               onChange={handleInputCreate}
             />
             <p className={styles.errorsField}>
-              {errors.movie_key !== undefined && (
-                <span>{errors.movie_key}</span>
-              )}
+              {errors.movie_key && <span>{errors.movie_key}</span>}
             </p>
           </div>
           <h4>Titre</h4>
@@ -122,7 +114,7 @@ function CreateFilm() {
               onChange={handleInputCreate}
             />
             <p className={styles.errorsField}>
-              {errors.title !== undefined && <span>{errors.title}</span>}
+              {errors.title && <span>{errors.title}</span>}
             </p>
           </div>
           <h4>Genre</h4>
@@ -135,7 +127,7 @@ function CreateFilm() {
               onChange={handleInputCreate}
             />
             <p className={styles.errorsField}>
-              {errors.genre !== undefined && <span>{errors.genre}</span>}
+              {errors.genre && <span>{errors.genre}</span>}
             </p>
           </div>
           <h4>Durée</h4>
@@ -149,7 +141,7 @@ function CreateFilm() {
               onChange={handleInputCreate}
             />
             <p className={styles.errorsField}>
-              {errors.duration !== undefined && <span>{errors.duration}</span>}
+              {errors.duration && <span>{errors.duration}</span>}
             </p>
           </div>
           <h4>Date de sortie</h4>
@@ -162,9 +154,7 @@ function CreateFilm() {
               onChange={handleInputCreate}
             />
             <p className={styles.errorsField}>
-              {errors.release_date !== undefined && (
-                <span>{errors.release_date}</span>
-              )}
+              {errors.release_date && <span>{errors.release_date}</span>}
             </p>
           </div>
           <h4>Résumé</h4>
@@ -177,7 +167,7 @@ function CreateFilm() {
               onChange={handleInputCreate}
             />
             <p className={styles.errorsField}>
-              {errors.overview !== undefined && <span>{errors.overview}</span>}
+              {errors.overview && <span>{errors.overview}</span>}
             </p>
           </div>
           <h4>Réalisateur·rice</h4>
@@ -190,9 +180,7 @@ function CreateFilm() {
               onChange={handleInputCreate}
             />
             <p className={styles.errorsField}>
-              {errors.movie_director !== undefined && (
-                <span>{errors.movie_director}</span>
-              )}
+              {errors.movie_director && <span>{errors.movie_director}</span>}
             </p>
           </div>
           <h4>Poster</h4>
@@ -205,9 +193,7 @@ function CreateFilm() {
               onChange={handleInputCreate}
             />
             <p className={styles.errorsField}>
-              {errors.poster_link !== undefined && (
-                <span>{errors.poster_link}</span>
-              )}
+              {errors.poster_link && <span>{errors.poster_link}</span>}
             </p>
           </div>
           <h4>Clé de la bande annonce</h4>
@@ -220,9 +206,7 @@ function CreateFilm() {
               onChange={handleInputCreate}
             />
             <p className={styles.errorsField}>
-              {errors.key_trailer !== undefined && (
-                <span>{errors.key_trailer}</span>
-              )}
+              {errors.key_trailer && <span>{errors.key_trailer}</span>}
             </p>
           </div>
           <h4>Bande annonce</h4>
@@ -235,9 +219,7 @@ function CreateFilm() {
               onChange={handleInputCreate}
             />
             <p className={styles.errorsField}>
-              {errors.trailer_url !== undefined && (
-                <span>{errors.trailer_url}</span>
-              )}
+              {errors.trailer_url && <span>{errors.trailer_url}</span>}
             </p>
           </div>
           <h4>Freemium</h4>
@@ -250,7 +232,7 @@ function CreateFilm() {
               onChange={handleInputCreate}
             />
             <p className={styles.errorsField}>
-              {errors.freemium !== undefined && <span>{errors.freemium}</span>}
+              {errors.freemium && <span>{errors.freemium}</span>}
             </p>
           </div>
           <h4>Image d'illustration</h4>
@@ -263,9 +245,7 @@ function CreateFilm() {
               onChange={handleInputCreate}
             />
             <p className={styles.errorsField}>
-              {errors.background_img !== undefined && (
-                <span>{errors.background_img}</span>
-              )}
+              {errors.background_img && <span>{errors.background_img}</span>}
             </p>
           </div>
           <button type="submit">
