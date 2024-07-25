@@ -1,9 +1,15 @@
 .editFormContainer {
   display: flex;
   flex-wrap: wrap;
+  flex-direction: column;
+}
+
+.editionTitle {
+  display: flex;
+  flex-wrap: wrap;
   flex-direction: row;
   justify-content: center;
-  height: 700px;
+  min-height: 700px;
   gap: 3rem;
   padding: 20px;
   margin-top: 30px;
@@ -15,13 +21,14 @@
   flex-direction: column;
   border-radius: 5px;
   width: 500px;
+  min-height: 700px;
   padding: 10px;
 }
 
 .editForm {
   border: 2px solid white;
   align-items: center;
-  height: 620px;
+  min-height: 700px;
 }
 
 .previewContainer {
@@ -60,7 +67,7 @@
 }
 
 .previewTextContainer {
-  top: -84%;
+  top: -40%;
   left: 0;
   height: 400px;
   background: linear-gradient(

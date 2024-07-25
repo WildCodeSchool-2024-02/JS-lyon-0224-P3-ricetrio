@@ -1,6 +1,6 @@
 import { Link } from "react-router-dom";
 import { useUserContext } from "../../contexts/UserContext";
-import Logo from "../../assets/images/logo-prodcat-noir.svg";
+import Logo from "../../assets/images/logo-prodcat-noir2.svg";
 import Contact from "../../assets/images/message.svg";
 import Signin from "../../assets/images/login2.svg";
 import styles from "./Navbar.module.css";

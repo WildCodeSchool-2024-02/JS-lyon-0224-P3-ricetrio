@@ -71,7 +71,7 @@ export default function Signin() {
       </div>
       <div className={styles.contactContainer}>
         <div className={styles.contactBloc}>
-          <p className={styles.titleConnexion}>Connexion</p>
+          <h2>Connexion</h2>
           <form onSubmit={handleLogin} className={styles.contactForm}>
             <div className={styles.rowFormRow}>
               <h4>Pseudo</h4>
