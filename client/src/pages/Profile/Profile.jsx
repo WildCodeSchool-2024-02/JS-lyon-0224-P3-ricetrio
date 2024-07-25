@@ -4,9 +4,9 @@ import { toast } from "react-toastify";
 import { useUserContext } from "../../contexts/UserContext";
 import "react-toastify/dist/ReactToastify.css";
 import styles from "./profile.module.css";
-import Logo from "../../assets/images/logo-prodcat-noir.svg";
 import Avatar from "../../assets/images/avatar.png";
 import { useFavoritesContext } from "../../contexts/FavoriteContext";
+import NavBar from "../../components/Navbar/Navbar";
 
 function Profile() {
   const ApiUrl = import.meta.env.VITE_API_URL;
@@ -80,11 +80,7 @@ function Profile() {
 
   return (
     <div>
-      <div className={styles.logo}>
-        <Link to="/">
-          <img src={Logo} alt="Logo prodkat" />
-        </Link>
-      </div>
+      <NavBar />
 
       <div className={styles.containerProfile}>
         <div className={styles.profile}>

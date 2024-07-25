@@ -1,9 +1,9 @@
-import { Form, Link, useNavigate } from "react-router-dom";
+import { Form, useNavigate } from "react-router-dom";
 import { useState } from "react";
 import { toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import styles from "./contact.module.css";
-import Logo from "../../assets/images/logo-prodcat-noir.svg";
+import NavBar from "../../components/Navbar/Navbar";
 
 const URL = import.meta.env.VITE_API_URL;
 
@@ -52,11 +52,7 @@ export default function Contact() {
 
   return (
     <div>
-      <div className={styles.logo}>
-        <Link to="/">
-          <img src={Logo} alt="Logo prodkat" />
-        </Link>
-      </div>
+      <NavBar />
       <div className={styles.contactContainer}>
         <div className={styles.contactBloc}>
           <h2>Contactez nous</h2>
