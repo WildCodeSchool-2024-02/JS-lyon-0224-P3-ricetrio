@@ -8,27 +8,40 @@ import Avatar from "../../assets/images/avatar.png";
 import { useFavoritesContext } from "../../contexts/FavoriteContext";
 import NavBar from "../../components/Navbar/Navbar";
 
+// Définition du composant Inscription
 function Profile() {
-  const ApiUrl = import.meta.env.VITE_API_URL;
+  // URL de l'API, récupérée depuis les variables d'environnement de .env
+  const URL = import.meta.env.VITE_API_URL;
+  // État pour les données utilisateur
   const [userData, setUserData] = useState(null);
+  // Hook pour naviguer entre les pages
   const navigate = useNavigate();
+  // Utilisation du contexte utilisateur
   const { user, logout } = useUserContext();
+  // Utilisation du contexte des favoris
   const { favorites } = useFavoritesContext();
+  // Fonction pour afficher les notifications d'erreur
   const notifyError = (text) => toast.error(text);
 
+  // Fonction pour déconnecter l'utilisateur
   const handleLogout = async () => {
+    // Appel de la fonction de déconnexion du contexte utilisateur
     logout(false);
     localStorage.removeItem("user");
     setTimeout(() => {
+      // Redirection vers la page d'accueil
       navigate("/");
+      // Rechargement de la page
       window.location.reload();
     }, 1000);
+    // Notification de déconnexion réussie
     toast.info("Déconnexion réussie !");
   };
 
+  // Fonction pour récupérer les informations du profil utilisateur
   const getProfile = async () => {
     try {
-      const response = await fetch(`${ApiUrl}/users`, {
+      const response = await fetch(`${URL}/users`, {
         credentials: "include",
         headers: {
           "Content-Type": "application/json",
@@ -37,19 +50,22 @@ function Profile() {
 
       if (response.status === 200) {
         const data = await response.json();
-
+        // Mise à jour de l'état avec les données utilisateur
         setUserData(data);
       } else if (response.status === 401) {
+        // Déconnexion si l'utilisateur n'est pas autorisé
         logout(true);
       }
     } catch (err) {
+      // Notification en cas d'erreur
       notifyError("Erreur lors de la récupération du profile", err);
     }
   };
 
+  // Fonction pour récupérer les films favoris de l'utilisateur
   const getFavorite = async () => {
     try {
-      const responseFavorite = await fetch(`${ApiUrl}/favorite`, {
+      const responseFavorite = await fetch(`${URL}/favorite`, {
         credentials: "include",
         headers: {
           "Content-Type": "application/json",
@@ -58,9 +74,10 @@ function Profile() {
 
       if (responseFavorite.status === 200) {
         const favoriteData = await responseFavorite.json();
-
+        // Mise à jour de l'état avec les films favoris
         setUserData(favoriteData);
       } else if (responseFavorite.status === 401) {
+        // Déconnexion si l'utilisateur n'est
         logout(true);
       }
     } catch (err) {

@@ -7,49 +7,52 @@ import styles from "./signin.module.css";
 import Logo from "../../assets/images/logo-prodcat-noir.svg";
 
 export default function Signin() {
+  const URL = import.meta.env.VITE_API_URL;
   const notifySuccess = (text) => toast.success(text);
-  const notifyError = (text) => toast.error(text); // Notification d'erreur ajoutée
+  const notifyError = (text) => toast.error(text);
   const navigate = useNavigate();
   const { login } = useUserContext();
-  const [values, setvalues] = useState({
+  // État pour stocker les informations de connexion
+  const [loginInfos, setLoginInfos] = useState({
     pseudo: "",
     password: "",
   });
-
-  const handlevalues = (e) => {
-    setvalues({ ...values, [e.target.name]: e.target.value });
+  // Fonction pour mettre à jour les informations de connexion à chaque modification des champs
+  const handleLoginInfos = (e) => {
+    setLoginInfos({ ...loginInfos, [e.target.name]: e.target.value });
   };
-
+  // Fonction pour gérer la soumission du formulaire de connexion
   const handleLogin = async (e) => {
     e.preventDefault();
-    if (values.pseudo.trim() === "" || values.password.trim() === "") {
+    if (loginInfos.pseudo.trim() === "" || loginInfos.password.trim() === "") {
       notifyError("Pseudo et mot de passe doivent être renseignés");
       return;
     }
-
+    //  credentials: "include": Indique que les informations d'identification (comme les cookies) doivent être incluses avec la requête. Cela est souvent nécessaire pour les requêtes authentifiées.  
+    //  headers: { "Content-Type": "application/json" }: Définit les en-têtes de la requête. Ici, il spécifie que le corps de la requête est au format JSON. 
+    //  body: JSON.stringify(loginInfos): Le corps de la requête contient les données à envoyer au serveur. values est un objet JavaScript contenant les données, et JSON.stringify(values) le convertit en chaîne JSON. 
     try {
-      const response = await fetch(
-        `${import.meta.env.VITE_API_URL}/api/login`,
-        {
-          method: "POST",
-          credentials: "include",
-          headers: { "Content-Type": "application/json" },
-          body: JSON.stringify(values),
-        }
-      );
+      const response = await fetch(`${URL}/api/login`, {
+        method: "POST",
+        credentials: "include",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(loginInfos),
+      });
 
       if (response.status === 200) {
         const responseData = await response.json();
 
         if (responseData.user) {
+          // Appel de la fonction login du contexte utilisateur
           login(responseData.user);
 
-          if (values.pseudo === "admin") {
+          if (loginInfos.pseudo === "admin") {
+            // Redirection vers la page admin si l'utilisateur est un admin
             navigate("/admin");
             notifySuccess(`Bienvenue`);
           } else {
             navigate("/");
-            notifySuccess(`Bienvenue ${values.pseudo}`);
+            notifySuccess(`Bienvenue ${loginInfos.pseudo}`);
           }
         } else {
           notifyError("Utilisateur.rice introuvable");
@@ -81,8 +84,8 @@ export default function Signin() {
                   type="text"
                   placeholder="Pseudo"
                   name="pseudo"
-                  value={values.pseudo}
-                  onChange={handlevalues}
+                  value={loginInfos.pseudo}
+                  onChange={handleLoginInfos}
                 />
               </div>
             </div>
@@ -90,11 +93,11 @@ export default function Signin() {
               <h4>Mot de passe</h4>
               <div className={styles.pseudoInput}>
                 <input
-                  value={values.password}
+                  value={loginInfos.password}
                   type="password"
                   name="password"
                   placeholder="●●●●●●●●"
-                  onChange={handlevalues}
+                  onChange={handleLoginInfos}
                 />
               </div>
             </div>

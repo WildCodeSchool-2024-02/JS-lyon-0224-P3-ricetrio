@@ -8,17 +8,19 @@ import LikeWhite from "../../assets/images/like-blanc.svg";
 import { useFavoritesContext } from "../../contexts/FavoriteContext";
 
 function VideoPage() {
-  const allFilms = useLoaderData();
-  const { favorites, addFavorite, removeFavorite } = useFavoritesContext();
-  const [like, setLike] = useState(false);
+  const allFilms = useLoaderData(); // Chargement des données du film via le hook useLoaderData
+  const { favorites, addFavorite, removeFavorite } = useFavoritesContext(); // Utilisation du contexte des favoris
+  const [like, setLike] = useState(false); // État pour savoir si le film est liké ou non
   const { user } = useUserContext();
 
+  // Vérifie si le film est dans les favoris à chaque changement de la liste des favoris ou de l'ID du film
   useEffect(() => {
     if (favorites.some((fav) => fav.id === allFilms.id)) {
       setLike(true);
     }
   }, [favorites, allFilms.id]);
 
+  // Gère l'ajout ou la suppression des favoris
   const handleFavorite = async (event) => {
     event.preventDefault();
     if (like) {
@@ -26,9 +28,10 @@ function VideoPage() {
     } else {
       await addFavorite(allFilms.id);
     }
-    setLike(!like);
+    setLike(!like); // Change l'état du like
   };
 
+  // Formate la date en français
   const formatDate = (isoDate) => {
     const date = new Date(isoDate);
     const options = { year: "numeric", month: "long", day: "numeric" };

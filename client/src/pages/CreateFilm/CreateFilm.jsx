@@ -1,3 +1,4 @@
+// Importation des modules nécessaires pour la navigation, l'état, les notifications, et les styles
 import { Form, Link, useNavigate } from "react-router-dom";
 import { useState } from "react";
 import { toast } from "react-toastify";
@@ -7,10 +8,12 @@ import Arrow from "../../assets/images/arrow.svg";
 import styles from "./createFilm.module.css";
 import NavBar from "../../components/Navbar/Navbar";
 
+// Déclaration de l'URL de l'API
 const URL = import.meta.env.VITE_API_URL;
-
+// Initialisation de la navigation
 function CreateFilm() {
   const navigate = useNavigate();
+  // Fonctions pour afficher des notifications de succès ou d'erreur
   const notifySuccess = (text) => toast.success(text);
   const notifyError = (text) => toast.error(text);
 
@@ -44,10 +47,10 @@ function CreateFilm() {
   // Gestion de la soumission du formulaire de création de film
   const handleSubmitCreate = async (event) => {
     event.preventDefault();
-
-    const validationErrors = ValidationFilm(values); // Validation des champs du formulaire
+    // Validation des champs du formulaire
+    const validationErrors = ValidationFilm(values);
     setErrors(validationErrors);
-
+    // Si pas d'erreurs, soumission des données
     if (Object.keys(validationErrors).length === 0) {
       try {
         const response = await fetch(`${URL}/api/films`, {
@@ -57,13 +60,13 @@ function CreateFilm() {
           },
           body: JSON.stringify(values),
         });
-
+        // Vérification de la réponse et affichage des notifications
         if (response.status >= 200 || response.status < 300) {
           notifySuccess("L'opération d'ajout du contenu a réussi");
         } else {
           notifyError("L'opération d'ajout du contenu a réussi");
         }
-
+        // Redirection vers la page d'administration
         navigate("/admin");
       } catch (err) {
         notifyError("L'opération d'ajout du contenu a échoué");

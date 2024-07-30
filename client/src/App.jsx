@@ -16,19 +16,32 @@ function App() {
           <Outlet context={{ auth, setAuth }} />
         </main>
         <ToastContainer
+          // Classe CSS pour le style des toasts
           toastClassName="toastBody"
+          // Classe CSS pour le style du conteneur de toasts
           className="toastStyle"
+          // Position du toast dans la fenêtre
           position="bottom-right"
+          // Durée d'affichage du toast avant de disparaître (en millisecondes)
           autoClose={5000}
+          // Afficher ou non la barre de progression du toast
           hideProgressBar={false}
+          // Afficher le toast le plus récent au-dessus des plus anciens
           newestOnTop={false}
+          // Permet de fermer le toast en cliquant dessus
           closeOnClick
+          // Direction du texte (de droite à gauche ou de gauche à droite)
           rtl={false}
+          // Pause lors de la perte de focus
           pauseOnFocusLoss
+          // Permet de faire glisser le toast pour le fermer
           draggable
+          // Pause lors du survol du toast
           pauseOnHover
+          // Thème des toasts (clair ou sombre)
           theme="dark"
-          transition:Bounce
+          // Transition du toast (effet de transition)
+          transition:Bounce // Effet de transition pour les toasts
         />
       </FavoritesProvider>
     </UserProvider>
