@@ -3,6 +3,7 @@ import { useParams, useNavigate } from "react-router-dom";
 import { toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import styles from "./edit.module.css";
+import NavBar from "../../components/Navbar/Navbar";
 
 function EditFilm() {
   const api = import.meta.env.VITE_API_URL;
@@ -85,117 +86,124 @@ function EditFilm() {
   };
 
   return (
-    <div className={styles.editFormContainer}>
-      <form className={styles.editForm} method="put" onSubmit={handleFilms}>
-        <p className={styles.editTitle}>Titre</p>
-        <input
-          className={styles.editInput}
-          type="text"
-          name="title"
-          value={newFilm.title}
-          onChange={handleUpdateForm}
-        />
-        <p className={styles.editTitle}>Résumé</p>
-        <textarea
-          className={styles.editInput}
-          type="text"
-          name="overview"
-          value={newFilm.overview}
-          onChange={handleUpdateForm}
-        />
+    <div>
+      <NavBar />
 
-        <p className={styles.editTitle}>Durée</p>
-        <input
-          className={styles.editInput}
-          type="text"
-          name="duration"
-          value={newFilm.duration}
-          onChange={handleUpdateForm}
-        />
-        <p className={styles.editTitle}>Date de sortie</p>
-        <input
-          className={styles.editInput}
-          type="text"
-          name="release_date"
-          value={newFilm.release_date}
-          onChange={handleUpdateForm}
-        />
-        <p className={styles.editTitle}>Genre</p>
-        <input
-          className={styles.editInput}
-          type="text"
-          name="genre"
-          value={newFilm.genre}
-          onChange={handleUpdateForm}
-        />
-        <p className={styles.editTitle}>Producteur</p>
-        <input
-          className={styles.editInput}
-          type="text"
-          name="movie_director"
-          value={newFilm.movie_director}
-          onChange={handleUpdateForm}
-        />
-        <p className={styles.editTitle}>Affiche du film</p>
-        <input
-          className={styles.editInput}
-          type="text"
-          name="poster_link"
-          value={newFilm.poster_link}
-          onChange={handleUpdateForm}
-        />
-        <p className={styles.editTitle}>Clé du trailer</p>
-        <input
-          className={styles.editInput}
-          type="text"
-          name="key_trailer"
-          value={newFilm.key_trailer}
-          onChange={handleUpdateForm}
-        />
-        <p className={styles.editTitle}>URL du trailer</p>
-        <input
-          className={styles.editInput}
-          type="text"
-          name="trailer_url"
-          value={newFilm.trailer_url}
-          onChange={handleUpdateForm}
-        />
-        <p className={styles.editTitle}>Freemium</p>
-        <input
-          className={styles.editInput}
-          type="text"
-          name="freemium"
-          value={newFilm.freemium}
-          onChange={handleUpdateForm}
-        />
-        <p className={styles.editTitle}>Image de fond</p>
-        <input
-          className={styles.editInput}
-          type="text"
-          name="background_img"
-          value={newFilm.background_img}
-          onChange={handleUpdateForm}
-        />
-        <button className={styles.editButton} type="submit">
-          <p className={styles.saveButton}>Sauvegarder</p>
-        </button>
-      </form>
-      <div className={styles.previewContainer}>
-        <div className={styles.previewImgContainer}>
-          <img
-            className={styles.previewImg}
-            src={newFilm.background_img}
-            alt="Illustration du film"
-          />
-        </div>
-        <div className={styles.previewTextContainer}>
-          <p className={styles.previewTextTitle}>{newFilm.title}</p>
-          <p className={styles.previewText}>{newFilm.overview}</p>
-          <p className={styles.previewText}>
-            {newFilm.duration} minutes {newFilm.release_date}
-          </p>
-          <p className={styles.previewText}>{newFilm.genre}</p>
-          <p className={styles.previewText}>{newFilm.movie_director}</p>
+      <div className={styles.editFormContainer}>
+        <h2 className="adminTitle">Edition</h2>
+        <div className={styles.editionTitle}>
+          <form className={styles.editForm} method="put" onSubmit={handleFilms}>
+            <p className={styles.editTitle}>Titre</p>
+            <input
+              className={styles.editInput}
+              type="text"
+              name="title"
+              value={newFilm.title}
+              onChange={handleUpdateForm}
+            />
+            <p className={styles.editTitle}>Résumé</p>
+            <textarea
+              className={styles.editInput}
+              type="text"
+              name="overview"
+              value={newFilm.overview}
+              onChange={handleUpdateForm}
+            />
+
+            <p className={styles.editTitle}>Durée</p>
+            <input
+              className={styles.editInput}
+              type="text"
+              name="duration"
+              value={newFilm.duration}
+              onChange={handleUpdateForm}
+            />
+            <p className={styles.editTitle}>Date de sortie</p>
+            <input
+              className={styles.editInput}
+              type="text"
+              name="release_date"
+              value={newFilm.release_date}
+              onChange={handleUpdateForm}
+            />
+            <p className={styles.editTitle}>Genre</p>
+            <input
+              className={styles.editInput}
+              type="text"
+              name="genre"
+              value={newFilm.genre}
+              onChange={handleUpdateForm}
+            />
+            <p className={styles.editTitle}>Producteur</p>
+            <input
+              className={styles.editInput}
+              type="text"
+              name="movie_director"
+              value={newFilm.movie_director}
+              onChange={handleUpdateForm}
+            />
+            <p className={styles.editTitle}>Affiche du film</p>
+            <input
+              className={styles.editInput}
+              type="text"
+              name="poster_link"
+              value={newFilm.poster_link}
+              onChange={handleUpdateForm}
+            />
+            <p className={styles.editTitle}>Clé du trailer</p>
+            <input
+              className={styles.editInput}
+              type="text"
+              name="key_trailer"
+              value={newFilm.key_trailer}
+              onChange={handleUpdateForm}
+            />
+            <p className={styles.editTitle}>URL du trailer</p>
+            <input
+              className={styles.editInput}
+              type="text"
+              name="trailer_url"
+              value={newFilm.trailer_url}
+              onChange={handleUpdateForm}
+            />
+            <p className={styles.editTitle}>Freemium</p>
+            <input
+              className={styles.editInput}
+              type="text"
+              name="freemium"
+              value={newFilm.freemium}
+              onChange={handleUpdateForm}
+            />
+            <p className={styles.editTitle}>Image de fond</p>
+            <input
+              className={styles.editInput}
+              type="text"
+              name="background_img"
+              value={newFilm.background_img}
+              onChange={handleUpdateForm}
+            />
+            <button className={styles.editButton} type="submit">
+              <p className={styles.saveButton}>Sauvegarder</p>
+            </button>
+          </form>
+          <div className={styles.previewContainer}>
+            <div className={styles.previewImgContainer}>
+              <img
+                className={styles.previewImg}
+                src={newFilm.background_img}
+                alt="Illustration du film"
+              />
+            </div>
+            <div className={styles.previewTextContainer}>
+              <p className={styles.previewTextTitle}>{newFilm.title}</p>
+              <p className={styles.previewText}>{newFilm.overview}</p>
+              <p className={styles.previewText}>
+                {newFilm.duration} minutes {newFilm.release_date}
+              </p>
+              <p className={styles.previewText}>{newFilm.genre}</p>
+              <p className={styles.previewText}>{newFilm.movie_director}</p>
+            </div>
+          </div>
         </div>
       </div>
     </div>

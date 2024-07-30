@@ -1,5 +1,6 @@
 import { useEffect, useState } from "react";
 import { useLoaderData } from "react-router-dom";
+import { useUserContext } from "../../contexts/UserContext";
 import styles from "./Videopage.module.css";
 import NavBar from "../../components/Navbar/Navbar";
 import LikeBlue from "../../assets/images/like-bleu.svg";
@@ -10,7 +11,8 @@ function VideoPage() {
   const allFilms = useLoaderData(); // Chargement des données du film via le hook useLoaderData
   const { favorites, addFavorite, removeFavorite } = useFavoritesContext(); // Utilisation du contexte des favoris
   const [like, setLike] = useState(false); // État pour savoir si le film est liké ou non
-
+  const { user } = useUserContext();
+  
   // Vérifie si le film est dans les favoris à chaque changement de la liste des favoris ou de l'ID du film
   useEffect(() => {
     if (favorites.some((fav) => fav.id === allFilms.id)) {
@@ -57,20 +59,23 @@ function VideoPage() {
               <p className={styles.real}>
                 Réalisateur.rice : {allFilms.movie_director}
               </p>
-              <div className={styles.pouce}>
-                <button
-                  onClick={handleFavorite}
-                  className={styles.buttonLike}
-                  type="button"
-                  value={like}
-                >
-                  <img
-                    src={like ? LikeBlue : LikeWhite}
-                    alt={like ? "Logo j'aime" : "Logo je n'aime pas"}
-                    className={styles.like}
-                  />
-                </button>
-              </div>
+              {user !== "" && (
+                <div className={styles.pouce}>
+                  <button
+                    onClick={handleFavorite}
+                    className={styles.buttonLike}
+                    type="button"
+                    value={like}
+                  >
+                    <img
+                      src={like ? LikeBlue : LikeWhite}
+                      alt={like ? "Logo j'aime" : "Logo je n'aime pas"}
+                      className={styles.like}
+                    />
+                  </button>
+                </div>
+              )}
+
               <p className={styles.annonce}>Découvrir la bande annonce</p>
             </div>
           </div>

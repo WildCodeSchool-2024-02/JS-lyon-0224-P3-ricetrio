@@ -73,8 +73,8 @@ export default function Inscription() {
           navigate("/admin");
           notifySuccess(`Bienvenue Maitre.sse`);
         } else {
-          navigate("/");
-          notifySuccess(`Inscription réussie ! Bienvenue ${values.pseudo}`);
+          navigate("/connexion");
+          notifySuccess(`Inscription réussie !`);
         }
       } catch (err) {
         notifyError("Une erreur est survenue lors de l'inscription");
@@ -93,14 +93,14 @@ export default function Inscription() {
       </div>
       <div className={styles.contactContainer}>
         <div className={styles.contactBloc}>
-          <p className={styles.titleConnexion}>Inscription</p>
+          <h2>Inscription</h2>
           <Form
             method="post"
             className={styles.contactForm}
             onSubmit={handleSubmit}
           >
             <label htmlFor="pseudo" className={styles.rowFormRow}>
-              <p className={styles.titleForm}>Pseudo</p>
+              <h4>Pseudo</h4>
             </label>
             <div className={styles.pseudoInput}>
               <input
@@ -116,7 +116,7 @@ export default function Inscription() {
               </p>
             </div>
             <label htmlFor="email" className={styles.rowFormRow}>
-              <p className={styles.titleForm}>Adresse email</p>
+              <h4>Adresse mail</h4>
             </label>
             <div className={styles.pseudoInput}>
               <input
@@ -131,7 +131,7 @@ export default function Inscription() {
               </p>
             </div>
             <label htmlFor="password" className={styles.rowFormRow}>
-              <p className={styles.titleForm}>Mot de passe</p>
+              <h4>Mot de passe</h4>
             </label>
             <div className={styles.pseudoInput}>
               <input

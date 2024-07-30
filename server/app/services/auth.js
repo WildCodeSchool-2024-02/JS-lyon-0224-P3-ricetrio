@@ -30,7 +30,7 @@ const hashPassword = async (req, res, next) => {
 const verifyToken = (req, res, next) => {
   try {
     // Vérifier la présence de l'en-tête "Authorization" dans la requête
-    const authorizationHeader = req.get("Autorisation");
+    const authorizationHeader = req.get("Authorization");
 
     if (authorizationHeader == null) {
       throw new Error("En-tête d'autorisation est manquante");
@@ -40,17 +40,16 @@ const verifyToken = (req, res, next) => {
     const [type, token] = authorizationHeader.split(" ");
 
     if (type !== "Bearer") {
-      throw new Error("L'en-tête d'autorisation n'a pas le type 'Bearer");
+      throw new Error("L'en-tête d'autorisation n'a pas le type 'Bearer'");
     }
 
-    // Vérifier la validité du token (son authenticité et sa date d'expériation)
+    // Vérifier la validité du token (son authenticité et sa date d'expiration)
     // En cas de succès, le payload est extrait et décodé
     req.auth = jwt.verify(token, process.env.APP_SECRET);
 
     next();
   } catch (err) {
     console.error(err);
-
     res.sendStatus(401);
   }
 };
@@ -65,13 +64,14 @@ const verifyCookie = (req, res, next) => {
 
     return next();
   } catch (err) {
-    return res.sendStatus(404).send("Il y eu une erreur");
+    return res.status(404).send("Il y a eu une erreur");
   }
 };
 
 const verifyIsAdmin = async (req, res, next) => {
   try {
     const { sub } = req.auth;
+
     const userRole = await tables.user.findUserRole(sub);
     if (userRole.role !== "admin") {
       return res
@@ -81,7 +81,7 @@ const verifyIsAdmin = async (req, res, next) => {
 
     return next();
   } catch (err) {
-    return res.sendStatus(404).send("Il y eu une erreur");
+    return res.status(404).send("Il y a eu une erreur");
   }
 };
 

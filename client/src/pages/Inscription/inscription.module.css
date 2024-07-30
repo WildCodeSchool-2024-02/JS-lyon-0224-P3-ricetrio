@@ -11,8 +11,13 @@ h2 {
   margin: 0;
 }
 
+p {
+  margin: 0;
+  margin-bottom: 10px;
+}
+
 h4 {
-  color: grey;
+  color: var(--main-color);
   font-family: var(--font-regular);
   margin: 0;
 }

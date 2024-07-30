@@ -1,9 +1,15 @@
 .editFormContainer {
   display: flex;
   flex-wrap: wrap;
+  flex-direction: column;
+}
+
+.editionTitle {
+  display: flex;
+  flex-wrap: wrap;
   flex-direction: row;
   justify-content: center;
-  height: 700px;
+  min-height: 700px;
   gap: 3rem;
   padding: 20px;
   margin-top: 30px;
@@ -15,13 +21,14 @@
   flex-direction: column;
   border-radius: 5px;
   width: 500px;
+  min-height: 700px;
   padding: 10px;
 }
 
 .editForm {
   border: 2px solid white;
   align-items: center;
-  height: 620px;
+  min-height: 700px;
 }
 
 .previewContainer {
@@ -60,22 +67,22 @@
 }
 
 .previewTextContainer {
-  top: 12%;
+  top: -40%;
   left: 0;
-  height: 280px;
+  height: 400px;
   background: linear-gradient(
     to right,
     rgba(0, 0, 0, 1) 25%,
     rgba(0, 0, 0, 1) 25%,
     rgba(0, 0, 0, 0) 100%
   );
-  padding: 20px;
+  padding: 35px;
   box-sizing: border-box;
 }
 
 .previewImg {
   width: 100%;
-  height: auto;
+  height: 100%;
   display: block;
 }
 

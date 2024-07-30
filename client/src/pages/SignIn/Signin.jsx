@@ -9,7 +9,7 @@ import Logo from "../../assets/images/logo-prodcat-noir.svg";
 export default function Signin() {
   const URL = import.meta.env.VITE_API_URL;
   const notifySuccess = (text) => toast.success(text);
-  const notifyError = (text) => toast.error(text); 
+  const notifyError = (text) => toast.error(text);
   const navigate = useNavigate();
   const { login } = useUserContext();
   // État pour stocker les informations de connexion
@@ -49,8 +49,8 @@ export default function Signin() {
             navigate("/admin");
             notifySuccess(`Bienvenue`);
           } else {
-            navigate("/"); // Redirection vers la page d'accueil pour les autres utilisateurs
-            notifySuccess(`Bienvenue`);
+            navigate("/");
+            notifySuccess(`Bienvenue ${loginInfos.pseudo}`);
           }
         } else {
           notifyError("Utilisateur.rice introuvable");
@@ -72,7 +72,7 @@ export default function Signin() {
       </div>
       <div className={styles.contactContainer}>
         <div className={styles.contactBloc}>
-          <p className={styles.titleConnexion}>Connexion</p>
+          <h2>Connexion</h2>
           <form onSubmit={handleLogin} className={styles.contactForm}>
             <div className={styles.rowFormRow}>
               <h4>Pseudo</h4>
