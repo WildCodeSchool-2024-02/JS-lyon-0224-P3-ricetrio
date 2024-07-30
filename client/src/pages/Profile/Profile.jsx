@@ -41,7 +41,7 @@ function Profile() {
   // Fonction pour récupérer les informations du profil utilisateur
   const getProfile = async () => {
     try {
-      const response = await fetch(`${URL}/api/users`, {
+      const response = await fetch(`${URL}/users`, {
         credentials: "include",
         headers: {
           "Content-Type": "application/json",
@@ -65,7 +65,7 @@ function Profile() {
   // Fonction pour récupérer les films favoris de l'utilisateur
   const getFavorite = async () => {
     try {
-      const responseFavorite = await fetch(`${URL}/api/favorite`, {
+      const responseFavorite = await fetch(`${URL}/favorite`, {
         credentials: "include",
         headers: {
           "Content-Type": "application/json",

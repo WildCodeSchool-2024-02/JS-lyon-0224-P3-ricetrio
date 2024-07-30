@@ -12,7 +12,7 @@ function VideoPage() {
   const { favorites, addFavorite, removeFavorite } = useFavoritesContext(); // Utilisation du contexte des favoris
   const [like, setLike] = useState(false); // État pour savoir si le film est liké ou non
   const { user } = useUserContext();
-  
+
   // Vérifie si le film est dans les favoris à chaque changement de la liste des favoris ou de l'ID du film
   useEffect(() => {
     if (favorites.some((fav) => fav.id === allFilms.id)) {

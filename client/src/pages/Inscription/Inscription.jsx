@@ -45,7 +45,10 @@ export default function Inscription() {
     const validationErrors = Validation(values);
     setErrors(validationErrors);
 
-    // Si aucune erreur de validation, envoyer les données au serveur
+    //  Si aucune erreur de validation, envoyer les données au serveur
+    //  headers: { "Content-Type": "application/json" }: Définit les headers de la requête. Ici, il spécifie que le corps de la requête est au format JSON
+    //  body: JSON.stringify(values): Le corps de la requête contient les données à envoyer au serveur. values est un objet JavaScript contenant les données, et JSON.stringify(values) le convertit en chaîne JSON.
+
     if (Object.keys(validationErrors).length === 0) {
       try {
         const response = await fetch(`${URL}/api/users`, {
@@ -62,7 +65,7 @@ export default function Inscription() {
         });
 
         // Vérification de la réponse du serveur
-        if (response.status !== 200) {
+        if (response.status === 200) {
           throw new Error("Erreur lors de l'inscription");
         }
 

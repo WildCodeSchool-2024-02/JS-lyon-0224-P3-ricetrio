@@ -28,7 +28,9 @@ export default function Signin() {
       notifyError("Pseudo et mot de passe doivent être renseignés");
       return;
     }
-
+    //  credentials: "include": Indique que les informations d'identification (comme les cookies) doivent être incluses avec la requête. Cela est souvent nécessaire pour les requêtes authentifiées.  
+    //  headers: { "Content-Type": "application/json" }: Définit les en-têtes de la requête. Ici, il spécifie que le corps de la requête est au format JSON. 
+    //  body: JSON.stringify(loginInfos): Le corps de la requête contient les données à envoyer au serveur. values est un objet JavaScript contenant les données, et JSON.stringify(values) le convertit en chaîne JSON. 
     try {
       const response = await fetch(`${URL}/api/login`, {
         method: "POST",
