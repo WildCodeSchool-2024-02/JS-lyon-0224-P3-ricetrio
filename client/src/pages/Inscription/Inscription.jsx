@@ -4,7 +4,7 @@ import { useState } from "react";
 import { toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css"; // Assurez-vous d'importer le CSS de Toastify
 import styles from "./inscription.module.css";
-import Logo from "../../assets/images/logo-prodcat-noir.svg";
+import Logo from "../../assets/images/logo-prodcat-noir2.svg";
 import Validation from "./InscriptionValidation";
 
 // Pour récupérer les variables d'environnement à partir de .env
