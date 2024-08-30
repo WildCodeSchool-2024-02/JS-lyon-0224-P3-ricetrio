@@ -1,6 +1,6 @@
-const express = require("express");
+const express = require("express"); // Importation d'Express, un framework pour créer des applications web en Node.js
 
-const router = express.Router();
+const router = express.Router(); // Création d'un routeur Express pour définir des routes spécifiques
 
 // Importer les contrôleurs pour les actions administratives
 const { login } = require("../../../controllers/authActions");
@@ -11,8 +11,7 @@ const {
   verifyIsAdmin,
 } = require("../../../services/auth");
 
-router.post("/", login);
-router.get("/:id", verifyToken, read);
-router.get("/admin", verifyCookie, verifyIsAdmin);
-
+router.post("/", login); // Route POST pour gérer la connexion (login)
+router.get("/:id", verifyToken, read); // Route GET pour lire les informations d'un utilisateur, avec vérification du token
+router.get("/admin", verifyCookie, verifyIsAdmin); // Route GET pour accéder aux fonctionnalités administratives, avec vérification du cookie et des droits administratifs
 module.exports = router;

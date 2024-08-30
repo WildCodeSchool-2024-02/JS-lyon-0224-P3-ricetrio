@@ -56,32 +56,32 @@ const verifyToken = (req, res, next) => {
 
 const verifyCookie = (req, res, next) => {
   try {
-    const token = req.cookies.access_token;
+    const token = req.cookies.access_token; // Récupération du token d'accès depuis les cookies de la requête
     if (!token) {
-      return res.sendStatus(401);
+      return res.sendStatus(401); // Si aucun token n'est présent, renvoyer un statut 401 (non autorisé)
     }
-    req.auth = jwt.verify(token, process.env.APP_SECRET);
+    req.auth = jwt.verify(token, process.env.APP_SECRET); // Vérification du token avec la clé secrète de l'application et stockage des informations d'authentification dans req.auth
 
-    return next();
+    return next(); // Si la vérification réussit, passer à la prochaine étape du middleware
   } catch (err) {
-    return res.status(404).send("Il y a eu une erreur");
+    return res.status(404).send("Il y a eu une erreur"); // En cas d'erreur, renvoyer un statut 404 avec un message d'erreur
   }
 };
 
 const verifyIsAdmin = async (req, res, next) => {
   try {
-    const { sub } = req.auth;
+    const { sub } = req.auth; // Extraction du "sub" (identifiant du sujet) à partir des informations d'authentification
 
-    const userRole = await tables.user.findUserRole(sub);
+    const userRole = await tables.user.findUserRole(sub); // Recherche du rôle de l'utilisateur dans la base de données
     if (userRole.role !== "admin") {
       return res
         .status(403)
-        .json("Vous n'avez pas les droits pour effectuer cette action !");
+        .json("Vous n'avez pas les droits pour effectuer cette action !"); // Si l'utilisateur n'est pas administrateur, renvoyer un statut 403 (interdit) avec un message d'erreur
     }
 
-    return next();
+    return next(); // Si l'utilisateur est administrateur, passer à la prochaine étape du middleware
   } catch (err) {
-    return res.status(404).send("Il y a eu une erreur");
+    return res.status(404).send("Il y a eu une erreur"); // En cas d'erreur, renvoyer un statut 404 avec un message d'erreur
   }
 };
 
