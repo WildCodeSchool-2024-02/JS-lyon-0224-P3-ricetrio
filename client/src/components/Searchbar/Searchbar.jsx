@@ -80,7 +80,7 @@ function Searchbar() {
           )}
         </>
       ) : (
-        <p>Bienvenue sur Prodkat, bon voyage cinématographique !</p>
+        <p>Bienvenue sur Brodkat, bon voyage cinématographique !</p>
       )}
     </div>
   );
