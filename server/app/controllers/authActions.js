@@ -54,11 +54,11 @@ const login = async (req, res, next) => {
   }
 };
 // La fonction de déconnexion du code est conçue pour effacer le jeton d'authentification stocké dans les cookies du client, puis pour envoyer un code d'état HTTP de 200, indiquant que l'opération a réussi.
-const logout = (req, res) => {
-  res.clearCookie("access_token").sendStatus(200);
-};
+// const logout = (req, res) => {
+//   res.clearCookie("access_token").sendStatus(200);
+// };
 
 module.exports = {
   login,
-  logout,
+  // logout,
 };
