@@ -1,41 +1,55 @@
 import { Link } from "react-router-dom";
 import { useUserContext } from "../../contexts/UserContext";
-import Logo from "../../assets/images/logo-prodcat-noir.svg";
+import Logo from "../../assets/images/logo-prodcat-noir2.svg";
 import Contact from "../../assets/images/message.svg";
 import Signin from "../../assets/images/login2.svg";
 import styles from "./Navbar.module.css";
+import Admin from "../../assets/images/admin.svg";
 
+// Définition du composant NavBar
 function NavBar() {
+  // Récupération de l'utilisateur depuis le contexte
   const { user } = useUserContext();
+
   return (
     <div className={styles.containParents}>
       <div className={styles.containLeft}>
         <Link to="/">
-          <img src={Logo} alt="logo prodkat" className={styles.logo} />
+          <img src={Logo} alt="Logo prodkat" className={styles.logo} />
         </Link>
       </div>
       <div className={styles.containRight}>
-        {!user ? (
+        {/* Vérification si l'utilisateur est connecté */}
+        {user === "" ? (
+          // Si l'utilisateur n'est pas connecté, afficher l'icône de connexion
           <Link to="/connexion">
             <img
               src={Signin}
-              alt="profile connexion ou inscription"
+              alt="Profile connexion ou inscription"
               className={styles.profile}
             />
           </Link>
         ) : (
+          // Si l'utilisateur est connecté, afficher l'icône de profil
           <Link to="/profile">
             <img
               src={Signin}
-              alt="profile connexion ou inscription"
+              alt="Profile connexion ou inscription"
               className={styles.profile}
             />
           </Link>
         )}
+
+        {user !== undefined && user !== "" && user[0].role === "admin" && (
+          <Link to="/admin">
+            <img src={Admin} alt="admin" className={styles.profile} />
+          </Link>
+        )}
+
         <Link to="/contact">
           <img
             src={Contact}
-            alt="contact au admin"
+            alt="Lien pour nous contacter"
             className={styles.profile}
           />
         </Link>
@@ -43,4 +57,5 @@ function NavBar() {
     </div>
   );
 }
+
 export default NavBar;

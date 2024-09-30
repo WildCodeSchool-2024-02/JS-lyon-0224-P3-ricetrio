@@ -13,20 +13,20 @@ const browse = async (req, res) => {
     res.json(films);
   } catch (error) {
     // Pass any errors to the error-handling middleware
-    res.status(500).json({ error: "Failed to fetch film" });
+    res.status(500).json({ error: "Échec de la récupération du film" });
   }
 };
 
 const read = async (req, res) => {
   try {
-    const film = await filmRepository.read(req.params.id);
+    const film = await filmRepository.read(req.params.id); // Extraction de l'ID de film depuis les paramètres de la requête
     if (!film === true) {
-      res.status(404).json({ error: "Film not found" });
+      res.status(404).json({ error: "Film non trouvé" });
       return;
     }
     res.json(film);
   } catch (error) {
-    res.status(400).json({ error: "Failed to add film" });
+    res.status(400).json({ error: "Échec du chargement du film" });
   }
 };
 
@@ -56,7 +56,7 @@ const add = async (req, res, next) => {
 
     res.status(201).json(insertId); // Répondre avec l'utilisateur créé
   } catch (err) {
-    console.error("Error in add function:", err);
+    console.error("rreur dans la fonction d'ajout :", err);
     res.status(500).json();
     next(err);
   }

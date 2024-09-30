@@ -15,7 +15,7 @@ class AbstractSeeder {
     // thx https://www.codeheroes.fr/2017/11/08/js-classes-abstraites-et-interfaces/
     if (this.constructor === AbstractSeeder) {
       throw new TypeError(
-        "Abstract class 'AbstractSeed' cannot be instantiated directly"
+        "La classe abstraite 'AbstractSeed' ne peut pas être instanciée directement"
       );
     }
 
@@ -59,7 +59,7 @@ class AbstractSeeder {
 
   // eslint-disable-next-line class-methods-use-this
   run() {
-    throw new Error("You must implement this function");
+    throw new Error("Vous devez implémenter cette fonction");
   }
 
   // eslint-disable-next-line class-methods-use-this

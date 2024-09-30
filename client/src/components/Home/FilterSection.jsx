@@ -3,18 +3,25 @@ import { useLoaderData, Link } from "react-router-dom";
 import { useUserContext } from "../../contexts/UserContext";
 import styles from "./filterSection.module.css";
 
+// Composant principal pour la section de filtrage des films
 function FilterSection() {
+  // Récupère tous les films via useLoaderData
   const allFilms = useLoaderData();
+  // State pour la catégorie des films affichés
   const [category, setCategory] = useState(allFilms);
+  // State pour vérifier si l'utilisateur est sur mobile
   const [isMobile, setIsMobile] = useState(window.innerWidth <= 768);
+  // Récupère le contexte utilisateur
   const { user } = useUserContext();
 
+  // Filtre les films par décennie
   const filterFilmsByDecade = (films, startYear, endYear) =>
     films.filter((film) => {
       const releaseYear = new Date(film.release_date).getFullYear();
       return releaseYear >= startYear && releaseYear <= endYear;
     });
 
+  // Gère les clics sur les boutons de filtrage
   const handleBtns = (e) => {
     const word = e.target.value;
 
@@ -35,6 +42,7 @@ function FilterSection() {
     }
   };
 
+  // Gère le redimensionnement de la fenêtre pour détecter si on est sur mobile
   useEffect(() => {
     const handleResize = () => {
       setIsMobile(window.innerWidth <= 768);
@@ -51,27 +59,29 @@ function FilterSection() {
     <div>
       <section>
         <div>
-          {isMobile ? (
+          {isMobile === true ? (
+            // Affiche une liste déroulante si on est sur mobile
             <div className={styles.listeDeroulante}>
               <select onChange={handleBtns}>
                 <option value="All">Toutes les années</option>
                 <option value="1970s">Les années 1970</option>
                 <option value="1980s">Les années 1980</option>
-                <option value="1990s" disabled={!user}>
-                  {`${!user === "" ? "Veuillez vous connecter" : "Les années 1990"}`}
+                <option value="1990s" disabled={user === ""}>
+                  {`${user === "" ? "Veuillez vous connecter" : "Les années 1990"}`}
                 </option>
-                <option value="2000s" disabled={!user}>
-                  {`${!user === "" ? "Veuillez vous connecter" : "Les années 2000"}`}
+                <option value="2000s" disabled={user === ""}>
+                  {`${user === "" ? "Veuillez vous connecter" : "Les années 2000"}`}
                 </option>
-                <option value="2010s" disabled={!user}>
-                  {`${!user === "" ? "Veuillez vous connecter" : "Les années 2010"}`}
+                <option value="2010s" disabled={user === ""}>
+                  {`${user === "" ? "Veuillez vous connecter" : "Les années 2010"}`}
                 </option>
-                <option value="2020s" disabled={!user}>
-                  {`${!user === "" ? "Veuillez vous connecter" : "Les années 2020"}`}
+                <option value="2020s" disabled={user === ""}>
+                  {`${user === "" ? "Veuillez vous connecter" : "Les années 2020"}`}
                 </option>
               </select>
             </div>
           ) : (
+            // Affiche des boutons si on est sur desktop
             <div className={styles.buttonDecade}>
               <button
                 className={styles.buttonTitle}
@@ -99,47 +109,47 @@ function FilterSection() {
               </button>
               <button
                 className={`${styles.buttonTitle} ${
-                  !user ? styles.disabledButton : styles.buttonTitle
+                  user === "" ? styles.disabledButton : styles.buttonTitle
                 }`}
                 type="button"
                 value="1990s"
                 onClick={handleBtns}
-                disabled={!user}
+                disabled={user === ""}
               >
-                {`${!user ? "Veuillez vous connecter" : "Les années 1990"}`}
+                {`${user === "" ? "Veuillez vous connecter" : "Les années 1990"}`}
               </button>
               <button
                 className={`${styles.buttonTitle} ${
-                  !user ? styles.disabledButton : styles.buttonTitle
+                  user === "" ? styles.disabledButton : styles.buttonTitle
                 }`}
                 type="button"
                 value="2000s"
                 onClick={handleBtns}
-                disabled={!user}
+                disabled={user === ""}
               >
-                {`${!user ? "Veuillez vous connecter" : "Les années 2000"}`}
+                {`${user === "" ? "Veuillez vous connecter" : "Les années 2000"}`}
               </button>
               <button
                 className={`${styles.buttonTitle} ${
-                  !user ? styles.disabledButton : styles.buttonTitle
+                  user === "" ? styles.disabledButton : styles.buttonTitle
                 }`}
                 type="button"
                 value="2010s"
                 onClick={handleBtns}
-                disabled={!user}
+                disabled={user === ""}
               >
-                {`${!user ? "Veuillez vous connecter" : "Les années 2010"}`}
+                {`${user === "" ? "Veuillez vous connecter" : "Les années 2010"}`}
               </button>
               <button
                 className={`${styles.buttonTitle} ${
-                  !user ? styles.disabledButton : styles.buttonTitle
+                  user === "" ? styles.disabledButton : styles.buttonTitle
                 }`}
                 type="button"
                 value="2020s"
                 onClick={handleBtns}
-                disabled={!user}
+                disabled={user === ""}
               >
-                {`${!user ? "Veuillez vous connecter" : "Les années 2020"}`}
+                {`${user === "" ? "Veuillez vous connecter" : "Les années 2020"}`}
               </button>
             </div>
           )}
@@ -148,7 +158,7 @@ function FilterSection() {
           <div className={styles.filterPosterContainer}>
             {category.map((film) => (
               <div className={styles.imgContainer} key={film.id}>
-                {film.freemium === 1 && !user ? (
+                {film.freemium === 1 && user === "" ? (
                   <Link to="/verifyfreemium">
                     <img src={film.poster_link} alt={film.title} />
                   </Link>

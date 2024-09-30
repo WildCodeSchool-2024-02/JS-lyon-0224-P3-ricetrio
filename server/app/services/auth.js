@@ -33,55 +33,55 @@ const verifyToken = (req, res, next) => {
     const authorizationHeader = req.get("Authorization");
 
     if (authorizationHeader == null) {
-      throw new Error("Authorization header is missing");
+      throw new Error("En-tête d'autorisation est manquante");
     }
 
     // Vérifier que l'en-tête a la forme "Bearer <token>"
     const [type, token] = authorizationHeader.split(" ");
 
     if (type !== "Bearer") {
-      throw new Error("Authorization header has not the 'Bearer' type");
+      throw new Error("L'en-tête d'autorisation n'a pas le type 'Bearer'");
     }
 
-    // Vérifier la validité du token (son authenticité et sa date d'expériation)
+    // Vérifier la validité du token (son authenticité et sa date d'expiration)
     // En cas de succès, le payload est extrait et décodé
     req.auth = jwt.verify(token, process.env.APP_SECRET);
 
     next();
   } catch (err) {
     console.error(err);
-
     res.sendStatus(401);
   }
 };
 
 const verifyCookie = (req, res, next) => {
   try {
-    const token = req.cookies.access_token;
+    const token = req.cookies.access_token; // Récupération du token d'accès depuis les cookies de la requête
     if (!token) {
-      return res.sendStatus(401);
+      return res.sendStatus(401); // Si aucun token n'est présent, renvoyer un statut 401 (non autorisé)
     }
-    req.auth = jwt.verify(token, process.env.APP_SECRET);
+    req.auth = jwt.verify(token, process.env.APP_SECRET); // Vérification du token avec la clé secrète de l'application et stockage des informations d'authentification dans req.auth
 
-    return next();
+    return next(); // Si la vérification réussit, passer à la prochaine étape du middleware
   } catch (err) {
-    return res.sendStatus(404).send("il y eu une erreur");
+    return res.status(404).send("Il y a eu une erreur"); // En cas d'erreur, renvoyer un statut 404 avec un message d'erreur
   }
 };
 
 const verifyIsAdmin = async (req, res, next) => {
   try {
-    const { sub } = req.auth;
-    const userRole = await tables.user.findUserRole(sub);
+    const { sub } = req.auth; // Extraction du "sub" (identifiant du sujet) à partir des informations d'authentification
+
+    const userRole = await tables.user.findUserRole(sub); // Recherche du rôle de l'utilisateur dans la base de données
     if (userRole.role !== "admin") {
       return res
         .status(403)
-        .json("Vous n'avez pas les droits pour effectuer cette action !");
+        .json("Vous n'avez pas les droits pour effectuer cette action !"); // Si l'utilisateur n'est pas administrateur, renvoyer un statut 403 (interdit) avec un message d'erreur
     }
 
-    return next();
+    return next(); // Si l'utilisateur est administrateur, passer à la prochaine étape du middleware
   } catch (err) {
-    return res.sendStatus(404).send("il y eu une erreur");
+    return res.status(404).send("Il y a eu une erreur"); // En cas d'erreur, renvoyer un statut 404 avec un message d'erreur
   }
 };
 

@@ -1,3 +1,9 @@
+Prodkat is a video platform featuring trailers of French films from the 1970s to the present day. Trailers of films from 1970 to 1980 are freely accessible, while trailers from 1981 to the present are available through registration in the freemium section. Registered users can add their favorite films to their favorites.
+
+Each film has its own page with information including the title, a summary, the release date, the duration, and the director's name.
+
+As an administrator, it is possible to add, modify, and delete film pages.
+
 # .
 
 This project uses Harmonia. Harmonia is a framework meant to serve as a foundation for every project following the React-Express-MySQL stack, as learned in Wild Code School.
@@ -18,7 +24,7 @@ git config --global core.autocrlf false
 - Create environment files (`.env`) in both `server` and `client`: you can copy `.env.sample` files as starters (**don't** delete them)
 
 ### Available Commands
-
+- `install` : Installation of cookie parse, argon2, toastify, jsonwebtoken, papaparse
 - `db:migrate` : Run the database migration script
 - `db:seed` : Run the database seed script
 - `dev` : Starts both servers (client + server) in one terminal

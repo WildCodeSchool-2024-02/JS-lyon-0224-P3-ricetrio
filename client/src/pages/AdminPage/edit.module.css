@@ -1,85 +1,91 @@
 .editFormContainer {
   display: flex;
   flex-wrap: wrap;
-  flex-direction: row;
-  align-items: top;
-  justify-content: center;
-  gap: 3rem;
-  padding: 20px;
-  align-items: center;
+  flex-direction: column;
 }
 
-.editForm {
-  border: solid white 2px;
+.editionTitle {
   display: flex;
   flex-wrap: wrap;
+  flex-direction: row;
+  justify-content: center;
+  min-height: 700px;
+  gap: 3rem;
+  padding: 20px;
+  margin-top: 30px;
+}
+
+.editForm,
+.previewContainer {
+  display: flex;
   flex-direction: column;
-  align-items: center;
-  width: 500px;
   border-radius: 5px;
-  height: 620px;
+  width: 500px;
+  min-height: 700px;
   padding: 10px;
 }
 
+.editForm {
+  border: 2px solid white;
+  align-items: center;
+  min-height: 700px;
+}
+
 .previewContainer {
-  border: solid white 2px;
-  display: flex;
-  flex-direction: column;
-  align-items: left;
-  height: 620px;
-  width: 500px;
-  border-radius: 5px;
+  align-items: flex-start;
+  height: 350px;
   padding: 20px;
   position: relative;
 }
 
 .previewTitle {
   font-size: 30px;
-  border-style: double;
   padding: 10px;
+  border: double 2px var(--main-color);
   border-radius: 5px;
-  border-color: var(--main-color);
+}
+
+.previewText,
+.previewTextTitle {
+  color: white;
 }
 
 .previewText {
-  color: white;
   font-size: 12px;
 }
 
 .previewTextTitle {
-  color: white;
   font-size: 18px;
   font-weight: bold;
   margin: 0;
 }
 
-.previewImgContainer {
+.previewImgContainer,
+.previewTextContainer {
   position: relative;
-  top: 10%;
   width: 100%;
 }
+
 .previewTextContainer {
-  position: absolute;
-  top: 32%;
+  top: -40%;
   left: 0;
-  width: 100%;
-  height: 300px;
-  color: white;
+  height: 400px;
   background: linear-gradient(
     to right,
     rgba(0, 0, 0, 1) 25%,
     rgba(0, 0, 0, 1) 25%,
     rgba(0, 0, 0, 0) 100%
   );
-  padding: 20px;
+  padding: 35px;
   box-sizing: border-box;
 }
 
 .previewImg {
   width: 100%;
-  height: auto;
+  height: 100%;
   display: block;
 }
+
 .editInput {
   flex-direction: column;
   max-width: 180px;
@@ -98,10 +104,12 @@
   margin: 0;
 }
 
-.editButton {
+.editButton,
+.saveButton {
   max-width: 100px;
+  color: white;
 }
 
 .saveButton {
-  color: white;
+  margin: 0;
 }
